@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("NETLIFY_DATABASE_URL")
+}
+
+// ──────────────────────────────────────────
+// 섹션 6: 데이터 모델
+// ──────────────────────────────────────────
+
+model Brand {
+  id         String   @id @default(cuid())
+  slug       String   @unique
+  name       String
+  nameEn     String?
+  logoUrl    String
+  isDomestic Boolean
+  sortOrder  Int      @default(0)
+  cars       Car[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Car {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  brandId      String
+  brand        Brand    @relation(fields: [brandId], references: [id])
+  modelName    String
+  trimName     String
+  year         Int
+  category     String
+  fuelType     String
+  basePrice    Int
+  thumbnailUrl String
+  galleryUrls  String[]
+  catalogUrl   String?
+  specSheetUrl String?
+  options      Json
+  priceMatrix  Json
+  isPopular    Boolean  @default(false)
+  isInstant    Boolean  @default(false)
+  isActive     Boolean  @default(true)
+  sortOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([brandId, isActive])
+  @@index([isPopular])
+  @@index([isInstant])
+}
+
+model QuoteRequest {
+  id             String   @id @default(cuid())
+  name           String
+  phone          String
+  contactMethod  String
+  availableTime  String?
+  carOfInterest  String?
+  message        String?
+  plannerId      String?
+  source         String?
+  status         String   @default("NEW")
+  consentPrivacy Boolean
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([status, createdAt])
+}
+
+model Review {
+  id           String   @id @default(cuid())
+  title        String
+  content      String
+  imageUrl     String?
+  carModel     String
+  customerName String
+  plannerName  String?
+  contractDate DateTime
+  isPublished  Boolean  @default(true)
+  sortOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+}
+
+model Planner {
+  id         String   @id @default(cuid())
+  name       String
+  nameEn     String?
+  position   String
+  photoUrl   String
+  phone      String?
+  kakaoUrl   String?
+  bio        String?
+  isFeatured Boolean  @default(false)
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+}
+
+model Faq {
+  id          String   @id @default(cuid())
+  category    String
+  question    String
+  answer      String
+  sortOrder   Int      @default(0)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         String   @default("ADMIN")
+  createdAt    DateTime @default(now())
+}

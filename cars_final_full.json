@@ -1,0 +1,1532 @@
+[
+  {
+    "name": "디 올 뉴 팰리세이드",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "257,810원",
+    "leasePrice": "272,750원",
+    "thumbnailUrl": "/data//car/da/f6/daf63f5b498dcb1300f9d3ceae6895c55cd3ea23.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "디 올 뉴 넥쏘",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/63/f5/63f515519ce28bf865ed029786e14c28d3a6ce15.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "더 뉴 아반떼",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "182,720원",
+    "leasePrice": "111,300원",
+    "thumbnailUrl": "/data//car/a6/44/a6442921bb199e354baf4eff4cfcf7b782e1b6fe.png_resize/w400.png",
+    "category": "준중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "더 뉴 아반떼 N",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "461,200원",
+    "leasePrice": "200,100원",
+    "thumbnailUrl": "/data//car/14/8b/148bb25439a0f4a4aea466e616726f82aa839339.png_resize/w400.png",
+    "category": "준중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "쏘나타 디 엣지",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "232,850원",
+    "leasePrice": "177,900원",
+    "thumbnailUrl": "/data//car/9c/f8/9cf8f8d85529dd42fbb76c959d7b07a2eb13791c.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "디 올 뉴 그랜저",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "163,850원",
+    "leasePrice": "240,400원",
+    "thumbnailUrl": "/data//car/30/d8/30d81fe70e20aa470fc9b8a1282e5ea02050e182.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "베뉴",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "230,020원",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/ff/6b/ff6bac88d01955fb7e3189bf1c4e7aa7ac070eb0.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "더 뉴 캐스퍼",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "197,110원",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/9d/18/9d18460dc684ae10e24df7f80e23925a13c34f65.png_resize/w400.png",
+    "category": "경차",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "캐스퍼 일렉트릭",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/81/8f/818f99eabb5d37a9c228c46aa3b4516c32ac8cde.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "디 올 뉴 코나",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "228,800원",
+    "leasePrice": "173,040원",
+    "thumbnailUrl": "/data//car/55/19/5519cd0b05d4d23674845d69e59572ea7f5fad40.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "더 뉴 투싼",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "162,930원",
+    "leasePrice": "176,700원",
+    "thumbnailUrl": "/data//car/63/5f/635f205c0c376a01d1ecbbc239c03603ac6b8b6d.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "디 올 뉴 싼타페",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "191,880원",
+    "leasePrice": "211,800원",
+    "thumbnailUrl": "/data//car/bd/98/bd98c1da8dafd03e47bce8341daa869685aad973.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "더 뉴 스타리아",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "296,700원",
+    "leasePrice": "236,600원",
+    "thumbnailUrl": "/data//car/4b/2d/4b2d5bd99e959baf5c8d9dda3ec143c902b14ec7.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "스타리아",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "244,800원",
+    "leasePrice": "187,100원",
+    "thumbnailUrl": "/data//car/39/7b/397b87bf46b0e9ae90ebfb0331219131c60e6072.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "스타리아 하이브리드",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "285,800원",
+    "leasePrice": "240,500원",
+    "thumbnailUrl": "/data//car/a4/9e/a49e8f744ad1cb89e2fe1700c4aebe688dd2383f.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "스타리아 카고",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "187,300원",
+    "leasePrice": "187,300원",
+    "thumbnailUrl": "/data//car/39/7b/397b87bf46b0e9ae90ebfb0331219131c60e6072.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "스타리아 하이브리드 카고",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "247,100원",
+    "leasePrice": "247,100원",
+    "thumbnailUrl": "/data//car/a4/9e/a49e8f744ad1cb89e2fe1700c4aebe688dd2383f.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "디 올 뉴 코나 일렉트릭",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/22/d9/22d91109f8016afd97429504d88ec69ebdf7ba8c.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "더 뉴 아이오닉 5",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/f7/c0/f7c05c0b0c92188d0f7efa90bc8d65443b163155.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "더 뉴 아이오닉 6",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/1e/62/1e62a8320843672ae437d17611f9a886c6ff24e3.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "아이오닉 5 N",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/1f/ce/1fceb7f252ea76486a7770afd7ce7b284d785c3f.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "아이오닉 9",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/e0/55/e055a0189d370e137d348429eae3cc2e73b3075f.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "쏠라티",
+    "brandLogo": "/data//car/c0/d6/c0d6ea7ac13b3ddb4e5d50c8da6e1537b035488f.png",
+    "rentPrice": "1,094,020원",
+    "leasePrice": "493,800원",
+    "thumbnailUrl": "/data//car/0a/37/0a37b450db94557aaa452527f8ccb5c8f4c5c2e6.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "스포티지",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "168,660원",
+    "leasePrice": "195,130원",
+    "thumbnailUrl": "/data//car/89/ac/89ac883aa7fc1a8291f77c8153a04328aedf7e35.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "모닝",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "183,000원",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/5a/ca/5aca49346d3764bf8f8155b0fc71176d2059ca1b.png_resize/w400.png",
+    "category": "경차",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "레이",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "175,900원",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/7e/3b/7e3b5105b381356f7b5c468c00d60fc5458e01db.png_resize/w400.png",
+    "category": "경차",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "K5",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "223,470원",
+    "leasePrice": "163,600원",
+    "thumbnailUrl": "/data//car/22/0d/220db169c940e59af4f8d923edaeffa76d78c947.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "K8",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/0b/d9/0bd9cd304b724d179fa11e34ae9bf86f616caff1.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "K9",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "597,360원",
+    "leasePrice": "530,000원",
+    "thumbnailUrl": "/data//car/81/8f/818fa48870abb885ef3100175c957284c84dd4cc.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "디 올 뉴 셀토스",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "180,334원",
+    "leasePrice": "172,900원",
+    "thumbnailUrl": "/data//car/d6/d2/d6d200bf314feb72734fe6ae7d86614b8f93b2a8.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "셀토스",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "177,520원",
+    "leasePrice": "118,900원",
+    "thumbnailUrl": "/data//car/4e/15/4e15813b055953e182dd153e6dac20e3f69ef54a.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "더 뉴 니로",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "204,800원",
+    "leasePrice": "187,900원",
+    "thumbnailUrl": "/data//car/6e/aa/6eaae139acf723c3e411fd45d1ff325f958fa481.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "니로",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "200,000원",
+    "leasePrice": "181,700원",
+    "thumbnailUrl": "/data//car/63/28/6328576bf3d3c03292f0a7102aed96143b80e064.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "쏘렌토",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "166,410원",
+    "leasePrice": "188,600원",
+    "thumbnailUrl": "/data//car/06/6e/066ed3a05c056d969157f6ac705acd1ad4d9ec1d.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "카니발",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "219,460원",
+    "leasePrice": "225,200원",
+    "thumbnailUrl": "/data//car/3e/72/3e72313429bffcc62d7a48cb46536edcb5c3fe8b.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "타스만",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "211,900원",
+    "leasePrice": "211,900원",
+    "thumbnailUrl": "/data//car/7d/e0/7de085839c2c3ab9e4288d9a23022b231b096bdc.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "레이 EV",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/fd/ea/fdea708efa6ac2efcca905b8220749817383558f.png_resize/w400.png",
+    "category": "경차",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "니로 EV",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/c0/78/c0786714d23aff90eaa214afd89e1af8722256aa.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "PV5",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/77/09/77092b598a82cdaf75582f4ed50e7e0ed3b23d00.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "EV3",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/1e/ff/1effe575725c2f03e1c9ceae4c2f4eab7ad987e9.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "EV4",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/3e/d4/3ed452c0cc9d07099a986589bcdb3274170a2fb5.png_resize/w400.png",
+    "category": "준중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "EV5",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/08/d2/08d2222d5c3fe5b731c59ed2c818cb53e5a9f161.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "EV6",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/fd/a9/fda9331b9eb41d4c2f6c3b95718c9269c81794db.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "EV6 GT",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/05/12/0512e58b62092296cbfcc20ac0911495894926e7.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "EV9",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/62/f3/62f3bd7bcd9f815b5e1dc26d487e19fdc62711f5.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "EV9 GT",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/a5/b0/a5b02704135c203cef438985c72bd5424f0438c1.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "CN모터스 카니발",
+    "brandLogo": "/data//car/a8/c0/a8c0474b88c37f006e6e77444609a0269f7afa1e.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/ea/c8/eac8cb0c612f23167da7bf15c9dca349778f0b31.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "New Electrified GV70",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/e8/06/e806a58740659aca4dbbbd002bfb199ff6c22694.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "GV70",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "315,380원",
+    "leasePrice": "299,400원",
+    "thumbnailUrl": "/data//car/6e/20/6e20c0276d8d2631f0070963936a3911e75892a5.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "G70",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "407,500원",
+    "leasePrice": "324,200원",
+    "thumbnailUrl": "/data//car/69/78/6978fba8c5be3c1b68d616209feb090440f9c5be.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "G70 (슈팅브레이크)",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "526,200원",
+    "leasePrice": "364,200원",
+    "thumbnailUrl": "/data//car/c8/ea/c8eac5be6d08783a98b1552d5a13e9f74dc7aa8c.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "G80",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "350,260원",
+    "leasePrice": "324,500원",
+    "thumbnailUrl": "/data//car/fa/ab/faab35a901510fb4137e3d0f4672df1647c3741e.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "G80 BLACK",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "434,730원",
+    "leasePrice": "453,300원",
+    "thumbnailUrl": "/data//car/05/77/057731827dad6be5ad0d20a4d7ebf99d27a12ad1.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "G90",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "792,450원",
+    "leasePrice": "730,000원",
+    "thumbnailUrl": "/data//car/4c/19/4c193666c2e243774498d81cce8b0d6366b4bb79.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "G90 BLACK",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "1,020,010원",
+    "leasePrice": "969,200원",
+    "thumbnailUrl": "/data//car/dc/24/dc241050c5eee33141a8aaed96e97ac737f508ea.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "G90 LONG WHEEL BASE",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "1,393,630원",
+    "leasePrice": "1,535,400원",
+    "thumbnailUrl": "/data//car/3a/0d/3a0d70eea8be9ad0ded0eb8969e745317579ce4d.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "G90 LONG WHEEL BASE BLACK",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "1,447,630원",
+    "leasePrice": "1,602,200원",
+    "thumbnailUrl": "/data//car/39/d7/39d73105fd2b4f9458a1530d945b33e011a2ba84.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "GV80",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "328,740원",
+    "leasePrice": "371,400원",
+    "thumbnailUrl": "/data//car/95/1a/951ad6e84ec68eda327131e3c48ac3f0fcf1cbf5.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "GV80 Black",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "401,930원",
+    "leasePrice": "512,800원",
+    "thumbnailUrl": "/data//car/da/fc/dafc8ba6c8f1e97ceb903d88e18d3b1668beea3e.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "GV80 Coupe",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "557,270원",
+    "leasePrice": "438,500원",
+    "thumbnailUrl": "/data//car/e5/41/e541dde8e6813a2d047c27fc1077743896e339d4.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "GV80 Coupe Black",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "664,100원",
+    "leasePrice": "544,600원",
+    "thumbnailUrl": "/data//car/21/6b/216b2448f17589337155e04f39307ef2d3e98adc.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "New Electrified G80",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/48/f4/48f43ec158d46f6fb817ea78e38e2caac7e9b4ce.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "GV60",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/27/59/2759d15d0aebffdde84831889ce0ab0fa1c2a149.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "GV60 MAGMA",
+    "brandLogo": "/data//car/37/98/37984fecb21e628926623b03cf1fd49130aa8eab.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/50/70/5070e284269d76264540fcb91fb4ac32f1dc1045.png_resize/w400.png",
+    "category": "준중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "필랑트",
+    "brandLogo": "/data//car/c4/1d/c41dadf62879d151d21b8b55ba7202044ccefe30.png",
+    "rentPrice": "323,830원",
+    "leasePrice": "343,900원",
+    "thumbnailUrl": "/data//car/ab/85/ab85aed05f6852d8632283d4f3eabd652aba25d5.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "그랑 콜레오스",
+    "brandLogo": "/data//car/c4/1d/c41dadf62879d151d21b8b55ba7202044ccefe30.png",
+    "rentPrice": "295,610원",
+    "leasePrice": "257,233원",
+    "thumbnailUrl": "/data//car/33/06/3306b2fb63adb417bbcd11013a840f489cb547cb.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "세닉 E-테크 일렉트릭",
+    "brandLogo": "/data//car/c4/1d/c41dadf62879d151d21b8b55ba7202044ccefe30.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/8a/47/8a47ee2e39efecfde5bf9d290ae847c8330bd8de.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "아르카나",
+    "brandLogo": "/data//car/c4/1d/c41dadf62879d151d21b8b55ba7202044ccefe30.png",
+    "rentPrice": "203,400원",
+    "leasePrice": "180,900원",
+    "thumbnailUrl": "/data//car/6c/97/6c9723b280cfe1e5da88b58c11c8eb36f8ac13d7.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "QM6",
+    "brandLogo": "/data//car/c4/1d/c41dadf62879d151d21b8b55ba7202044ccefe30.png",
+    "rentPrice": "231,500원",
+    "leasePrice": "255,700원",
+    "thumbnailUrl": "/data//car/18/dc/18dc5fe456850407601eb0c113b334ad62811e61.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "SM6",
+    "brandLogo": "/data//car/c4/1d/c41dadf62879d151d21b8b55ba7202044ccefe30.png",
+    "rentPrice": "275,400원",
+    "leasePrice": "241,700원",
+    "thumbnailUrl": "/data//car/f4/45/f4455b7ff2f0832b59eb16e3a5bcf4ca0c8b5964.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "콜로라도",
+    "brandLogo": "/data//car/83/98/8398e5b53c2f85fe48d94bd6910109696944c773.png",
+    "rentPrice": "774,670원",
+    "leasePrice": "774,670원",
+    "thumbnailUrl": "/data//car/4e/0e/4e0e7158d21122bcf1438c9e9241537411d10efc.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "트랙스 크로스오버",
+    "brandLogo": "/data//car/83/98/8398e5b53c2f85fe48d94bd6910109696944c773.png",
+    "rentPrice": "213,470원",
+    "leasePrice": "166,770원",
+    "thumbnailUrl": "/data//car/29/3f/293f96766e3c6661272da31907471bed0bb88db9.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "트레일블레이저",
+    "brandLogo": "/data//car/83/98/8398e5b53c2f85fe48d94bd6910109696944c773.png",
+    "rentPrice": "288,680원",
+    "leasePrice": "216,800원",
+    "thumbnailUrl": "/data//car/f5/3e/f53e6517610f927e37119ac67708cd418f4d188a.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "무쏘",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "246,200원",
+    "leasePrice": "246,200원",
+    "thumbnailUrl": "/data//car/38/b1/38b15bc3509e4ee1bf6c8d9fbf50d1ab5aeade1d.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "무쏘 EV",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/da/85/da85ddea874914f5e375ee5e1d4dfbb7b2b70757.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "무쏘 스포츠",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "240,200원",
+    "leasePrice": "240,200원",
+    "thumbnailUrl": "/data//car/8f/b8/8fb85fa92922ecf835f2427cdbeb47e22f2b5e85.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "무쏘 칸",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "266,100원",
+    "leasePrice": "266,100원",
+    "thumbnailUrl": "/data//car/b5/9f/b59ff2cac9b7a5e126e27625a411a33e36caa106.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "액티언",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "281,520원",
+    "leasePrice": "282,010원",
+    "thumbnailUrl": "/data//car/f1/ed/f1edbe7e83a06f941282559151b00f4fcaa5f475.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "더 뉴 토레스",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "286,540원",
+    "leasePrice": "233,000원",
+    "thumbnailUrl": "/data//car/55/ad/55ad0a7cf291ad653f524db242fe6e92384f15ea.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "더 뉴 토레스 하이브리드",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "249,550원",
+    "leasePrice": "242,230원",
+    "thumbnailUrl": "/data//car/56/1c/561c136785f504e0535c969183d6286e9a7171b0.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "티볼리",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/9d/5a/9d5a1d543ee98d2dd8fd5ee657de9edef8ffac2a.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "렉스턴 뉴 아레나",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "494,580원",
+    "leasePrice": "356,400원",
+    "thumbnailUrl": "/data//car/03/79/03790c310ad9d3a519813bffa502bd1ae6292a48.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "코란도",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "319,983원",
+    "leasePrice": "199,800원",
+    "thumbnailUrl": "/data//car/4c/64/4c647f1e20a759a55c7a3776b47e1254490c4f45.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "코란도 EV",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/a2/a2/a2a2606f84e373ea6abca6353c083e8f39faec9b.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "토레스 EVX",
+    "brandLogo": "/data//car/e4/98/e498f1d15c2e50584dcc0a1c809e04666411ffca.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/2d/ec/2decf230d3f8b0b5859adbf71842a71616660cbc.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "kor"
+  },
+  {
+    "name": "The New iX2",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/42/35/4235845ceb269b5ffff9ed832716c32155cb9a9d.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "The New iX",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/ea/60/ea605e6c5c1ce431a6782109445ae01b47d5c45e.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "The New M2",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "808,790원",
+    "leasePrice": "808,790원",
+    "thumbnailUrl": "/data//car/12/d4/12d482491571865394145aad78117ebfd8edb657.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "The New M5",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "2,523,746원",
+    "leasePrice": "1,408,000원",
+    "thumbnailUrl": "/data//car/1e/52/1e52213de2179a111db62f53bffa7a7828c7f124.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "New i4",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/57/e5/57e5772d1ec84752f4d672f98bc7ecf759709d1d.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "1 Series",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "596,763원",
+    "leasePrice": "262,500원",
+    "thumbnailUrl": "/data//car/1e/df/1edff7866c3a947b5c54242e80d738af1b6781dd.png_resize/w400.png",
+    "category": "준중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "2 Series",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "697,006원",
+    "leasePrice": "325,200원",
+    "thumbnailUrl": "/data//car/fb/8a/fb8a83066b203a5f2de8ae41e8caddb184460681.png_resize/w400.png",
+    "category": "준중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "New 2 Series",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "564,134원",
+    "leasePrice": "564,134원",
+    "thumbnailUrl": "/data//car/0d/8d/0d8d8a146f838bf99057a757bb3f76511b5f8b4e.png_resize/w400.png",
+    "category": "준중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "2 Series Active Tourer",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "661,720원",
+    "leasePrice": "290,300원",
+    "thumbnailUrl": "/data//car/fd/b6/fdb6a889484e30e438a224a8dd1e0ae0539c02bc.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "3 Series",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "779,636원",
+    "leasePrice": "346,706원",
+    "thumbnailUrl": "/data//car/bc/66/bc66208c6d3a36900f0ae7871b741809f0d5c2bc.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "4 Series",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "388,067원",
+    "leasePrice": "388,067원",
+    "thumbnailUrl": "/data//car/d5/ca/d5ca7157f6c9e81af969200eaeab0c7532d2b8c0.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "5 Series",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "735,533원",
+    "leasePrice": "263,534원",
+    "thumbnailUrl": "/data//car/51/f6/51f6938a7eeb6f2fb1be560bd867c8476541424a.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "6 Series",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "1,118,476원",
+    "leasePrice": "518,859원",
+    "thumbnailUrl": "/data//car/45/88/4588577d5f8169c3d491bac0da924a2859df8369.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "7 Series",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "2,035,366원",
+    "leasePrice": "1,014,300원",
+    "thumbnailUrl": "/data//car/76/3e/763e05bc96a3a7b8cb7cc47b99f91a3013df9ca5.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "8 Series",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "2,000,940원",
+    "leasePrice": "1,095,900원",
+    "thumbnailUrl": "/data//car/d6/a4/d6a48ea73ec7a57a550bd2354397f248dd93a66f.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "X1",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "749,400원",
+    "leasePrice": "297,600원",
+    "thumbnailUrl": "/data//car/9d/97/9d9708265d12dbcf2f4993b8b1cc42276f03f763.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "X2",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "789,123원",
+    "leasePrice": "331,600원",
+    "thumbnailUrl": "/data//car/6b/51/6b519ea008e2d8ad5f0fb08919a13817c58a42a7.png_resize/w400.png",
+    "category": "준중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "X3",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "797,513원",
+    "leasePrice": "281,700원",
+    "thumbnailUrl": "/data//car/9f/ed/9fed619376e424af9dace5fe93544e4e59966d1a.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "X4",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "745,193원",
+    "leasePrice": "309,034원",
+    "thumbnailUrl": "/data//car/52/4a/524aff6b8155ea5567eec0ed88d4a2088b9bfe06.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "X5",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "1,236,420원",
+    "leasePrice": "394,700원",
+    "thumbnailUrl": "/data//car/97/e0/97e091a8f29b60de01cf25a93acd6ef32eb150e7.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "X6",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "1,397,830원",
+    "leasePrice": "576,000원",
+    "thumbnailUrl": "/data//car/58/86/5886f75a15567670ef3b23b475c0e77742990d42.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "X7",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "1,746,140원",
+    "leasePrice": "798,200원",
+    "thumbnailUrl": "/data//car/04/93/04938d67103f818cc02f0cd12ddf494d60bf24a8.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "i5",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "1,294,740원",
+    "leasePrice": "525,200원",
+    "thumbnailUrl": "/data//car/8b/59/8b59ab057f83381dbcf0873625b0829657ffd818.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "i7",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "2,311,936원",
+    "leasePrice": "1,055,900원",
+    "thumbnailUrl": "/data//car/2f/99/2f99acd9eda4c91faa00ade67d112a1b37bf0c17.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "iX",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/4c/04/4c0473148a9b8391a4dee400c1a15b4c8145f861.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "iX1",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/69/d2/69d2af20ecddf7c2495277e28697523f2c740762.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "The New iX3",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/24/b2/24b29f1e80b6c01f5e1d8fe49b79dce07f1c0d05.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "New M3",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "1,003,500원",
+    "leasePrice": "1,003,500원",
+    "thumbnailUrl": "/data//car/51/21/5121339d6982e01c653a99eea5f929f1aab9f99e.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "M4",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "1,090,200원",
+    "leasePrice": "1,090,200원",
+    "thumbnailUrl": "/data//car/0e/dd/0edda6a80254d285a57ff713c4fe3fdc37542c4f.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "M5",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "2,531,666원",
+    "leasePrice": "1,408,000원",
+    "thumbnailUrl": "/data//car/a2/9a/a29adce624462275a2b335d72d433041c07c3d39.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "M8",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "4,061,276원",
+    "leasePrice": "1,828,500원",
+    "thumbnailUrl": "/data//car/48/b9/48b9ca43054cc4b0f924ec8386c5fea9d4e30d1d.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "X4 M",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "1,698,270원",
+    "leasePrice": "850,800원",
+    "thumbnailUrl": "/data//car/6f/b9/6fb94d11c9dc46757970182b0c11e361ac5d4f81.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "X5 M",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/ce/fc/cefcb32330e9cad767727f1c34a8c43e8e2ce5cd.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "X6 M",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "2,444,106원",
+    "leasePrice": "1,330,900원",
+    "thumbnailUrl": "/data//car/39/43/39437f0d6216b9800493ff1563269d7f3e4201de.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "XM",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "1,698,600원",
+    "leasePrice": "1,698,600원",
+    "thumbnailUrl": "/data//car/10/6a/106aaa556d3402a47222f580fce7af3515fbe3ec.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "Z4",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "581,400원",
+    "leasePrice": "581,400원",
+    "thumbnailUrl": "/data//car/3e/31/3e3113c9f7bb4af6ea18972b358d446b5fa4442e.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "2 Series Gran Coupe",
+    "brandLogo": "/data//car/26/7d/267d69eccae26e8ee3db0d106bc611b63da07acb.png",
+    "rentPrice": "615,173원",
+    "leasePrice": "271,500원",
+    "thumbnailUrl": "/data//car/1d/1f/1d1f3dc14a9048a9d28eba214f4f56df8352fcc3.png_resize/w400.png",
+    "category": "준중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "A-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "507,466원",
+    "leasePrice": "211,500원",
+    "thumbnailUrl": "/data//car/be/ff/beffee5e14cd58c4f9c77ee4452e8ea5bf996ff9.png_resize/w400.png",
+    "category": "준중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "C-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "666,066원",
+    "leasePrice": "295,967원",
+    "thumbnailUrl": "/data//car/f4/3b/f43b68eaa80354e70c712bab906bacaf90832431.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "E-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "708,290원",
+    "leasePrice": "287,300원",
+    "thumbnailUrl": "/data//car/01/5b/015b6d5fc3d2eac094c599b665df6c04e6f63aab.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "S-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/7f/d2/7fd217a085b12442082b0c9ca034297be12c1382.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "CLA-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "650,967원",
+    "leasePrice": "293,100원",
+    "thumbnailUrl": "/data//car/fa/12/fa1259e686c29bef8c12a480aa7cb4dd6916f742.png_resize/w400.png",
+    "category": "준중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "CLE Coupe",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "660,900원",
+    "leasePrice": "660,900원",
+    "thumbnailUrl": "/data//car/8f/54/8f54c2b493636f1d7a30dd3dec9ec50b1af0041e.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "CLE Cabriolet",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "453,700원",
+    "leasePrice": "453,700원",
+    "thumbnailUrl": "/data//car/ad/e1/ade1f5ba29b02ca55b829c6f0dd6b611694cb73c.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "GLA-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "688,827원",
+    "leasePrice": "300,017원",
+    "thumbnailUrl": "/data//car/9a/d2/9ad2b62295f29477448a9bb69d74bb1c379d4ce9.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "GLC-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "828,223원",
+    "leasePrice": "312,234원",
+    "thumbnailUrl": "/data//car/80/0f/800ff6347e4059413c47c4f2039ee76031601711.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "GLE-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "1,133,430원",
+    "leasePrice": "384,700원",
+    "thumbnailUrl": "/data//car/8d/c3/8dc300741fd3984940b25abd115f8b84e4fb3935.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "GLS-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "1,674,966원",
+    "leasePrice": "911,567원",
+    "thumbnailUrl": "/data//car/08/6a/086a9d632992be54a0f154830da97ae44c88986c.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "EQA",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/88/5e/885e954e7aa8a179da123f73e0b95cb5f5a3af9d.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "EQB",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/9f/b1/9fb18ff1d22838ff9e461036016fb68eaadafc9f.png_resize/w400.png",
+    "category": "소형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "EQE",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/1f/52/1f52066d97f7299081b612fa3e400d2bf3961be4.png_resize/w400.png",
+    "category": "준대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "EQE SUV",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/87/59/87594fc08bda56d5e6a11902a4cd00c25c6825d5.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "The New EQS",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/28/eb/28eb8586bb5c5b40b67146b2875971551542e6b5.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "EQS SUV",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "2,292,816원",
+    "leasePrice": "1,171,400원",
+    "thumbnailUrl": "/data//car/5d/c1/5dc14c09a30967597641a9f32031a7fd7077486d.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "The New G-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "2,213,733원",
+    "leasePrice": "718,200원",
+    "thumbnailUrl": "/data//car/f5/b4/f5b47cf3bedbebd77234203c4d5642b3a49314fa.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "Electric G-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/f4/10/f410a8502a9a29dae52ea30cd5fc989e4170ed13.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "Electric CLA",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/5f/98/5f980d91c5c02bfbe36aa4b55dfc5d2e360707c0.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "AMG GT",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "1,036,400원",
+    "leasePrice": "1,036,400원",
+    "thumbnailUrl": "/data//car/2a/ec/2aec45c4297c7cd82bdd58273fde2f3f1be51b21.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "SL-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "1,200,500원",
+    "leasePrice": "1,200,500원",
+    "thumbnailUrl": "/data//car/4b/98/4b98f952a1de51a125b91a4666cfe9f018791f7f.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "Maybach S-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/7b/af/7baffe469a6077c43d986e2c9144eaa637e04777.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "Maybach GLS",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "2,052,767원",
+    "leasePrice": "2,052,767원",
+    "thumbnailUrl": "/data//car/cf/9d/cf9d8c1a8e684243d8f5c36cded083dbf042d7f4.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "Maybach EQS SUV",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/ca/06/ca06dfdb9457b4f98a86b1f97332fa53f64691b4.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "The New AMG GT",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "1,581,244원",
+    "leasePrice": "1,581,244원",
+    "thumbnailUrl": "/data//car/9f/37/9f37bababf63f621b1f46e5d71381ba6dd576835.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "VLE",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/ca/22/ca227761ffdc6db0505cf6df99bea3f1a1a0f8f4.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "All New CLA-Class",
+    "brandLogo": "/data//car/fa/b2/fab294e8b9b6e80a01c03e139b657abb00705e27.png",
+    "rentPrice": "",
+    "leasePrice": "",
+    "thumbnailUrl": "/data//car/c3/ca/c3cad1256adaeafbdafeaed3e53c653df14e7442.png_resize/w400.png",
+    "category": "",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "The new Q5",
+    "brandLogo": "/data//car/f0/8d/f08dc865778b56f2f1fd251696f3c88077f31725.png",
+    "rentPrice": "842,682원",
+    "leasePrice": "459,900원",
+    "thumbnailUrl": "/data//car/a7/b5/a7b54bbd63259b39508831d8dac4712056d31d1b.png_resize/w400.png",
+    "category": "중형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "The new Q7",
+    "brandLogo": "/data//car/f0/8d/f08dc865778b56f2f1fd251696f3c88077f31725.png",
+    "rentPrice": "1,356,456원",
+    "leasePrice": "667,400원",
+    "thumbnailUrl": "/data//car/30/b9/30b9289d6bc882c7767f29adc0e20bcad5ef561f.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  },
+  {
+    "name": "The new Q8",
+    "brandLogo": "/data//car/f0/8d/f08dc865778b56f2f1fd251696f3c88077f31725.png",
+    "rentPrice": "1,617,888원",
+    "leasePrice": "728,200원",
+    "thumbnailUrl": "/data//car/1e/4d/1e4dde6a499ff47087d5461b2887bfefeffbdc0b.png_resize/w400.png",
+    "category": "대형",
+    "fuels": [],
+    "nation": "etc"
+  }
+]
