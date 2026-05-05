@@ -30,7 +30,7 @@ async function main() {
                 }
             });
         } catch (e) {
-            console.error(`Failed to insert ${car.modelName}:`, e.message);
+            console.error(`Failed to insert ${car.modelName}:`, (e instanceof Error) ? e.message : String(e));
         }
     }
     console.log('✅ Database restoration complete!');
