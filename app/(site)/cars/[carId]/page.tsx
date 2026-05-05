@@ -33,7 +33,7 @@ export async function generateMetadata({
 }
 
 // ---------- Page ----------
-export default async function CarDetailPage({
+export default async function Page({
   params,
 }: {
   params: Promise<{ carId: string }>;
@@ -48,8 +48,8 @@ export default async function CarDetailPage({
 
   if (!car) notFound();
 
-  // Serialize for client component
-  const serializedCar = {
+  // JSON serialization/deserialization to ensure a clean plain object for the Client Component
+  const serializedCar = JSON.parse(JSON.stringify({
     id: car.id,
     slug: car.slug,
     modelName: car.modelName,
@@ -62,15 +62,15 @@ export default async function CarDetailPage({
     galleryUrls: car.galleryUrls,
     catalogUrl: car.catalogUrl,
     specSheetUrl: car.specSheetUrl,
-    options: car.options as Record<string, unknown>,
-    priceMatrix: car.priceMatrix as Record<string, { rent: number; lease: number }>,
+    options: car.options,
+    priceMatrix: car.priceMatrix,
     brand: {
       name: car.brand.name,
       nameEn: car.brand.nameEn,
       slug: car.brand.slug,
       logoUrl: car.brand.logoUrl,
     },
-  };
+  }));
 
   return <CarDetailClient car={serializedCar} />;
 }

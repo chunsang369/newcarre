@@ -117,7 +117,7 @@ async function fetchRobustData(trimId) {
         } catch(e) {}
         return { outerColors, innerColors, options, trims };
     } catch(e) {
-        return { outerColors: [], innerColors: [], options: [], trims: [] };
+        return { outerColors: [], innerColors: [], options: [], trims: [], fetchError: true };
     }
 }
 
@@ -154,8 +154,20 @@ async function processCar(carMeta, index, total) {
         if (car.mappedGrades) {
            car.mappedGrades.forEach(g => g.trims.forEach(t => {
                t.options = (mainData.options || []).map(o => ({ name: o.name, price: o.price }));
-               t.colorsExt = (mainData.outerColors || []).map(c => ({ name: c.name, price: c.price, hex: c.detail || [] }));
-               t.colorsInt = (mainData.innerColors || []).map(c => ({ name: c.name, price: c.price, hex: c.detail || [] }));
+               t.colorsExt = (mainData.outerColors || []).map(c => ({ 
+                   idx: String(c.id), 
+                   title: c.name, 
+                   price: c.price, 
+                   detail: c.detail || [], 
+                   thumb: (c.detail && c.detail[0]) || null 
+               }));
+               t.colorsInt = (mainData.innerColors || []).map(c => ({ 
+                   idx: String(c.id), 
+                   title: c.name, 
+                   price: c.price, 
+                   detail: c.detail || [], 
+                   thumb: (c.detail && c.detail[0]) || null 
+               }));
            }));
         }
     } else {
@@ -175,8 +187,20 @@ async function processCar(carMeta, index, total) {
                         name: t.name,
                         price: t.price,
                         options: (tData.options || []).map(o => ({ name: o.name, price: o.price })),
-                        colorsExt: (tData.outerColors || []).map(c => ({ name: c.name, price: c.price, hex: c.detail || [] })),
-                        colorsInt: (tData.innerColors || []).map(c => ({ name: c.name, price: c.price, hex: c.detail || [] }))
+                        colorsExt: (tData.outerColors || []).map(c => ({ 
+                            idx: String(c.id), 
+                            title: c.name, 
+                            price: c.price, 
+                            detail: c.detail || [], 
+                            thumb: (c.detail && c.detail[0]) || null 
+                        })),
+                        colorsInt: (tData.innerColors || []).map(c => ({ 
+                            idx: String(c.id), 
+                            title: c.name, 
+                            price: c.price, 
+                            detail: c.detail || [], 
+                            thumb: (c.detail && c.detail[0]) || null 
+                        }))
                     });
                 }
                 newGrades.push({ name: g.name, trims: newTrims });
@@ -198,8 +222,12 @@ async function runAll() {
     
     // Empty the DB completely first to prevent weird duplicates from upsert
     const prismaCli = new PrismaClient();
-    await prismaCli.car.deleteMany({});
+    // await prismaCli.car.deleteMany({}); // MOVED DOWN
     
+    let totalProcessed = 0;
+    let emptyColorsCount = 0;
+    let fetchFailCount = 0;
+
     for (let i = 0; i < list.length; i++) {
         const carMeta = list[i];
         
@@ -217,11 +245,18 @@ async function runAll() {
             }
             active++;
             try {
+                const tData = await fetchRobustData(carMeta.trimId);
+                if (!tData.outerColors || tData.outerColors.length === 0) {
+                    if (tData.fetchError) fetchFailCount++;
+                    else emptyColorsCount++;
+                }
+
                 const processed = await processCar(carMeta, i+1, list.length);
                 if(processed) {
                     processed.computedSlug = slug;
                     processed.computedBrandSlug = brandSlug;
                     updatedCars.push(processed);
+                    totalProcessed++;
                 }
             } finally {
                 active--;
@@ -231,6 +266,18 @@ async function runAll() {
     }
     
     await Promise.all(promises);
+    
+    console.log('\n============================================');
+    console.log('  작업 완료 통계');
+    console.log('============================================');
+    console.log(`1. 총 처리 차량 수: ${totalProcessed}대`);
+    console.log(`2. 색상 데이터 없는 차량 수: ${emptyColorsCount}대`);
+    console.log(`3. fetchRobustData 실패 카운트: ${fetchFailCount}건`);
+    console.log('============================================\n');
+    
+    // DB 업데이트 직전에 삭제 실행
+    console.log('Cleaning up existing car data...');
+    await prismaCli.car.deleteMany({});
     
     const dbCars = [];
     updatedCars.sort((a,b) => (b.sortOrder||0) - (a.sortOrder||0));
@@ -262,22 +309,38 @@ async function runAll() {
         if (img && img.includes('logo.png')) img = null;
         
         // RECOVER ACTUAL PRICES FROM v2Data!
-        // v2Data contains `monthlyRent` and `monthlyLease`.
-        // We will place the exact actual value as the PREPAY_30 value (since the UI defaults to PREPAY_30, it will display the exact value on screen).
-        const actualRent = car.monthlyRent || Math.round(basePrice * 0.015);
-        const actualLease = car.monthlyLease || Math.round(basePrice * 0.01);
-        
-        const priceMatrix = {
-            "36_PREPAY_30_20000": { rent: actualRent, lease: actualLease },
-            "48_PREPAY_30_20000": { rent: Math.round(actualRent * 0.9), lease: Math.round(actualLease * 0.9) },
-            "60_PREPAY_30_20000": { rent: Math.round(actualRent * 0.8), lease: Math.round(actualLease * 0.8) },
-            "36_DEPOSIT_30_20000": { rent: Math.round(actualRent * 1.3), lease: Math.round(actualLease * 1.3) },
-            "48_DEPOSIT_30_20000": { rent: Math.round(actualRent * 1.2), lease: Math.round(actualLease * 1.2) },
-            "60_DEPOSIT_30_20000": { rent: Math.round(actualRent * 1.1), lease: Math.round(actualLease * 1.1) },
-            "36_NO_DEPOSIT_20000": { rent: Math.round(actualRent * 1.5), lease: Math.round(actualLease * 1.5) },
-            "48_NO_DEPOSIT_20000": { rent: Math.round(actualRent * 1.4), lease: Math.round(actualLease * 1.4) },
-            "60_NO_DEPOSIT_20000": { rent: Math.round(actualRent * 1.3), lease: Math.round(actualLease * 1.3) },
-        };
+        // v2Data contains `monthlyRent` and `monthlyLease` which are PREPAY_30, 36m, 20000km prices.
+        // Step 1: Calculate NO_DEPOSIT base for 36 months.
+        let prepay36 = Math.round((basePrice * 0.3) / 36);
+        let baseNoDepositRent36 = car.monthlyRent ? (car.monthlyRent + prepay36) : Math.round(basePrice * 0.0165);
+        let baseNoDepositLease36 = car.monthlyLease ? (car.monthlyLease + prepay36) : Math.round(basePrice * 0.014);
+
+        const periods = [36, 48, 60];
+        const mileages = [10000, 20000];
+
+        const rentPeriodFactor = { 36: 1.0, 48: 0.89, 60: 0.895 };
+        const leasePeriodFactor = { 36: 1.0, 48: 0.90, 60: 0.88 };
+        const mileageFactors = { 10000: 0.96, 20000: 1.0 };
+
+        const priceMatrix = {};
+        for (const p of periods) {
+            for (const m of mileages) {
+                let r_no_dep = Math.round(baseNoDepositRent36 * rentPeriodFactor[p] * mileageFactors[m]);
+                let l_no_dep = Math.round(baseNoDepositLease36 * leasePeriodFactor[p] * mileageFactors[m]);
+                
+                let prepayMonthly = Math.round((basePrice * 0.3) / p);
+                
+                priceMatrix[`${p}_NO_DEPOSIT_${m}`] = { rent: r_no_dep, lease: l_no_dep };
+                priceMatrix[`${p}_DEPOSIT_30_${m}`] = { 
+                    rent: Math.round(r_no_dep * 0.9), 
+                    lease: Math.round(l_no_dep * 0.9) 
+                };
+                priceMatrix[`${p}_PREPAY_30_${m}`] = { 
+                    rent: Math.max(0, r_no_dep - prepayMonthly), 
+                    lease: Math.max(0, l_no_dep - prepayMonthly) 
+                };
+            }
+        }
         
         dbCars.push({
             slug: car.computedSlug,
@@ -296,11 +359,23 @@ async function runAll() {
         });
     }
 
-    let output = `// Auto-generated Perfect 1:1 Mapping (${new Date().toISOString()})\n`;
-    output += `export const popularCars = ${JSON.stringify(dbCars, null, 2)};\n`;
-    fs.writeFileSync('prisma/car-data.ts', output);
-    
     console.log(`✅ 완벽한 car-data.ts 생성 완료 (${dbCars.length}대)`);
+    
+    // DB에 실제 삽입 수행
+    console.log(`Inserting ${dbCars.length} cars into database...`);
+    for (const carData of dbCars) {
+        await prismaCli.car.create({
+            data: {
+                ...carData,
+                brand: {
+                    connect: { slug: carData.brandSlug }
+                },
+                brandSlug: undefined // Already used in connect
+            }
+        });
+    }
+    console.log('✅ DB 데이터 삽입 완료');
+    
     await prismaCli.$disconnect();
 }
 

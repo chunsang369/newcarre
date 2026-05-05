@@ -149,27 +149,61 @@ export default function CarsListClient({
           <div className={`space-y-3 ${showFilters ? "" : "hidden lg:block"}`}>
             {/* Brand */}
             <div>
-              <label className="block text-xs font-semibold text-[var(--color-text-muted)] mb-2">브랜드</label>
-              <div className="flex flex-wrap gap-1.5">
-                <button
-                  onClick={() => setBrandFilter("")}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                    !brandFilter ? "bg-[var(--color-accent)] text-white" : "bg-slate-50 text-[var(--color-text-muted)] hover:bg-slate-100"
-                  }`}
-                >
-                  전체
-                </button>
-                {brands.map((b) => (
-                  <button
-                    key={b.slug}
-                    onClick={() => setBrandFilter(b.slug)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                      brandFilter === b.slug ? "bg-[var(--color-accent)] text-white" : "bg-slate-50 text-[var(--color-text-muted)] hover:bg-slate-100"
-                    }`}
-                  >
-                    {b.name}
-                  </button>
-                ))}
+              <div className="flex overflow-x-auto pb-2 scrollbar-hide gap-1">
+                {(() => {
+                  const getBrandIconDetails = (slug: string) => {
+                    switch (slug) {
+                      case 'hyundai': return { text: 'HY', bg: 'bg-[#F0F2F6]', textCol: 'text-[#0B3058]' };
+                      case 'kia': return { text: 'KI', bg: 'bg-[#EBEBEB]', textCol: 'text-[#000000]' };
+                      case 'genesis': return { text: 'GE', bg: 'bg-[#EBEBEB]', textCol: 'text-[#000000]' };
+                      case 'renault-korea': return { text: 'RE', bg: 'bg-[#FFFBEA]', textCol: 'text-[#FFC107]' };
+                      case 'chevrolet': return { text: 'CH', bg: 'bg-[#FDF7F0]', textCol: 'text-[#D09A44]' };
+                      case 'kgm': return { text: 'KG', bg: 'bg-[#EBEBEB]', textCol: 'text-[#333333]' };
+                      case 'bmw': return { text: 'BM', bg: 'bg-[#E6F0FA]', textCol: 'text-[#0066B1]' };
+                      case 'mercedes-benz': return { text: 'MB', bg: 'bg-[#EBEBEB]', textCol: 'text-[#333333]' };
+                      case 'audi': return { text: 'AU', bg: 'bg-[#FCE6E6]', textCol: 'text-[#CC0000]' };
+                      case 'volvo': return { text: 'VO', bg: 'bg-[#E6EEF5]', textCol: 'text-[#003057]' };
+                      case 'all': return { text: 'All', bg: 'bg-[#FFFFFF]', textCol: 'text-[#555555]' };
+                      default: return { text: slug.substring(0, 2).toUpperCase(), bg: 'bg-[#F4F5F7]', textCol: 'text-[#333333]' };
+                    }
+                  };
+
+                  const brandList = [{ slug: '', name: '전체' }, ...brands];
+
+                  return brandList.map((b) => {
+                    const isSelected = brandFilter === b.slug;
+                    const details = getBrandIconDetails(b.slug || 'all');
+
+                    return (
+                      <button
+                        key={b.slug || 'all'}
+                        onClick={() => setBrandFilter(b.slug)}
+                        className={`flex flex-col items-center justify-center gap-1.5 shrink-0 w-[64px] h-[84px] rounded-2xl transition-all ${
+                          isSelected ? 'bg-[#F4F6F8]' : 'bg-transparent hover:bg-slate-50'
+                        }`}
+                      >
+                        <div
+                          className={`w-12 h-12 rounded-[16px] flex items-center justify-center font-extrabold text-[14px] ${details.bg} ${details.textCol} ${
+                            isSelected ? 'border-[2px] border-[#0B3058]' : 'border border-transparent'
+                          }`}
+                        >
+                          {(b.slug === '' || b.slug === 'all') ? (
+                            'All'
+                          ) : (
+                            <img src={`/images/brands/${b.slug}.${['hyundai', 'kia', 'genesis', 'renault-korea', 'chevrolet', 'kgm'].includes(b.slug) ? 'svg' : 'png'}`} alt={b.name} className={`${b.slug === 'renault-korea' ? 'w-7 h-7' : 'w-9 h-9'} object-contain`} />
+                          )}
+                        </div>
+                        <span
+                          className={`text-[12px] tracking-tight ${
+                            isSelected ? 'text-[#0B3058] font-bold' : 'text-gray-500 font-medium'
+                          }`}
+                        >
+                          {b.name}
+                        </span>
+                      </button>
+                    );
+                  });
+                })()}
               </div>
             </div>
 

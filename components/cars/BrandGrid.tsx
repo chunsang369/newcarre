@@ -213,9 +213,29 @@ export default function BrandGrid() {
 
         {/* 드래그 가능한 가로 스크롤 컨테이너 (Embla Carousel) */}
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-3 px-1">
+          <div className="flex gap-2 px-1">
             {filteredBrands.map((brand) => {
               const isSelected = selectedBrand === brand.slug;
+              
+              const getBrandIconDetails = (slug: string) => {
+                switch (slug) {
+                  case 'hyundai': return { text: 'HY', bg: 'bg-[#F0F2F6]', textCol: 'text-[#0B3058]' };
+                  case 'kia': return { text: 'KI', bg: 'bg-[#EBEBEB]', textCol: 'text-[#000000]' };
+                  case 'genesis': return { text: 'GE', bg: 'bg-[#EBEBEB]', textCol: 'text-[#000000]' };
+                  case 'renault-korea': return { text: 'RE', bg: 'bg-[#FFFBEA]', textCol: 'text-[#FFC107]' };
+                  case 'chevrolet': return { text: 'CH', bg: 'bg-[#FDF7F0]', textCol: 'text-[#D09A44]' };
+                  case 'kgm': return { text: 'KG', bg: 'bg-[#EBEBEB]', textCol: 'text-[#333333]' };
+                  case 'bmw': return { text: 'BM', bg: 'bg-[#E6F0FA]', textCol: 'text-[#0066B1]' };
+                  case 'mercedes-benz': return { text: 'MB', bg: 'bg-[#EBEBEB]', textCol: 'text-[#333333]' };
+                  case 'audi': return { text: 'AU', bg: 'bg-[#FCE6E6]', textCol: 'text-[#CC0000]' };
+                  case 'volvo': return { text: 'VO', bg: 'bg-[#E6EEF5]', textCol: 'text-[#003057]' };
+                  case 'all': return { text: 'All', bg: 'bg-[#FFFFFF]', textCol: 'text-[#555555]' };
+                  default: return { text: slug.substring(0, 2).toUpperCase(), bg: 'bg-[#F4F5F7]', textCol: 'text-[#333333]' };
+                }
+              };
+              
+              const details = getBrandIconDetails(brand.slug);
+
               return (
                 <div
                   key={brand.slug}
@@ -223,34 +243,26 @@ export default function BrandGrid() {
                 >
                   <button
                     onClick={() => handleBrandClick(brand.slug)}
-                    className={cn(
-                      "group flex flex-col items-center gap-2 w-[84px] py-2 rounded-lg transition-all",
-                      isSelected ? "bg-gray-100" : "hover:bg-gray-50"
-                    )}
+                    className={`flex flex-col items-center justify-center gap-1.5 shrink-0 w-[64px] h-[84px] rounded-2xl transition-all ${
+                      isSelected ? 'bg-[#F4F6F8]' : 'bg-transparent hover:bg-slate-50'
+                    }`}
                   >
                     <div
-                      className={cn(
-                        "w-[60px] h-[60px] rounded-[18px] flex items-center justify-center transition-transform",
-                        !isSelected && "group-hover:scale-110",
-                        isSelected && "ring-2 ring-offset-2 ring-[#0a2540]"
-                      )}
-                      style={
-                        brand.slug === "all"
-                          ? { backgroundColor: "#f3f4f6", color: "#4b5563" }
-                          : {
-                              backgroundColor: `${BRAND_COLORS[brand.slug] || "#6B7280"}15`,
-                              color: BRAND_COLORS[brand.slug] || "#6B7280",
-                            }
-                      }
+                      className={`w-12 h-12 rounded-[16px] flex items-center justify-center font-extrabold text-[14px] ${details.bg} ${details.textCol} ${
+                        isSelected ? 'border-[2px] border-[#0B3058]' : 'border border-transparent'
+                      }`}
                     >
-                      <span className="text-[13px] font-bold">
-                        {brand.slug === "all" ? "All" : (brand.nameEn || brand.name).slice(0, 2).toUpperCase()}
-                      </span>
+                      {brand.slug === 'all' ? (
+                        'All'
+                      ) : (
+                        <img src={`/images/brands/${brand.slug}.${['hyundai', 'kia', 'genesis', 'renault-korea', 'chevrolet', 'kgm'].includes(brand.slug) ? 'svg' : 'png'}`} alt={brand.name} className={`${brand.slug === 'renault-korea' ? 'w-7 h-7' : 'w-9 h-9'} object-contain`} />
+                      )}
                     </div>
-                    <span className={cn(
-                      "text-[11px] text-center leading-tight transition-colors whitespace-nowrap",
-                      isSelected ? "font-bold text-[#0a2540]" : "font-medium text-gray-700 group-hover:text-[#0a2540]"
-                    )}>
+                    <span
+                      className={`text-[12px] tracking-tight ${
+                        isSelected ? 'text-[#0B3058] font-bold' : 'text-gray-500 font-medium'
+                      }`}
+                    >
                       {brand.name}
                     </span>
                   </button>
