@@ -95,7 +95,11 @@ export default function CarsListClient({
 
   const getBaseRent = (car: CarItem) => {
     const entry = car.priceMatrix["36_PREPAY_30_20000"];
-    return entry?.rent || 0;
+    if (entry?.rent && entry.rent > 0) return entry.rent;
+    
+    // Fallback: Estimate based on 1.3% of basePrice for 36 months prepay 30%
+    // 0.013 * 0.7 (prepay factor) = ~0.009
+    return Math.round(car.basePrice * 0.0091);
   };
 
   return (

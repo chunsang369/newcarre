@@ -10,8 +10,9 @@ export async function generateMetadata({
   params: Promise<{ carId: string }>;
 }): Promise<Metadata> {
   const { carId } = await params;
+  const decodedCarId = decodeURIComponent(carId);
   const car = await prisma.car.findUnique({
-    where: { slug: carId },
+    where: { slug: decodedCarId },
     include: { brand: true },
   });
   if (!car) return { title: "차량 상세 — 하이카즈" };
@@ -38,9 +39,10 @@ export default async function CarDetailPage({
   params: Promise<{ carId: string }>;
 }) {
   const { carId } = await params;
+  const decodedCarId = decodeURIComponent(carId);
 
   const car = await prisma.car.findUnique({
-    where: { slug: carId },
+    where: { slug: decodedCarId },
     include: { brand: true },
   });
 

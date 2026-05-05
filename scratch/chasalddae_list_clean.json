@@ -1,0 +1,1752 @@
+[
+  {
+    "trimId": "6341",
+    "brand": "테슬라",
+    "modelName": "Model Y Juniper",
+    "fullName": "테슬라 Model Y Juniper",
+    "summary": "2026년형 전기 2WD Premium RWD (자동)"
+  },
+  {
+    "trimId": "10528",
+    "brand": "기아",
+    "modelName": "EV5 GT",
+    "fullName": "기아 EV5 GT",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) GT (자동)"
+  },
+  {
+    "trimId": "10527",
+    "brand": "기아",
+    "modelName": "EV3 GT",
+    "fullName": "기아 EV3 GT",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) GT (자동)"
+  },
+  {
+    "trimId": "10526",
+    "brand": "기아",
+    "modelName": "EV4 GT",
+    "fullName": "기아 EV4 GT",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) GT (자동)"
+  },
+  {
+    "trimId": "7929",
+    "brand": "푸조",
+    "modelName": "All New 5008(3세대)",
+    "fullName": "푸조 All New 5008(3세대)",
+    "summary": "2026년형 가솔린 1.2 하이브리드 2WD Allure (자동)"
+  },
+  {
+    "trimId": "7925",
+    "brand": "르노코리아",
+    "modelName": "필랑트",
+    "fullName": "르노코리아 필랑트",
+    "summary": "2027년형 가솔린 1.5 터보 하이브리드 2WD (개별소비세 5%) Techno (자동)"
+  },
+  {
+    "trimId": "7771",
+    "brand": "제네시스",
+    "modelName": "GV60 마그마",
+    "fullName": "제네시스 GV60 마그마",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) 마그마 (자동)"
+  },
+  {
+    "trimId": "10733",
+    "brand": "아우디",
+    "modelName": "The New RS e-tron GT",
+    "fullName": "아우디 The New RS e-tron GT",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) RS e-tron (자동)"
+  },
+  {
+    "trimId": "10850",
+    "brand": "아우디",
+    "modelName": "The New e-tron GT",
+    "fullName": "아우디 The New e-tron GT",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) S e-tron (자동)"
+  },
+  {
+    "trimId": "6010",
+    "brand": "현대",
+    "modelName": "아이오닉6 N",
+    "fullName": "현대 아이오닉6 N",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) N (자동)"
+  },
+  {
+    "trimId": "5830",
+    "brand": "기아",
+    "modelName": "더 뉴 스포티지 HEV(NQ5 F/L)",
+    "fullName": "기아 더 뉴 스포티지 HEV(NQ5 F/L)",
+    "summary": "2026년형 가솔린 1.6 터보 하이브리드 AWD (개별소비세 5%) 프레스티지 (자동)"
+  },
+  {
+    "trimId": "5818",
+    "brand": "기아",
+    "modelName": "더 뉴 스포티지(NQ5 F/L)",
+    "fullName": "기아 더 뉴 스포티지(NQ5 F/L)",
+    "summary": "2026년형 가솔린 1.6 터보 AWD (개별소비세 5%) 프레스티지 (자동)"
+  },
+  {
+    "trimId": "5605",
+    "brand": "현대",
+    "modelName": "더 뉴 캐스퍼",
+    "fullName": "현대 더 뉴 캐스퍼",
+    "summary": "2026년형 가솔린 1.0 터보 액티브Ⅱ 2WD 인스퍼레이션 (자동)"
+  },
+  {
+    "trimId": "1836",
+    "brand": "제네시스",
+    "modelName": "e-G80(RG3 F/L)",
+    "fullName": "제네시스 e-G80(RG3 F/L)",
+    "summary": "2025년형 전기 AWD (개별소비세 5%) 기본형 (자동)"
+  },
+  {
+    "trimId": "5426",
+    "brand": "폴스타",
+    "modelName": "Polestar 4",
+    "fullName": "폴스타 Polestar 4",
+    "summary": "2026년형 전기 AWD Long range Dual motor (자동)"
+  },
+  {
+    "trimId": "5445",
+    "brand": "KG모빌리티",
+    "modelName": "액티언(2세대)",
+    "fullName": "KG모빌리티 액티언(2세대)",
+    "summary": "2026년형 가솔린 1.5 터보 LPi 바이퓨얼 AWD (개별소비세 5%) S8 (자동)"
+  },
+  {
+    "trimId": "6391",
+    "brand": "미니",
+    "modelName": "Hatch(F65/66)",
+    "fullName": "미니 Hatch(F65/66)",
+    "summary": "2026년형 가솔린 2.0 터보 2WD 3도어 (개별소비세 3.5%) Cooper S Favoured (자동)"
+  },
+  {
+    "trimId": "6154",
+    "brand": "폭스바겐",
+    "modelName": "The New Touareg(3세대 F/L)",
+    "fullName": "폭스바겐 The New Touareg(3세대 F/L)",
+    "summary": "2026년형 디젤 3.0 AWD (개별소비세 3.5%) Prestige (자동)"
+  },
+  {
+    "trimId": "5608",
+    "brand": "현대",
+    "modelName": "캐스퍼 일렉트릭",
+    "fullName": "현대 캐스퍼 일렉트릭",
+    "summary": "2026년형 전기 2WD (개별소비세 5%) 프리미엄 (자동)"
+  },
+  {
+    "trimId": "6258",
+    "brand": "미니",
+    "modelName": "Countryman(3세대)",
+    "fullName": "미니 Countryman(3세대)",
+    "summary": "2026년형 가솔린 2.0 터보 AWD (개별소비세 3.5%) Cooper S ALL4 Classic (자동)"
+  },
+  {
+    "trimId": "6111",
+    "brand": "렉서스",
+    "modelName": "LM",
+    "fullName": "렉서스 LM",
+    "summary": "2026년형 가솔린 2.4 터보 하이브리드 AWD (개별소비세 3.5%) EXECUTIVE (자동)"
+  },
+  {
+    "trimId": "10511",
+    "brand": "기아",
+    "modelName": "EV3",
+    "fullName": "기아 EV3",
+    "summary": "2026년형 전기 AWD 롱레인지 (개별소비세 5%) 에어 (자동)"
+  },
+  {
+    "trimId": "6162",
+    "brand": "볼보",
+    "modelName": "EX30",
+    "fullName": "볼보 EX30",
+    "summary": "2026년형 전기 2WD Core (자동)"
+  },
+  {
+    "trimId": "6340",
+    "brand": "아우디",
+    "modelName": "SQ7(2세대 PE)",
+    "fullName": "아우디 SQ7(2세대 PE)",
+    "summary": "2026년형 가솔린 4.0 AWD (개별소비세 3.5%) TFSI Quattro (자동)"
+  },
+  {
+    "trimId": "4578",
+    "brand": "현대",
+    "modelName": "디 올 뉴 팰리세이드 HEV",
+    "fullName": "현대 디 올 뉴 팰리세이드 HEV",
+    "summary": "2025년형 가솔린 2.5 터보 하이브리드 AWD 7인승 (개별소비세 5%) 익스클루시브 (자동)"
+  },
+  {
+    "trimId": "4566",
+    "brand": "현대",
+    "modelName": "디 올 뉴 팰리세이드",
+    "fullName": "현대 디 올 뉴 팰리세이드",
+    "summary": "2025년형 가솔린 2.5 터보 AWD 7인승 (개별소비세 5%) 익스클루시브 (자동)"
+  },
+  {
+    "trimId": "6336",
+    "brand": "아우디",
+    "modelName": "New Q7(2세대 PE)",
+    "fullName": "아우디 New Q7(2세대 PE)",
+    "summary": "2026년형 가솔린 3.0 AWD (개별소비세 3.5%) 55 TFSI quattro (자동)"
+  },
+  {
+    "trimId": "6252",
+    "brand": "아우디",
+    "modelName": "The New Q8",
+    "fullName": "아우디 The New Q8",
+    "summary": "2026년형 가솔린 3.0 AWD (개별소비세 3.5%) 55 TFSI quattro (자동)"
+  },
+  {
+    "trimId": "6186",
+    "brand": "BMW",
+    "modelName": "X3(4세대)",
+    "fullName": "BMW X3(4세대)",
+    "summary": "2026년형 가솔린 3.0 4WD (개별소비세 3.5%) M50 xDrive Pro (자동)"
+  },
+  {
+    "trimId": "6343",
+    "brand": "테슬라",
+    "modelName": "New Model 3",
+    "fullName": "테슬라 New Model 3",
+    "summary": "2026년형 전기 4WD Performance (자동)"
+  },
+  {
+    "trimId": "5940",
+    "brand": "르노코리아",
+    "modelName": "그랑 콜레오스 HEV",
+    "fullName": "르노코리아 그랑 콜레오스 HEV",
+    "summary": "2026년형 가솔린 1.5 터보 하이브리드 2WD (개별소비세 5%) Techno (자동)"
+  },
+  {
+    "trimId": "1753",
+    "brand": "르노코리아",
+    "modelName": "그랑 콜레오스",
+    "fullName": "르노코리아 그랑 콜레오스",
+    "summary": "2025년형 가솔린 2.0 터보 AWD (개별소비세 5%) Esprit Alpine (자동)"
+  },
+  {
+    "trimId": "6179",
+    "brand": "BMW",
+    "modelName": "X2(2세대)",
+    "fullName": "BMW X2(2세대)",
+    "summary": "2026년형 가솔린 2.0 4WD (개별소비세 3.5%) 20i xDrive M Sport (자동)"
+  },
+  {
+    "trimId": "10764",
+    "brand": "르노코리아",
+    "modelName": "아르카나 HEV",
+    "fullName": "르노코리아 아르카나 HEV",
+    "summary": "2027년형 가솔린 1.6 하이브리드 2WD (개별소비세 5%) Iconic (자동)"
+  },
+  {
+    "trimId": "10763",
+    "brand": "르노코리아",
+    "modelName": "아르카나",
+    "fullName": "르노코리아 아르카나",
+    "summary": "2027년형 가솔린 1.6 2WD (개별소비세 5%) Iconic (자동)"
+  },
+  {
+    "trimId": "10860",
+    "brand": "랜드로버",
+    "modelName": "New Discovery Sport(1세대 F/L)",
+    "fullName": "랜드로버 New Discovery Sport(1세대 F/L)",
+    "summary": "2026년형 가솔린 2.0 터보 4WD (개별소비세 3.5%) P250 S (자동)"
+  },
+  {
+    "trimId": "5258",
+    "brand": "랜드로버",
+    "modelName": "Range Rover Velar(1세대 F/L)",
+    "fullName": "랜드로버 Range Rover Velar(1세대 F/L)",
+    "summary": "2026년형 가솔린 3.0 4WD (개별소비세 3.5%) P400 Dynamic HSE (자동)"
+  },
+  {
+    "trimId": "5459",
+    "brand": "랜드로버",
+    "modelName": "Range Rover Evoque(2세대 F/L)",
+    "fullName": "랜드로버 Range Rover Evoque(2세대 F/L)",
+    "summary": "2026년형 가솔린 2.0 터보 4WD (개별소비세 3.5%) P250 S (자동)"
+  },
+  {
+    "trimId": "6267",
+    "brand": "토요타",
+    "modelName": "Prius(5세대)",
+    "fullName": "토요타 Prius(5세대)",
+    "summary": "2026년형 가솔린 2.0 플러그인 하이브리드 2WD (개별소비세 3.5%) SE (자동)"
+  },
+  {
+    "trimId": "5648",
+    "brand": "벤츠",
+    "modelName": "The new EQB",
+    "fullName": "벤츠 The new EQB",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) EQB 300 4Matic Progressive (자동)"
+  },
+  {
+    "trimId": "5646",
+    "brand": "벤츠",
+    "modelName": "The new EQA",
+    "fullName": "벤츠 The new EQA",
+    "summary": "2026년형 전기 2WD (개별소비세 3.5%) EQA 250 Progressive (자동)"
+  },
+  {
+    "trimId": "4980",
+    "brand": "KG모빌리티",
+    "modelName": "더 뉴 토레스",
+    "fullName": "KG모빌리티 더 뉴 토레스",
+    "summary": "2025년형 가솔린 1.5 LPi 바이퓨얼 AWD 사양변경 (개별소비세 5%) TL7 (자동)"
+  },
+  {
+    "trimId": "5193",
+    "brand": "현대",
+    "modelName": "더 뉴 아이오닉5",
+    "fullName": "현대 더 뉴 아이오닉5",
+    "summary": "2025년형 전기 AWD 롱레인지 N라인 (개별소비세 5%) 익스클루시브 (자동)"
+  },
+  {
+    "trimId": "5812",
+    "brand": "벤츠",
+    "modelName": "The New E-Class(W214)",
+    "fullName": "벤츠 The New E-Class(W214)",
+    "summary": "2026년형 가솔린 3.0 플러그인 하이브리드 AWD (개별소비세 3.5%) E53 AMG 4Matic+(자동)"
+  },
+  {
+    "trimId": "5864",
+    "brand": "벤츠",
+    "modelName": "CLA-Class(2세대 F/L)",
+    "fullName": "벤츠 CLA-Class(2세대 F/L)",
+    "summary": "2026년형 가솔린 2.0 4WD (개별소비세 3.5%) CLA 250 AMG line 4Matic (자동)"
+  },
+  {
+    "trimId": "5645",
+    "brand": "벤츠",
+    "modelName": "GLA-Class(2세대 F/L)",
+    "fullName": "벤츠 GLA-Class(2세대 F/L)",
+    "summary": "2026년형 가솔린 2.0 4WD (개별소비세 3.5%) GLA 250 AMG line 4Matic (자동)"
+  },
+  {
+    "trimId": "5881",
+    "brand": "벤츠",
+    "modelName": "GLB-Class(1세대 F/L)",
+    "fullName": "벤츠 GLB-Class(1세대 F/L)",
+    "summary": "2026년형 가솔린 2.0 4WD (개별소비세 3.5%) GLB 250 4Matic (자동)"
+  },
+  {
+    "trimId": "5974",
+    "brand": "기아",
+    "modelName": "더 뉴 카니발 HEV(KA4 F/L)",
+    "fullName": "기아 더 뉴 카니발 HEV(KA4 F/L)",
+    "summary": "2026년형 가솔린 1.6 터보 하이브리드 2WD 4인승 하이리무진 (개별소비세 5%) 시그니처 (자동)"
+  },
+  {
+    "trimId": "5972",
+    "brand": "기아",
+    "modelName": "더 뉴 카니발(KA4 F/L)",
+    "fullName": "기아 더 뉴 카니발(KA4 F/L)",
+    "summary": "2026년형 가솔린 3.5 2WD 4인승 하이리무진 (개별소비세 5%) 시그니처 (자동)"
+  },
+  {
+    "trimId": "6263",
+    "brand": "벤츠",
+    "modelName": "A-Class(4세대 F/L)",
+    "fullName": "벤츠 A-Class(4세대 F/L)",
+    "summary": "2026년형 가솔린 2.0 AWD 해치백 (개별소비세 3.5%) A45 Hatchback AMG S 4Matic+ (자동)"
+  },
+  {
+    "trimId": "5115",
+    "brand": "폴스타",
+    "modelName": "Polestar 2(F/L)",
+    "fullName": "폴스타 Polestar 2(F/L)",
+    "summary": "2025년형 전기 AWD Long range Dual motor (자동)"
+  },
+  {
+    "trimId": "5386",
+    "brand": "기아",
+    "modelName": "더 뉴 K5 HEV(DL3 F/L)",
+    "fullName": "기아 더 뉴 K5 HEV(DL3 F/L)",
+    "summary": "2026년형 가솔린 2.0 하이브리드 2WD (개별소비세 5%) 프레스티지 (자동)"
+  },
+  {
+    "trimId": "5367",
+    "brand": "기아",
+    "modelName": "더 뉴 K5(DL3 F/L)",
+    "fullName": "기아 더 뉴 K5(DL3 F/L)",
+    "summary": "2026년형 가솔린 1.6 터보 2WD (개별소비세 5%) 프레스티지 (자동)"
+  },
+  {
+    "trimId": "5057",
+    "brand": "혼다",
+    "modelName": "Accord(11세대)",
+    "fullName": "혼다 Accord(11세대)",
+    "summary": "2025년형 가솔린 2.0 하이브리드 2WD (개별소비세 3.5%) Touring (자동)"
+  },
+  {
+    "trimId": "1867",
+    "brand": "제네시스",
+    "modelName": "GV80 쿠페(JX F/L)",
+    "fullName": "제네시스 GV80 쿠페(JX F/L)",
+    "summary": "2025년형 가솔린 3.5 터보 48V 마일드 하이브리드 AWD (개별소비세 5%) 블랙 (자동)"
+  },
+  {
+    "trimId": "1234",
+    "brand": "제네시스",
+    "modelName": "GV80(JX F/L)",
+    "fullName": "제네시스 GV80(JX F/L)",
+    "summary": "2025년형 가솔린 3.5 터보 AWD 6인승 (개별소비세 5%) 기본형 (자동)"
+  },
+  {
+    "trimId": "5434",
+    "brand": "기아",
+    "modelName": "더 뉴 EV6",
+    "fullName": "기아 더 뉴 EV6",
+    "summary": "2026년형 전기 AWD 롱레인지 (개별소비세 5%) 라이트 (자동)"
+  },
+  {
+    "trimId": "6096",
+    "brand": "제네시스",
+    "modelName": "GV70(JK F/L)",
+    "fullName": "제네시스 GV70(JK F/L)",
+    "summary": "2026년형 가솔린 3.5 터보 AWD (개별소비세 5%) 기본형 (자동)"
+  },
+  {
+    "trimId": "6232",
+    "brand": "벤츠",
+    "modelName": "The New GLS-Class(2세대 F/L)",
+    "fullName": "벤츠 The New GLS-Class(2세대 F/L)",
+    "summary": "2026년형 가솔린 4.0 4WD (개별소비세 3.5%) GLS 580 4Matic (자동)"
+  },
+  {
+    "trimId": "7931",
+    "brand": "토요타",
+    "modelName": "Alphard(4세대)",
+    "fullName": "토요타 Alphard(4세대)",
+    "summary": "2026년형 가솔린 2.5 하이브리드 AWD (개별소비세 3.5%) Executive (자동)"
+  },
+  {
+    "trimId": "6104",
+    "brand": "BMW",
+    "modelName": "i5 (G60)",
+    "fullName": "BMW i5 (G60)",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) xDrive 40 M Sport (자동)"
+  },
+  {
+    "trimId": "6051",
+    "brand": "BMW",
+    "modelName": "5 Series(G60)",
+    "fullName": "BMW 5 Series(G60)",
+    "summary": "2026년형 가솔린 3.0 플러그인 하이브리드 AWD (개별소비세 3.5%) 550e xDrive M Sport Pro (자동)"
+  },
+  {
+    "trimId": "5979",
+    "brand": "현대",
+    "modelName": "아이오닉5N",
+    "fullName": "현대 아이오닉5N",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) 에센셜 (자동)"
+  },
+  {
+    "trimId": "6172",
+    "brand": "벤츠",
+    "modelName": "The New GLE-Class(2세대 F/L)",
+    "fullName": "벤츠 The New GLE-Class(2세대 F/L)",
+    "summary": "2026년형 가솔린 3.0 4WD 쿠페 (개별소비세 3.5%) GLE 450 4Matic (자동)"
+  },
+  {
+    "trimId": "10755",
+    "brand": "지프",
+    "modelName": "Wrangler(JL F/L)",
+    "fullName": "지프 Wrangler(JL F/L)",
+    "summary": "2026년형 가솔린 2.0 터보 4WD 4도어 Rubicon (자동)"
+  },
+  {
+    "trimId": "6979",
+    "brand": "제네시스",
+    "modelName": "G80(RG3 F/L)",
+    "fullName": "제네시스 G80(RG3 F/L)",
+    "summary": "2026년형 가솔린 3.5 터보 AWD (개별소비세 5%) 기본형 (자동)"
+  },
+  {
+    "trimId": "5702",
+    "brand": "현대",
+    "modelName": "더 뉴 투싼 HEV (NX4 F/L)",
+    "fullName": "현대 더 뉴 투싼 HEV (NX4 F/L)",
+    "summary": "2026년형 가솔린 1.6 터보 하이브리드 AWD N라인 (개별소비세 5%) 인스퍼레이션 (자동)"
+  },
+  {
+    "trimId": "5690",
+    "brand": "현대",
+    "modelName": "더 뉴 투싼 (NX4 F/L)",
+    "fullName": "현대 더 뉴 투싼 (NX4 F/L)",
+    "summary": "2026년형 가솔린 1.6 터보 AWD N라인 (개별소비세 5%) 인스퍼레이션 (자동)"
+  },
+  {
+    "trimId": "10898",
+    "brand": "혼다",
+    "modelName": "All New Pilot(4세대)",
+    "fullName": "혼다 All New Pilot(4세대)",
+    "summary": "2026년형 가솔린 3.5 4WD (개별소비세 3.5%) Black Edition (자동)"
+  },
+  {
+    "trimId": "5899",
+    "brand": "기아",
+    "modelName": "레이 EV(PE)",
+    "fullName": "기아 레이 EV(PE)",
+    "summary": "2026년형 전기 2WD 라이트 (자동)"
+  },
+  {
+    "trimId": "5763",
+    "brand": "현대",
+    "modelName": "디 올-뉴 싼타페 HEV(MX5)",
+    "fullName": "현대 디 올-뉴 싼타페 HEV(MX5)",
+    "summary": "2026년형 가솔린 1.6 터보 하이브리드 AWD 6인승 (개별소비세 5%) 익스클루시브 (자동)"
+  },
+  {
+    "trimId": "5727",
+    "brand": "현대",
+    "modelName": "디 올-뉴 싼타페(MX5)",
+    "fullName": "현대 디 올-뉴 싼타페(MX5)",
+    "summary": "2026년형 가솔린 2.5 터보 AWD 6인승 (개별소비세 5%) 익스클루시브 (자동)"
+  },
+  {
+    "trimId": "6218",
+    "brand": "BMW",
+    "modelName": "The New X6M(3세대 F/L)",
+    "fullName": "BMW The New X6M(3세대 F/L)",
+    "summary": "2026년형 가솔린 4.4 4WD (개별소비세 3.5%) Competition (자동)"
+  },
+  {
+    "trimId": "6217",
+    "brand": "BMW",
+    "modelName": "The New X5M(4세대 F/L)",
+    "fullName": "BMW The New X5M(4세대 F/L)",
+    "summary": "2026년형 가솔린 4.4 4WD (개별소비세 3.5%) Competition (자동)"
+  },
+  {
+    "trimId": "5176",
+    "brand": "쉐보레",
+    "modelName": "더 뉴 트레일블레이저",
+    "fullName": "쉐보레 더 뉴 트레일블레이저",
+    "summary": "2026년형 가솔린 1.35 터보 AWD (개별소비세 3.5%) RS (자동)"
+  },
+  {
+    "trimId": "10622",
+    "brand": "벤츠",
+    "modelName": "EQE-SUV",
+    "fullName": "벤츠 EQE-SUV",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) EQE 500 4Matic (자동)"
+  },
+  {
+    "trimId": "6204",
+    "brand": "BMW",
+    "modelName": "The New X6(3세대 F/L)",
+    "fullName": "BMW The New X6(3세대 F/L)",
+    "summary": "2026년형 가솔린 4.4 4WD (개별소비세 3.5%) M60i xDrive Pro (자동)"
+  },
+  {
+    "trimId": "6195",
+    "brand": "BMW",
+    "modelName": "The New X5(4세대 F/L)",
+    "fullName": "BMW The New X5(4세대 F/L)",
+    "summary": "2026년형 가솔린 4.4 4WD (개별소비세 3.5%) M60i xDrive Pro (자동)"
+  },
+  {
+    "trimId": "5195",
+    "brand": "기아",
+    "modelName": "더 뉴 모닝(JA PE)",
+    "fullName": "기아 더 뉴 모닝(JA PE)",
+    "summary": "2025년형 가솔린 1.0 2WD(26각자) 트렌디 (자동)"
+  },
+  {
+    "trimId": "5908",
+    "brand": "아우디",
+    "modelName": "The New S8(D5)",
+    "fullName": "아우디 The New S8(D5)",
+    "summary": "2025년형 가솔린 4.0 AWD (개별소비세 3.5%) TFSI L (자동)"
+  },
+  {
+    "trimId": "5886",
+    "brand": "벤츠",
+    "modelName": "The New GLC-Class(2세대)",
+    "fullName": "벤츠 The New GLC-Class(2세대)",
+    "summary": "2026년형 가솔린 2.0 4WD 쿠페 (개별소비세 3.5%) GLC 300 Avantgarde 4Matic (자동)"
+  },
+  {
+    "trimId": "4597",
+    "brand": "렉서스",
+    "modelName": "RX(5세대)",
+    "fullName": "렉서스 RX(5세대)",
+    "summary": "2025년형 가솔린 2.4 터보 하이브리드 AWD (개별소비세 3.5%) 500h F Sport (자동)"
+  },
+  {
+    "trimId": "6717",
+    "brand": "토요타",
+    "modelName": "Crown Crossover",
+    "fullName": "토요타 Crown Crossover",
+    "summary": "2026년형 가솔린 2.4 터보 하이브리드 AWD (개별소비세 3.5%) Dual Boost (자동)"
+  },
+  {
+    "trimId": "10777",
+    "brand": "KG모빌리티",
+    "modelName": "더 뉴 티볼리",
+    "fullName": "KG모빌리티 더 뉴 티볼리",
+    "summary": "2026년형 가솔린 1.5 LPi 바이퓨얼 2WD (개별소비세 5%) V5 (자동)"
+  },
+  {
+    "trimId": "6245",
+    "brand": "BMW",
+    "modelName": "XM",
+    "fullName": "BMW XM",
+    "summary": "2026년형 가솔린 4.4 터보 플러그인 하이브리드 4WD (개별소비세 3.5%) V8 PHEV Label (자동)"
+  },
+  {
+    "trimId": "5977",
+    "brand": "KG모빌리티",
+    "modelName": "렉스턴 뉴 아레나",
+    "fullName": "KG모빌리티 렉스턴 뉴 아레나",
+    "summary": "2026년형 디젤 2.2 4WD 4인승 (개별소비세 5%) 써밋 (자동)"
+  },
+  {
+    "trimId": "941",
+    "brand": "기아",
+    "modelName": "EV9",
+    "fullName": "기아 EV9",
+    "summary": "2025년형 전기 AWD 6인승 롱레인지 릴렉션 시트 (개별소비세 5%) 에어 (자동)"
+  },
+  {
+    "trimId": "6079",
+    "brand": "BMW",
+    "modelName": "iX1",
+    "fullName": "BMW iX1",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) 30 xDrive xLine (자동)"
+  },
+  {
+    "trimId": "6042",
+    "brand": "BMW",
+    "modelName": "X1(3세대)",
+    "fullName": "BMW X1(3세대)",
+    "summary": "2026년형 가솔린 2.0 AWD (개별소비세 3.5%) 20i xDrive xLine (자동)"
+  },
+  {
+    "trimId": "5423",
+    "brand": "푸조",
+    "modelName": "408",
+    "fullName": "푸조 408",
+    "summary": "2025년형 가솔린 1.2 하이브리드 2WD Allure (자동)"
+  },
+  {
+    "trimId": "6005",
+    "brand": "현대",
+    "modelName": "쏘나타 디 엣지 HEV(DN8 F/L)",
+    "fullName": "현대 쏘나타 디 엣지 HEV(DN8 F/L)",
+    "summary": "2026년형 가솔린 2.0 하이브리드 2WD (개별소비세 5%) 프리미엄 (자동)"
+  },
+  {
+    "trimId": "5992",
+    "brand": "현대",
+    "modelName": "쏘나타 디 엣지(DN8 F/L)",
+    "fullName": "현대 쏘나타 디 엣지(DN8 F/L)",
+    "summary": "2026년형 가솔린 2.5 터보 2WD N라인 퍼포먼스 (개별소비세 5%) N라인 (자동)"
+  },
+  {
+    "trimId": "5182",
+    "brand": "현대",
+    "modelName": "디 올 뉴 코나EV(SX2)",
+    "fullName": "현대 디 올 뉴 코나EV(SX2)",
+    "summary": "2025년형 전기 2WD 롱레인지 N라인 (개별소비세 5%) 인스퍼레이션 (자동)"
+  },
+  {
+    "trimId": "6220",
+    "brand": "혼다",
+    "modelName": "All New CR-V(6세대)",
+    "fullName": "혼다 All New CR-V(6세대)",
+    "summary": "2026년형 가솔린 2.0 하이브리드 AWD (개별소비세 3.5%) HEV (자동)"
+  },
+  {
+    "trimId": "5517",
+    "brand": "쉐보레",
+    "modelName": "트랙스 크로스오버",
+    "fullName": "쉐보레 트랙스 크로스오버",
+    "summary": "2026년형 가솔린 1.2 터보 2WD (개별소비세 3.5%) LS (자동)"
+  },
+  {
+    "trimId": "5083",
+    "brand": "현대",
+    "modelName": "더 뉴 아반떼 HEV(CN7 F/L)",
+    "fullName": "현대 더 뉴 아반떼 HEV(CN7 F/L)",
+    "summary": "2026년형 가솔린 1.6 하이브리드 2WD N라인 (개별소비세 5%) 인스퍼레이션 (자동)"
+  },
+  {
+    "trimId": "5066",
+    "brand": "현대",
+    "modelName": "더 뉴 아반떼(CN7 F/L)",
+    "fullName": "현대 더 뉴 아반떼(CN7 F/L)",
+    "summary": "2026년형 가솔린 1.6 2WD N라인 (개별소비세 5%) 인스퍼레이션 (자동)"
+  },
+  {
+    "trimId": "10884",
+    "brand": "현대",
+    "modelName": "디 올 뉴 코나 HEV(SX2)",
+    "fullName": "현대 디 올 뉴 코나 HEV(SX2)",
+    "summary": "2027년형 가솔린 1.6 하이브리드 2WD N라인 (개별소비세 5%) 인스퍼레이션 (자동)"
+  },
+  {
+    "trimId": "10876",
+    "brand": "현대",
+    "modelName": "디 올 뉴 코나(SX2)",
+    "fullName": "현대 디 올 뉴 코나(SX2)",
+    "summary": "2027년형 가솔린 1.6 터보 AWD N라인 (개별소비세 5%) 인스퍼레이션 (자동)"
+  },
+  {
+    "trimId": "10746",
+    "brand": "랜드로버",
+    "modelName": "Range Rover Sport(3세대)",
+    "fullName": "랜드로버 Range Rover Sport(3세대)",
+    "summary": "2026년형 가솔린 4.4 4WD (개별소비세 3.5%) P635 SV (자동)"
+  },
+  {
+    "trimId": "6062",
+    "brand": "BMW",
+    "modelName": "THE New 3 Series(G20/G21 F/L)",
+    "fullName": "BMW THE New 3 Series(G20/G21 F/L)",
+    "summary": "2026년형 가솔린 3.0 AWD 투어링 (개별소비세 3.5%) M340i xDrive Pro Touring (자동)"
+  },
+  {
+    "trimId": "5228",
+    "brand": "현대",
+    "modelName": "디 올-뉴 그랜저 HEV(GN7)",
+    "fullName": "현대 디 올-뉴 그랜저 HEV(GN7)",
+    "summary": "2026년형 가솔린 1.6 터보 하이브리드 2WD (개별소비세 5%) 프리미엄 (자동)"
+  },
+  {
+    "trimId": "5213",
+    "brand": "현대",
+    "modelName": "디 올-뉴 그랜저(GN7)",
+    "fullName": "현대 디 올-뉴 그랜저(GN7)",
+    "summary": "2026년형 가솔린 3.5 AWD (개별소비세 5%) 프리미엄 (자동)"
+  },
+  {
+    "trimId": "6211",
+    "brand": "BMW",
+    "modelName": "The New X7(1세대 F/L)",
+    "fullName": "BMW The New X7(1세대 F/L)",
+    "summary": "2026년형 가솔린 4.4 4WD (개별소비세 3.5%) M60i M Sport Pro (자동)"
+  },
+  {
+    "trimId": "6038",
+    "brand": "BMW",
+    "modelName": "7 Series(G70)",
+    "fullName": "BMW 7 Series(G70)",
+    "summary": "2026년형 가솔린 3.0 플러그인 하이브리드 AWD (개별소비세 3.5%) 750e xDrive DPE (자동)"
+  },
+  {
+    "trimId": "5458",
+    "brand": "아우디",
+    "modelName": "The New A8(D5)",
+    "fullName": "아우디 The New A8(D5)",
+    "summary": "2025년형 가솔린 3.0 AWD (개별소비세 3.5%) L 55 TFSI quattro Premium (자동)"
+  },
+  {
+    "trimId": "10653",
+    "brand": "벤츠",
+    "modelName": "EQS-SUV",
+    "fullName": "벤츠 EQS-SUV",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) EQS 450 4Matic (자동)"
+  },
+  {
+    "trimId": "6250",
+    "brand": "아우디",
+    "modelName": "Q4 E-tron",
+    "fullName": "아우디 Q4 E-tron",
+    "summary": "2026년형 전기 2WD 스포트백 45 Sportback (자동)"
+  },
+  {
+    "trimId": "6387",
+    "brand": "폭스바겐",
+    "modelName": "ID4",
+    "fullName": "폭스바겐 ID4",
+    "summary": "2026년형 전기 2WD Pro (자동)"
+  },
+  {
+    "trimId": "5854",
+    "brand": "기아",
+    "modelName": "더 뉴 기아 레이(PE)",
+    "fullName": "기아 더 뉴 기아 레이(PE)",
+    "summary": "2026년형 가솔린 1.0 2WD 트렌디 (자동)"
+  },
+  {
+    "trimId": "9134",
+    "brand": "벤츠",
+    "modelName": "EQE",
+    "fullName": "벤츠 EQE",
+    "summary": "2026년형 전기 2WD (개별소비세 3.5%) EQE 350+ (자동)"
+  },
+  {
+    "trimId": "5590",
+    "brand": "기아",
+    "modelName": "더 뉴 쏘렌토 HEV(MQ4 F/L)",
+    "fullName": "기아 더 뉴 쏘렌토 HEV(MQ4 F/L)",
+    "summary": "2026년형 가솔린 1.6 터보 하이브리드 4WD 6인승 (개별소비세 5%) 프레스티지 (자동)"
+  },
+  {
+    "trimId": "5566",
+    "brand": "기아",
+    "modelName": "더 뉴 쏘렌토(MQ4 F/L)",
+    "fullName": "기아 더 뉴 쏘렌토(MQ4 F/L)",
+    "summary": "2026년형 디젤 2.2 4WD 6인승 (개별소비세 5%) 프레스티지 (자동)"
+  },
+  {
+    "trimId": "6068",
+    "brand": "BMW",
+    "modelName": "2 Series ActiveTourer(2세대)",
+    "fullName": "BMW 2 Series ActiveTourer(2세대)",
+    "summary": "2026년형 가솔린 2.0 2WD (개별소비세 3.5%) 220i Luxury (자동)"
+  },
+  {
+    "trimId": "5120",
+    "brand": "기아",
+    "modelName": "더 뉴 셀토스",
+    "fullName": "기아 더 뉴 셀토스",
+    "summary": "2025년형(26각자) 가솔린 1.6 터보 AWD (개별소비세 5%) 트렌디 (자동)"
+  },
+  {
+    "trimId": "7614",
+    "brand": "제네시스",
+    "modelName": "더 뉴 G70 슈팅브레이크",
+    "fullName": "제네시스 더 뉴 G70 슈팅브레이크",
+    "summary": "2026년형 가솔린 2.5 터보 AWD (개별소비세 5%) 기본형 (자동)"
+  },
+  {
+    "trimId": "6725",
+    "brand": "렉서스",
+    "modelName": "NX(2세대)",
+    "fullName": "렉서스 NX(2세대)",
+    "summary": "2026년형 가솔린 2.5 플러그인 하이브리드 AWD (개별소비세 3.5%) 450h+ Premium (자동)"
+  },
+  {
+    "trimId": "10469",
+    "brand": "기아",
+    "modelName": "디 올 뉴 니로EV(SG2)",
+    "fullName": "기아 디 올 뉴 니로EV(SG2)",
+    "summary": "2025년형 전기 2WD (개별소비세 5%) 에어 (자동)"
+  },
+  {
+    "trimId": "6175",
+    "brand": "BMW",
+    "modelName": "2 Series Coupe(2세대)",
+    "fullName": "BMW 2 Series Coupe(2세대)",
+    "summary": "2026년형 가솔린 3.0 4WD (개별소비세 3.5%) Coupe M240i xDrive_OS (자동)"
+  },
+  {
+    "trimId": "5463",
+    "brand": "토요타",
+    "modelName": "The New RAV4(5세대 F/L)",
+    "fullName": "토요타 The New RAV4(5세대 F/L)",
+    "summary": "2025년형 가솔린 2.5 플러그인 하이브리드 AWD (개별소비세 3.5%) XSE (자동)"
+  },
+  {
+    "trimId": "5878",
+    "brand": "벤츠",
+    "modelName": "The New AMG GT 4DOOR",
+    "fullName": "벤츠 The New AMG GT 4DOOR",
+    "summary": "2026년형 가솔린 3.0 4WD (개별소비세 3.5%) 43 4Matic+ (자동)"
+  },
+  {
+    "trimId": "5132",
+    "brand": "기아",
+    "modelName": "디 올 뉴 니로(SG2)",
+    "fullName": "기아 디 올 뉴 니로(SG2)",
+    "summary": "2025년형 가솔린 1.6 하이브리드 2WD 사양변경 (개별소비세 5%) 트렌디 (자동)"
+  },
+  {
+    "trimId": "4986",
+    "brand": "푸조",
+    "modelName": "308(3세대)",
+    "fullName": "푸조 308(3세대)",
+    "summary": "2025년형 가솔린 1.2 하이브리드 2WD Allure (자동)"
+  },
+  {
+    "trimId": "4816",
+    "brand": "제네시스",
+    "modelName": "신형 G90(RS4)",
+    "fullName": "제네시스 신형 G90(RS4)",
+    "summary": "2025년형 가솔린 3.5 터보 AWD 롱 휠베이스 5인승 (개별소비세 5%) 기본형 (자동)"
+  },
+  {
+    "trimId": "10476",
+    "brand": "벤츠",
+    "modelName": "EQS",
+    "fullName": "벤츠 EQS",
+    "summary": "2025년형 전기 2WD (개별소비세 3.5%) EQS 350 (자동)"
+  },
+  {
+    "trimId": "5048",
+    "brand": "지프",
+    "modelName": "Grand CherokeeL(WL)",
+    "fullName": "지프 Grand CherokeeL(WL)",
+    "summary": "2024년형 가솔린 3.6 4WD Summit Reserve (자동)"
+  },
+  {
+    "trimId": "10380",
+    "brand": "렉서스",
+    "modelName": "THE New ES(7세대)",
+    "fullName": "렉서스 THE New ES(7세대)",
+    "summary": "2026년형 가솔린 2.5 하이브리드 2WD (개별소비세 3.5%) 300h LUXURY PLUS (자동)"
+  },
+  {
+    "trimId": "1447",
+    "brand": "아우디",
+    "modelName": "RS6 Avant(C8)",
+    "fullName": "아우디 RS6 Avant(C8)",
+    "summary": "2025년형 가솔린 4.0 AWD (개별소비세 3.5%) performance (자동)"
+  },
+  {
+    "trimId": "1436",
+    "brand": "아우디",
+    "modelName": "RS7(2세대)",
+    "fullName": "아우디 RS7(2세대)",
+    "summary": "2025년형 가솔린 4.0 AWD (개별소비세 3.5%) Performance (자동)"
+  },
+  {
+    "trimId": "10557",
+    "brand": "기아",
+    "modelName": "더 뉴K9(RJ)",
+    "fullName": "기아 더 뉴K9(RJ)",
+    "summary": "2026년형 가솔린 3.3 터보 AWD (개별소비세 5%) 플래티넘 (자동)"
+  },
+  {
+    "trimId": "4820",
+    "brand": "토요타",
+    "modelName": "Sienna(4세대)",
+    "fullName": "토요타 Sienna(4세대)",
+    "summary": "2025년형 가솔린 2.5 하이브리드 2WD (개별소비세 3.5%) 2WD (자동)"
+  },
+  {
+    "trimId": "10468",
+    "brand": "현대",
+    "modelName": "스타리아",
+    "fullName": "현대 스타리아",
+    "summary": "2024년형 디젤 2.2 4WD 7인승 라운지 리무진 (개별소비세 5%) Limousine (자동)"
+  },
+  {
+    "trimId": "6721",
+    "brand": "렉서스",
+    "modelName": "THE New LS(5세대)",
+    "fullName": "렉서스 THE New LS(5세대)",
+    "summary": "2026년형 가솔린 3.5 하이브리드 AWD (개별소비세 3.5%) 500h LUXURY (자동)"
+  },
+  {
+    "trimId": "7609",
+    "brand": "제네시스",
+    "modelName": "더 뉴 G70",
+    "fullName": "제네시스 더 뉴 G70",
+    "summary": "2026년형 가솔린 3.3 터보 AWD (개별소비세 5%) 기본형 (자동)"
+  },
+  {
+    "trimId": "10642",
+    "brand": "랜드로버",
+    "modelName": "Defender(2세대)",
+    "fullName": "랜드로버 Defender(2세대)",
+    "summary": "2026년형 가솔린 4.4 4WD 4도어 (개별소비세 3.5%) P635 OCTA (자동)"
+  },
+  {
+    "trimId": "6332",
+    "brand": "아우디",
+    "modelName": "Q3(2세대)",
+    "fullName": "아우디 Q3(2세대)",
+    "summary": "2026년형 가솔린 2.0 AWD 스포트백 (개별소비세 3.5%) Sportback 40 TFSI quattro (자동)"
+  },
+  {
+    "trimId": "10399",
+    "brand": "아우디",
+    "modelName": "A7(2세대)",
+    "fullName": "아우디 A7(2세대)",
+    "summary": "2025년형 가솔린 3.0 AWD (개별소비세 3.5%) 55 TFSI quattro Premium (자동)"
+  },
+  {
+    "trimId": "4938",
+    "brand": "토요타",
+    "modelName": "HighLander(4세대)",
+    "fullName": "토요타 HighLander(4세대)",
+    "summary": "2025년형 가솔린 2.5 하이브리드 AWD Platinum (자동)"
+  },
+  {
+    "trimId": "10390",
+    "brand": "아우디",
+    "modelName": "A6(C8)",
+    "fullName": "아우디 A6(C8)",
+    "summary": "2025년형 가솔린 2.0 AWD (개별소비세 3.5%) 45 TFSI quattro Premium (자동)"
+  },
+  {
+    "trimId": "4948",
+    "brand": "현대",
+    "modelName": "베뉴",
+    "fullName": "현대 베뉴",
+    "summary": "2025년형 가솔린 1.6 2WD (개별소비세 5%) 스마트 (자동)"
+  },
+  {
+    "trimId": "10633",
+    "brand": "렉서스",
+    "modelName": "UX(1세대)",
+    "fullName": "렉서스 UX(1세대)",
+    "summary": "2027년형 가솔린 2.0 하이브리드 2WD (개별소비세 3.5%) 300h (자동)"
+  },
+  {
+    "trimId": "4877",
+    "brand": "BMW",
+    "modelName": "X4(2세대 F/L)",
+    "fullName": "BMW X4(2세대 F/L)",
+    "summary": "2025년형 가솔린 2.0 4WD (개별소비세 3.5%) 20i xDrive M Sport SE LCI (자동)"
+  },
+  {
+    "trimId": "6117",
+    "brand": "현대",
+    "modelName": "쏠라티",
+    "fullName": "현대 쏠라티",
+    "summary": "2026년형 디젤 2.5 2WD 16인승 디럭스 (자동)"
+  },
+  {
+    "trimId": "10773",
+    "brand": "BMW",
+    "modelName": "New iX3",
+    "fullName": "BMW New iX3",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) xDrive 50 MSport (자동)"
+  },
+  {
+    "trimId": "9696",
+    "brand": "기아",
+    "modelName": "디 올 뉴 셀토스 HEV(2세대)",
+    "fullName": "기아 디 올 뉴 셀토스 HEV(2세대)",
+    "summary": "2026년형 가솔린 1.6 하이브리드 2WD (개별소비세 5%) 트렌디 (자동)"
+  },
+  {
+    "trimId": "9692",
+    "brand": "기아",
+    "modelName": "디 올 뉴 셀토스(2세대)",
+    "fullName": "기아 디 올 뉴 셀토스(2세대)",
+    "summary": "2026년형 가솔린 1.6 터보 AWD (개별소비세 5%) 트렌디 (자동)"
+  },
+  {
+    "trimId": "6312",
+    "brand": "현대",
+    "modelName": "더 뉴 스타리아",
+    "fullName": "현대 더 뉴 스타리아",
+    "summary": "2026년형 LPG 3.5 2WD 7인승 라운지 일반용 (개별소비세 5%) 인스퍼레이션 (자동)"
+  },
+  {
+    "trimId": "6227",
+    "brand": "캐딜락",
+    "modelName": "Escalade IQ",
+    "fullName": "캐딜락 Escalade IQ",
+    "summary": "2026년형 전기 AWD Premium Sport (자동)"
+  },
+  {
+    "trimId": "10896",
+    "brand": "BYD",
+    "modelName": "SEALION7",
+    "fullName": "BYD SEALION7",
+    "summary": "2027년형 전기 2WD SEALION (자동)"
+  },
+  {
+    "trimId": "5921",
+    "brand": "혼다",
+    "modelName": "The New Odyssey(5세대 PE)",
+    "fullName": "혼다 The New Odyssey(5세대 PE)",
+    "summary": "2026년형 가솔린 3.5 2WD (개별소비세 3.5%) Elite (자동)"
+  },
+  {
+    "trimId": "5913",
+    "brand": "볼보",
+    "modelName": "EX30 Cross Country",
+    "fullName": "볼보 EX30 Cross Country",
+    "summary": "2026년형 전기 AWD Twin Motor Performance Ultra (자동)"
+  },
+  {
+    "trimId": "5905",
+    "brand": "기아",
+    "modelName": "EV5",
+    "fullName": "기아 EV5",
+    "summary": "2026년형 전기 2WD 롱레인지 (개별소비세 5%) 에어 (자동)"
+  },
+  {
+    "trimId": "6246",
+    "brand": "아우디",
+    "modelName": "The New RS3(8Y F/L)",
+    "fullName": "아우디 The New RS3(8Y F/L)",
+    "summary": "2026년형 가솔린 2.5 터보 AWD (개별소비세 3.5%) TFSI (자동)"
+  },
+  {
+    "trimId": "5787",
+    "brand": "아우디",
+    "modelName": "S6 E-tron",
+    "fullName": "아우디 S6 E-tron",
+    "summary": "2025년형 전기 AWD (개별소비세 3.5%) e-tron (자동)"
+  },
+  {
+    "trimId": "5784",
+    "brand": "아우디",
+    "modelName": "A6 E-tron",
+    "fullName": "아우디 A6 E-tron",
+    "summary": "2025년형 전기 2WD (개별소비세 3.5%) Performance (자동)"
+  },
+  {
+    "trimId": "5779",
+    "brand": "BMW",
+    "modelName": "The New iX",
+    "fullName": "BMW The New iX",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) xDrive 45 MSport (자동)"
+  },
+  {
+    "trimId": "5641",
+    "brand": "현대",
+    "modelName": "더 뉴 아이오닉6",
+    "fullName": "현대 더 뉴 아이오닉6",
+    "summary": "2026년형 전기 AWD 롱레인지 N라인 (개별소비세 5%) 익스클루시브 (자동)"
+  },
+  {
+    "trimId": "6274",
+    "brand": "BMW",
+    "modelName": "2 Series GranCoupe(3세대)",
+    "fullName": "BMW 2 Series GranCoupe(3세대)",
+    "summary": "2026년형 가솔린 2.0 4WD (개별소비세 3.5%) 228 xDrive Gran Coupe M Spt (자동)"
+  },
+  {
+    "trimId": "6100",
+    "brand": "BMW",
+    "modelName": "1 Series(4세대)",
+    "fullName": "BMW 1 Series(4세대)",
+    "summary": "2026년형 가솔린 2.0 4WD (개별소비세 3.5%) M135i xDrive (자동)"
+  },
+  {
+    "trimId": "6164",
+    "brand": "푸조",
+    "modelName": "All New 3008(3세대)",
+    "fullName": "푸조 All New 3008(3세대)",
+    "summary": "2026년형 가솔린 1.2 하이브리드 2WD Allure (자동)"
+  },
+  {
+    "trimId": "5464",
+    "brand": "BYD",
+    "modelName": "SEAL",
+    "fullName": "BYD SEAL",
+    "summary": "2025년형 전기 AWD SEAL AWD (자동)"
+  },
+  {
+    "trimId": "5451",
+    "brand": "볼보",
+    "modelName": "New XC90(2세대 PE)",
+    "fullName": "볼보 New XC90(2세대 PE)",
+    "summary": "2026년형 가솔린 2.0 플러그인 하이브리드 AWD T8 Ultra (자동)"
+  },
+  {
+    "trimId": "5422",
+    "brand": "KG모빌리티",
+    "modelName": "액티언 HEV",
+    "fullName": "KG모빌리티 액티언 HEV",
+    "summary": "2025년형 가솔린 1.5 하이브리드 2WD (개별소비세 5%) S8 (자동)"
+  },
+  {
+    "trimId": "5269",
+    "brand": "현대",
+    "modelName": "디 올 뉴 넥쏘",
+    "fullName": "현대 디 올 뉴 넥쏘",
+    "summary": "2025년형 수소전기 2WD (개별소비세 5%) 익스클루시브 (자동)"
+  },
+  {
+    "trimId": "6131",
+    "brand": "폭스바겐",
+    "modelName": "The New Golf GTI(8세대 F/L)",
+    "fullName": "폭스바겐 The New Golf GTI(8세대 F/L)",
+    "summary": "2026년형 가솔린 2.0 터보 2WD (개별소비세 3.5%) GTi (자동)"
+  },
+  {
+    "trimId": "6389",
+    "brand": "폭스바겐",
+    "modelName": "Atlas",
+    "fullName": "폭스바겐 Atlas",
+    "summary": "2026년형 가솔린 2.0 AWD (개별소비세 3.5%) R-Line 6seat (자동)"
+  },
+  {
+    "trimId": "5782",
+    "brand": "아우디",
+    "modelName": "The New Q5(3세대)",
+    "fullName": "아우디 The New Q5(3세대)",
+    "summary": "2025년형 디젤 2.0 AWD 스포트백 (개별소비세 3.5%) 40 TDI quattro Advanced (자동)"
+  },
+  {
+    "trimId": "5162",
+    "brand": "아우디",
+    "modelName": "The New S5(3세대)",
+    "fullName": "아우디 The New S5(3세대)",
+    "summary": "2025년형 가솔린 3.0 AWD (개별소비세 3.5%) TFSI (자동)"
+  },
+  {
+    "trimId": "10650",
+    "brand": "캐딜락",
+    "modelName": "The New Escalade(5세대 F/L)",
+    "fullName": "캐딜락 The New Escalade(5세대 F/L)",
+    "summary": "2026년형 가솔린 6.2 AWD ESV (개별소비세 3.5%) Premium Luxury Platinum (자동)"
+  },
+  {
+    "trimId": "6160",
+    "brand": "미니",
+    "modelName": "New Cooper Convertible(3세대 PE)",
+    "fullName": "미니 New Cooper Convertible(3세대 PE)",
+    "summary": "2026년형 가솔린 2.0 터보 2WD (개별소비세 3.5%) Cooper S Favoured (자동)"
+  },
+  {
+    "trimId": "9973",
+    "brand": "BMW",
+    "modelName": "The New i4",
+    "fullName": "BMW The New i4",
+    "summary": "2026년형 그란쿠페 전기 AWD (개별소비세 3.5%) M50 (자동)"
+  },
+  {
+    "trimId": "4932",
+    "brand": "미니",
+    "modelName": "Countryman Electric",
+    "fullName": "미니 Countryman Electric",
+    "summary": "2025년형 전기 AWD (개별소비세 3.5%) SE All4 Favoured (자동)"
+  },
+  {
+    "trimId": "10735",
+    "brand": "미니",
+    "modelName": "ACEMAN",
+    "fullName": "미니 ACEMAN",
+    "summary": "2026년형 전기 2WD (개별소비세 3.5%) E Electric (자동)"
+  },
+  {
+    "trimId": "4928",
+    "brand": "아우디",
+    "modelName": "SQ6 E-tron",
+    "fullName": "아우디 SQ6 E-tron",
+    "summary": "2025년형 전기 AWD E-tron (자동)"
+  },
+  {
+    "trimId": "4927",
+    "brand": "아우디",
+    "modelName": "Q6 E-tron",
+    "fullName": "아우디 Q6 E-tron",
+    "summary": "2025년형 전기 AWD Quattro Premium (자동)"
+  },
+  {
+    "trimId": "4922",
+    "brand": "렉서스",
+    "modelName": "LX",
+    "fullName": "렉서스 LX",
+    "summary": "2026년형 가솔린 3.5 하이브리드 AWD (개별소비세 3.5%) 700h OVERTRAIL (자동)"
+  },
+  {
+    "trimId": "10734",
+    "brand": "미니",
+    "modelName": "Electric (2세대)",
+    "fullName": "미니 Electric (2세대)",
+    "summary": "2026년형 전기 2WD (개별소비세 3.5%) SE Paul Smith Edition (자동)"
+  },
+  {
+    "trimId": "6130",
+    "brand": "폭스바겐",
+    "modelName": "The New Golf(8세대 F/L)",
+    "fullName": "폭스바겐 The New Golf(8세대 F/L)",
+    "summary": "2026년형 디젤 2.0 2WD (개별소비세 3.5%) Prestige (자동)"
+  },
+  {
+    "trimId": "8994",
+    "brand": "BMW",
+    "modelName": "IX2",
+    "fullName": "BMW IX2",
+    "summary": "2026년형 전기 2WD (개별소비세 3.5%) 20 eDrive M Sport (자동)"
+  },
+  {
+    "trimId": "10520",
+    "brand": "기아",
+    "modelName": "EV4",
+    "fullName": "기아 EV4",
+    "summary": "2026년형 전기 AWD 롱레인지 (개별소비세 5%) 에어 (자동)"
+  },
+  {
+    "trimId": "4840",
+    "brand": "KG모빌리티",
+    "modelName": "토레스 HEV",
+    "fullName": "KG모빌리티 토레스 HEV",
+    "summary": "2025년형 가솔린 1.5 하이브리드 2WD (개별소비세 5%) T5 (자동)"
+  },
+  {
+    "trimId": "10771",
+    "brand": "제네시스",
+    "modelName": "GV60(JW F/L)",
+    "fullName": "제네시스 GV60(JW F/L)",
+    "summary": "2027년형 전기 AWD (개별소비세 5%) 스탠다드 (자동)"
+  },
+  {
+    "trimId": "6256",
+    "brand": "아우디",
+    "modelName": "The New RS Q8",
+    "fullName": "아우디 The New RS Q8",
+    "summary": "2026년형 가솔린 4.0 AWD (개별소비세 3.5%) TFSI quattro Performence (자동)"
+  },
+  {
+    "trimId": "6110",
+    "brand": "아우디",
+    "modelName": "The New A3(8Y F/L)",
+    "fullName": "아우디 The New A3(8Y F/L)",
+    "summary": "2026년형 가솔린 2.0 AWD (개별소비세 3.5%) 40 TFSI quattro Premium (자동)"
+  },
+  {
+    "trimId": "10769",
+    "brand": "제네시스",
+    "modelName": "e-GV70(JK F/L)",
+    "fullName": "제네시스 e-GV70(JK F/L)",
+    "summary": "2027년형 전기 AWD (개별소비세 5%) 기본형 (자동)"
+  },
+  {
+    "trimId": "6388",
+    "brand": "폭스바겐",
+    "modelName": "ID.5",
+    "fullName": "폭스바겐 ID.5",
+    "summary": "2026년형 전기 2WD Pro (자동)"
+  },
+  {
+    "trimId": "6236",
+    "brand": "BMW",
+    "modelName": "M5(7세대)",
+    "fullName": "BMW M5(7세대)",
+    "summary": "2026년형 가솔린 4.4 터보 플러그인 하이브리드 투어링 4WD (개별소비세 3.5%) M5 First Edition (자동)"
+  },
+  {
+    "trimId": "5438",
+    "brand": "기아",
+    "modelName": "더 뉴 EV6 GT",
+    "fullName": "기아 더 뉴 EV6 GT",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) GT (자동)"
+  },
+  {
+    "trimId": "6715",
+    "brand": "토요타",
+    "modelName": "Camry(11세대)",
+    "fullName": "토요타 Camry(11세대)",
+    "summary": "2026년형 가솔린 2.5 하이브리드 2WD (개별소비세 3.5%) XLE (자동)"
+  },
+  {
+    "trimId": "10760",
+    "brand": "기아",
+    "modelName": "더 뉴 니로(SG2 F/L)",
+    "fullName": "기아 더 뉴 니로(SG2 F/L)",
+    "summary": "2026년형 가솔린 1.6 하이브리드 2WD (개별소비세 5%) 트렌디 (자동)"
+  },
+  {
+    "trimId": "5439",
+    "brand": "르노코리아",
+    "modelName": "세닉",
+    "fullName": "르노코리아 세닉",
+    "summary": "2026년형 전기 2WD (개별소비세 5%) Techno (자동)"
+  },
+  {
+    "trimId": "5360",
+    "brand": "테슬라",
+    "modelName": "New Model X(PE)",
+    "fullName": "테슬라 New Model X(PE)",
+    "summary": "2025년형 전기 AWD Long Range (자동)"
+  },
+  {
+    "trimId": "5358",
+    "brand": "테슬라",
+    "modelName": "New Model S(PE)",
+    "fullName": "테슬라 New Model S(PE)",
+    "summary": "2025년형 전기 AWD Long Range (자동)"
+  },
+  {
+    "trimId": "4984",
+    "brand": "KG모빌리티",
+    "modelName": "토레스 EVX 알파",
+    "fullName": "KG모빌리티 토레스 EVX 알파",
+    "summary": "2025년형 전기 2WD (개별소비세 5%) E5 (자동)"
+  },
+  {
+    "trimId": "4747",
+    "brand": "기아",
+    "modelName": "EV9 GT",
+    "fullName": "기아 EV9 GT",
+    "summary": "2025년형 전기 AWD (개별소비세 5%) GT (자동)"
+  },
+  {
+    "trimId": "4639",
+    "brand": "현대",
+    "modelName": "아이오닉9",
+    "fullName": "현대 아이오닉9",
+    "summary": "2025년형 전기 AWD 6인승 HTRACⅡ (개별소비세 5%) 익스클루시브 (자동)"
+  },
+  {
+    "trimId": "6342",
+    "brand": "테슬라",
+    "modelName": "Model Y Juniper",
+    "fullName": "테슬라 Model Y Juniper",
+    "summary": "2026년형 전기 AWD Premium Long Range (자동)"
+  },
+  {
+    "trimId": "10781",
+    "brand": "볼보",
+    "modelName": "EX90",
+    "fullName": "볼보 EX90",
+    "summary": "2026년형 전기 AWD Plus (자동)"
+  },
+  {
+    "trimId": "6369",
+    "brand": "KG모빌리티",
+    "modelName": "무쏘 롱 데크",
+    "fullName": "KG모빌리티 무쏘 롱 데크",
+    "summary": "2026년형 디젤 2.2 4WD M5 (자동)"
+  },
+  {
+    "trimId": "6359",
+    "brand": "KG모빌리티",
+    "modelName": "무쏘",
+    "fullName": "KG모빌리티 무쏘",
+    "summary": "2026년형 디젤 2.2 4WD M5 (자동)"
+  },
+  {
+    "trimId": "5879",
+    "brand": "벤츠",
+    "modelName": "The New AMG GT(2세대)",
+    "fullName": "벤츠 The New AMG GT(2세대)",
+    "summary": "2026년형 가솔린 4.0 AWD 플러그인 하이브리드 쿠페 (개별소비세 3.5%) AMG GT 63 S E-Performance 4MATIC+ (자동)"
+  },
+  {
+    "trimId": "5153",
+    "brand": "지프",
+    "modelName": "New Gladiator",
+    "fullName": "지프 New Gladiator",
+    "summary": "2025년형 가솔린 3.6 4WD Rubicon (자동)"
+  },
+  {
+    "trimId": "6377",
+    "brand": "벤츠",
+    "modelName": "G-Class EQ",
+    "fullName": "벤츠 G-Class EQ",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) G580 EQ (자동)"
+  },
+  {
+    "trimId": "6374",
+    "brand": "벤츠",
+    "modelName": "G-Class(W463 F/L)",
+    "fullName": "벤츠 G-Class(W463 F/L)",
+    "summary": "2026년형 가솔린 4.0 4WD (개별소비세 3.5%) G63 AMG (자동)"
+  },
+  {
+    "trimId": "10623",
+    "brand": "벤츠",
+    "modelName": "Maybach EQS-SUV",
+    "fullName": "벤츠 Maybach EQS-SUV",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) Maybach S680 4Matic (자동)"
+  },
+  {
+    "trimId": "1745",
+    "brand": "쉐보레",
+    "modelName": "신형 콜로라도(3세대)",
+    "fullName": "쉐보레 신형 콜로라도(3세대)",
+    "summary": "2024년형 가솔린 2.7 터보 AWD Z71 (자동)"
+  },
+  {
+    "trimId": "5613",
+    "brand": "현대",
+    "modelName": "ST1",
+    "fullName": "현대 ST1",
+    "summary": "2026년형 전기 2WD 냉동카고 스마트 (자동)"
+  },
+  {
+    "trimId": "5874",
+    "brand": "벤츠",
+    "modelName": "CLE-Class",
+    "fullName": "벤츠 CLE-Class",
+    "summary": "2026년형 가솔린 3.0 AWD 카브리올레 (개별소비세 3.5%) CLE 53 AMG 4Matic (자동)"
+  },
+  {
+    "trimId": "10917",
+    "brand": "기아",
+    "modelName": "더 뉴 K8(GL3 F/L)",
+    "fullName": "기아 더 뉴 K8(GL3 F/L)",
+    "summary": "2027년형 가솔린 3.5 4WD (개별소비세 5%) 노블레스 (자동)"
+  },
+  {
+    "trimId": "6178",
+    "brand": "BMW",
+    "modelName": "The New M4(2세대 F/L)",
+    "fullName": "BMW The New M4(2세대 F/L)",
+    "summary": "2026년형 가솔린 3.0 4WD 컨버터블 (개별소비세 3.5%) Convertible Competition M xDrive (자동)"
+  },
+  {
+    "trimId": "2505",
+    "brand": "기아",
+    "modelName": "카니발 헤리티지",
+    "fullName": "기아 카니발 헤리티지",
+    "summary": "3.5 가솔린 9인승 시그니처 풀옵션 프리미어"
+  },
+  {
+    "trimId": "6066",
+    "brand": "BMW",
+    "modelName": "The New 4 Series(2세대 F/L)",
+    "fullName": "BMW The New 4 Series(2세대 F/L)",
+    "summary": "2026년형 가솔린 3.0 AWD 컨버터블 (개별소비세 3.5%) Convertible M440i xDrive Online Exclusive (자동)"
+  },
+  {
+    "trimId": "6234",
+    "brand": "벤츠",
+    "modelName": "The New Maybach GLS-Class",
+    "fullName": "벤츠 The New Maybach GLS-Class",
+    "summary": "2026년형 가솔린 4.0 4WD (개별소비세 3.5%) Maybach GLS 600 4Matic (자동)"
+  },
+  {
+    "trimId": "6013",
+    "brand": "벤츠",
+    "modelName": "SL-Class(R232)",
+    "fullName": "벤츠 SL-Class(R232)",
+    "summary": "2026년형 가솔린 4.0 터보 AWD (개별소비세 3.5%) SL63 AMG 4Matic+ (자동)"
+  },
+  {
+    "trimId": "4756",
+    "brand": "현대",
+    "modelName": "스타리아 HEV",
+    "fullName": "현대 스타리아 HEV",
+    "summary": "2024년형 가솔린 1.6 터보 하이브리드 2WD 4인승 라운지 캠퍼 프레스티지 (자동)"
+  },
+  {
+    "trimId": "6176",
+    "brand": "BMW",
+    "modelName": "M2(2세대)",
+    "fullName": "BMW M2(2세대)",
+    "summary": "2026년형 가솔린 3.0 2WD (개별소비세 3.5%) Coupe (자동)"
+  },
+  {
+    "trimId": "5084",
+    "brand": "현대",
+    "modelName": "더 뉴 아반떼N(CN7 F/L)",
+    "fullName": "현대 더 뉴 아반떼N(CN7 F/L)",
+    "summary": "2026년형 가솔린 2.0 터보 2WD (개별소비세 5%) N (수동)"
+  },
+  {
+    "trimId": "6083",
+    "brand": "BMW",
+    "modelName": "i7",
+    "fullName": "BMW i7",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) xDrive 60 DPE (자동)"
+  },
+  {
+    "trimId": "6222",
+    "brand": "BMW",
+    "modelName": "The New Z4(3세대 F/L)",
+    "fullName": "BMW The New Z4(3세대 F/L)",
+    "summary": "2026년형 가솔린 3.0 2WD (개별소비세 3.5%) M40i (자동)"
+  },
+  {
+    "trimId": "6070",
+    "brand": "볼보",
+    "modelName": "New XC40(1세대 F/L)",
+    "fullName": "볼보 New XC40(1세대 F/L)",
+    "summary": "2026년형 가솔린 2.0 터보 AWD B4 Plus Bright (자동)"
+  },
+  {
+    "trimId": "6144",
+    "brand": "BMW",
+    "modelName": "The New M8",
+    "fullName": "BMW The New M8",
+    "summary": "2025년형 가솔린 4.4 4WD 그란쿠페 (개별소비세 3.5%) Gran Coupe Competition P2-0 (자동)"
+  },
+  {
+    "trimId": "6382",
+    "brand": "BMW",
+    "modelName": "The New 8 Series(2세대 F/L)",
+    "fullName": "BMW The New 8 Series(2세대 F/L)",
+    "summary": "2026년형 가솔린 4.4 AWD 쿠페 (개별소비세 3.5%) Coupe M850i xDrive Perf (자동)"
+  },
+  {
+    "trimId": "6269",
+    "brand": "토요타",
+    "modelName": "GR86(2세대)",
+    "fullName": "토요타 GR86(2세대)",
+    "summary": "2026년형 가솔린 2.4 2WD (개별소비세 3.5%) STANDARD (수동)"
+  },
+  {
+    "trimId": "10737",
+    "brand": "랜드로버",
+    "modelName": "Range Rover(5세대)",
+    "fullName": "랜드로버 Range Rover(5세대)",
+    "summary": "2026년형 가솔린 4.4 4WD (개별소비세 3.5%) P530 Autobiography SWB (자동)"
+  },
+  {
+    "trimId": "6113",
+    "brand": "벤츠",
+    "modelName": "Maybach S-Class(W223)",
+    "fullName": "벤츠 Maybach S-Class(W223)",
+    "summary": "2026년형 가솔린 6.0 4WD (개별소비세 3.5%) Maybach S680 4Matic L (자동)"
+  },
+  {
+    "trimId": "5869",
+    "brand": "벤츠",
+    "modelName": "S-Class(W223)",
+    "fullName": "벤츠 S-Class(W223)",
+    "summary": "2026년형 가솔린 4.0 플러그인 하이브리드 4WD (개별소비세 3.5%) S63 AMG E Performance"
+  },
+  {
+    "trimId": "6960",
+    "brand": "기아",
+    "modelName": "봉고Ⅲ EV 특장차",
+    "fullName": "기아 봉고Ⅲ EV 특장차",
+    "summary": "2026년형 전기 2WD 냉동탑차 로우 킹캡 초장축 GL (자동)"
+  },
+  {
+    "trimId": "6957",
+    "brand": "기아",
+    "modelName": "봉고Ⅲ EV(PU)",
+    "fullName": "기아 봉고Ⅲ EV(PU)",
+    "summary": "2026년형 전기 2WD 초장축 킹캡 스마트 셀렉션 (자동)"
+  },
+  {
+    "trimId": "9980",
+    "brand": "현대",
+    "modelName": "포터II EV 특장차",
+    "fullName": "현대 포터II EV 특장차",
+    "summary": "2026년형 전기 2WD 전동식윙바디 초장축 슈퍼캡 (자동)"
+  },
+  {
+    "trimId": "6302",
+    "brand": "현대",
+    "modelName": "포터II EV",
+    "fullName": "현대 포터II EV",
+    "summary": "2026년형 전기 2WD 슈퍼캡 초장축 스타일 스페셜 (자동)"
+  },
+  {
+    "trimId": "1546",
+    "brand": "기아",
+    "modelName": "더 뉴봉고Ⅲ 특장차",
+    "fullName": "기아 더 뉴봉고Ⅲ 특장차",
+    "summary": "2025년형 LPI 2.5 4WD 홈로리 표준캡 장축 GL (수동)"
+  },
+  {
+    "trimId": "6749",
+    "brand": "기아",
+    "modelName": "더 뉴봉고Ⅲ(PU)",
+    "fullName": "기아 더 뉴봉고Ⅲ(PU)",
+    "summary": "2026년형 LPI 2.5 터보 2WD 1.2톤 킹캡 초장축 스마트 셀렉션 (자동)"
+  },
+  {
+    "trimId": "6261",
+    "brand": "볼보",
+    "modelName": "V60 CrossCountry(2세대)",
+    "fullName": "볼보 V60 CrossCountry(2세대)",
+    "summary": "2026년형 가솔린 2.0 터보 AWD B5 Ultra AWD (자동)"
+  },
+  {
+    "trimId": "10615",
+    "brand": "현대",
+    "modelName": "더 뉴 포터II 특장차",
+    "fullName": "현대 더 뉴 포터II 특장차",
+    "summary": "2026년형 LPI 2.5 4WD 이동주유차 장축 슈퍼캡 스마트 (수동)"
+  },
+  {
+    "trimId": "6291",
+    "brand": "현대",
+    "modelName": "더 뉴 포터II",
+    "fullName": "현대 더 뉴 포터II",
+    "summary": "2026년형 LPI 2.5 터보 4WD 슈퍼캡 장축 Smart (수동)"
+  },
+  {
+    "trimId": "4490",
+    "brand": "볼보",
+    "modelName": "V90 CrossCountry(2세대)",
+    "fullName": "볼보 V90 CrossCountry(2세대)",
+    "summary": "2025년형 가솔린 2.0 터보 AWD B5 Ultra AWD (자동)"
+  },
+  {
+    "trimId": "10948",
+    "brand": "현대",
+    "modelName": "스타리아 EV",
+    "fullName": "현대 스타리아 EV",
+    "summary": "2026년형 전기 2WD 6인승 라운지 리무진 (개별소비세 5%) 인스퍼레이션 (자동)"
+  },
+  {
+    "trimId": "10905",
+    "brand": "아우디",
+    "modelName": "A6(C9)",
+    "fullName": "아우디 A6(C9)",
+    "summary": "2026년형 가솔린 3.0 AWD (개별소비세 3.5%) 55 TFSI quattro S-line (자동)"
+  },
+  {
+    "trimId": "10949",
+    "brand": "현대",
+    "modelName": "더 뉴 스타리아 HEV",
+    "fullName": "현대 더 뉴 스타리아 HEV",
+    "summary": "2026년형 가솔린 1.6 터보 하이브리드 2WD 6인승 라운지 리무진 (개별소비세 5%) 인스퍼레이션 (자동)"
+  },
+  {
+    "trimId": "6228",
+    "brand": "벤츠",
+    "modelName": "Maybach SL-Class",
+    "fullName": "벤츠 Maybach SL-Class",
+    "summary": "2026년형 가솔린 4.0 터보 AWD (개별소비세 3.5%) SL 680 4Matic+ (자동)"
+  },
+  {
+    "trimId": "5652",
+    "brand": "볼보",
+    "modelName": "The New XC60(PE)",
+    "fullName": "볼보 The New XC60(PE)",
+    "summary": "2026년형 가솔린 2.0 플러그인 하이브리드 AWD T8 Ultra (자동)"
+  },
+  {
+    "trimId": "5448",
+    "brand": "볼보",
+    "modelName": "New S90(2세대 PE)",
+    "fullName": "볼보 New S90(2세대 PE)",
+    "summary": "2026년형 가솔린 2.0 플러그인 하이브리드 AWD T8 Ultra (자동)"
+  },
+  {
+    "trimId": "9831",
+    "brand": "기아",
+    "modelName": "PV5",
+    "fullName": "기아 PV5",
+    "summary": "2026년형 전기 2WD 웨이브 휠체어 리프트 5인승 (개별소비세 5%) 베이직 (자동)"
+  },
+  {
+    "trimId": "5160",
+    "brand": "아우디",
+    "modelName": "The New A5(3세대)",
+    "fullName": "아우디 The New A5(3세대)",
+    "summary": "2025년형 디젤 2.0 AWD (개별소비세 3.5%) 40 TDI quattro Advanced (자동)"
+  },
+  {
+    "trimId": "4765",
+    "brand": "KG모빌리티",
+    "modelName": "무쏘 EV",
+    "fullName": "KG모빌리티 무쏘 EV",
+    "summary": "2025년형 전기 4WD MX (자동)"
+  },
+  {
+    "trimId": "4743",
+    "brand": "기아",
+    "modelName": "타스만",
+    "fullName": "기아 타스만",
+    "summary": "2025년형 가솔린 2.5 터보 4WD 다이내믹 (자동)"
+  },
+  {
+    "trimId": "10956",
+    "brand": "BYD",
+    "modelName": "ATTO 3",
+    "fullName": "BYD ATTO 3",
+    "summary": "2026년형 전기 2WD ATTO 3 Plus (자동)"
+  },
+  {
+    "trimId": "6128",
+    "brand": "BMW",
+    "modelName": "The New M3(6세대 F/L)",
+    "fullName": "BMW The New M3(6세대 F/L)",
+    "summary": "2026년형 가솔린 3.0 터보 투어링 4WD (개별소비세 3.5%) Touring Competition M xDrive (자동)"
+  },
+  {
+    "trimId": "10631",
+    "brand": "BYD",
+    "modelName": "Dolphin",
+    "fullName": "BYD Dolphin",
+    "summary": "2026년형 전기 2WD Dolphin (자동)"
+  },
+  {
+    "trimId": "5922",
+    "brand": "테슬라",
+    "modelName": "CyberTruck",
+    "fullName": "테슬라 CyberTruck",
+    "summary": "2025년형 전기 AWD AWD (자동)"
+  }
+]

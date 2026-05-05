@@ -41,6 +41,7 @@ export default async function BrandCarsPage({
       fuelType: car.fuelType,
       monthlyRent: price.rent,
       monthlyLease: price.lease,
+      basePrice: car.basePrice,
       thumbnailUrl: car.thumbnailUrl,
     };
   });

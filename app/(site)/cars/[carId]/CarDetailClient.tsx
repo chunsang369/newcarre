@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -76,19 +76,178 @@ const MILEAGES = [
 
 // ─── Component ───
 export default function CarDetailClient({ car }: { car: CarData }) {
+  // Configuration state
+  const detailedConfig = useMemo(() => {
+    if (!car.options) return null;
+    
+    // Check if it's the direct Chasalddae format
+    if ((car.options as any).car_info && (car.options as any).lineup_trim_list) {
+      const colorsExt = (car.options as any).trim_outer_color_list?.map((color: any) => ({
+        idx: String(color.id),
+        title: color.name,
+        price: Number(color.price || 0),
+        detail: color.detail || [],
+        thumb: Array.isArray(color.detail) ? color.detail[0] : "#ffffff"
+      })) || [];
+
+      const colorsInt = (car.options as any).trim_inner_color_list?.map((color: any) => ({
+        idx: String(color.id),
+        title: color.name,
+        price: Number(color.price || 0),
+        detail: color.detail || [],
+        thumb: Array.isArray(color.detail) ? color.detail[0] : "#000000"
+      })) || [];
+
+      const grades = (car.options as any).lineup_trim_list.map((lineup: any) => ({
+        idx: String(lineup.id),
+        name: lineup.lineup_name,
+        trims: lineup.trim_list?.map((trim: any) => ({
+          idx: String(trim.id),
+          name: trim.trim_name,
+          price: Number(trim.price),
+          colorsExt: (trim.trim_outer_color_list || (car.options as any).trim_outer_color_list)?.map((color: any) => ({
+            idx: String(color.id),
+            title: color.name,
+            price: Number(color.price || 0),
+            detail: color.detail || [],
+            thumb: Array.isArray(color.detail) ? color.detail[0] : "#ffffff"
+          })) || colorsExt,
+          colorsInt: (trim.trim_inner_color_list || (car.options as any).trim_inner_color_list)?.map((color: any) => ({
+            idx: String(color.id),
+            title: color.name,
+            price: Number(color.price || 0),
+            detail: color.detail || [],
+            thumb: Array.isArray(color.detail) ? color.detail[0] : "#000000"
+          })) || colorsInt,
+          options: (trim.trim_opt_list || (car.options as any).trim_opt_list)?.map((opt: any) => ({
+            idx: String(opt.id),
+            title: opt.name,
+            price: Number(opt.price),
+            memo: opt.memo
+          })) || []
+        })) || []
+      })) || [];
+
+      return {
+        grades,
+        colorsExt,
+        colorsInt
+      };
+    }
+
+
+    let config = (car.options as any)?.detailedConfig || car.options;
+    if (!config || !Array.isArray(config.grades)) return null;
+
+    // Build map of trims by gradeIdx for flat array data
+    let trimsMap: Record<string, any[]> = {};
+    if (Array.isArray(config.trims)) {
+      config.trims.forEach((t: any) => {
+        const gIdx = String(t.gradeIdx);
+        if (!trimsMap[gIdx]) trimsMap[gIdx] = [];
+        trimsMap[gIdx].push(t);
+      });
+    }
+
+    // Clone grades and merge trims
+    const clonedGrades = config.grades.map((g: any) => {
+      const gIdx = String(g.idx);
+      const gradeTrims = g.trims || trimsMap[gIdx] || [];
+      return {
+        ...g,
+        trims: gradeTrims
+      };
+    });
+
+    return {
+      ...config,
+      grades: clonedGrades
+    };
+  }, [car.options]);
+
+  
+  const [selectedGradeIdx, setSelectedGradeIdx] = useState<string>("");
+  const [selectedTrimIdx, setSelectedTrimIdx] = useState<string>("");
+  const [selectedOptions, setSelectedOptions] = useState<Record<string, boolean>>({});
+  const [selectedExtColor, setSelectedExtColor] = useState<string>("");
+  const [selectedIntColor, setSelectedIntColor] = useState<string>("");
+
+  // Find the cheapest trim across all grades as the default
+  const allTrims = useMemo(() => {
+    return detailedConfig?.grades?.flatMap((g: any) => 
+      g.trims?.map((t: any) => ({ ...t, gradeIdx: g.idx }))
+    ) || [];
+  }, [detailedConfig]);
+
+  const cheapestTrim = useMemo(() => {
+    if (allTrims.length === 0) return null;
+    return allTrims.reduce((min: any, t: any) => (!min || Number(t.price) < Number(min.price)) ? t : min, allTrims[0]);
+  }, [allTrims]);
+
+  // Set initial state once detailedConfig is available
+  useEffect(() => {
+    if (cheapestTrim && !selectedGradeIdx) {
+      setSelectedGradeIdx(cheapestTrim.gradeIdx);
+      setSelectedTrimIdx(cheapestTrim.idx);
+    }
+  }, [cheapestTrim, selectedGradeIdx]);
+
+  const selectedGrade = detailedConfig?.grades.find((g: any) => g.idx === selectedGradeIdx);
+  const currentTrim = selectedGrade?.trims.find((t: any) => t.idx === selectedTrimIdx) || selectedGrade?.trims[0];
+
   // Quote simulator state
   const [productType, setProductType] = useState<"rent" | "lease">("rent");
   const [period, setPeriod] = useState<number>(36);
   const [deposit, setDeposit] = useState<string>("PREPAY_30");
   const [mileage, setMileage] = useState<number>(20000);
 
-  // Calculate monthly price
+  // Calculate configured total price
+  const configuredTotalPrice = useMemo(() => {
+    if (!currentTrim) return 0;
+    let total = Number(currentTrim.price) || car.basePrice;
+    
+    // Options
+    Object.keys(selectedOptions).forEach((optIdx) => {
+      if (selectedOptions[optIdx]) {
+        const opt = currentTrim.options?.find((o: any) => o.idx === optIdx);
+        if (opt) total += Number(opt.price) || 0;
+      }
+    });
+
+    // Colors
+    const extColor = currentTrim.colorsExt?.find((c: any) => c.idx === selectedExtColor);
+    const intColor = currentTrim.colorsInt?.find((c: any) => c.idx === selectedIntColor);
+    if (extColor) total += Number(extColor.price) || 0;
+    if (intColor) total += Number(intColor.price) || 0;
+
+    return total;
+  }, [currentTrim, selectedOptions, selectedExtColor, selectedIntColor, car.basePrice]);
+
+  // Calculate monthly price (scaled by total price ratio)
   const monthlyPrice = useMemo(() => {
     const key = `${period}_${deposit}_${mileage}`;
-    const entry = car.priceMatrix[key];
-    if (!entry) return null;
-    return productType === "rent" ? entry.rent : entry.lease;
-  }, [productType, period, deposit, mileage, car.priceMatrix]);
+    const baseEntry = car.priceMatrix[key];
+    
+    let baseMonthly = 0;
+    if (baseEntry) {
+      baseMonthly = productType === "rent" ? baseEntry.rent : baseEntry.lease;
+    }
+
+    // Fallback: If no matrix data, estimate based on 1.2% of car price for 60 months
+    // We use a base rate that scales with period
+    if (!baseMonthly || baseMonthly === 0) {
+      const periodFactor = 60 / period; // 60m -> 1.0, 36m -> 1.66
+      const depositFactor = deposit === "PREPAY_30" ? 0.7 : deposit === "DEPOSIT_30" ? 0.95 : 1.0;
+      baseMonthly = (car.basePrice * 0.012) * periodFactor * depositFactor;
+    }
+    
+    if (!baseMonthly) return null;
+
+    // Scale monthly price by the ratio of configured price to base price
+    const effectiveBasePrice = car.basePrice || 1;
+    const ratio = configuredTotalPrice / effectiveBasePrice;
+    return Math.round(baseMonthly * ratio);
+  }, [productType, period, deposit, mileage, car.priceMatrix, configuredTotalPrice, car.basePrice]);
 
   // Comparison
   const comparisonPrice = useMemo(() => {
@@ -187,12 +346,42 @@ export default function CarDetailClient({ car }: { car: CarData }) {
                 </span>
               </div>
               <div className="bg-[var(--color-bg-subtle)] rounded-xl p-4 lg:p-5">
-                <div className="text-sm text-[var(--color-text-muted)] mb-1">차량 기본가</div>
-                <div className="text-xl lg:text-2xl font-bold text-[var(--color-text)]">
-                  {formatPriceWon(car.basePrice)}
+                <div className="flex justify-between items-end mb-1">
+                  <div className="text-sm text-[var(--color-text-muted)]">
+                    차량 기본가
+                  </div>
+                  <div className="text-sm font-bold text-[var(--color-text)]">
+                    {formatPriceWon(car.basePrice)} ~
+                  </div>
+                </div>
+                <div className="h-[1px] bg-gray-200 my-2" />
+                <div className="flex justify-between items-center">
+                  <div className="text-sm text-[var(--color-text-muted)]">
+                    {currentTrim ? `${currentTrim.name} 합계` : "선택된 차량 가격"}
+                  </div>
+                  <div className="text-xl lg:text-2xl font-bold text-[var(--color-primary)]">
+                    {formatPriceWon(configuredTotalPrice || (currentTrim ? Number(currentTrim.price) : car.basePrice))}
+                  </div>
                 </div>
               </div>
             </section>
+
+            {/* ──────── Configurator UI ──────── */}
+            {detailedConfig && (
+              <ConfiguratorUI 
+                detailedConfig={detailedConfig}
+                selectedGradeIdx={selectedGradeIdx}
+                setSelectedGradeIdx={setSelectedGradeIdx}
+                selectedTrimIdx={selectedTrimIdx}
+                setSelectedTrimIdx={setSelectedTrimIdx}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
+                selectedExtColor={selectedExtColor}
+                setSelectedExtColor={setSelectedExtColor}
+                selectedIntColor={selectedIntColor}
+                setSelectedIntColor={setSelectedIntColor}
+              />
+            )}
 
             {/* Mobile-only inline quote simulator */}
             <section className="lg:hidden">
@@ -311,26 +500,93 @@ export default function CarDetailClient({ car }: { car: CarData }) {
         </div>
       </div>
 
-      {/* ──────── Mobile Sticky Bottom Bar ──────── */}
-      <div className="lg:hidden fixed bottom-16 left-0 right-0 z-40 bg-white border-t border-[var(--color-border)] shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
-        <div className="flex items-center justify-between px-4 py-3">
+      {/* ──────── Mobile & Desktop Sticky Summary Bar ──────── */}
+      <StickySummaryBar 
+        car={car}
+        currentTrim={currentTrim}
+        totalPrice={configuredTotalPrice}
+        monthlyPrice={monthlyPrice}
+        onConsult={handleConsult}
+      />
+
+      {/* Bottom spacer for mobile sticky bars */}
+      <div className="h-32 lg:h-0" />
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────
+// StickySummaryBar Component
+// ─────────────────────────────────────────
+function StickySummaryBar({ 
+  car, 
+  currentTrim, 
+  totalPrice, 
+  monthlyPrice, 
+  onConsult 
+}: { 
+  car: any; 
+  currentTrim: any; 
+  totalPrice: number; 
+  monthlyPrice: number | null; 
+  onConsult: () => void;
+}) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show after scrolling 600px
+      setIsVisible(window.scrollY > 600);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div 
+      className={`fixed left-0 right-0 z-50 transition-all duration-500 transform ${
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-full lg:-translate-y-full opacity-0"
+      } ${
+        // Desktop: Top sticky, Mobile: Bottom sticky
+        "top-0 bottom-auto lg:bottom-auto lg:top-0 border-b lg:border-b max-lg:top-auto max-lg:bottom-0 max-lg:border-t"
+      } bg-white/90 backdrop-blur-md border-[var(--color-border)] shadow-xl`}
+    >
+      <div className="max-w-[1200px] mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <div className="relative w-16 h-10 hidden sm:block">
+            {car.thumbnailUrl && (
+              <Image src={car.thumbnailUrl} alt={car.modelName} fill className="object-contain" unoptimized />
+            )}
+          </div>
           <div>
-            <p className="text-xs text-[var(--color-text-muted)]">월 납입료 (렌트 기준)</p>
-            <p className="text-xl font-bold text-[var(--color-accent)]">
-              {monthlyPrice ? `${formatPrice(monthlyPrice)}원` : "—"}
+            <p className="text-xs font-bold text-[var(--color-text)] leading-tight">
+              {car.brand.name} {car.modelName}
+            </p>
+            <p className="text-[10px] text-[var(--color-text-muted)]">
+              {currentTrim?.name || car.trimName}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-6">
+          <div className="text-right hidden sm:block">
+            <p className="text-[10px] text-[var(--color-text-muted)]">총 차량가</p>
+            <p className="text-sm font-bold text-[var(--color-text)]">{formatPriceWon(totalPrice)}</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[10px] text-[var(--color-text-muted)]">예상 월 납입료</p>
+            <p className="text-lg lg:text-xl font-extrabold text-[var(--color-accent)]">
+              {monthlyPrice ? `${formatPrice(monthlyPrice)}원` : "상담 필요"}
             </p>
           </div>
           <button
-            onClick={handleConsult}
-            className="bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold px-6 py-3 rounded-xl transition-colors active:scale-95"
+            onClick={onConsult}
+            className="bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white text-sm font-bold px-6 py-3 rounded-xl transition-all shadow-md active:scale-95"
           >
             상담 신청
           </button>
         </div>
       </div>
-
-      {/* Bottom spacer for mobile sticky bars */}
-      <div className="h-32 lg:h-0" />
     </div>
   );
 }
@@ -458,7 +714,7 @@ function QuoteSimulator({
             예상 월 납입료 ({productType === "rent" ? "장기렌트" : "리스"})
           </p>
           <p className="text-3xl lg:text-4xl font-extrabold text-[var(--color-accent)]">
-            {monthlyPrice ? `${formatPrice(monthlyPrice)}원` : "—"}
+            {monthlyPrice && isFinite(monthlyPrice) && monthlyPrice > 0 ? `${formatPrice(monthlyPrice)}원` : "상담 신청 필요"}
           </p>
           {comparisonPrice && (
             <p className="text-xs text-[var(--color-text-muted)]">
@@ -599,6 +855,359 @@ function QuickConsultInline({ carName }: { carName: string }) {
           {submitting ? "전송 중..." : "견적 상담 신청하기"}
         </button>
       </form>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────
+// Configurator UI Sub-component
+// ─────────────────────────────────────────
+function ConfiguratorUI({ 
+  detailedConfig,
+  selectedGradeIdx,
+  setSelectedGradeIdx,
+  selectedTrimIdx,
+  setSelectedTrimIdx,
+  selectedOptions,
+  setSelectedOptions,
+  selectedExtColor,
+  setSelectedExtColor,
+  selectedIntColor,
+  setSelectedIntColor,
+}: { 
+  detailedConfig: any;
+  selectedGradeIdx: string;
+  setSelectedGradeIdx: (v: string) => void;
+  selectedTrimIdx: string;
+  setSelectedTrimIdx: (v: string) => void;
+  selectedOptions: Record<string, boolean>;
+  setSelectedOptions: (v: any) => void;
+  selectedExtColor: string;
+  setSelectedExtColor: (v: string) => void;
+  selectedIntColor: string;
+  setSelectedIntColor: (v: string) => void;
+}) {
+  const [colorTab, setColorTab] = useState<"ext" | "int">("ext");
+  const { grades } = detailedConfig;
+  
+  const selectedGrade = grades.find((g: any) => g.idx === selectedGradeIdx);
+  const selectedTrim = selectedGrade?.trims.find((t: any) => t.idx === selectedTrimIdx) || selectedGrade?.trims[0];
+
+  // Auto-select first trim when grade changes
+  useEffect(() => {
+    if (selectedGrade && !selectedGrade.trims.find((t: any) => t.idx === selectedTrimIdx)) {
+      setSelectedTrimIdx(selectedGrade.trims[0]?.idx || "");
+      setSelectedOptions({});
+      setSelectedExtColor("");
+      setSelectedIntColor("");
+    }
+  }, [selectedGradeIdx, selectedGrade, selectedTrimIdx, setSelectedTrimIdx, setSelectedOptions, setSelectedExtColor, setSelectedIntColor]);
+
+  const toggleOption = (optIdx: string) => {
+    setSelectedOptions((prev: any) => ({ ...prev, [optIdx]: !prev[optIdx] }));
+  };
+
+  const totalOptionPrice = useMemo(() => {
+    if (!selectedTrim) return 0;
+    let total = 0;
+    selectedTrim.options?.forEach((opt: any) => {
+      if (selectedOptions[opt.idx]) {
+        total += Number(opt.price) || 0;
+      }
+    });
+    return total;
+  }, [selectedTrim, selectedOptions]);
+
+  const selectedExtColorData = selectedTrim?.colorsExt?.find((c: any) => c.idx === selectedExtColor);
+  const selectedIntColorData = selectedTrim?.colorsInt?.find((c: any) => c.idx === selectedIntColor);
+  const totalColorPrice = (Number(selectedExtColorData?.price) || 0) + (Number(selectedIntColorData?.price) || 0);
+
+  return (
+    <div className="bg-white border border-[var(--color-border)] rounded-2xl overflow-hidden mt-8 shadow-sm">
+      {/* Header with glassmorphism feel */}
+      <div className="bg-gradient-to-r from-slate-50 to-white px-5 py-5 border-b border-[var(--color-border)]">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center">
+            <svg className="w-4 h-4 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-base font-bold text-[var(--color-text)]">커스텀 빌드</h3>
+            <p className="text-[11px] text-[var(--color-text-muted)]">당신만의 {detailedConfig.modelName || "차량"}을 완성해보세요</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-5 lg:p-7 space-y-10">
+        {/* 1. Grade Selection */}
+        <section>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="w-5 h-5 rounded-full bg-slate-900 text-white text-[10px] flex items-center justify-center font-bold">1</span>
+            <h4 className="text-sm font-bold text-[var(--color-text)]">라인업 선택</h4>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {grades.map((g: any) => (
+              <button
+                key={g.idx}
+                onClick={() => setSelectedGradeIdx(g.idx)}
+                className={`px-4 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-300 ${
+                  selectedGradeIdx === g.idx
+                    ? "border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-lg shadow-blue-900/10 scale-[1.02]"
+                    : "border-slate-200 text-slate-500 bg-slate-50/50 hover:border-slate-300 hover:bg-slate-50"
+                }`}
+              >
+                {g.name}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* 2. Trim Selection */}
+        {selectedGrade && selectedGrade.trims.length > 0 && (
+          <section className="animate-in fade-in slide-in-from-bottom-2 duration-500">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-5 h-5 rounded-full bg-slate-900 text-white text-[10px] flex items-center justify-center font-bold">2</span>
+              <h4 className="text-sm font-bold text-[var(--color-text)]">트림 선택</h4>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {selectedGrade.trims.map((t: any) => (
+                <button
+                  key={t.idx}
+                  onClick={() => setSelectedTrimIdx(t.idx)}
+                  className={`relative overflow-hidden text-left p-4 rounded-2xl border transition-all duration-300 ${
+                    selectedTrimIdx === t.idx
+                      ? "border-[var(--color-primary)] bg-blue-50/40 shadow-inner"
+                      : "border-slate-100 bg-slate-50/30 hover:border-blue-200"
+                  }`}
+                >
+                  {selectedTrimIdx === t.idx && (
+                    <div className="absolute top-0 right-0 p-1">
+                      <div className="bg-[var(--color-primary)] text-white rounded-bl-xl p-1">
+                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+                      </div>
+                    </div>
+                  )}
+                  <div className="mb-1">
+                    <span className={`text-sm font-bold ${selectedTrimIdx === t.idx ? "text-[var(--color-primary)]" : "text-[var(--color-text)]"}`}>
+                      {t.name}
+                    </span>
+                  </div>
+                  <div className="text-xs font-semibold text-slate-500">
+                    {t.price > 0 ? `${formatPrice(Number(t.price))}원` : "가격 정보 없음"}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 3. Color Selection with Tabs */}
+        {selectedTrim && (
+          <section className="animate-in fade-in duration-700 delay-150">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full bg-slate-900 text-white text-[10px] flex items-center justify-center font-bold">3</span>
+                <h4 className="text-sm font-bold text-[var(--color-text)]">색상 선택</h4>
+              </div>
+              <div className="flex bg-slate-100 p-0.5 rounded-lg">
+                <button 
+                  onClick={() => setColorTab("ext")}
+                  className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${colorTab === "ext" ? "bg-white shadow-sm text-[var(--color-primary)]" : "text-slate-400"}`}
+                >
+                  외장
+                </button>
+                <button 
+                  onClick={() => setColorTab("int")}
+                  className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${colorTab === "int" ? "bg-white shadow-sm text-[var(--color-primary)]" : "text-slate-400"}`}
+                >
+                  내장
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-slate-50/50 rounded-2xl p-5 border border-slate-100">
+              {colorTab === "ext" ? (
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center px-1">
+                    <span className="text-xs font-bold text-slate-600">외장 색상</span>
+                    <span className="text-xs font-bold text-[var(--color-primary)]">
+                      {selectedExtColorData ? selectedExtColorData.title : "선택 안됨"}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-4">
+                    {selectedTrim.colorsExt?.map((color: any, index: number) => {
+                      const isSelected = selectedExtColor === color.idx;
+                      const bgStyle = Array.isArray(color.detail) && color.detail.length >= 2
+                        ? `linear-gradient(135deg, ${color.detail[0]} 50%, ${color.detail[1]} 50%)`
+                        : color.thumb && color.thumb.startsWith("#") ? color.thumb : color.thumb || "#ffffff";
+                        
+                      return (
+                        <button
+                          key={color.idx || index}
+                          onClick={() => setSelectedExtColor(color.idx)}
+                          className={`group relative flex flex-col items-center gap-2 transition-all`}
+                        >
+                          <div 
+                            className={`w-12 h-12 rounded-full border-2 transition-all shadow-sm ${
+                              isSelected ? "border-[var(--color-primary)] scale-110 shadow-md" : "border-white hover:border-slate-300"
+                            }`}
+                            style={{ background: bgStyle, backgroundSize: "cover" }}
+                          />
+                          <span className={`text-[9px] font-bold transition-all ${isSelected ? "text-[var(--color-primary)]" : "text-slate-400 group-hover:text-slate-600"}`}>
+                            {color.title}
+                          </span>
+                        </button>
+                      );
+                    })}
+                    {(!selectedTrim.colorsExt || selectedTrim.colorsExt.length === 0) && (
+                      <div className="w-full py-4 text-center border-2 border-dashed border-slate-200 rounded-xl">
+                        <p className="text-[10px] font-medium text-slate-400">색상 정보가 제공되지 않는 차량입니다.</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center px-1">
+                    <span className="text-xs font-bold text-slate-600">내장 색상</span>
+                    <span className="text-xs font-bold text-[var(--color-primary)]">
+                      {selectedIntColorData ? selectedIntColorData.title : "선택 안됨"}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-4">
+                    {selectedTrim.colorsInt?.map((color: any, index: number) => {
+                      const isSelected = selectedIntColor === color.idx;
+                      const bgStyle = Array.isArray(color.detail) && color.detail.length >= 2
+                        ? `linear-gradient(135deg, ${color.detail[0]} 50%, ${color.detail[1]} 50%)`
+                        : color.thumb && color.thumb.startsWith("#") ? color.thumb : color.thumb || "#ffffff";
+                        
+                      return (
+                        <button
+                          key={color.idx || index}
+                          onClick={() => setSelectedIntColor(color.idx)}
+                          className="group relative flex flex-col items-center gap-2"
+                        >
+                          <div 
+                            className={`w-12 h-12 rounded-full border-2 transition-all shadow-sm ${
+                              isSelected ? "border-[var(--color-primary)] scale-110 shadow-md" : "border-white hover:border-slate-300"
+                            }`}
+                            style={{ background: bgStyle, backgroundSize: "cover" }}
+                          />
+                          <span className={`text-[9px] font-bold transition-all ${isSelected ? "text-[var(--color-primary)]" : "text-slate-400 group-hover:text-slate-600"}`}>
+                            {color.title}
+                          </span>
+                        </button>
+                      );
+                    })}
+                    {(!selectedTrim.colorsInt || selectedTrim.colorsInt.length === 0) && (
+                      <div className="w-full py-4 text-center border-2 border-dashed border-slate-200 rounded-xl">
+                        <p className="text-[10px] font-medium text-slate-400">내장 색상 정보가 제공되지 않는 차량입니다.</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* 4. Option Selection */}
+        {selectedTrim && selectedTrim.options && selectedTrim.options.length > 0 && (
+          <section className="animate-in fade-in duration-700 delay-300">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full bg-slate-900 text-white text-[10px] flex items-center justify-center font-bold">4</span>
+                <h4 className="text-sm font-bold text-[var(--color-text)]">선택 옵션</h4>
+              </div>
+              <div className="text-[10px] font-bold text-slate-400">
+                선택됨: <span className="text-[var(--color-primary)]">{Object.values(selectedOptions).filter(Boolean).length}개</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {selectedTrim.options.map((opt: any) => {
+                const isSelected = !!selectedOptions[opt.idx];
+                return (
+                  <label
+                    key={opt.idx}
+                    className={`group relative flex items-center gap-3 p-4 rounded-2xl border transition-all duration-300 cursor-pointer ${
+                      isSelected
+                        ? "border-[var(--color-primary)] bg-blue-50/30 shadow-sm"
+                        : "border-slate-100 hover:border-blue-200 hover:bg-slate-50/50"
+                    }`}
+                  >
+                    <div className={`w-5 h-5 rounded flex items-center justify-center border transition-all ${
+                      isSelected ? "bg-[var(--color-primary)] border-[var(--color-primary)]" : "border-slate-300 bg-white"
+                    }`}>
+                      {isSelected && (
+                        <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                      <input
+                        type="checkbox"
+                        className="sr-only"
+                        checked={isSelected}
+                        onChange={() => toggleOption(opt.idx)}
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <p className={`text-xs font-bold leading-tight ${isSelected ? "text-[var(--color-primary)]" : "text-slate-700"}`}>
+                        {opt.title}
+                      </p>
+                      {Number(opt.price) > 0 && (
+                        <p className="text-[10px] font-bold text-slate-400 mt-1">
+                          + {formatPrice(Number(opt.price))}원
+                        </p>
+                      )}
+                    </div>
+                  </label>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {/* 5. Final Summary Box */}
+        {selectedTrim && (
+          <section className="pt-4 border-t border-slate-100 animate-in fade-in duration-1000 delay-500">
+            <div className="bg-gradient-to-br from-slate-900 to-blue-950 p-6 rounded-3xl shadow-xl shadow-blue-900/20">
+              <div className="space-y-4">
+                <div className="flex justify-between items-center text-blue-200/60 text-[10px] font-bold uppercase tracking-wider">
+                  <span>Configuration Summary</span>
+                  <span className="bg-blue-400/20 text-blue-300 px-2 py-0.5 rounded-full">Selected</span>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-blue-200/50 text-[10px] mb-0.5">기본 차량가</p>
+                    <p className="text-white text-sm font-bold">{formatPriceWon(Number(selectedTrim.price) || 0)}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-blue-200/50 text-[10px] mb-0.5">선택 옵션 합계</p>
+                    <p className="text-white text-sm font-bold">+ {formatPriceWon(totalOptionPrice + totalColorPrice)}</p>
+                  </div>
+                </div>
+
+                <div className="h-[1px] bg-white/10" />
+
+                <div className="flex justify-between items-end">
+                  <div>
+                    <p className="text-blue-300 text-[10px] font-bold mb-0.5">최종 견적가 (VAT 포함)</p>
+                    <h5 className="text-white text-2xl lg:text-3xl font-black">
+                      {formatPriceWon((Number(selectedTrim.price) || 0) + totalOptionPrice + totalColorPrice)}
+                    </h5>
+                  </div>
+                  <div className="pb-1">
+                    <span className="text-[10px] font-bold text-blue-300/80 italic">Estimated Price</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+      </div>
     </div>
   );
 }

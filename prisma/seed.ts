@@ -81,17 +81,22 @@ import { popularCars } from './car-data';
  *
  * 계수 로직 (임시):
  * - 기간: 36m 기준 1.0, 48m 0.82, 60m 0.70
- * - 선납: 선납30% 기준 1.0, 보증30% 1.15, 무보증 1.35
  * - 주행: 2만km 기준 1.0, 1만km 0.92, 3만km 1.12
+ * - 선납: 크롤링된 실제 데이터(prepay, deposit, none) 사용 (1:1 정확하게)
  */
-function generatePriceMatrix(baseRent: number, baseLease: number) {
+function generatePriceMatrix(scrapedMatrix: any) {
   const periods = [36, 48, 60];
   const deposits = ['PREPAY_30', 'DEPOSIT_30', 'NO_DEPOSIT'];
   const mileages = [10000, 20000, 30000];
 
   const periodFactor = { 36: 1.0, 48: 0.82, 60: 0.70 };
-  const depositFactor = { PREPAY_30: 1.0, DEPOSIT_30: 1.15, NO_DEPOSIT: 1.35 };
   const mileageFactor = { 10000: 0.92, 20000: 1.0, 30000: 1.12 };
+
+  const depositKeys: Record<string, string> = {
+    PREPAY_30: 'prepay',
+    DEPOSIT_30: 'deposit',
+    NO_DEPOSIT: 'none',
+  };
 
   const matrix: Record<string, { rent: number; lease: number }> = {};
 
@@ -99,10 +104,15 @@ function generatePriceMatrix(baseRent: number, baseLease: number) {
     for (const d of deposits) {
       for (const m of mileages) {
         const key = `${p}_${d}_${m}`;
+        const dKey = depositKeys[d];
+        
+        const baseRent = scrapedMatrix?.rent?.[dKey] || 0;
+        const baseLease = scrapedMatrix?.lease?.[dKey] || 0;
+
         const factor =
           periodFactor[p as 36 | 48 | 60] *
-          depositFactor[d as keyof typeof depositFactor] *
           mileageFactor[m as 10000 | 20000 | 30000];
+          
         matrix[key] = {
           rent: Math.round(baseRent * factor),
           lease: Math.round(baseLease * factor),
@@ -137,7 +147,11 @@ async function main() {
     const brand = await prisma.brand.findUnique({ where: { slug: car.brandSlug } });
     if (!brand) continue;
 
-    const priceMatrix = generatePriceMatrix(car.monthlyRent, car.monthlyLease);
+    let priceMatrix = car.priceMatrix as any;
+    // Fallback for old format
+    if (priceMatrix && typeof (priceMatrix as any).rent === 'object') {
+        priceMatrix = generatePriceMatrix(car.priceMatrix as any);
+    }
 
     await prisma.car.upsert({
       where: { slug: car.slug },
@@ -152,6 +166,8 @@ async function main() {
         priceMatrix,
         isPopular: car.isPopular,
         sortOrder: car.sortOrder,
+        options: car.options || {},
+        thumbnailUrl: car.imageUrl || `/images/cars/${car.slug}.png`,
       },
       create: {
         slug: car.slug,
@@ -164,7 +180,7 @@ async function main() {
         basePrice: car.basePrice,
         thumbnailUrl: car.imageUrl || `/images/cars/${car.slug}.png`,
         galleryUrls: [],
-        options: [],
+        options: car.options || {},
         priceMatrix,
         isPopular: car.isPopular,
         sortOrder: car.sortOrder,

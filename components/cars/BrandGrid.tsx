@@ -98,7 +98,15 @@ export default function BrandGrid() {
         }
         
         if (isMounted && remainingCars.length > 0) {
-          setBrandCars((prev) => [...prev, ...remainingCars]);
+          setBrandCars((prev) => {
+            const all = [...prev, ...remainingCars];
+            const seen = new Set();
+            return all.filter((car) => {
+              if (seen.has(car.id)) return false;
+              seen.add(car.id);
+              return true;
+            });
+          });
         }
       } catch (err) {
         console.error("Background fetch failed:", err);

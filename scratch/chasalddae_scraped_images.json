@@ -1,0 +1,1002 @@
+[
+  {
+    "model_name": "EV5 GT",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260202170635286.png"
+  },
+  {
+    "model_name": "EV3 GT",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260202170712745.png"
+  },
+  {
+    "model_name": "EV4 GT",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260202170612184.png"
+  },
+  {
+    "model_name": "All New 5008(3세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260114142908402.png"
+  },
+  {
+    "model_name": "필랑트",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260113171450998.png"
+  },
+  {
+    "model_name": "GV60 마그마",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260113091316989.png"
+  },
+  {
+    "model_name": "The New RS e-tron GT",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20251002091612439.png"
+  },
+  {
+    "model_name": "The New e-tron GT",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20251002091134853.png"
+  },
+  {
+    "model_name": "아이오닉6 N",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20251001162845337.png"
+  },
+  {
+    "model_name": "더 뉴 스포티지 HEV(NQ5 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241105090613228.png"
+  },
+  {
+    "model_name": "더 뉴 스포티지(NQ5 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241105090550192.png"
+  },
+  {
+    "model_name": "더 뉴 캐스퍼",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241017091017343.png"
+  },
+  {
+    "model_name": "e-G80(RG3 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240905091255905.png"
+  },
+  {
+    "model_name": "Polestar 4",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240814172537999.png"
+  },
+  {
+    "model_name": "액티언(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240812151639672.png"
+  },
+  {
+    "model_name": "Hatch(F65/66)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240703094130736.png"
+  },
+  {
+    "model_name": "The New Touareg(3세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240806094727444.png"
+  },
+  {
+    "model_name": "캐스퍼 일렉트릭",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240709085800471.png"
+  },
+  {
+    "model_name": "Countryman(3세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240614090548973.png"
+  },
+  {
+    "model_name": "LM",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240611133518539.png"
+  },
+  {
+    "model_name": "EV3",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240604175602933.png"
+  },
+  {
+    "model_name": "EX30",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231114145326368.png"
+  },
+  {
+    "model_name": "SQ7(2세대 PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20251117101307670.png"
+  },
+  {
+    "model_name": "디 올 뉴 팰리세이드 HEV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241220090510966.png"
+  },
+  {
+    "model_name": "디 올 뉴 팰리세이드",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241220090444606.png"
+  },
+  {
+    "model_name": "New Q7(2세대 PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241218102129125.png"
+  },
+  {
+    "model_name": "The New Q8",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241216091954864.png"
+  },
+  {
+    "model_name": "X3(4세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241128095917847.png"
+  },
+  {
+    "model_name": "New Model 3",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240404113842827.png"
+  },
+  {
+    "model_name": "그랑 콜레오스 HEV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240627130404267.png"
+  },
+  {
+    "model_name": "그랑 콜레오스",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240627130343654.png"
+  },
+  {
+    "model_name": "X2(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240404110356899.png"
+  },
+  {
+    "model_name": "아르카나 HEV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240403103423512.png"
+  },
+  {
+    "model_name": "아르카나",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240403103401755.png"
+  },
+  {
+    "model_name": "New Discovery Sport(1세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240124114901237.png"
+  },
+  {
+    "model_name": "Range Rover Velar(1세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240124105047104.png"
+  },
+  {
+    "model_name": "Range Rover Evoque(2세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240124105009520.png"
+  },
+  {
+    "model_name": "Prius(5세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231213090743275.png"
+  },
+  {
+    "model_name": "더 뉴 K8 HEV(GL3 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240809100939195.png"
+  },
+  {
+    "model_name": "The new EQB",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240527103055403.png"
+  },
+  {
+    "model_name": "The new EQA",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240527102921566.png"
+  },
+  {
+    "model_name": "더 뉴 토레스",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240509085718452.png"
+  },
+  {
+    "model_name": "더 뉴 아이오닉5",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240305114215425.png"
+  },
+  {
+    "model_name": "The New E-Class(W214)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240122090155657.png"
+  },
+  {
+    "model_name": "CLA-Class(2세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231226140825805.png"
+  },
+  {
+    "model_name": "GLA-Class(2세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240131120335662.png"
+  },
+  {
+    "model_name": "GLB-Class(1세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231221171110917.png"
+  },
+  {
+    "model_name": "더 뉴 카니발 HEV(KA4 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231108155806284.png"
+  },
+  {
+    "model_name": "더 뉴 카니발(KA4 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231108155751535.png"
+  },
+  {
+    "model_name": "A-Class(4세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231030150224563.png"
+  },
+  {
+    "model_name": "Polestar 2(F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231026090556385.png"
+  },
+  {
+    "model_name": "더 뉴 K5 HEV(DL3 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231025094107201.png"
+  },
+  {
+    "model_name": "더 뉴 K5(DL3 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231025094031145.png"
+  },
+  {
+    "model_name": "Accord(11세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231010135447436.png"
+  },
+  {
+    "model_name": "GV80 쿠페(JX F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230927101143106.png"
+  },
+  {
+    "model_name": "GV80(JX F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230927101117812.png"
+  },
+  {
+    "model_name": "더 뉴 EV6",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240514090207411.png"
+  },
+  {
+    "model_name": "GV70(JK F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240508090253799.png"
+  },
+  {
+    "model_name": "The New GLS-Class(2세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231113111440248.png"
+  },
+  {
+    "model_name": "Alphard(4세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230918090029533.png"
+  },
+  {
+    "model_name": "i5 (G60)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230906094048916.png"
+  },
+  {
+    "model_name": "5 Series(G60)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230906094007281.png"
+  },
+  {
+    "model_name": "아이오닉5N",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230904090554415.png"
+  },
+  {
+    "model_name": "The New GLE-Class(2세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230829131521921.png"
+  },
+  {
+    "model_name": "Wrangler(JL F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240103131514477.png"
+  },
+  {
+    "model_name": "G80(RG3 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231226090342885.png"
+  },
+  {
+    "model_name": "더 뉴 투싼 HEV (NX4 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231121092149242.png"
+  },
+  {
+    "model_name": "더 뉴 투싼 (NX4 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231121092123723.png"
+  },
+  {
+    "model_name": "All New Pilot(4세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230829105342788.png"
+  },
+  {
+    "model_name": "레이 EV(PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230823133938186.png"
+  },
+  {
+    "model_name": "디 올-뉴 싼타페 HEV(MX5)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230814091823945.png"
+  },
+  {
+    "model_name": "디 올-뉴 싼타페(MX5)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230814091809518.png"
+  },
+  {
+    "model_name": "The New X6M(3세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230725153031391.png"
+  },
+  {
+    "model_name": "The New X5M(4세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230725152650493.png"
+  },
+  {
+    "model_name": "더 뉴 트레일블레이저",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230719144358971.png"
+  },
+  {
+    "model_name": "EQE-SUV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230712155309303.png"
+  },
+  {
+    "model_name": "The New X6(3세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230707130151450.png"
+  },
+  {
+    "model_name": "The New X5(4세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230707130116833.png"
+  },
+  {
+    "model_name": "더 뉴 모닝(JA PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230705090803502.png"
+  },
+  {
+    "model_name": "The New S8(D5)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230704091128755.png"
+  },
+  {
+    "model_name": "The New GLC-Class(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230608142815463.png"
+  },
+  {
+    "model_name": "RX(5세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230621103704317.png"
+  },
+  {
+    "model_name": "Crown Crossover",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230605112739885.png"
+  },
+  {
+    "model_name": "더 뉴 티볼리",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230601154910551.png"
+  },
+  {
+    "model_name": "XM",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230329124922736.png"
+  },
+  {
+    "model_name": "렉스턴 뉴 아레나",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230503150744412.png"
+  },
+  {
+    "model_name": "EV9",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230503094733528.png"
+  },
+  {
+    "model_name": "iX1",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230329123733508.png"
+  },
+  {
+    "model_name": "X1(3세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230329123631386.png"
+  },
+  {
+    "model_name": "408",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230523105424296.png"
+  },
+  {
+    "model_name": "쏘나타 디 엣지(DN8 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230420092324909.png"
+  },
+  {
+    "model_name": "디 올 뉴 코나EV(SX2)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230413092418592.png"
+  },
+  {
+    "model_name": "All New CR-V(6세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230411101043752.png"
+  },
+  {
+    "model_name": "트랙스 크로스오버",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230322113751213.png"
+  },
+  {
+    "model_name": "더 뉴 아반떼 HEV(CN7 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230313092855361.png"
+  },
+  {
+    "model_name": "더 뉴 아반떼(CN7 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230313092821122.png"
+  },
+  {
+    "model_name": "디 올 뉴 코나 HEV(SX2)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230118093830670.png"
+  },
+  {
+    "model_name": "디 올 뉴 코나(SX2)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230118093755355.png"
+  },
+  {
+    "model_name": "Range Rover Sport(3세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220921113658669.png"
+  },
+  {
+    "model_name": "THE New 3 Series(G20/G21 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20221026091208131.png"
+  },
+  {
+    "model_name": "디 올-뉴 그랜저 HEV(GN7)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20221116175309626.png"
+  },
+  {
+    "model_name": "디 올-뉴 그랜저(GN7)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20221116175303468.png"
+  },
+  {
+    "model_name": "The New X7(1세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220824131920208.png"
+  },
+  {
+    "model_name": "7 Series(G70)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220926104526636.png"
+  },
+  {
+    "model_name": "The New A8(D5)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20221012102658642.png"
+  },
+  {
+    "model_name": "EQS-SUV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20221006092721465.png"
+  },
+  {
+    "model_name": "Q4 E-tron",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220906130929120.png"
+  },
+  {
+    "model_name": "ID4",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220906132207815.png"
+  },
+  {
+    "model_name": "더 뉴 기아 레이(PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220810091940524.png"
+  },
+  {
+    "model_name": "EQE",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220923175910347.png"
+  },
+  {
+    "model_name": "더 뉴 쏘렌토 HEV(MQ4 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230821090514671.png"
+  },
+  {
+    "model_name": "더 뉴 쏘렌토(MQ4 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230821090408926.png"
+  },
+  {
+    "model_name": "2 Series ActiveTourer(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220804150247832.png"
+  },
+  {
+    "model_name": "더 뉴 셀토스",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220630091118820.png"
+  },
+  {
+    "model_name": "더 뉴 G70 슈팅브레이크",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220627092755700.png"
+  },
+  {
+    "model_name": "NX(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220629090821644.png"
+  },
+  {
+    "model_name": "디 올 뉴 니로EV(SG2)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220524145429363.png"
+  },
+  {
+    "model_name": "2 Series Coupe(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220612200800952.png"
+  },
+  {
+    "model_name": "The New RAV4(5세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220613161122519.png"
+  },
+  {
+    "model_name": "The New C-Class(W206)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220630095239606.png"
+  },
+  {
+    "model_name": "The New AMG GT 4DOOR",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220613145211412.png"
+  },
+  {
+    "model_name": "디 올 뉴 니로(SG2)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220228083827948.png"
+  },
+  {
+    "model_name": "308(3세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250409085343924.png"
+  },
+  {
+    "model_name": "신형 G90(RS4)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20211215100408649.png"
+  },
+  {
+    "model_name": "EQS",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20211122111150261.png"
+  },
+  {
+    "model_name": "Grand CherokeeL(WL)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20211230115502596.png"
+  },
+  {
+    "model_name": "THE New ES(7세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20211230114709989.png"
+  },
+  {
+    "model_name": "RS6 Avant(C8)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220616112025768.PNG"
+  },
+  {
+    "model_name": "RS7(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220616112928331.PNG"
+  },
+  {
+    "model_name": "더 뉴K9(RJ)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220627152508963.png"
+  },
+  {
+    "model_name": "Sienna(4세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20210407105905601.png"
+  },
+  {
+    "model_name": "스타리아",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220618190826652.png"
+  },
+  {
+    "model_name": "THE New LS(5세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20201029153925238.png"
+  },
+  {
+    "model_name": "더 뉴 G70",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220627141459924.png"
+  },
+  {
+    "model_name": "Defender(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20211109092555808.png"
+  },
+  {
+    "model_name": "Q3(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220629091713834.png"
+  },
+  {
+    "model_name": "A7(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20201029173801559.png"
+  },
+  {
+    "model_name": "HighLander(4세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230725092306454.png"
+  },
+  {
+    "model_name": "A6(C8)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240904114500393.png"
+  },
+  {
+    "model_name": "베뉴",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20201029165258431.png"
+  },
+  {
+    "model_name": "UX(1세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220629090736569.png"
+  },
+  {
+    "model_name": "X4(2세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20211103130712102.png"
+  },
+  {
+    "model_name": "쏠라티",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20201029164820867.png"
+  },
+  {
+    "model_name": "New iX3",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260220160023607.png"
+  },
+  {
+    "model_name": "디 올 뉴 셀토스 HEV(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260126155325700.png"
+  },
+  {
+    "model_name": "디 올 뉴 셀토스(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260126155255255.png"
+  },
+  {
+    "model_name": "더 뉴 스타리아",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20251217131421154.png"
+  },
+  {
+    "model_name": "Escalade IQ",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20251120090913245.png"
+  },
+  {
+    "model_name": "SEALION7",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250908174647307.png"
+  },
+  {
+    "model_name": "The New Odyssey(5세대 PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250310165758129.png"
+  },
+  {
+    "model_name": "EX30 Cross Country",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250904164607368.png"
+  },
+  {
+    "model_name": "EV5",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250904095303259.png"
+  },
+  {
+    "model_name": "The New RS3(8Y F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250902102613993.png"
+  },
+  {
+    "model_name": "S6 E-tron",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250814090900829.png"
+  },
+  {
+    "model_name": "A6 E-tron",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250814090754298.png"
+  },
+  {
+    "model_name": "The New iX",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250808095226607.png"
+  },
+  {
+    "model_name": "더 뉴 아이오닉6",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250728091439788.png"
+  },
+  {
+    "model_name": "2 Series GranCoupe(3세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250704131559684.png"
+  },
+  {
+    "model_name": "1 Series(4세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250704131447861.png"
+  },
+  {
+    "model_name": "All New 3008(3세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250703141420102.png"
+  },
+  {
+    "model_name": "SEAL",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250703134221137.png"
+  },
+  {
+    "model_name": "New XC90(2세대 PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250702102453739.png"
+  },
+  {
+    "model_name": "액티언 HEV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250623172038521.png"
+  },
+  {
+    "model_name": "디 올 뉴 넥쏘",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250610091605892.png"
+  },
+  {
+    "model_name": "The New Golf GTI(8세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250609104225833.png"
+  },
+  {
+    "model_name": "Atlas",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250526112118915.png"
+  },
+  {
+    "model_name": "The New Q5(3세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250507170931922.png"
+  },
+  {
+    "model_name": "The New S5(3세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250507162121199.png"
+  },
+  {
+    "model_name": "The New Escalade(5세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250416114412299.png"
+  },
+  {
+    "model_name": "New Cooper Convertible(3세대 PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250409152542777.png"
+  },
+  {
+    "model_name": "The New i4",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250407165800764.png"
+  },
+  {
+    "model_name": "Countryman Electric",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250314182614876.png"
+  },
+  {
+    "model_name": "ACEMAN",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250314181542186.png"
+  },
+  {
+    "model_name": "SQ6 E-tron",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250318092026327.png"
+  },
+  {
+    "model_name": "Q6 E-tron",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250318092010873.png"
+  },
+  {
+    "model_name": "LX",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250317094136986.png"
+  },
+  {
+    "model_name": "Electric (2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250314182544497.png"
+  },
+  {
+    "model_name": "The New Golf(8세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250314170425804.png"
+  },
+  {
+    "model_name": "IX2",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250312175031747.png"
+  },
+  {
+    "model_name": "EV4",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250312161032236.png"
+  },
+  {
+    "model_name": "토레스 HEV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250312143943928.png"
+  },
+  {
+    "model_name": "GV60(JW F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250310114700386.png"
+  },
+  {
+    "model_name": "The New RS Q8",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250227115742671.png"
+  },
+  {
+    "model_name": "The New A3(8Y F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250123085857263.png"
+  },
+  {
+    "model_name": "e-GV70(JK F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250116090518913.png"
+  },
+  {
+    "model_name": "ID.5",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250117175519496.png"
+  },
+  {
+    "model_name": "M5(7세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241205104223390.png"
+  },
+  {
+    "model_name": "더 뉴 EV6 GT",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241126090803163.png"
+  },
+  {
+    "model_name": "Camry(11세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241121100545346.png"
+  },
+  {
+    "model_name": "더 뉴 니로(SG2 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260310090844924.png"
+  },
+  {
+    "model_name": "세닉",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250701162920486.png"
+  },
+  {
+    "model_name": "New Model X(PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250618091519688.png"
+  },
+  {
+    "model_name": "New Model S(PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250618091454648.png"
+  },
+  {
+    "model_name": "토레스 EVX 알파",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250408110820518.png"
+  },
+  {
+    "model_name": "EV9 GT",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250218090625724.png"
+  },
+  {
+    "model_name": "아이오닉9",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250203131629431.png"
+  },
+  {
+    "model_name": "Model Y Juniper",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250117175613930.png"
+  },
+  {
+    "model_name": "EX90",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260402154647749.png"
+  },
+  {
+    "model_name": "무쏘 롱 데크",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260105094724493.png"
+  },
+  {
+    "model_name": "무쏘",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260105094640767.png"
+  },
+  {
+    "model_name": "The New AMG GT(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250527133705317.png"
+  },
+  {
+    "model_name": "New Gladiator",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250411094414187.png"
+  },
+  {
+    "model_name": "G-Class EQ",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241114115007933.png"
+  },
+  {
+    "model_name": "G-Class(W463 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241004090215905.png"
+  },
+  {
+    "model_name": "Maybach EQS-SUV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240802170426351.png"
+  },
+  {
+    "model_name": "신형 콜로라도(3세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240715105513130.png"
+  },
+  {
+    "model_name": "ST1",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240423143723210.png"
+  },
+  {
+    "model_name": "CLE-Class",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240219110436247.png"
+  },
+  {
+    "model_name": "더 뉴 K8(GL3 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240809100916821.png"
+  },
+  {
+    "model_name": "The New M4(2세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240805113400933.png"
+  },
+  {
+    "model_name": "카니발 헤리티지",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240805094627756.png"
+  },
+  {
+    "model_name": "The New 4 Series(2세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240729112546722.png"
+  },
+  {
+    "model_name": "The New Maybach GLS-Class",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240131113508170.png"
+  },
+  {
+    "model_name": "SL-Class(R232)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20231031142723591.png"
+  },
+  {
+    "model_name": "스타리아 HEV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20240228095405339.png"
+  },
+  {
+    "model_name": "M2(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230704104548507.png"
+  },
+  {
+    "model_name": "더 뉴 아반떼N(CN7 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230726090545460.png"
+  },
+  {
+    "model_name": "i7",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220926104327697.png"
+  },
+  {
+    "model_name": "The New Z4(3세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20230313133238822.png"
+  },
+  {
+    "model_name": "New XC40(1세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220817111128149.png"
+  },
+  {
+    "model_name": "The New M8",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220914154700533.png"
+  },
+  {
+    "model_name": "The New 8 Series(2세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220705145120772.png"
+  },
+  {
+    "model_name": "GR86(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220517120654643.png"
+  },
+  {
+    "model_name": "Range Rover(5세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20211105090014444.png"
+  },
+  {
+    "model_name": "Maybach S-Class(W223)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220714133635938.png"
+  },
+  {
+    "model_name": "S-Class(W223)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220630094204439.png"
+  },
+  {
+    "model_name": "봉고Ⅲ EV 특장차",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220725120118718.PNG"
+  },
+  {
+    "model_name": "봉고Ⅲ EV(PU)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20201029170534361.png"
+  },
+  {
+    "model_name": "포터II EV 특장차",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220725110432376.png"
+  },
+  {
+    "model_name": "포터II EV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20201029152347251.png"
+  },
+  {
+    "model_name": "더 뉴봉고Ⅲ 특장차",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220725115022902.PNG"
+  },
+  {
+    "model_name": "더 뉴봉고Ⅲ(PU)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20201029170524448.png"
+  },
+  {
+    "model_name": "V60 CrossCountry(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20221006170315268.png"
+  },
+  {
+    "model_name": "더 뉴 포터II 특장차",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220727085153639.png"
+  },
+  {
+    "model_name": "더 뉴 포터II",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20220608112634343.png"
+  },
+  {
+    "model_name": "V90 CrossCountry(2세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20211230115728187.png"
+  },
+  {
+    "model_name": "스타리아 EV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260423115126342.png"
+  },
+  {
+    "model_name": "A6(C9)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260421091356338.png"
+  },
+  {
+    "model_name": "더 뉴 스타리아 HEV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20251217131436699.png"
+  },
+  {
+    "model_name": "Maybach SL-Class",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20251124091412228.png"
+  },
+  {
+    "model_name": "The New XC60(PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250731165832329.png"
+  },
+  {
+    "model_name": "New S90(2세대 PE)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250702102423538.png"
+  },
+  {
+    "model_name": "PV5",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250610112735687.png"
+  },
+  {
+    "model_name": "The New A5(3세대)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250507161922278.png"
+  },
+  {
+    "model_name": "무쏘 EV",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250225145034679.png"
+  },
+  {
+    "model_name": "타스만",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250213091759977.png"
+  },
+  {
+    "model_name": "ATTO 3",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250124171102168.png"
+  },
+  {
+    "model_name": "The New M3(6세대 F/L)",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20241114105446725.png"
+  },
+  {
+    "model_name": "Dolphin",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20260205135416927.png"
+  },
+  {
+    "model_name": "CyberTruck",
+    "car_image1": "https://img.chasalddae.com/model/car_images/20250905150403423.png"
+  }
+]

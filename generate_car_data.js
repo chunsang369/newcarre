@@ -55,14 +55,26 @@ function getCategory(cat, name) {
   return 'SEDAN';
 }
 
-const data = JSON.parse(fs.readFileSync('cars_final_database.json', 'utf8'));
+const data = JSON.parse(fs.readFileSync('cars_final_full_matrix.json', 'utf8'));
 
 const cars = data.map((c, i) => {
   const brandSlug = brandMap[c.brand] || 'etc';
   const modelName = c.name;
-  const slug = `${brandSlug}-${modelName.replace(/\s+/g, '-').toLowerCase()}-${i}`;
-  const rent = parsePrice(c.rentPrice);
-  const lease = parsePrice(c.leasePrice);
+  const slug = `${brandSlug}-${modelName.replace(/\s+/g, '-').toLowerCase()}`;
+  
+  const pMatrix = {
+    rent: {
+      prepay: parsePrice(c.priceMatrix.rent.prepay),
+      deposit: parsePrice(c.priceMatrix.rent.deposit),
+      none: parsePrice(c.priceMatrix.rent.none)
+    },
+    lease: {
+      prepay: parsePrice(c.priceMatrix.lease.prepay),
+      deposit: parsePrice(c.priceMatrix.lease.deposit),
+      none: parsePrice(c.priceMatrix.lease.none)
+    }
+  };
+
   const fuel = c.fuels.length > 0 ? c.fuels[0] : 'GASOLINE';
   const cat = getCategory(c.category, modelName);
 
@@ -74,10 +86,9 @@ const cars = data.map((c, i) => {
     year: 2025,
     category: cat,
     fuelType: fuel,
-    basePrice: 0, // Not available in list
-    monthlyRent: rent,
-    monthlyLease: lease,
-    isPopular: i < 50, // Just a guess for now
+    basePrice: 0,
+    priceMatrix: pMatrix,
+    isPopular: i < 50,
     sortOrder: i + 1,
     imageUrl: c.thumbnailUrl
   };

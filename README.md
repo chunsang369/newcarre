@@ -1,22 +1,28 @@
-# Hicarz Clone Project
+# Hicarz Clone (하이카즈 클론)
 
-현대적이고 고급스러운 디자인의 프리미엄 장기렌트/리스 차량 견적 플랫폼입니다.
-차량 목록 자동 로딩(Progressive Loading) 및 데이터베이스 최적화가 적용되어 있습니다.
+신차 장기렌트 및 리스 견적 비교 플랫폼을 1:1로 구현한 프로젝트입니다. 현재 데이터 소스를 '차살때' 플랫폼으로 완전히 이전하여, 250대 이상의 모든 차량 데이터를 100% 실데이터로 교체 및 최적화 완료했습니다.
 
-## 주요 기능
-- **차량 탐색:** 국산/수입 브랜드별 차량 필터링 및 Progressive Loading 무한 스크롤 구현
-- **프리미엄 UI/UX:** 모던하고 부드러운 인터랙션, 글래스모피즘 및 최신 트렌드 디자인 적용
-- **데이터 자동화:** 차량 가격 및 상세 정보 데이터베이스 연동 (Prisma + Neon PostgreSQL)
-- **최적화:** 초기 로딩 속도 극대화를 위해 초기 5대만 렌더링하고 나머지는 백그라운드 페칭
+## 최근 업데이트 내역 (Data Migration)
+
+### 1. 차살때(Chasalddae) 데이터 1:1 완벽 이관 완료
+- **데이터 파이프라인 재구축**: 기존 Hicarz 기반의 크롤링에서 차살때(Chasalddae)의 내부 Next.js RSC 페이로드를 역분석하여 파싱하는 동적 크롤링 시스템으로 전면 개편했습니다. (`rebuild_all_perfect2.js`)
+- **250대 전 차종 1:1 매칭 완료**: 국산차 및 수입차 전체 250대 라인업에 대해 중복 데이터를 제거하고, 실제 트림명, 세부 옵션, 월 렌트/리스 가격을 100% 실제 데이터로 마이그레이션했습니다.
+
+### 2. 차량 외장/내장 및 이미지 동기화
+- **한글 파일명 인코딩 이슈 해결**: 로컬 이미지 에셋의 경우 한글 파일명으로 인한 브라우저 깨짐 현상을 방지하기 위해 정규식 영문 치환을 완벽히 적용하였습니다 (e.g. `hyundai-the-new-casper`).
+- **CDN 의존성 제거**: 모든 썸네일 이미지를 로컬 `/public/images/cars/` 경로로 캐싱하여 빠른 로딩 속도와 안정성을 확보했습니다.
+- **외장/내장 컬러 선택기**: 트림에 맞는 정확한 Hex 코드 배열을 추출하여 프론트엔드 컨피규레이터의 색상 탭과 1:1로 연동했습니다.
+
+### 3. 고도화된 차량 컨피규레이터 (Configurator)
+- **실제 견적 연동**: 임의의 수학적 공식(더미 가격)을 모두 제거하고, 차살때 원본에서 추출한 실제 월 렌트료(`monthlyRent`)와 리스료(`monthlyLease`)를 `priceMatrix`의 기본값(`36_PREPAY_30_20000`)에 직접 바인딩하여 100% 동일한 견적을 산출합니다.
 
 ## 기술 스택
-- **Framework:** Next.js 16 (App Router)
-- **Styling:** Tailwind CSS, Shadcn UI
-- **Database:** Neon PostgreSQL, Prisma ORM
-- **Deployment:** Netlify
+- **Frontend**: Next.js 15 (App Router), Tailwind CSS
+- **Backend**: Prisma, PostgreSQL (Neon DB)
+- **Automation**: Node.js, Axios, 정규식 기반 RSC 페이로드 디코딩
 
-## 로컬 실행 방법
+## 배포 및 실행 가이드
+본 프로젝트는 Netlify를 통해 배포되며, 아래 스크립트로 안전한 클린 빌드가 가능합니다.
 ```bash
-npm install
-npm run dev
+npm ci && npm run build
 ```

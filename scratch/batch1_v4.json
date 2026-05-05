@@ -1,0 +1,2068 @@
+{
+  "1836": {
+    "trimId": "1836",
+    "brand": "제네시스",
+    "modelName": "e-G80(RG3 F/L)",
+    "fullName": "제네시스 e-G80(RG3 F/L)",
+    "summary": "2025년형 전기 AWD (개별소비세 5%) 기본형 (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20240905091255905.png",
+    "grades": [
+      {
+        "name": "2025년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "기본형 (자동)",
+            "price": 89190000
+          }
+        ]
+      },
+      {
+        "name": "2027년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "기본형 (자동)",
+            "price": 89190000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "시그니쳐 디자인 셀렉션",
+        "price": 3000000
+      },
+      {
+        "name": "파퓰러 패키지",
+        "price": 5400000
+      },
+      {
+        "name": "드라이빙 어시스턴스 패키지Ⅰ",
+        "price": 1950000
+      },
+      {
+        "name": "드라이빙 어시스턴스 패키지Ⅱ",
+        "price": 2000000
+      },
+      {
+        "name": "헤드업 디스플레이",
+        "price": 1300000
+      },
+      {
+        "name": "빌트인 캠 패키지",
+        "price": 850000
+      },
+      {
+        "name": "컨비니언스 패키지",
+        "price": 1900000
+      },
+      {
+        "name": "2열 컴포트 패키지",
+        "price": 3900000
+      },
+      {
+        "name": "후륜 조향 시스템",
+        "price": 1500000
+      },
+      {
+        "name": "[제네시스 파츠] 후석 스마트 엔터테인먼트 시스템",
+        "price": 3000000
+      },
+      {
+        "name": "[제네시스 파츠] 차량보호필름",
+        "price": 450000
+      },
+      {
+        "name": "[제네시스 파츠] 플로팅 휠 캡",
+        "price": 90000
+      },
+      {
+        "name": "업사이클링 버치 블룸",
+        "price": 0
+      },
+      {
+        "name": "업사이클링 버치 파인라인",
+        "price": 0
+      },
+      {
+        "name": "애쉬",
+        "price": 0
+      },
+      {
+        "name": "레드검",
+        "price": 0
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 719843,
+    "monthlyLease": 537899,
+    "mappedGrades": [
+      {
+        "name": "2025년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 1836,
+            "name": "기본형 (자동)",
+            "price": 89190000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2027년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 1836,
+            "name": "기본형 (자동)",
+            "price": 89190000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/1836.png"
+  },
+  "5426": {
+    "trimId": "5426",
+    "brand": "폴스타",
+    "modelName": "Polestar 4",
+    "fullName": "폴스타 Polestar 4",
+    "summary": "2026년형 전기 AWD Long range Dual motor (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20240814172537999.png",
+    "grades": [
+      {
+        "name": "2026년형 전기 2WD",
+        "trims": [
+          {
+            "name": "Long range Single motor (자동)",
+            "price": 66900000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 전기 AWD",
+        "trims": [
+          {
+            "name": "Long range Dual motor (자동)",
+            "price": 71900000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "Pilot pack",
+        "price": 0
+      },
+      {
+        "name": "Plus pack",
+        "price": 6000000
+      },
+      {
+        "name": "Pro pack",
+        "price": 2500000
+      },
+      {
+        "name": "Performance pack",
+        "price": 6000000
+      },
+      {
+        "name": "21인치 스포츠 휠",
+        "price": 2000000
+      },
+      {
+        "name": "22인치 퍼포먼스 휠",
+        "price": 0
+      },
+      {
+        "name": "[악세서리] 충전 포트 커버",
+        "price": 90000
+      },
+      {
+        "name": "[악세서리] 화물 캐리어",
+        "price": 630000
+      },
+      {
+        "name": "[악세서리] 화물 공간 매트, 범퍼 보호",
+        "price": 350000
+      },
+      {
+        "name": "일렉트로크로믹 글래스 루프",
+        "price": 1500000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 942574,
+    "monthlyLease": 483525,
+    "mappedGrades": [
+      {
+        "name": "2026년형 전기 2WD",
+        "trims": [
+          {
+            "trimId": 5425,
+            "name": "Long range Single motor (자동)",
+            "price": 66900000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 전기 AWD",
+        "trims": [
+          {
+            "trimId": "5426",
+            "name": "Long range Dual motor (자동)",
+            "price": 71900000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/5426.png"
+  },
+  "5445": {
+    "trimId": "5445",
+    "brand": "KG모빌리티",
+    "modelName": "액티언(2세대)",
+    "fullName": "KG모빌리티 액티언(2세대)",
+    "summary": "2026년형 가솔린 1.5 터보 LPi 바이퓨얼 AWD (개별소비세 5%) S8 (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20240812151639672.png",
+    "grades": [
+      {
+        "name": "2026년형 가솔린 1.5 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "S8 (자동)",
+            "price": 34700000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.5 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "S8 (자동)",
+            "price": 36720000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.5 터보 LPi 바이퓨얼 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "S8 (자동)",
+            "price": 38000000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.5 터보 LPi 바이퓨얼 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "S8 (자동)",
+            "price": 40020000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "파노라마 선루프",
+        "price": 1200000
+      },
+      {
+        "name": "액티브 배기 사운드",
+        "price": 1400000
+      },
+      {
+        "name": "카멜 / 베이지 퀼팅 인테리어",
+        "price": 400000
+      },
+      {
+        "name": "블랙 / 레드 투톤 스웨이드 퀄팅 인테리어",
+        "price": 600000
+      },
+      {
+        "name": "3D 어라운드 뷰 모니터링 시스템",
+        "price": 1100000
+      },
+      {
+        "name": "딥 컨트롤 패키지Ⅱ",
+        "price": 650000
+      },
+      {
+        "name": "알파인 오디오 시스템",
+        "price": 620000
+      },
+      {
+        "name": "[커스터 마이징] 이머전시 이스케이프 키트",
+        "price": 50000
+      },
+      {
+        "name": "[커스터 마이징] 풋램프 & LED 글로브 박스 램프",
+        "price": 50000
+      },
+      {
+        "name": "[커스터 마이징] 도어 스팟램프 & LED 도어스커프",
+        "price": 200000
+      },
+      {
+        "name": "[커스터마이징] 테일게이트 LED 램프",
+        "price": 120000
+      },
+      {
+        "name": "[커스터마이징] 스포츠 페달",
+        "price": 60000
+      },
+      {
+        "name": "[커스터마이징] 시트백 테이블",
+        "price": 300000
+      },
+      {
+        "name": "[커스터마이징] 러기지 스크린",
+        "price": 90000
+      },
+      {
+        "name": "[커스터마이징] 멀티 커튼",
+        "price": 100000
+      },
+      {
+        "name": "[커스터마이징] 레드 알루미늄 캘리퍼 커버",
+        "price": 300000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 354359,
+    "monthlyLease": 211281,
+    "mappedGrades": [
+      {
+        "name": "2026년형 가솔린 1.5 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 5442,
+            "name": "S8 (자동)",
+            "price": 34700000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.5 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 5442,
+            "name": "S8 (자동)",
+            "price": 36720000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.5 터보 LPi 바이퓨얼 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 5442,
+            "name": "S8 (자동)",
+            "price": 38000000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.5 터보 LPi 바이퓨얼 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 5442,
+            "name": "S8 (자동)",
+            "price": 40020000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/5445.png"
+  },
+  "5605": {
+    "trimId": "5605",
+    "brand": "현대",
+    "modelName": "더 뉴 캐스퍼",
+    "fullName": "현대 더 뉴 캐스퍼",
+    "summary": "2026년형 가솔린 1.0 터보 액티브Ⅱ 2WD 인스퍼레이션 (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20241017091017343.png",
+    "grades": [
+      {
+        "name": "2026년형 가솔린 1.0 2WD",
+        "trims": [
+          {
+            "name": "스마트 (자동)",
+            "price": 14930000
+          },
+          {
+            "name": "디 에센셜 (자동)",
+            "price": 17710000
+          },
+          {
+            "name": "인스퍼레이션 (자동)",
+            "price": 20170000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.0 2WD 밴",
+        "trims": [
+          {
+            "name": "스마트 (자동)",
+            "price": 14600000
+          },
+          {
+            "name": "스마트 초이스 (자동)",
+            "price": 15600000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.0 터보 액티브Ⅰ2WD",
+        "trims": [
+          {
+            "name": "스마트 (자동)",
+            "price": 15880000
+          },
+          {
+            "name": "디 에센셜 (자동)",
+            "price": 18660000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.0 터보 액티브Ⅱ 2WD",
+        "trims": [
+          {
+            "name": "인스퍼레이션 (자동)",
+            "price": 21070000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.0 터보 액티브Ⅰ2WD 밴",
+        "trims": [
+          {
+            "name": "스마트 (자동)",
+            "price": 15550000
+          },
+          {
+            "name": "스마트 초이스 (자동)",
+            "price": 16550000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "선루프",
+        "price": 400000
+      },
+      {
+        "name": "스토리지",
+        "price": 110000
+      },
+      {
+        "name": "실내 컬러 패키지(베이지/오렌지 브라운 투톤)",
+        "price": 150000
+      },
+      {
+        "name": "액티브 플러스",
+        "price": 500000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 214139,
+    "monthlyLease": 79251,
+    "mappedGrades": [
+      {
+        "name": "2026년형 가솔린 1.0 2WD",
+        "trims": [
+          {
+            "trimId": 5598,
+            "name": "스마트 (자동)",
+            "price": 14930000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5599,
+            "name": "디 에센셜 (자동)",
+            "price": 17710000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5600,
+            "name": "인스퍼레이션 (자동)",
+            "price": 20170000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.0 2WD 밴",
+        "trims": [
+          {
+            "trimId": 5598,
+            "name": "스마트 (자동)",
+            "price": 14600000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": "5605",
+            "name": "스마트 초이스 (자동)",
+            "price": 15600000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.0 터보 액티브Ⅰ2WD",
+        "trims": [
+          {
+            "trimId": 5598,
+            "name": "스마트 (자동)",
+            "price": 15880000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5599,
+            "name": "디 에센셜 (자동)",
+            "price": 18660000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.0 터보 액티브Ⅱ 2WD",
+        "trims": [
+          {
+            "trimId": 5600,
+            "name": "인스퍼레이션 (자동)",
+            "price": 21070000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.0 터보 액티브Ⅰ2WD 밴",
+        "trims": [
+          {
+            "trimId": 5598,
+            "name": "스마트 (자동)",
+            "price": 15550000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": "5605",
+            "name": "스마트 초이스 (자동)",
+            "price": 16550000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/5605.png"
+  },
+  "5608": {
+    "trimId": "5608",
+    "brand": "현대",
+    "modelName": "캐스퍼 일렉트릭",
+    "fullName": "현대 캐스퍼 일렉트릭",
+    "summary": "2026년형 전기 2WD (개별소비세 5%) 프리미엄 (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20240709085800471.png",
+    "grades": [
+      {
+        "name": "2026년형 전기 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "프리미엄 (자동)",
+            "price": 29360000
+          },
+          {
+            "name": "인스퍼레이션(자동)",
+            "price": 33040000
+          },
+          {
+            "name": "크로스 (자동)",
+            "price": 35150000
+          },
+          {
+            "name": "라운지 (자동)",
+            "price": 36410000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "현대 스마트센스Ⅰ",
+        "price": 1000000
+      },
+      {
+        "name": "하이패스",
+        "price": 200000
+      },
+      {
+        "name": "[HGA] 밴 패키지",
+        "price": 400000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 141113,
+    "monthlyLease": 10001,
+    "mappedGrades": [
+      {
+        "name": "2026년형 전기 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 5608,
+            "name": "프리미엄 (자동)",
+            "price": 29360000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5609,
+            "name": "인스퍼레이션(자동)",
+            "price": 33040000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5610,
+            "name": "크로스 (자동)",
+            "price": 35150000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 10765,
+            "name": "라운지 (자동)",
+            "price": 36410000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/5608.png"
+  },
+  "5818": {
+    "trimId": "5818",
+    "brand": "기아",
+    "modelName": "더 뉴 스포티지(NQ5 F/L)",
+    "fullName": "기아 더 뉴 스포티지(NQ5 F/L)",
+    "summary": "2026년형 가솔린 1.6 터보 AWD (개별소비세 5%) 프레스티지 (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20241105090550192.png",
+    "grades": [
+      {
+        "name": "2026년형 가솔린 1.6 터보 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "프레스티지 (자동)",
+            "price": 29070000
+          },
+          {
+            "name": "노블레스 (자동)",
+            "price": 32460000
+          },
+          {
+            "name": "시그니처 (자동)",
+            "price": 35110000
+          },
+          {
+            "name": "X-Line (자동)",
+            "price": 35760000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.6 터보 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "프레스티지 (자동)",
+            "price": 31300000
+          },
+          {
+            "name": "노블레스 (자동)",
+            "price": 34690000
+          },
+          {
+            "name": "시그니처 (자동)",
+            "price": 37340000
+          },
+          {
+            "name": "X-Line (자동)",
+            "price": 37990000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 LPi 2.0 2WD 일반용 (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "프레스티지 (자동)",
+            "price": 29720000
+          },
+          {
+            "name": "노블레스 (자동)",
+            "price": 33110000
+          },
+          {
+            "name": "시그니처 (자동)",
+            "price": 35760000
+          },
+          {
+            "name": "X-Line (자동)",
+            "price": 36410000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "파노라마 선루프",
+        "price": 1190000
+      },
+      {
+        "name": "12.3인치 내비게이션",
+        "price": 890000
+      },
+      {
+        "name": "빌트인 캠 2",
+        "price": 450000
+      },
+      {
+        "name": "스타일 18인치 휠",
+        "price": 690000
+      },
+      {
+        "name": "[KGA] 러기지 패키지",
+        "price": 120000
+      },
+      {
+        "name": "[KGA] 사이드 스텝",
+        "price": 340000
+      },
+      {
+        "name": "[KGA] 차량보호필름Ⅰ",
+        "price": 290000
+      },
+      {
+        "name": "[KGA] 차량 보호 필름Ⅱ",
+        "price": 320000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 250619,
+    "monthlyLease": 148909,
+    "mappedGrades": [
+      {
+        "name": "2026년형 가솔린 1.6 터보 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 5814,
+            "name": "프레스티지 (자동)",
+            "price": 29070000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5815,
+            "name": "노블레스 (자동)",
+            "price": 32460000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5816,
+            "name": "시그니처 (자동)",
+            "price": 35110000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5817,
+            "name": "X-Line (자동)",
+            "price": 35760000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.6 터보 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 5814,
+            "name": "프레스티지 (자동)",
+            "price": 31300000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5815,
+            "name": "노블레스 (자동)",
+            "price": 34690000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5816,
+            "name": "시그니처 (자동)",
+            "price": 37340000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5817,
+            "name": "X-Line (자동)",
+            "price": 37990000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 LPi 2.0 2WD 일반용 (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 5814,
+            "name": "프레스티지 (자동)",
+            "price": 29720000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5815,
+            "name": "노블레스 (자동)",
+            "price": 33110000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5816,
+            "name": "시그니처 (자동)",
+            "price": 35760000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5817,
+            "name": "X-Line (자동)",
+            "price": 36410000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/5818.png"
+  },
+  "5830": {
+    "trimId": "5830",
+    "brand": "기아",
+    "modelName": "더 뉴 스포티지 HEV(NQ5 F/L)",
+    "fullName": "기아 더 뉴 스포티지 HEV(NQ5 F/L)",
+    "summary": "2026년형 가솔린 1.6 터보 하이브리드 AWD (개별소비세 5%) 프레스티지 (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20241105090613228.png",
+    "grades": [
+      {
+        "name": "2026년형 가솔린 1.6 터보 하이브리드 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "프레스티지 (자동)",
+            "price": 34990000
+          },
+          {
+            "name": "노블레스 (자동)",
+            "price": 38280000
+          },
+          {
+            "name": "시그니처 (자동)",
+            "price": 40930000
+          },
+          {
+            "name": "X-Line (자동)",
+            "price": 41580000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.6 터보 하이브리드 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "프레스티지 (자동)",
+            "price": 37220000
+          },
+          {
+            "name": "노블레스 (자동)",
+            "price": 40510000
+          },
+          {
+            "name": "시그니처 (자동)",
+            "price": 43160000
+          },
+          {
+            "name": "X-Line (자동)",
+            "price": 43810000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "파노라마 선루프",
+        "price": 1190000
+      },
+      {
+        "name": "12.3인치 내비게이션",
+        "price": 890000
+      },
+      {
+        "name": "빌트인 캠 2",
+        "price": 450000
+      },
+      {
+        "name": "스타일 18인치 휠",
+        "price": 690000
+      },
+      {
+        "name": "[KGA] 러기지 패키지",
+        "price": 120000
+      },
+      {
+        "name": "[KGA] 사이드 스텝",
+        "price": 340000
+      },
+      {
+        "name": "[KGA] 차량보호필름Ⅰ",
+        "price": 290000
+      },
+      {
+        "name": "[KGA] 차량 보호 필름Ⅱ",
+        "price": 320000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 252314,
+    "monthlyLease": 128691,
+    "mappedGrades": [
+      {
+        "name": "2026년형 가솔린 1.6 터보 하이브리드 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 5826,
+            "name": "프레스티지 (자동)",
+            "price": 34990000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5827,
+            "name": "노블레스 (자동)",
+            "price": 38280000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5828,
+            "name": "시그니처 (자동)",
+            "price": 40930000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5829,
+            "name": "X-Line (자동)",
+            "price": 41580000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 1.6 터보 하이브리드 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 5826,
+            "name": "프레스티지 (자동)",
+            "price": 37220000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5827,
+            "name": "노블레스 (자동)",
+            "price": 40510000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5828,
+            "name": "시그니처 (자동)",
+            "price": 43160000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 5829,
+            "name": "X-Line (자동)",
+            "price": 43810000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/5830.png"
+  },
+  "6010": {
+    "trimId": "6010",
+    "brand": "현대",
+    "modelName": "아이오닉6 N",
+    "fullName": "현대 아이오닉6 N",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) N (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20251001162845337.png",
+    "grades": [
+      {
+        "name": "2026년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "N (자동)",
+            "price": 84160000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "빌트인 캠 2 Plus, N Race Cam",
+        "price": 600000
+      },
+      {
+        "name": "와이드 선루프",
+        "price": 640000
+      },
+      {
+        "name": "스웨이드 내장재 + N Performance Parts 프리미엄 인테리어 패키지",
+        "price": 900000
+      },
+      {
+        "name": "[N퍼포먼스 파츠] 프리미엄 인테리어 패키지",
+        "price": 600000
+      },
+      {
+        "name": "[N퍼포먼스 파츠] 스포츠 디자인 패키지",
+        "price": 750000
+      },
+      {
+        "name": "[N퍼포먼스 파츠] N 레이싱 센터 스트라이프(퍼포먼스 블루 펄 전용)",
+        "price": 750000
+      },
+      {
+        "name": "[N퍼포먼스 파츠] N 레이싱 센터 스트라이프(녹턴 그레이 매트 전용)",
+        "price": 750000
+      },
+      {
+        "name": "[HGA] 차량 보호 필름Ⅰ",
+        "price": 400000
+      },
+      {
+        "name": "[HGA] 차량 보호 필름Ⅱ",
+        "price": 400000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 1088301,
+    "monthlyLease": 507365,
+    "mappedGrades": [
+      {
+        "name": "2026년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 6010,
+            "name": "N (자동)",
+            "price": 84160000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/6010.png"
+  },
+  "6154": {
+    "trimId": "6154",
+    "brand": "폭스바겐",
+    "modelName": "The New Touareg(3세대 F/L)",
+    "fullName": "폭스바겐 The New Touareg(3세대 F/L)",
+    "summary": "2026년형 디젤 3.0 AWD (개별소비세 3.5%) Prestige (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20240806094727444.png",
+    "grades": [
+      {
+        "name": "2026년형 디젤 3.0 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "name": "Prestige (자동)",
+            "price": 102790000
+          },
+          {
+            "name": "R-Line (자동)",
+            "price": 114084000
+          },
+          {
+            "name": "Prestige Final Edition (자동)",
+            "price": 106421000
+          },
+          {
+            "name": "R-Line Final Edition (자동)",
+            "price": 116506000
+          }
+        ]
+      }
+    ],
+    "options": [],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 1497061,
+    "monthlyLease": 884000,
+    "mappedGrades": [
+      {
+        "name": "2026년형 디젤 3.0 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "trimId": 6154,
+            "name": "Prestige (자동)",
+            "price": 102790000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 6155,
+            "name": "R-Line (자동)",
+            "price": 114084000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 10885,
+            "name": "Prestige Final Edition (자동)",
+            "price": 106421000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 10886,
+            "name": "R-Line Final Edition (자동)",
+            "price": 116506000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/6154.png"
+  },
+  "6258": {
+    "trimId": "6258",
+    "brand": "미니",
+    "modelName": "Countryman(3세대)",
+    "fullName": "미니 Countryman(3세대)",
+    "summary": "2026년형 가솔린 2.0 터보 AWD (개별소비세 3.5%) Cooper S ALL4 Classic (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20240614090548973.png",
+    "grades": [
+      {
+        "name": "2026년형 가솔린 2.0 터보 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "name": "Cooper S ALL4 Classic (자동)",
+            "price": 50500000
+          },
+          {
+            "name": "Cooper S ALL4 Favoured (자동)",
+            "price": 56400000
+          },
+          {
+            "name": "JCW ALL4 (자동)",
+            "price": 66200000
+          }
+        ]
+      }
+    ],
+    "options": [],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 713899,
+    "monthlyLease": 441299,
+    "mappedGrades": [
+      {
+        "name": "2026년형 가솔린 2.0 터보 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "trimId": 6258,
+            "name": "Cooper S ALL4 Classic (자동)",
+            "price": 50500000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 6259,
+            "name": "Cooper S ALL4 Favoured (자동)",
+            "price": 56400000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 6260,
+            "name": "JCW ALL4 (자동)",
+            "price": 66200000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/6258.png"
+  },
+  "6341": {
+    "trimId": "6341",
+    "brand": "테슬라",
+    "modelName": "Model Y Juniper",
+    "fullName": "테슬라 Model Y Juniper",
+    "summary": "2026년형 전기 2WD Premium RWD (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20250117175613930.png",
+    "grades": [
+      {
+        "name": "2026년형 전기 2WD",
+        "trims": [
+          {
+            "name": "Premium RWD (자동)",
+            "price": 49990000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 전기 AWD",
+        "trims": [
+          {
+            "name": "Premium Long Range (자동)",
+            "price": 59990000
+          },
+          {
+            "name": "L (자동)",
+            "price": 64990000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "풀 셀프-드라이빙 구현 기능",
+        "price": 9043000
+      },
+      {
+        "name": "향상된 오토파일럿",
+        "price": 4522000
+      },
+      {
+        "name": "19인치 크로스플로우 휠",
+        "price": 0
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 462341,
+    "monthlyLease": null,
+    "mappedGrades": [
+      {
+        "name": "2026년형 전기 2WD",
+        "trims": [
+          {
+            "trimId": 6341,
+            "name": "Premium RWD (자동)",
+            "price": 49990000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 전기 AWD",
+        "trims": [
+          {
+            "trimId": "6341",
+            "name": "Premium Long Range (자동)",
+            "price": 59990000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": "6341",
+            "name": "L (자동)",
+            "price": 64990000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/6341.png"
+  },
+  "6391": {
+    "trimId": "6391",
+    "brand": "미니",
+    "modelName": "Hatch(F65/66)",
+    "fullName": "미니 Hatch(F65/66)",
+    "summary": "2026년형 가솔린 2.0 터보 2WD 3도어 (개별소비세 3.5%) Cooper S Favoured (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20240703094130736.png",
+    "grades": [
+      {
+        "name": "2026년형 가솔린 2.0 터보 2WD 3도어 (개별소비세 3.5%)",
+        "trims": [
+          {
+            "name": "Cooper S Favoured (자동)",
+            "price": 47500000
+          },
+          {
+            "name": "JCW (자동)",
+            "price": 55100000
+          },
+          {
+            "name": "JCW Victory Edition (자동)",
+            "price": 56100000
+          },
+          {
+            "name": "Cooper C Essential (자동)",
+            "price": 35800000
+          },
+          {
+            "name": "Cooper C Classic (자동)",
+            "price": 41900000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 2.0 터보 2WD 5도어 (개별소비세 3.5%)",
+        "trims": [
+          {
+            "name": "Cooper C Essential (자동)",
+            "price": 37000000
+          },
+          {
+            "name": "Cooper C Classic (자동)",
+            "price": 43300000
+          },
+          {
+            "name": "Cooper S Favoured (자동)",
+            "price": 49100000
+          }
+        ]
+      }
+    ],
+    "options": [],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 583190,
+    "monthlyLease": 324135,
+    "mappedGrades": [
+      {
+        "name": "2026년형 가솔린 2.0 터보 2WD 3도어 (개별소비세 3.5%)",
+        "trims": [
+          {
+            "trimId": 6391,
+            "name": "Cooper S Favoured (자동)",
+            "price": 47500000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 6392,
+            "name": "JCW (자동)",
+            "price": 55100000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 10856,
+            "name": "JCW Victory Edition (자동)",
+            "price": 56100000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 10888,
+            "name": "Cooper C Essential (자동)",
+            "price": 35800000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 10889,
+            "name": "Cooper C Classic (자동)",
+            "price": 41900000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 가솔린 2.0 터보 2WD 5도어 (개별소비세 3.5%)",
+        "trims": [
+          {
+            "trimId": 10888,
+            "name": "Cooper C Essential (자동)",
+            "price": 37000000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 10889,
+            "name": "Cooper C Classic (자동)",
+            "price": 43300000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 6391,
+            "name": "Cooper S Favoured (자동)",
+            "price": 49100000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/6391.png"
+  },
+  "7771": {
+    "trimId": "7771",
+    "brand": "제네시스",
+    "modelName": "GV60 마그마",
+    "fullName": "제네시스 GV60 마그마",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) 마그마 (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20260113091316989.png",
+    "grades": [
+      {
+        "name": "2026년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "마그마 (자동)",
+            "price": 98000000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "21인치 그라파이트 그레이 매트 주조 휠(마그마 캘리퍼)",
+        "price": 0
+      },
+      {
+        "name": "21인치 그라파이트 그레이 매트 경량 단조 휠(마그마 캘리퍼)",
+        "price": 3700000
+      },
+      {
+        "name": "21인치 그라파이트 그레이 매트 주조 휠(블랙 캘리퍼)",
+        "price": 0
+      },
+      {
+        "name": "21인치 그라파이트 그레이 매트 경량 단조 휠(블랙 캘리퍼)",
+        "price": 3700000
+      },
+      {
+        "name": "[제네시스 파츠] 차량 보호 필름",
+        "price": 410000
+      },
+      {
+        "name": "[제네시스 파츠] 프로텍션 매트 패키지",
+        "price": 250000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 1032550,
+    "monthlyLease": 714118,
+    "mappedGrades": [
+      {
+        "name": "2026년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 7771,
+            "name": "마그마 (자동)",
+            "price": 98000000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/7771.png"
+  },
+  "7925": {
+    "trimId": "7925",
+    "brand": "르노코리아",
+    "modelName": "필랑트",
+    "fullName": "르노코리아 필랑트",
+    "summary": "2027년형 가솔린 1.5 터보 하이브리드 2WD (개별소비세 5%) Techno (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20260113171450998.png",
+    "grades": [
+      {
+        "name": "2027년형 가솔린 1.5 터보 하이브리드 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "Techno (자동)",
+            "price": 45000000
+          },
+          {
+            "name": "Iconic (자동)",
+            "price": 48700000
+          },
+          {
+            "name": "Esprit Alpine (자동)",
+            "price": 51500000
+          },
+          {
+            "name": "Esprit Alpine 1955 (자동)",
+            "price": 54000000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "12.3인치 동승석 디스플레이 (cinema (OTT), 음악 스트리밍, 웹브라우저, 앱스토어, 테마) + R:아케이드 게임, R:러쉬, R:레이싱 + FULL 오토 파킹 보조 + 후방 긴급 제동 보조",
+        "price": 1630000
+      },
+      {
+        "name": "[액세서리] 사이드 스텝",
+        "price": 465000
+      },
+      {
+        "name": "[액세서리] 프론트 그릴 데코",
+        "price": 50000
+      },
+      {
+        "name": "[액세서리] 스포츠 페달",
+        "price": 80000
+      },
+      {
+        "name": "[액세서리] 공간 분리형 트렁크 라이너",
+        "price": 150000
+      },
+      {
+        "name": "[액세서리] 트렁크 엔트리 가드",
+        "price": 88000
+      },
+      {
+        "name": "[액세서리] LED 로장주 도어 스팟 램프",
+        "price": 150000
+      },
+      {
+        "name": "[액세서리] 스크린 보호필름",
+        "price": 78000
+      },
+      {
+        "name": "썬쉐이드",
+        "price": 150000
+      },
+      {
+        "name": "[액세서리] 트렁크 빌트인 냉장고",
+        "price": 590000
+      },
+      {
+        "name": "[액세서리] LED 필랑트 도어 스팟 램프",
+        "price": 150000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 424297,
+    "monthlyLease": 299911,
+    "mappedGrades": [
+      {
+        "name": "2027년형 가솔린 1.5 터보 하이브리드 2WD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 7925,
+            "name": "Techno (자동)",
+            "price": 45000000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 7926,
+            "name": "Iconic (자동)",
+            "price": 48700000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 7927,
+            "name": "Esprit Alpine (자동)",
+            "price": 51500000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 7928,
+            "name": "Esprit Alpine 1955 (자동)",
+            "price": 54000000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/7925.png"
+  },
+  "7929": {
+    "trimId": "7929",
+    "brand": "푸조",
+    "modelName": "All New 5008(3세대)",
+    "fullName": "푸조 All New 5008(3세대)",
+    "summary": "2026년형 가솔린 1.2 하이브리드 2WD Allure (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20260114142908402.png",
+    "grades": [
+      {
+        "name": "2026년형 가솔린 1.2 하이브리드 2WD",
+        "trims": [
+          {
+            "name": "Allure (자동)",
+            "price": 48900000
+          },
+          {
+            "name": "GT (자동)",
+            "price": 55900000
+          }
+        ]
+      }
+    ],
+    "options": [],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 801525,
+    "monthlyLease": 452701,
+    "mappedGrades": [
+      {
+        "name": "2026년형 가솔린 1.2 하이브리드 2WD",
+        "trims": [
+          {
+            "trimId": 7929,
+            "name": "Allure (자동)",
+            "price": 48900000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          },
+          {
+            "trimId": 7930,
+            "name": "GT (자동)",
+            "price": 55900000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/7929.png"
+  },
+  "10526": {
+    "trimId": "10526",
+    "brand": "기아",
+    "modelName": "EV4 GT",
+    "fullName": "기아 EV4 GT",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) GT (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20260202170612184.png",
+    "grades": [
+      {
+        "name": "2026년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "GT (자동)",
+            "price": 58110000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "드라이브 와이즈",
+        "price": 1280000
+      },
+      {
+        "name": "유틸리티",
+        "price": 400000
+      },
+      {
+        "name": "와이드 선루프",
+        "price": 640000
+      },
+      {
+        "name": "빌트인 캠2 플러스",
+        "price": 450000
+      },
+      {
+        "name": "헤드업 디스플레이",
+        "price": 590000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 559670,
+    "monthlyLease": 353901,
+    "mappedGrades": [
+      {
+        "name": "2026년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 10526,
+            "name": "GT (자동)",
+            "price": 58110000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/10526.png"
+  },
+  "10527": {
+    "trimId": "10527",
+    "brand": "기아",
+    "modelName": "EV3 GT",
+    "fullName": "기아 EV3 GT",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) GT (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20260202170712745.png",
+    "grades": [
+      {
+        "name": "2026년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "GT (자동)",
+            "price": 56610000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "모니터링",
+        "price": 1040000
+      },
+      {
+        "name": "드라이브 와이즈",
+        "price": 1090000
+      },
+      {
+        "name": "빌트인 캠2 플러스",
+        "price": 450000
+      },
+      {
+        "name": "와이드 선루프",
+        "price": 640000
+      },
+      {
+        "name": "헤드업 디스플레이",
+        "price": 590000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 696189,
+    "monthlyLease": 312400,
+    "mappedGrades": [
+      {
+        "name": "2026년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 10527,
+            "name": "GT (자동)",
+            "price": 56610000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/10527.png"
+  },
+  "10528": {
+    "trimId": "10528",
+    "brand": "기아",
+    "modelName": "EV5 GT",
+    "fullName": "기아 EV5 GT",
+    "summary": "2026년형 전기 AWD (개별소비세 5%) GT (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20260202170635286.png",
+    "grades": [
+      {
+        "name": "2026년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "name": "GT (자동)",
+            "price": 59620000
+          }
+        ]
+      }
+    ],
+    "options": [
+      {
+        "name": "스마트 커넥트",
+        "price": 740000
+      },
+      {
+        "name": "모니터링",
+        "price": 1380000
+      },
+      {
+        "name": "파노라마 선루프",
+        "price": 1090000
+      },
+      {
+        "name": "빌트인 캠 2 플러스",
+        "price": 450000
+      }
+    ],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 739270,
+    "monthlyLease": 387901,
+    "mappedGrades": [
+      {
+        "name": "2026년형 전기 AWD (개별소비세 5%)",
+        "trims": [
+          {
+            "trimId": 10528,
+            "name": "GT (자동)",
+            "price": 59620000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/10528.png"
+  },
+  "10733": {
+    "trimId": "10733",
+    "brand": "아우디",
+    "modelName": "The New RS e-tron GT",
+    "fullName": "아우디 The New RS e-tron GT",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) RS e-tron (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20251002091612439.png",
+    "grades": [
+      {
+        "name": "2025년형 전기 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "name": "RS e-tron (자동)",
+            "price": 223020000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 전기 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "name": "RS e-tron (자동)",
+            "price": 223020000
+          }
+        ]
+      }
+    ],
+    "options": [],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 3342799,
+    "monthlyLease": 2019400,
+    "mappedGrades": [
+      {
+        "name": "2025년형 전기 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "trimId": 6012,
+            "name": "RS e-tron (자동)",
+            "price": 223020000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 전기 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "trimId": 6012,
+            "name": "RS e-tron (자동)",
+            "price": 223020000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/10733.png"
+  },
+  "10850": {
+    "trimId": "10850",
+    "brand": "아우디",
+    "modelName": "The New e-tron GT",
+    "fullName": "아우디 The New e-tron GT",
+    "summary": "2026년형 전기 AWD (개별소비세 3.5%) S e-tron (자동)",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20251002091134853.png",
+    "grades": [
+      {
+        "name": "2025년형 전기 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "name": "S e-tron (자동)",
+            "price": 170120000
+          }
+        ]
+      },
+      {
+        "name": "2026년형 전기 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "name": "S e-tron (자동)",
+            "price": 175770000
+          }
+        ]
+      }
+    ],
+    "options": [],
+    "colorsExt": [],
+    "colorsInt": [],
+    "monthlyRent": 2508366,
+    "monthlyLease": 1402001,
+    "mappedGrades": [
+      {
+        "name": "2025년형 전기 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "trimId": 6011,
+            "name": "S e-tron (자동)",
+            "price": 170120000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      },
+      {
+        "name": "2026년형 전기 AWD (개별소비세 3.5%)",
+        "trims": [
+          {
+            "trimId": 6011,
+            "name": "S e-tron (자동)",
+            "price": 175770000,
+            "options": [],
+            "colorsExt": [],
+            "colorsInt": []
+          }
+        ]
+      }
+    ],
+    "localImageUrl": "/images/cars/10850.png"
+  }
+}

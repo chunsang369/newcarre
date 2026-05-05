@@ -1,0 +1,24 @@
+// Native fetch used
+
+
+async function test() {
+  const trimParams = new URLSearchParams();
+  trimParams.append('input[idxMaker]', '1');
+  trimParams.append('input[idxName]', '91');
+  trimParams.append('input[idxModel]', '1179');
+  trimParams.append('input[idxGrade]', '2624');
+  trimParams.append('input[idxTrim]', '10885');
+  trimParams.append('pageMode', 'detailWrap');
+
+  const res = await fetch('https://m.hicarzautoplan.com/app/nTreeCar/estimateCheck/', {
+    method: 'POST',
+    body: trimParams,
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+  });
+  const data = await res.json();
+  const fs = require('fs');
+  fs.writeFileSync('scratch/detailed_trim_10885.json', JSON.stringify(data.tree, null, 2));
+  console.log('Saved to scratch/detailed_trim_10885.json');
+}
+
+test();
