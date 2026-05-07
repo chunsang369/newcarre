@@ -111,18 +111,90 @@ export default function CarDetailClient({ car }: { car: any }) {
     return Math.floor(baseMonthly + (added * multiplier));
   }, [period, deposit, mileage, buyMethod, car.priceMatrix, totalOptionPrice, totalColorPrice, basePrice]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.phone || !form.consent1 || !form.consent2) {
       alert("필수 항목과 필수 동의를 확인해주세요.");
       return;
     }
+    
     setSubmitting(true);
-    setTimeout(() => {
-      alert("견적 상담이 신청되었습니다. 담당자가 곧 연락드리겠습니다.");
-      setSubmitting(false);
+    
+    try {
+      // 차량 구성 정보 요약
+      const optionList = Object.keys(selectedOptions)
+        .filter(key => selectedOptions[key])
+        .map(key => {
+          const opt = selectedTrim?.options?.find((o: any) => o.idx === key);
+          return opt ? opt.title : "";
+        })
+        .filter(Boolean);
+      
+      const optionText = optionList.length > 0 
+        ? `${optionList[0]}${optionList.length > 1 ? ` 외 ${optionList.length - 1}건` : ""}` 
+        : "없음";
+
+      const configSummary = `[${car.brand.name} ${car.modelName}] 
+트림: ${selectedTrim?.name || "-"}
+외장: ${selectedExtColorData?.title || "-"}
+내장: ${selectedIntColorData?.title || "-"}
+옵션: ${optionText}
+조건: ${buyMethod === "RENT" ? "렌트" : "리스"} (${period}개월 / 연 ${Number(mileage).toLocaleString()}km / ${prepay !== "0" ? `선수금 ${prepay}%` : guarantee !== "0" ? `보증금 ${guarantee}%` : "무보증"})`;
+
+      // 구조화된 JSON 데이터 생성
+      const carConfig = {
+        carName: car.modelName,
+        brandName: car.brand.name,
+        thumbnailUrl: car.thumbnailUrl,
+        trim: selectedTrim?.name || "-",
+        exteriorColor: selectedExtColorData ? {
+          name: selectedExtColorData.title,
+          code: selectedExtColorData.idx,
+          detail: selectedExtColorData.detail || []
+        } : null,
+        interiorColor: selectedIntColorData ? {
+          name: selectedIntColorData.title,
+          code: selectedIntColorData.idx,
+          detail: selectedIntColorData.detail || []
+        } : null,
+        options: optionList,
+        contract: {
+          type: buyMethod,
+          months: parseInt(period),
+          mileage: parseInt(mileage),
+          deposit: prepay !== "0" ? parseInt(prepay) : guarantee !== "0" ? parseInt(guarantee) : 0,
+          depositType: prepay !== "0" ? "PREPAY" : guarantee !== "0" ? "GUARANTEE" : "NONE",
+          monthlyPrice: monthlyPrice,
+          raw: `${buyMethod === "RENT" ? "렌트" : "리스"} (${period}개월 / 연 ${Number(mileage).toLocaleString()}km / ${prepay !== "0" ? `선수금 ${prepay}%` : guarantee !== "0" ? `보증금 ${guarantee}%` : "무보증"})`
+        }
+      };
+
+      const response = await fetch("/api/quotes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.phone,
+          consent: true,
+          carOfInterest: configSummary,
+          carConfig: carConfig,
+          source: "DETAIL_PAGE_CONFIGURATOR"
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "전송 실패");
+      }
+
+      alert("견적 상담이 성공적으로 신청되었습니다. 담당자가 곧 연락드리겠습니다.");
       setForm({ name: "", phone: "", consent1: false, consent2: false, consent3: false });
-    }, 1000);
+    } catch (error) {
+      console.error("Quote submit error:", error);
+      alert("상담 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const primaryColor = "#0068B7"; // 차살때 브랜드 컬러
@@ -231,21 +303,21 @@ export default function CarDetailClient({ car }: { car: any }) {
 
               {/* 외장 색상 */}
               {selectedTrim && (
-                <div>
+                <div className="mb-6">
                   <h3 className="text-sm font-bold mb-3 flex items-center justify-between">
                     <span>외장 색상</span>
-                    <span className="text-[#0068B7]">
-                      {selectedExtColorData ? `(${formatPriceWon(Number(selectedExtColorData.price) || 0)})` : "(0)"}
+                    <span className="text-[#1a73e8] font-bold text-[12px]">
+                      {selectedExtColorData ? `(${formatPriceWon(Number(selectedExtColorData.price) || 0)})` : "(0원)"}
                     </span>
                   </h3>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-3">
                     {selectedTrim.colorsExt?.map((color: any, index: number) => {
                       const isSelected = selectedExtColor === color.idx;
                       
-                      // 배경 스타일 결정 로직
                       let bgStyle = "";
-                      if (Array.isArray(color.detail) && color.detail.length >= 2) {
-                        bgStyle = `linear-gradient(135deg, ${color.detail[0]} 50%, ${color.detail[1]} 50%)`;
+                      const detail = color.detail || [];
+                      if (Array.isArray(detail) && detail.length >= 2 && detail[0] !== detail[1]) {
+                        bgStyle = `linear-gradient(135deg, ${detail[0]} 50%, ${detail[1]} 50%)`;
                       } else {
                         const thumb = color.thumb || "#ffffff";
                         bgStyle = (thumb.startsWith("#") || thumb.startsWith("rgb")) 
@@ -257,20 +329,17 @@ export default function CarDetailClient({ car }: { car: any }) {
                         <button
                           key={color.idx || `ext-${index}`}
                           onClick={() => setSelectedExtColor(color.idx)}
-                          className={`w-12 h-12 border rounded-full relative transition-all ${
-                            isSelected ? "border-[#0068B7] ring-2 ring-[#0068B7]/20" : "border-gray-200 hover:border-gray-300"
+                          className={`w-[44px] h-[44px] rounded-full relative transition-all shadow-sm overflow-hidden ${
+                            isSelected 
+                              ? "border-[2px] border-[#1a73e8] scale-110 z-10" 
+                              : "border border-[#e0e0e0] hover:border-gray-400"
                           }`}
-                          style={{ background: bgStyle }}
+                          style={{ 
+                            background: bgStyle,
+                            boxShadow: isSelected ? "inset 0 0 0 2px #ffffff" : undefined
+                          }}
                           title={color.title}
-                        >
-                          {isSelected && (
-                            <div className="absolute inset-0 bg-[#0068B7]/10 flex items-center justify-center">
-                              <svg className="w-5 h-5 text-[#0068B7] drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                              </svg>
-                            </div>
-                          )}
-                        </button>
+                        />
                       );
                     })}
                     {(!selectedTrim.colorsExt || selectedTrim.colorsExt.length === 0) && (
@@ -278,7 +347,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                     )}
                   </div>
                   {selectedExtColorData && (
-                    <p className="text-[12px] text-gray-600 mt-2">{selectedExtColorData.title}</p>
+                    <p className="text-[14px] text-[#333] font-semibold mt-3">{selectedExtColorData.title}</p>
                   )}
                 </div>
               )}
@@ -288,18 +357,19 @@ export default function CarDetailClient({ car }: { car: any }) {
                 <div>
                   <h3 className="text-sm font-bold mb-3 flex items-center justify-between">
                     <span>내장 색상</span>
-                    <span className="text-[#0068B7]">
-                      {selectedIntColorData ? `(${formatPriceWon(Number(selectedIntColorData.price) || 0)})` : "(0)"}
+                    <span className="text-[#1a73e8] font-bold text-[12px]">
+                      {selectedIntColorData ? `(${formatPriceWon(Number(selectedIntColorData.price) || 0)})` : "(0원)"}
                     </span>
                   </h3>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-3">
                     {selectedTrim.colorsInt?.map((color: any, index: number) => {
                       const isSelected = selectedIntColor === color.idx;
                       
-                      // 배경 스타일 결정 로직
+                      // 배경 스타일 결정 로직 (투톤 그라데이션 대응)
                       let bgStyle = "";
-                      if (Array.isArray(color.detail) && color.detail.length >= 2) {
-                        bgStyle = `linear-gradient(135deg, ${color.detail[0]} 50%, ${color.detail[1]} 50%)`;
+                      const detail = color.detail || [];
+                      if (Array.isArray(detail) && detail.length >= 2 && detail[0] !== detail[1]) {
+                        bgStyle = `linear-gradient(135deg, ${detail[0]} 50%, ${detail[1]} 50%)`;
                       } else {
                         const thumb = color.thumb || "#ffffff";
                         bgStyle = (thumb.startsWith("#") || thumb.startsWith("rgb")) 
@@ -311,20 +381,17 @@ export default function CarDetailClient({ car }: { car: any }) {
                         <button
                           key={color.idx || `int-${index}`}
                           onClick={() => setSelectedIntColor(color.idx)}
-                          className={`w-12 h-12 border rounded-full relative transition-all ${
-                            isSelected ? "border-[#0068B7] ring-2 ring-[#0068B7]/20" : "border-gray-200 hover:border-gray-300"
+                          className={`w-[44px] h-[44px] rounded-full relative transition-all shadow-sm overflow-hidden ${
+                            isSelected 
+                              ? "border-[2px] border-[#1a73e8] scale-110 z-10" 
+                              : "border border-[#e0e0e0] hover:border-gray-400"
                           }`}
-                          style={{ background: bgStyle }}
+                          style={{ 
+                            background: bgStyle,
+                            boxShadow: isSelected ? "inset 0 0 0 2px #ffffff" : undefined
+                          }}
                           title={color.title}
-                        >
-                          {isSelected && (
-                            <div className="absolute inset-0 bg-[#0068B7]/10 flex items-center justify-center">
-                              <svg className="w-5 h-5 text-[#0068B7] drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                              </svg>
-                            </div>
-                          )}
-                        </button>
+                        />
                       );
                     })}
                     {(!selectedTrim.colorsInt || selectedTrim.colorsInt.length === 0) && (
@@ -332,7 +399,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                     )}
                   </div>
                   {selectedIntColorData && (
-                    <p className="text-[12px] text-gray-600 mt-2">{selectedIntColorData.title}</p>
+                    <p className="text-[14px] text-[#333] font-semibold mt-3">{selectedIntColorData.title}</p>
                   )}
                 </div>
               )}
@@ -484,13 +551,17 @@ export default function CarDetailClient({ car }: { car: any }) {
                 </div>
 
                 <div className="bg-[#f9f9f9] p-4 rounded-sm space-y-3 mb-6">
-                  <div className="flex justify-between text-[13px]">
-                    <span className="text-gray-500">외장 색상</span>
-                    <span className="font-medium text-right max-w-[150px] truncate">{selectedExtColorData?.title || "선택 안됨"}</span>
+                  <div className="flex justify-between items-start gap-4">
+                    <span className="text-[13px] text-[#888] shrink-0">외장 색상</span>
+                    <span className="text-[13px] text-[#333] font-bold text-right leading-tight break-keep">
+                      {selectedExtColorData?.title || "선택 안됨"}
+                    </span>
                   </div>
-                  <div className="flex justify-between text-[13px]">
-                    <span className="text-gray-500">내장 색상</span>
-                    <span className="font-medium text-right max-w-[150px] truncate">{selectedIntColorData?.title || "선택 안됨"}</span>
+                  <div className="flex justify-between items-start gap-4">
+                    <span className="text-[13px] text-[#888] shrink-0">내장 색상</span>
+                    <span className="text-[13px] text-[#333] font-bold text-right leading-tight break-keep">
+                      {selectedIntColorData?.title || "선택 안됨"}
+                    </span>
                   </div>
                   <div className="flex justify-between text-[13px] pt-3 border-t border-[#e5e5e5]">
                     <span className="text-gray-500">선택된 옵션</span>

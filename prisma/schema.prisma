@@ -63,6 +63,7 @@ model QuoteRequest {
   contactMethod  String
   availableTime  String?
   carOfInterest  String?
+  carConfig      Json?
   message        String?
   plannerId      String?
   source         String?

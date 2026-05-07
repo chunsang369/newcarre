@@ -4,7 +4,16 @@ import { prisma } from "@/lib/prisma";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, phone, contactMethod, availableTime, carOfInterest, consent } = body;
+    const { 
+      name, 
+      phone, 
+      contactMethod, 
+      availableTime, 
+      carOfInterest, 
+      carConfig, 
+      consent,
+      source 
+    } = body;
 
     // 필수 필드 검증
     if (!name || !phone || !consent) {
@@ -31,14 +40,12 @@ export async function POST(request: NextRequest) {
         contactMethod: contactMethod || "phone",
         availableTime: availableTime || null,
         carOfInterest: carOfInterest || null,
+        carConfig: carConfig || null,
         consentPrivacy: consent,
-        source: "HOMEPAGE_FORM",
+        source: source || "HOMEPAGE_FORM",
         status: "NEW",
       },
     });
-
-    // TODO: 텔레그램 봇 알림 (섹션 7.1)
-    // TODO: 관리자 이메일 알림
 
     return NextResponse.json(
       { success: true, id: quote.id },
