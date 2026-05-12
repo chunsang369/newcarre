@@ -80,6 +80,8 @@ model Review {
   title        String
   content      String
   imageUrl     String?
+  thumbnailUrl String?
+  sourceUrl    String?
   carModel     String
   customerName String
   plannerName  String?

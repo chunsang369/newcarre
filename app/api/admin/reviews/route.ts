@@ -1,25 +1,38 @@
-import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function POST(request: Request) {
-  try {
-    const data = await request.json();
-    const review = await prisma.review.create({
-      data: {
-        title: data.title,
-        content: data.content,
-        imageUrl: data.imageUrl || null,
-        carModel: data.carModel,
-        customerName: data.customerName,
-        plannerName: data.plannerName || null,
-        contractDate: new Date(data.contractDate),
-        isPublished: data.isPublished ?? true,
-        sortOrder: parseInt(data.sortOrder || "0", 10),
-      },
-    });
-    return NextResponse.json({ success: true, data: review });
-  } catch (error) {
-    console.error("Failed to create review:", error);
-    return NextResponse.json({ error: "Failed to create review" }, { status: 500 });
+// GET: 모든 후기 조회
+export async function GET() {
+  const reviews = await prisma.review.findMany({
+    orderBy: { sortOrder: "asc" },
+  });
+  return NextResponse.json(reviews);
+}
+
+// DELETE: 후기 삭제
+export async function DELETE(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+  if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });
+
+  await prisma.review.delete({ where: { id } });
+  return NextResponse.json({ ok: true });
+}
+
+// PATCH: 후기 수정
+export async function PATCH(req: NextRequest) {
+  const body = await req.json();
+  const { id, ...data } = body;
+  if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });
+
+  // contractDate가 문자열이면 Date로 변환
+  if (data.contractDate && typeof data.contractDate === "string") {
+    data.contractDate = new Date(data.contractDate);
   }
+
+  const updated = await prisma.review.update({
+    where: { id },
+    data,
+  });
+  return NextResponse.json(updated);
 }

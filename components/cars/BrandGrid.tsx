@@ -255,7 +255,17 @@ export default function BrandGrid() {
                       {brand.slug === 'all' ? (
                         'All'
                       ) : (
-                        <img src={`/images/brands/${brand.slug}.${['hyundai', 'kia', 'genesis', 'renault-korea', 'chevrolet', 'kgm'].includes(brand.slug) ? 'svg' : 'png'}`} alt={brand.name} className={`${brand.slug === 'renault-korea' ? 'w-7 h-7' : 'w-9 h-9'} object-contain`} />
+                        (() => {
+                          const getLogoSize = (slug: string) => {
+                            if (slug === 'renault-korea') return 'w-7 h-7';
+                            if (['audi', 'honda'].includes(slug)) return 'w-12 h-12';
+                            if (['lexus', 'ford', 'cadillac', 'mercedes-benz'].includes(slug)) return 'w-11 h-11';
+                            return 'w-9 h-9';
+                          };
+                          return (
+                            <img src={`/images/brands/${brand.slug}.${['polestar', 'jaguar', 'lincoln'].includes(brand.slug) ? 'webp' : ['audi', 'cadillac', 'ford', 'honda', 'mercedes-benz', 'porsche'].includes(brand.slug) ? 'png' : 'svg'}`} alt={brand.name} className={`${getLogoSize(brand.slug)} object-contain`} />
+                          );
+                        })()
                       )}
                     </div>
                     <span

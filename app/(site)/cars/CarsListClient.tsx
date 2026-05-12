@@ -67,12 +67,24 @@ export default function CarsListClient({
   const [fuelFilter, setFuelFilter] = useState<string>("");
   const [sortBy, setSortBy] = useState<string>("popular");
   const [showFilters, setShowFilters] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const categories = useMemo(() => Array.from(new Set(cars.map((c) => c.category))), [cars]);
   const fuels = useMemo(() => Array.from(new Set(cars.map((c) => c.fuelType))), [cars]);
 
   const filtered = useMemo(() => {
     let result = [...cars];
+
+    // Search filter
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase().trim();
+      result = result.filter(
+        (c) =>
+          c.modelName.toLowerCase().includes(q) ||
+          c.brand.name.toLowerCase().includes(q)
+      );
+    }
+
     if (brandFilter) result = result.filter((c) => c.brand.slug === brandFilter);
     if (categoryFilter) result = result.filter((c) => c.category === categoryFilter);
     if (fuelFilter) result = result.filter((c) => c.fuelType === fuelFilter);
@@ -91,7 +103,7 @@ export default function CarsListClient({
         result.sort((a, b) => (b.isPopular ? 1 : 0) - (a.isPopular ? 1 : 0));
     }
     return result;
-  }, [cars, brandFilter, categoryFilter, fuelFilter, sortBy]);
+  }, [cars, brandFilter, categoryFilter, fuelFilter, sortBy, searchQuery]);
 
   const getBaseRent = (car: CarItem) => {
     const entry = car.priceMatrix["36_PREPAY_30_20000"];
@@ -117,32 +129,55 @@ export default function CarsListClient({
       <div className="max-w-[1200px] mx-auto px-4 lg:px-8 py-6 lg:py-10">
         {/* Filter Bar */}
         <div className="bg-white rounded-2xl border border-[var(--color-border)] p-4 lg:p-6 mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <span className="text-sm font-bold text-[var(--color-text)]">
-                🔍 {filtered.length}대
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <div className="relative flex-1 max-w-md">
+              <input
+                type="text"
+                placeholder="모델명 또는 브랜드명을 입력하세요"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl py-3 pl-10 pr-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20 focus:bg-white transition-all"
+              />
+              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               </span>
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                className="lg:hidden text-xs text-[var(--color-accent)] font-medium"
-              >
-                {showFilters ? "필터 접기 ▲" : "필터 열기 ▼"}
-              </button>
-            </div>
-            <div className="flex gap-1">
-              {SORT_OPTIONS.map((opt) => (
+              {searchQuery && (
                 <button
-                  key={opt.key}
-                  onClick={() => setSortBy(opt.key)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                    sortBy === opt.key
-                      ? "bg-[var(--color-primary)] text-white"
-                      : "text-[var(--color-text-muted)] hover:bg-slate-50"
-                  }`}
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-500 transition-colors"
                 >
-                  {opt.label}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </button>
-              ))}
+              )}
+            </div>
+            
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-bold text-[var(--color-text)]">
+                  {filtered.length}대의 차량
+                </span>
+                <button
+                  onClick={() => setShowFilters(!showFilters)}
+                  className="lg:hidden text-xs text-[var(--color-accent)] font-medium"
+                >
+                  {showFilters ? "필터 접기 ▲" : "필터 열기 ▼"}
+                </button>
+              </div>
+              <div className="flex gap-1">
+                {SORT_OPTIONS.map((opt) => (
+                  <button
+                    key={opt.key}
+                    onClick={() => setSortBy(opt.key)}
+                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                      sortBy === opt.key
+                        ? "bg-[var(--color-primary)] text-white"
+                        : "text-[var(--color-text-muted)] hover:bg-slate-50"
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -190,7 +225,17 @@ export default function CarsListClient({
                           {(b.slug === '' || b.slug === 'all') ? (
                             'All'
                           ) : (
-                            <img src={`/images/brands/${b.slug}.${['hyundai', 'kia', 'genesis', 'renault-korea', 'chevrolet', 'kgm'].includes(b.slug) ? 'svg' : 'png'}`} alt={b.name} className={`${b.slug === 'renault-korea' ? 'w-7 h-7' : 'w-9 h-9'} object-contain`} />
+                            (() => {
+                              const getLogoSize = (slug: string) => {
+                                if (slug === 'renault-korea') return 'w-7 h-7';
+                                if (['audi', 'honda'].includes(slug)) return 'w-12 h-12';
+                                if (['lexus', 'ford', 'cadillac', 'mercedes-benz'].includes(slug)) return 'w-11 h-11';
+                                return 'w-9 h-9';
+                              };
+                              return (
+                                <img src={`/images/brands/${b.slug}.${['polestar', 'jaguar', 'lincoln'].includes(b.slug) ? 'webp' : ['audi', 'cadillac', 'ford', 'honda', 'mercedes-benz', 'porsche'].includes(b.slug) ? 'png' : 'svg'}`} alt={b.name} className={`${getLogoSize(b.slug)} object-contain`} />
+                              );
+                            })()
                           )}
                         </div>
                         <span

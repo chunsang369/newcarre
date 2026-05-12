@@ -1,0 +1,158 @@
+﻿=== EDITOR BOX IN BOARD VIEW ===
+
+
+
+=== FR-VIEW IN BOARD VIEW ===
+
+fr-view found at relative offset: 2710
+oyOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjtzOjQ6InBhZ2UiO2k6MTt9',res)},'POST')"   class="permission_require_pass" >吏?곌린</a></li></ul></div></div>
+				</div>
+				
+				
+				<div class='board_txt_area fr-view'>
+					
+<div class="margin-top-xxl _comment_body_"><p style="text-align:left;"><img class="fr-dii" src="https://cdn.imweb.me/upload/S2022102353c7cc5801594/a66eb03abc51f.jpeg" alt="a66eb03abc51f.jpeg" /></p><p style="text-align:left;"><br /></p><p style="text-align:left;"><img class="fr-dii" src="https://cdn.imweb.me/upload/S2022102353c7cc5801594/0fb2b1eae4936.jpeg" alt="0fb2b1eae4936.jpeg" /></p><p style="text-align:center;"><u><strong>?살궗吏?泥⑤????꾩닔?낅땲????/strong></u></p><p><br /></p><p><strong>異쒓퀬 ?좎쭨 : 2026.05.08</strong></p><p><strong>李⑤웾紐?: ?ъ떬</strong></p><p><strong>?뚰듃?섍쾶??怨꾧린 :?ъ뾽???κ린?뚰듃</strong></p><p><strong>留덉?留됱쑝濡??⑹젣?ㅽ넗?뚮옖?먭쾶! :</strong></p><p><strong>二쇨퇏??李⑥옣???뺣텇????댄븯寃?李⑤웾 異쒓퀬 ?섍쾶?쒓굅媛숈뒿?덈떎. ?욎쟾k5 ?댄썑 ??異쒓퀬 ?섍쾶?섏뿀?붾뜲 ?ㅻ챸 ???덈Т 移쒖젅?섍쾶 ?덈궡 ?댁＜?붿꽌 媛먮룞?댁??듬땲??혻</strong></p><p><strong>?ㅻⅨ???섏?留먭퀬 臾댁“嫄??ш린?섏꽭??湲덉븸????댄븯怨??섏콡寃?二쇱꽭??/strong></p><p><br /></p><p><br /></p><p style="text-align:center;"><br /></p><p style="text-align:center;"><strong><span style="color:rgb(255,0,0);">??/span> <span style="color:rgb(56,118,29);">異쒓퀬?꾧린瑜??④꺼二쇱떊 怨좉컼遺꾨뱾?먭쾶 媛먯궗??留먯????꾪빐?쒕┰?덈떎.</span> <span style="color:rgb(255,153,0);">?덉쟾?댁쟾??湲곗썝?섍쿋?듬땲??-(二?占쏙옙占쎌젣?ㅽ넗?뚮옖 ?꾩쭅???щ┝ -혻</span><span style="color:rgb(255,0,0);">??/span></strong></p><p style="text-align:center;"><strong><span style="color:rgb(156,156,156);font-size:12px;">?곗닔?좎슜, ??좎슜 ?κ린?뚰듃移? 臾댁떖???κ린?뚰듃移? 媛쒖씤?뚯깮 ?κ린?뚰듃移??꾨Ц ?낆껜 ?⑹젣?ㅽ넗?뚮옖!</span></strong></p><p style="text-align:center;"><strong><span style="color:rgb(156,156,156);font-size:12px;">臾댁떖?? ?좊텋?? ??좎슜 ?κ린?뚰듃 ?곷떞? ?⑹젣?ㅽ넗?뚮옖?먯꽌!</span></strong></p></div>
+					<div class="file_area"></div>
+				</div>
+				         <div class="comment_section" id="comment_area">
+            <div class="comment-block">
+               <div class="btn-gruop-wrap clearfix">
+                  <div class="btn-gruop btn-group-comment">
+                     <a onclick="viewLikeClick();" href="javascript:;" class="comment_num btn btn-flat  no-padding-x" data-toggle="tooltip" data-placement="top" id="view_like_btn_p20260511e0644df93f8e7"><i aria-hidden="true" class="btm bt-heart"></i> <em id="view_like_count_p20260511e0644df93f8e7">1</em></a>
+                     
+                  </div>
+
+                  <div class="tools">
+                     <div class="mobile_right">
+                        
+                        
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+
+            
+            <div class="comment_list" id="comment_container">
+               
+            </div>
+            <div class="comment_textarea">
+               <form id="comment_form">
+                  <input type="hidden" name="post_code" value="p20260511e0644df93f8e7">
+                  <input type="hidden" name="board_code" value="b2022102354b9f898799c3">
+                  <input type="hidden" name="comment_token" value="oRiRzmrcPdQYnK3a6Ki9dG7cwd8N95LNmrzY3F6ud+BaRAMBQVd8FWSaFUVRbcc4D/w4q3eX4rcN+Zc8hIjr0pd49g47g4W9Hx/0GgeEpVIvpJ8+AxC+06hUPvr+2dlQ" class="_tk_obj">
+			      <input type="hidden" name="comment_token_key" value="5901" class="_tk_obj">
+                  <div class="postmeta comment-comment"><!--?볤????볤????낅젰??寃쎌슦-->
+                     <div class="non-member"><input title="nick" type="text" id="comment_nink" name="nick" placeholder="?대쫫"/><input title="password" type="password" name="secret_pass" placeholder="鍮꾨?踰덊샇"/></div>
+                     <div class="textarea_block">
+                        <textarea title="?볤????④꺼二쇱꽭?? placeholder="?볤????④꺼二쇱꽭?? rows="1" name="body" id="comment_body" data-action="btn_c_p20260511e0644df93f8e7"></textarea>
+                        <div class="file-add-block" style="display: none" id="comment_image_box"></div>
+                        <button class="btn btn-primary btn-sm" onclick="POST_COMMENT.add(); return false;">?묒꽦</button>
+                        <div class="inline-blocked holder">
+                           <i aria-hidden="true" class="icon-picture icon vertical-middle"></i>
+                           <input title="comment image upload" type="file" class="comment_image_upload" multiple name="comment_images" id="comment_image_upload_btn" />
+                        </div>
+                        <!--<i class="zmdi zmdi-play-circle"></i>-->
+					</div>
+					<div class="captcha_block" style="display: flex;">
+			  			<div style="display: flex; align-items: center;">
+							<div style="display: inline-flex; align-items: center; gap: 8px; margin-right: 16px;">
+								<img src="https://cdn-optimized.imweb.me/upload/captcha/2bcfd99beb9b9.jpg" id="captcha_img" width="113" height="30" />
+								<div onclick="POST_COMMENT.refreshCaptcha();" style="cursor: pointer; width: 28px; height: 28px;">
+									<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M1 0.5H27C27.2761 0.5 27.5 0.723857 27.5 1V27C27.5 27.2761 27.2761 27.5 27 27.5H1C0.723858 27.5 0.5 27.2761 0.5 27V1C0.5 0.723858 0.723857 0.5 1 0.5Z" fill="white"/>
+										<path d="M1 0.5H27C27.2761 0.5 27.5 0.723857 27.5 1V27C27.5 27.2761 27.2761 27.5 27 
+
+
+=== IMAGES IN BOARD VIEW AREA ===
+Image tags found: 5
+   <img class="fr-dii" src="https://cdn.imweb.me/upload/S2022102353c7cc5801594/a66eb03abc51f.jpeg" alt="a66eb03abc51f.jpeg" />
+   <img class="fr-dii" src="https://cdn.imweb.me/upload/S2022102353c7cc5801594/0fb2b1eae4936.jpeg" alt="0fb2b1eae4936.jpeg" />
+   <img src="https://cdn-optimized.imweb.me/upload/captcha/2bcfd99beb9b9.jpg" id="captcha_img" width="113" height="30" />
+   <img src="https://cdn.imweb.me/upload/S2022102353c7cc5801594/91041087431f7.png" class="fr-fin fr-dib" style="width: 2px; height: 120px;">
+   <img src="https://cdn.imweb.me/upload/S2022102353c7cc5801594/7a2df1f40cfbf.png" class="fr-fin fr-dib" style="width: 194px;">
+
+data-src attributes: 0
+
+
+=== FULL BOARD VIEW CONTENT (first 8000 chars) ===
+board_view '>
+			
+				
+				<div class='board-title holder header'>
+					
+					<h1 class="view_tit">二쇨퇏??李⑥옣??李⑤웾異쒓퀬?꾧린</h1>
+				</div>
+				<div class='board_summary'>
+					<div class='left'>
+						
+						<div class='author'>
+							<div class="write">?뺥빐****</div>
+							<div class='board_name'>
+								<a href='/18/?q=YToyOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjtzOjQ6InBhZ2UiO2k6MTt9'>
+									異쒓퀬?꾧린 寃뚯떆??								</a>
+							</div>
+							
+							<div class="hit-count body_font_color_70">議고쉶??5</div>
+							<div class="tools txt"><a  href="javascript:;"   onclick="SECRET_ARTICLE.confirmSecret(event,'b2022102354b9f898799c3','p20260511e0644df93f8e7','/18/?q=YToyOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjtzOjQ6InBhZ2UiO2k6MTt9&bmode=write&idx=171229635&back_url=LzE4Lz9xPVlUb3lPbnR6T2pFeU9pSnJaWGwzYjNKa1gzUjVjR1VpTzNNNk16b2lZV3hzSWp0ek9qUTZJbkJoWjJVaU8yazZNVHQ5JmJtb2RlPXZpZXcmaWR4PTE3MTIyOTYzNSZ0PWJvYXJk&board=b2022102354b9f898799c3&back_page_num=1','POST')"   class="permission_require_pass"  style="margin-right: 10px;">?섏젙</a><a  href="javascript:;"   onclick="SECRET_ARTICLE.confirmSecret(event,'b2022102354b9f898799c3','p20260511e0644df93f8e7',function(res){POST.deletePost('b2022102354b9f898799c3','p20260511e0644df93f8e7','/18/?q=YToyOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjtzOjQ6InBhZ2UiO2k6MTt9',res)},'POST')"   class="permission_require_pass"  style="margin-right: 10px;">吏?곌린</a></div>
+						</div>
+					</div>
+					<div class="tools"><div class="mobile_right dropdown"><button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true"><i aria-hidden="true" class="vertical-middle icon-options board-summary-icon"></i></button>
+									<ul class="dropdown-menu" role="menu"><li role="presentation"><a role="menuitem" tabindex="-1"  href="javascript:;"   onclick="SECRET_ARTICLE.confirmSecret(event,'b2022102354b9f898799c3','p20260511e0644df93f8e7','/18/?q=YToyOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjtzOjQ6InBhZ2UiO2k6MTt9&bmode=write&idx=171229635&back_url=LzE4Lz9xPVlUb3lPbnR6T2pFeU9pSnJaWGwzYjNKa1gzUjVjR1VpTzNNNk16b2lZV3hzSWp0ek9qUTZJbkJoWjJVaU8yazZNVHQ5JmJtb2RlPXZpZXcmaWR4PTE3MTIyOTYzNSZ0PWJvYXJk&board=b2022102354b9f898799c3&back_page_num=1','POST')"   class="permission_require_pass" >?섏젙</a></li><li role="presentation"><a role="menuitem" tabindex="-1"  href="javascript:;"   onclick="SECRET_ARTICLE.confirmSecret(event,'b2022102354b9f898799c3','p20260511e0644df93f8e7',function(res){POST.deletePost('b2022102354b9f898799c3','p20260511e0644df93f8e7','/18/?q=YToyOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjtzOjQ6InBhZ2UiO2k6MTt9',res)},'POST')"   class="permission_require_pass" >吏?곌린</a></li></ul></div></div>
+				</div>
+				
+				
+				<div class='board_txt_area fr-view'>
+					
+<div class="margin-top-xxl _comment_body_"><p style="text-align:left;"><img class="fr-dii" src="https://cdn.imweb.me/upload/S2022102353c7cc5801594/a66eb03abc51f.jpeg" alt="a66eb03abc51f.jpeg" /></p><p style="text-align:left;"><br /></p><p style="text-align:left;"><img class="fr-dii" src="https://cdn.imweb.me/upload/S2022102353c7cc5801594/0fb2b1eae4936.jpeg" alt="0fb2b1eae4936.jpeg" /></p><p style="text-align:center;"><u><strong>?살궗吏?泥⑤????꾩닔?낅땲????/strong></u></p><p><br /></p><p><strong>異쒓퀬 ?좎쭨 : 2026.05.08</strong></p><p><strong>李⑤웾紐?: ?ъ떬</strong></p><p><strong>?뚰듃?섍쾶??怨꾧린 :?ъ뾽???κ린?뚰듃</strong></p><p><strong>留덉?留됱쑝濡??⑹젣?ㅽ넗?뚮옖?먭쾶! :</strong></p><p><strong>二쇨퇏??李⑥옣???뺣텇????댄븯寃?李⑤웾 異쒓퀬 ?섍쾶?쒓굅媛숈뒿?덈떎. ?욎쟾k5 ?댄썑 ??異쒓퀬 ?섍쾶?섏뿀?붾뜲 ?ㅻ챸 ???덈Т 移쒖젅?섍쾶 ?덈궡 ?댁＜?붿꽌 媛먮룞?댁??듬땲??혻</strong></p><p><strong>?ㅻⅨ???섏?留먭퀬 臾댁“嫄??ш린?섏꽭??湲덉븸????댄븯怨??섏콡寃?二쇱꽭??/strong></p><p><br /></p><p><br /></p><p style="text-align:center;"><br /></p><p style="text-align:center;"><strong><span style="color:rgb(255,0,0);">??/span> <span style="color:rgb(56,118,29);">異쒓퀬?꾧린瑜??④꺼二쇱떊 怨좉컼遺꾨뱾?먭쾶 媛먯궗??留먯????꾪빐?쒕┰?덈떎.</span> <span style="color:rgb(255,153,0);">?덉쟾?댁쟾??湲곗썝?섍쿋?듬땲??-(二?占쏙옙占쎌젣?ㅽ넗?뚮옖 ?꾩쭅???щ┝ -혻</span><span style="color:rgb(255,0,0);">??/span></strong></p><p style="text-align:center;"><strong><span style="color:rgb(156,156,156);font-size:12px;">?곗닔?좎슜, ??좎슜 ?κ린?뚰듃移? 臾댁떖???κ린?뚰듃移? 媛쒖씤?뚯깮 ?κ린?뚰듃移??꾨Ц ?낆껜 ?⑹젣?ㅽ넗?뚮옖!</span></strong></p><p style="text-align:center;"><strong><span style="color:rgb(156,156,156);font-size:12px;">臾댁떖?? ?좊텋?? ??좎슜 ?κ린?뚰듃 ?곷떞? ?⑹젣?ㅽ넗?뚮옖?먯꽌!</span></strong></p></div>
+					<div class="file_area"></div>
+				</div>
+				         <div class="comment_section" id="comment_area">
+            <div class="comment-block">
+               <div class="btn-gruop-wrap clearfix">
+                  <div class="btn-gruop btn-group-comment">
+                     <a onclick="viewLikeClick();" href="javascript:;" class="comment_num btn btn-flat  no-padding-x" data-toggle="tooltip" data-placement="top" id="view_like_btn_p20260511e0644df93f8e7"><i aria-hidden="true" class="btm bt-heart"></i> <em id="view_like_count_p20260511e0644df93f8e7">1</em></a>
+                     
+                  </div>
+
+                  <div class="tools">
+                     <div class="mobile_right">
+                        
+                        
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+
+            
+            <div class="comment_list" id="comment_container">
+               
+            </div>
+            <div class="comment_textarea">
+               <form id="comment_form">
+                  <input type="hidden" name="post_code" value="p20260511e0644df93f8e7">
+                  <input type="hidden" name="board_code" value="b2022102354b9f898799c3">
+                  <input type="hidden" name="comment_token" value="oRiRzmrcPdQYnK3a6Ki9dG7cwd8N95LNmrzY3F6ud+BaRAMBQVd8FWSaFUVRbcc4D/w4q3eX4rcN+Zc8hIjr0pd49g47g4W9Hx/0GgeEpVIvpJ8+AxC+06hUPvr+2dlQ" class="_tk_obj">
+			      <input type="hidden" name="comment_token_key" value="5901" class="_tk_obj">
+                  <div class="postmeta comment-comment"><!--?볤????볤????낅젰??寃쎌슦-->
+                     <div class="non-member"><input title="nick" type="text" id="comment_nink" name="nick" placeholder="?대쫫"/><input title="password" type="password" name="secret_pass" placeholder="鍮꾨?踰덊샇"/></div>
+                     <div class="textarea_block">
+                        <textarea title="?볤????④꺼二쇱꽭?? placeholder="?볤????④꺼二쇱꽭?? rows="1" name="body" id="comment_body" data-action="btn_c_p20260511e0644df93f8e7"></textarea>
+                        <div class="file-add-block" style="display: none" id="comment_image_box"></div>
+                        <button class="btn btn-primary btn-sm" onclick="POST_COMMENT.add(); return false;">?묒꽦</button>
+                        <div class="inline-blocked holder">
+                           <i aria-hidden="true" class="icon-picture icon vertical-middle"></i>
+                           <input title="comment image upload" type="file" class="comment_image_upload" multiple name="comment_images" id="comment_image_upload_btn" />
+                        </div>
+                        <!--<i class="zmdi zmdi-play-circle"></i>-->
+					</div>
+					<div class="captcha_block" style="display: flex;">
+			  			<div style="display: flex; align-items: center;">
+							<div style="display: inline-flex; align-items: center; gap: 8px; margin-right: 16px;">
+								<img src="https://cdn-optimized.imweb.me/upload/captcha/2bcfd99beb9b9.jpg" id="captcha_img" width="113" height="30" />
+								<div onclick="POST_COMMENT.refreshCaptcha();" style="cursor: pointer; width: 28px; height: 28px;">
+									<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M1 0.5H27C27.2761 0.5 27.5 0.723857 27.5 1V27C27.5 27.2761 27.2761 27.5 27 27.5H1C0.723858 27.5 0.5 27.2761 0.5 27V1C0.5 0.723858 0.723857 0.5 1 0.5Z" fill="white"/>
+										<path d="M1 0.5H27C27.2761 0.5 27.5 0.723857 27.5 1V27C27.5 27.2761 27.2761 27.5 27 27.5H1C0.723858 27.5 0.5 27.2761 0.5 27V1C0.5 0.723858 0.723857 0.5 1 0.5Z" stroke="#BCC0C6"/>
+										<path d="M15.3333 7.3335C15.3333 7.3335 15.8995 7.41438 18.2426 9.75752C20.5858 12.1007 20.5858 15.8997 18.2426 18.2428C17.4125 19.073 16.3995 19.609 15.3333 19.8509M15.3333 7.3335L19.3

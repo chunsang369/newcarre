@@ -216,16 +216,39 @@ export default function CarDetailClient({ car }: { car: any }) {
               )}
             </div>
             <div className="w-full md:w-[45%] flex flex-col items-center md:items-start">
-              {car.brand && (
-                <img 
-                  key={`logo-${car.brand.slug}`}
-                  src={`/images/brands/${car.brand.slug}.${['hyundai', 'kia', 'genesis', 'renault-korea', 'chevrolet', 'kgm'].includes(car.brand.slug) ? 'svg' : 'png'}`} 
-                  alt={car.brand.name} 
-                  className={`${car.brand.slug === 'renault-korea' ? 'h-8' : 'h-10'} mb-3 object-contain`} 
-                />
-              )}
-              {!car.brand && <p className="text-sm font-bold text-gray-400 mb-1">{car.brand?.name || '차량 정보 없음'}</p>}
-              <h2 className="text-2xl lg:text-3xl font-bold mb-4">{car.modelName}</h2>
+              {/* ── 모바일: 로고+모델명 가로 한 줄 ── */}
+              <div className="flex md:hidden flex-row items-center gap-2 w-full justify-center">
+                {car.brand && (
+                  <img 
+                    src={`/images/brands/${car.brand.slug}.${['polestar', 'jaguar', 'lincoln'].includes(car.brand.slug) ? 'webp' : ['audi', 'cadillac', 'ford', 'honda', 'mercedes-benz', 'porsche'].includes(car.brand.slug) ? 'png' : 'svg'}`} 
+                    alt={car.brand.name} 
+                    className="h-6 object-contain shrink-0" 
+                  />
+                )}
+                <h2 className="text-[17px] min-[375px]:text-[19px] sm:text-2xl font-bold tracking-tight whitespace-nowrap">{car.modelName}</h2>
+              </div>
+              {/* ── 데스크톱: 로고 위 + 모델명 아래 (기존) ── */}
+              <div className="hidden md:block">
+                {car.brand && (
+                  (() => {
+                    const getDetailLogoSize = (slug: string) => {
+                      if (slug === 'renault-korea') return 'h-8';
+                      if (['audi', 'honda'].includes(slug)) return 'h-[52px]';
+                      if (['lexus', 'ford', 'cadillac', 'mercedes-benz'].includes(slug)) return 'h-12';
+                      return 'h-10';
+                    };
+                    return (
+                      <img 
+                        src={`/images/brands/${car.brand.slug}.${['polestar', 'jaguar', 'lincoln'].includes(car.brand.slug) ? 'webp' : ['audi', 'cadillac', 'ford', 'honda', 'mercedes-benz', 'porsche'].includes(car.brand.slug) ? 'png' : 'svg'}`} 
+                        alt={car.brand.name} 
+                        className={`${getDetailLogoSize(car.brand.slug)} mb-3 object-contain`} 
+                      />
+                    );
+                  })()
+                )}
+                {!car.brand && <p className="text-sm font-bold text-gray-400 mb-1">{car.brand?.name || '차량 정보 없음'}</p>}
+                <h2 className="text-2xl lg:text-3xl font-bold mb-4">{car.modelName}</h2>
+              </div>
             </div>
           </div>
         </div>
@@ -251,9 +274,9 @@ export default function CarDetailClient({ car }: { car: any }) {
               <div>
                 <h3 className="text-sm font-bold mb-3">세부모델</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {grades.map((g: any) => (
+                  {grades.map((g: any, index: number) => (
                     <button
-                      key={g.idx}
+                      key={`${g.idx}-${index}`}
                       onClick={() => setSelectedGradeIdx(g.idx)}
                       className={`text-left px-4 py-3 border rounded-sm text-[13px] font-medium transition-colors ${
                         selectedGradeIdx === g.idx 
@@ -271,11 +294,11 @@ export default function CarDetailClient({ car }: { car: any }) {
               {selectedGrade && selectedGrade.trims?.length > 0 && (
                 <div>
                   <div className="border border-[#e5e5e5] rounded-sm divide-y divide-[#e5e5e5]">
-                    {selectedGrade.trims.map((t: any) => {
+                    {selectedGrade.trims.map((t: any, index: number) => {
                       const isSelected = selectedTrimIdx === t.idx;
                       return (
                         <label 
-                          key={t.idx}
+                          key={`${t.idx}-${index}`}
                           onClick={() => setSelectedTrimIdx(t.idx)}
                           className={`flex items-center justify-between p-4 cursor-pointer transition-colors ${
                             isSelected ? "bg-[#f0f7ff]" : "hover:bg-gray-50 bg-white"
@@ -327,7 +350,7 @@ export default function CarDetailClient({ car }: { car: any }) {
 
                       return (
                         <button
-                          key={color.idx || `ext-${index}`}
+                          key={`ext-${color.idx}-${index}`}
                           onClick={() => setSelectedExtColor(color.idx)}
                           className={`w-[44px] h-[44px] rounded-full relative transition-all shadow-sm overflow-hidden ${
                             isSelected 
@@ -379,7 +402,7 @@ export default function CarDetailClient({ car }: { car: any }) {
 
                       return (
                         <button
-                          key={color.idx || `int-${index}`}
+                          key={`int-${color.idx}-${index}`}
                           onClick={() => setSelectedIntColor(color.idx)}
                           className={`w-[44px] h-[44px] rounded-full relative transition-all shadow-sm overflow-hidden ${
                             isSelected 
@@ -416,11 +439,11 @@ export default function CarDetailClient({ car }: { car: any }) {
             <div className="p-0">
               {selectedTrim?.options && selectedTrim.options.length > 0 ? (
                 <div className="divide-y divide-[#e5e5e5]">
-                  {selectedTrim.options.map((opt: any) => {
+                  {selectedTrim.options.map((opt: any, index: number) => {
                     const isSelected = !!selectedOptions[opt.idx];
                     return (
                       <label 
-                        key={opt.idx}
+                        key={`opt-${opt.idx}-${index}`}
                         className={`flex items-center justify-between p-5 cursor-pointer transition-colors ${
                           isSelected ? "bg-[#f0f7ff]" : "hover:bg-gray-50 bg-white"
                         }`}

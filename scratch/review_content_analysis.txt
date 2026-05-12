@@ -1,0 +1,77 @@
+﻿=== SEARCHING FOR CONTENT CONTAINERS ===
+
+Found "editor_box" at offset 74731
+  Context: <style>@import url("https://vendor-cdn.imweb.me/css/nanumSquare.css?v1"); @import url("https://vendor-cdn.imweb.me/css/poppins.css");
+		@media (min-width: 992px){
+			.doz_sys .section_first.visual_section .full_screen_show .owl-theme .item .op,
+			.doz_sys .section_first.visual_section .full_screen_ 
+
+Found "board_txt_area" at offset 77695
+  Context: <style>@import url("https://vendor-cdn.imweb.me/css/nanumSquare.css?v1"); @import url("https://vendor-cdn.imweb.me/css/poppins.css");
+		@media (min-width: 992px){
+			.doz_sys .section_first.visual_section .full_screen_show .owl-theme .item .op,
+			.doz_sys .section_first.visual_section .full_screen_ 
+
+Found "board_txt" at offset 77695
+  Context: <style>@import url("https://vendor-cdn.imweb.me/css/nanumSquare.css?v1"); @import url("https://vendor-cdn.imweb.me/css/poppins.css");
+		@media (min-width: 992px){
+			.doz_sys .section_first.visual_section .full_screen_show .owl-theme .item .op,
+			.doz_sys .section_first.visual_section .full_screen_ 
+
+
+=== SEARCHING FOR CONTENT IMAGES ===
+
+All CDN images: 0
+
+
+=== FINDING BOARD VIEW HTML SECTION ===
+
+HTML board_view #1 at offset 272627:
+oard _list_wrap">
+    
+			<div class='doz_row'>
+				<div class='col-dz col-dz-12'>
+					<div class='board_view '>
+			
+				
+				<div class='board-title holder header'>
+					
+					<h1 class="view_tit">二쇨퇏??李⑥옣??李⑤웾異쒓퀬?꾧린</h1>
+				</div>
+				<div class='board_summary'>
+					<div class='left'>
+						
+						<div class='author'>
+							<div class="write">?뺥빐****</div>
+							<div class='board_name'>
+								<a href='/18/?q=YToyOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjtzOjQ6InBhZ2UiO2k6MTt9'>
+									異쒓퀬?꾧린 寃뚯떆??								</a>
+							</div>
+							
+							<div class="hit-count body_font_color_70">議고쉶??5</div>
+
+
+
+=== FINDING CONTENT TEXT LOCATION ===
+Text snippet "二쇨퇏??李⑥옣???뺣텇?? found at offset: 1057
+
+Surrounding HTML:
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#363636"/>
+<meta name="msapplication-navbutton-color" content="#363636">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<title>二쇨퇏??李⑥옣??李⑤웾異쒓퀬?꾧린 : ??좎슜?κ린?뚰듃移?臾댁떖?ъ옣湲곕젋???꾨Ц湲곗뾽 ?⑹젣?ㅽ넗?뚮옖?먯꽌</title>
+<meta name='application-name' content='二쇨퇏??李⑥옣??李⑤웾異쒓퀬?꾧린 : ??좎슜?κ린?뚰듃移?臾댁떖?ъ옣湲곕젋???꾨Ц湲곗뾽 ?⑹젣?ㅽ넗?뚮옖?먯꽌'/>
+<meta name='msapplication-tooltip' content='二쇨퇏??李⑥옣??李⑤웾異쒓퀬?꾧린 : ??좎슜?κ린?뚰듃移?臾댁떖?ъ옣湲곕젋???꾨Ц湲곗뾽 ?⑹젣?ㅽ넗?뚮옖?먯꽌' />
+<meta property='article:published_time' content='2026-05-11T16:25:47+09:00'/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="二쇨퇏??李⑥옣??李⑤웾異쒓퀬?꾧린 : ??좎슜?κ린?뚰듃移?臾댁떖?ъ옣湲곕젋???꾨Ц湲곗뾽 ?⑹젣?ㅽ넗?뚮옖?먯꽌"/>
+<meta property="og:url" content="http://xn--ok0b00qt3i0xd99aspn41d.com/18/?q=YToyOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjtzOjQ6InBhZ2UiO2k6MTt9&bmode=view&idx=171229635&t=board"/>
+<meta name="description" content="?살궗吏?泥⑤????꾩닔?낅땲???살텧怨??좎쭨 : 2026.05.08李⑤웾紐?: ?ъ떬?뚰듃?섍쾶??怨꾧린 :?ъ뾽???κ린?뚰듃留덉?留됱쑝濡??⑹젣?ㅽ넗?뚮옖?먭쾶! :二쇨퇏??李⑥옣???뺣텇????댄븯寃?李⑤웾 異쒓퀬 ?섍쾶?쒓굅媛숈뒿?덈떎. ?욎쟾k5 ?댄썑 ??異쒓퀬 ?섍쾶?섏뿀?붾뜲 ?ㅻ챸 ???덈Т 移쒖젅?섍쾶 ?덈궡 ?댁＜?붿꽌 媛먮룞?댁??듬땲??혻?ㅻⅨ???섏?留먭퀬 臾댁“嫄??ш린?섏꽭??湲덉븸????댄븯怨??섏콡寃?二쇱꽭?붴솯 異쒓퀬?꾧린瑜??④꺼二쇱떊 怨좉컼遺꾨뱾?먭쾶 媛먯궗??留먯????꾪빐?쒕┰?덈떎. ?덉쟾?댁쟾??湲곗썝?섍쿋?듬땲??-(二??⑹젣?ㅽ넗?뚮옖 ?꾩쭅???щ┝ -혻?μ슦?섏떊?? ??좎슜 ?κ린?뚰듃移? 臾댁떖???κ린?뚰듃移? 媛쒖씤?뚯깮 ?κ린?뚰듃移??꾨Ц ?낆껜 ?⑹젣?ㅽ넗?뚮옖!臾댁떖?? ?좊텋?? ??좎슜 ?κ린?뚰듃 ?곷떞? ?⑹젣?ㅽ넗?뚮옖?먯꽌!"/>
+<meta property="og:description" content="?살궗吏?泥⑤????꾩닔?낅땲???살텧怨??좎쭨 : 2026.05.08李⑤웾紐?: ?ъ떬?뚰듃?섍쾶??怨꾧린 :?ъ뾽???κ린?뚰듃留덉?留됱쑝濡??⑹젣?ㅽ넗?뚮옖?먭쾶! :二쇨퇏??李⑥옣???뺣텇????댄븯寃?李⑤웾 異쒓퀬 ?섍쾶?쒓굅媛숈뒿?덈떎. ?욎쟾k5 ?댄썑 ??異쒓퀬 ?섍쾶?섏뿀?붾뜲 ?ㅻ챸 ???덈Т 移쒖젅?섍쾶 ?덈궡 ?댁＜?붿꽌 媛먮룞?댁??듬땲??혻?ㅻⅨ???섏?留먭퀬 臾댁“嫄??ш린?섏꽭??湲덉븸??
