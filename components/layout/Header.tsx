@@ -11,6 +11,12 @@ const NAV_ITEMS = [
   { label: "FAQ", href: "/faq" },
 ];
 
+declare global {
+  interface Window {
+    ChannelIO?: (...args: unknown[]) => void;
+  }
+}
+
 const openChannelTalk = () => {
   if (typeof window !== "undefined" && window.ChannelIO) {
     window.ChannelIO("showMessenger");
