@@ -23,11 +23,28 @@ export default function HomePage() {
       {/* 2. 관심 차종 선택 (브랜드 그리드) */}
       <BrandGrid />
 
+      {/* 3. 토스 스타일 핵심 특징 카드 */}
+      <TrustFeatureCards />
+
+      {/* 4. 신뢰 지표 섹션 */}
+      <ServiceTrust />
+
+      {/* 5. 금액대별 차량 검색 */}
+      <PriceRangeSearch />
+
+      {/* 6. 중간 CTA 배너 */}
+      <CTABanners />
+
+      {/* 7. 베스트 플래너 */}
+      <BestPlanners />
+
       {/* 8. 하이카즈 이용후기 */}
       <ReviewCarousel />
 
+      {/* 9. 자주 묻는 질문 (FAQ) */}
+      <FaqAccordion />
 
-      {/* 11. 하단 간편 상담신청 (반복) */}
+      {/* 10. 하단 간편 상담신청 */}
       <QuickQuoteForm />
 
       {/* 하단 FloatingCTA 높이 보정 (모바일) */}
