@@ -28,7 +28,7 @@ export default async function InstantCarsPage() {
   return (
     <div className="min-h-screen bg-[var(--color-bg-subtle)]">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[var(--color-accent)] to-[#e85a28] text-white">
+      <div className="bg-gradient-to-r from-[var(--color-accent)] to-[#3a8dc7] text-white">
         <div className="max-w-[1200px] mx-auto px-4 lg:px-8 py-12 lg:py-16 text-center">
           <h1 className="text-2xl lg:text-4xl font-bold mb-2">⚡ 즉시출고 차량</h1>
           <p className="text-white/80 text-sm lg:text-base">계약 후 7일 이내 인도 보장!</p>

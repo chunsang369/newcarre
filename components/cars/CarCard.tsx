@@ -40,7 +40,10 @@ export default function CarCard({ car }: { car: CarData }) {
   return (
     <div className="w-full border border-gray-200 rounded-xl overflow-hidden bg-white hover:border-gray-300 hover:shadow-sm transition-all group flex flex-col h-full">
       {/* 이미지 영역 */}
-      <div className="aspect-[4/3] bg-[#f8f9fa] flex items-center justify-center p-3 shrink-0 relative overflow-hidden">
+      <Link 
+        href={`/cars/${car.slug}`}
+        className="aspect-[4/3] bg-[#f8f9fa] flex items-center justify-center p-3 shrink-0 relative overflow-hidden block"
+      >
         {car.thumbnailUrl ? (
           <img 
             src={car.thumbnailUrl} 
@@ -59,44 +62,38 @@ export default function CarCard({ car }: { car: CarData }) {
           </div>
         )}
         {/* 배지 영역 (필요 시 추가 가능) */}
-      </div>
+      </Link>
 
       {/* 정보 영역 */}
       <div className="p-3 lg:p-4 flex flex-col flex-1">
-        <div className="flex items-center gap-1.5 mb-1">
-          <span className="text-[10px] font-bold text-gray-400 uppercase">{car.brandName}</span>
-          <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
-          <span className="text-[10px] font-bold text-[#e74c3c] uppercase">
-            {CATEGORY_LABELS[car.category] || car.category}
-          </span>
-        </div>
-        
         <div className="flex justify-between items-start mb-3">
-          <h4 className="font-bold text-[14px] lg:text-[15px] text-gray-900 line-clamp-1 group-hover:text-[#e74c3c] transition-colors flex-1">
-            {car.modelName}
-          </h4>
-          <span className="text-[11px] font-bold text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded ml-2 shrink-0">
+          <Link href={`/cars/${car.slug}`} className="flex-1">
+            <h4 className="font-bold text-[16px] lg:text-[17px] text-gray-900 line-clamp-2 group-hover:text-[#469BD9] transition-colors">
+              {car.modelName}
+            </h4>
+          </Link>
+          <span className="text-[13px] font-bold text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded ml-2 shrink-0">
             {formatBasePrice(car.monthlyRent > 0 ? (car as any).basePrice : 0) === "가격 정보 없음" ? "" : formatBasePrice((car as any).basePrice)}
           </span>
         </div>
 
         <div className="mt-auto space-y-1.5">
-          <div className="flex justify-between items-center text-[12px] lg:text-[13px]">
+          <div className="flex justify-between items-center text-[14px] lg:text-[15px]">
             <span className="text-gray-500 font-medium">렌트</span>
             {car.monthlyRent > 0 ? (
               <div className="flex items-center gap-1">
-                <span className="text-gray-400 text-[10px]">월</span>
+                <span className="text-gray-400 text-[12px]">월</span>
                 <span className="font-bold text-gray-900">{formatPrice(car.monthlyRent)}원</span>
               </div>
             ) : (
               <span className="font-bold text-blue-600">상담 신청 필요</span>
             )}
           </div>
-          <div className="flex justify-between items-center text-[12px] lg:text-[13px]">
+          <div className="flex justify-between items-center text-[14px] lg:text-[15px]">
             <span className="text-gray-500 font-medium">리스</span>
             {car.monthlyLease > 0 ? (
               <div className="flex items-center gap-1">
-                <span className="text-gray-400 text-[10px]">월</span>
+                <span className="text-gray-400 text-[12px]">월</span>
                 <span className="font-bold text-gray-900">{formatPrice(car.monthlyLease)}원</span>
               </div>
             ) : (
@@ -108,7 +105,7 @@ export default function CarCard({ car }: { car: CarData }) {
           <div className="mt-4 flex gap-1.5 w-full">
             <Link 
               href={`/cars/${car.slug}`}
-              className="flex-1 flex items-center justify-center bg-[#1A283A] text-white py-2.5 rounded-md text-[11px] font-bold hover:bg-[#111A26] transition-colors"
+              className="flex-1 flex items-center justify-center bg-[#469BD9] text-white py-2.5 rounded-md text-[13px] font-bold hover:bg-[#3a8dc7] transition-colors"
             >
               상세보기
             </Link>
@@ -120,7 +117,7 @@ export default function CarCard({ car }: { car: CarData }) {
                   form.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="flex-1 bg-white border border-[#1A283A] text-[#1A283A] py-2.5 rounded-md text-[11px] font-bold hover:bg-gray-50 transition-colors"
+              className="flex-1 bg-white border border-[#469BD9] text-[#469BD9] py-2.5 rounded-md text-[13px] font-bold hover:bg-gray-50 transition-colors"
             >
               빠른상담
             </button>

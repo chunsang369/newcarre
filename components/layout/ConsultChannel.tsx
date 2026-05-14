@@ -18,12 +18,12 @@ export default function ConsultChannel() {
           {/* 전화 상담 */}
           <Link
             href="tel:1577-2617"
-            className="flex flex-col items-center justify-center gap-2 py-6 rounded-xl border border-gray-200 hover:border-[#0a2540] hover:shadow-md transition-all group"
+            className="flex flex-col items-center justify-center gap-2 py-6 rounded-xl border border-gray-200 hover:border-[#469BD9] hover:shadow-md transition-all group"
           >
-            <div className="w-12 h-12 rounded-full bg-[#0a2540]/10 flex items-center justify-center group-hover:bg-[#0a2540]/20 transition-colors">
-              <Phone className="w-5 h-5 text-[#0a2540]" />
+            <div className="w-12 h-12 rounded-full bg-[#469BD9]/10 flex items-center justify-center group-hover:bg-[#469BD9]/20 transition-colors">
+              <Phone className="w-5 h-5 text-[#469BD9]" />
             </div>
-            <span className="text-lg font-bold text-[#0a2540]">1577-2617</span>
+            <span className="text-lg font-bold text-[#469BD9]">1577-2617</span>
             <span className="text-xs text-gray-400">대표전화</span>
           </Link>
 

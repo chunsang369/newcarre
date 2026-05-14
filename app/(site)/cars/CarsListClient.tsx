@@ -350,7 +350,6 @@ export default function CarsListClient({
                     <p className="text-xs text-[var(--color-text-muted)] line-clamp-1 mb-3">{car.trimName}</p>
 
                     <div className="flex items-center gap-1.5 mb-2">
-                      <span className="text-[10px] bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded">{CATEGORY_LABEL[car.category] || car.category}</span>
                       <span className="text-[10px] bg-green-50 text-green-700 px-1.5 py-0.5 rounded">{FUEL_LABEL[car.fuelType] || car.fuelType}</span>
                     </div>
 

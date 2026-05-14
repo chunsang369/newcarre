@@ -32,9 +32,7 @@ export default async function ReviewDetailPage({
           <span className="text-xs font-medium bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full">{review.carModel}</span>
           <span className="text-xs text-[var(--color-text-muted)]">{review.customerName}</span>
           <span className="text-xs text-[var(--color-text-muted)]">{new Date(review.contractDate).toLocaleDateString("ko-KR")}</span>
-          {review.plannerName && (
-            <span className="text-xs text-[var(--color-text-muted)]">담당: {review.plannerName}</span>
-          )}
+
         </div>
 
         {/* Title */}

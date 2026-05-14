@@ -190,21 +190,21 @@ export default function BrandGrid() {
     <section className="py-8 bg-white" aria-label="관심 차종 선택">
       <div className="mx-auto max-w-[1200px] px-4 lg:px-8">
         {/* 제목 & 탭 */}
-        <div className="flex items-end justify-between mb-6 border-b border-gray-900 pb-3">
+        <div className="flex items-end justify-between mb-6 pb-3">
           <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
             관심차종 선택하기
           </h2>
           <div className="flex items-center text-sm lg:text-base font-medium text-gray-400 gap-3 mb-0.5">
             <button
               onClick={() => handleTabChange("domestic")}
-              className={cn(tab === "domestic" ? "text-gray-900 font-bold" : "hover:text-gray-600")}
+              className={cn(tab === "domestic" ? "text-[#469BD9] font-bold" : "hover:text-gray-600")}
             >
               국산
             </button>
             <span className="text-gray-300">|</span>
             <button
               onClick={() => handleTabChange("import")}
-              className={cn(tab === "import" ? "text-gray-900 font-bold" : "hover:text-gray-600")}
+              className={cn(tab === "import" ? "text-[#469BD9] font-bold" : "hover:text-gray-600")}
             >
               수입
             </button>
@@ -249,7 +249,7 @@ export default function BrandGrid() {
                   >
                     <div
                       className={`w-12 h-12 rounded-[16px] flex items-center justify-center font-extrabold text-[14px] ${details.bg} ${details.textCol} ${
-                        isSelected ? 'border-[2px] border-[#0B3058]' : 'border border-transparent'
+                        isSelected ? 'border-[2px] border-[#469BD9]' : 'border border-transparent'
                       }`}
                     >
                       {brand.slug === 'all' ? (
@@ -268,13 +268,6 @@ export default function BrandGrid() {
                         })()
                       )}
                     </div>
-                    <span
-                      className={`text-[12px] tracking-tight ${
-                        isSelected ? 'text-[#0B3058] font-bold' : 'text-gray-500 font-medium'
-                      }`}
-                    >
-                      {brand.name}
-                    </span>
                   </button>
                 </div>
               );
@@ -284,11 +277,11 @@ export default function BrandGrid() {
 
         {/* 선택된 브랜드 차량 목록 (1열) */}
         {selectedBrand && (
-          <div className="mt-8 pt-6 border-t border-gray-100 animate-in slide-in-from-top-4 fade-in duration-300">
+          <div className="mt-8 pt-6 animate-in slide-in-from-top-4 fade-in duration-300">
 
             {isLoadingCars ? (
               <div className="flex justify-center items-center py-12">
-                <div className="w-8 h-8 border-4 border-[#e74c3c] border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-8 h-8 border-4 border-[#469BD9] border-t-transparent rounded-full animate-spin"></div>
               </div>
             ) : brandCars.length > 0 ? (
               <div className="space-y-6">

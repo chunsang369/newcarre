@@ -3,6 +3,8 @@ import "./globals.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
+import ChannelTalk from "@/components/ChannelTalk";
+
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
@@ -15,6 +17,11 @@ export const metadata: Metadata = {
     description: "신차 장기렌트, 리스 최저가 견적 비교 플랫폼",
     type: "website",
     locale: "ko_KR",
+  },
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/icon.png",
   },
 };
 
@@ -36,6 +43,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col antialiased">
         {children}
+        <ChannelTalk />
       </body>
     </html>
   );

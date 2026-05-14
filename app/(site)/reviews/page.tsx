@@ -52,9 +52,7 @@ export default async function ReviewsPage() {
                 <div className="p-5">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-xs font-medium bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">{review.carModel}</span>
-                    {review.plannerName && (
-                      <span className="text-xs text-[var(--color-text-muted)]">담당: {review.plannerName}</span>
-                    )}
+
                   </div>
                   <h3 className="font-bold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors mb-2 line-clamp-2">
                     {review.title}

@@ -78,12 +78,6 @@ export default function ReviewCarouselClient({ reviews }: { reviews: Review[] })
                     </p>
                     <div className="flex items-center gap-1.5 text-[10px] text-gray-400 mt-auto">
                       <span>{review.customerName}</span>
-                      {review.plannerName && (
-                        <>
-                          <span>·</span>
-                          <span className="text-blue-500">{review.plannerName}</span>
-                        </>
-                      )}
                       <span>·</span>
                       <span>{new Date(review.contractDate).toLocaleDateString("ko-KR")}</span>
                     </div>

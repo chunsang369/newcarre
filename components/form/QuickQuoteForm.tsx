@@ -87,11 +87,11 @@ export default function QuickQuoteForm() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
-          {/* 좌측: 폼 (60%) */}
+        <div className="mx-auto max-w-[700px]">
+          {/* 폼 */}
           <form
             onSubmit={handleSubmit}
-            className="lg:col-span-3 bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-gray-100"
+            className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-gray-100"
           >
             <div className="space-y-5">
               {/* 이름 */}
@@ -105,7 +105,7 @@ export default function QuickQuoteForm() {
                   onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
                   placeholder="홍길동"
                   required
-                  className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ff6b35] focus:ring-2 focus:ring-[#ff6b35]/20 transition-all"
+                  className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#469BD9] focus:ring-2 focus:ring-[#469BD9]/20 transition-all"
                 />
               </div>
 
@@ -120,7 +120,7 @@ export default function QuickQuoteForm() {
                   onChange={handlePhoneChange}
                   placeholder="010-1234-5678"
                   required
-                  className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ff6b35] focus:ring-2 focus:ring-[#ff6b35]/20 transition-all"
+                  className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#469BD9] focus:ring-2 focus:ring-[#469BD9]/20 transition-all"
                 />
               </div>
 
@@ -139,7 +139,7 @@ export default function QuickQuoteForm() {
                       key={m.value}
                       className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl border cursor-pointer text-sm font-medium transition-all ${
                         formData.contactMethod === m.value
-                          ? "border-[#ff6b35] bg-[#ff6b35]/5 text-[#ff6b35]"
+                          ? "border-[#469BD9] bg-[#469BD9]/5 text-[#469BD9]"
                           : "border-gray-200 text-gray-500 hover:border-gray-300"
                       }`}
                     >
@@ -165,7 +165,7 @@ export default function QuickQuoteForm() {
                 <select
                   value={formData.availableTime}
                   onChange={(e) => setFormData((p) => ({ ...p, availableTime: e.target.value }))}
-                  className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm text-gray-700 focus:outline-none focus:border-[#ff6b35] focus:ring-2 focus:ring-[#ff6b35]/20 transition-all appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%236b7280%22%20d%3D%22M3%205l3%203%203-3%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[right_16px_center]"
+                  className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm text-gray-700 focus:outline-none focus:border-[#469BD9] focus:ring-2 focus:ring-[#469BD9]/20 transition-all appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%236b7280%22%20d%3D%22M3%205l3%203%203-3%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[right_16px_center]"
                 >
                   <option value="">언제든 가능</option>
                   <option value="09-12">오전 (09~12시)</option>
@@ -195,7 +195,7 @@ export default function QuickQuoteForm() {
                   value={formData.carOfInterest}
                   onChange={(e) => setFormData((p) => ({ ...p, carOfInterest: e.target.value }))}
                   placeholder="예: 그랜저, K8, BMW 5시리즈"
-                  className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ff6b35] focus:ring-2 focus:ring-[#ff6b35]/20 transition-all"
+                  className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#469BD9] focus:ring-2 focus:ring-[#469BD9]/20 transition-all"
                 />
               </div>
 
@@ -206,7 +206,7 @@ export default function QuickQuoteForm() {
                   checked={formData.consent}
                   onChange={(e) => setFormData((p) => ({ ...p, consent: e.target.checked }))}
                   required
-                  className="w-5 h-5 rounded border-gray-300 text-[#ff6b35] focus:ring-[#ff6b35] mt-0.5 shrink-0"
+                  className="w-5 h-5 rounded border-gray-300 text-[#469BD9] focus:ring-[#469BD9] mt-0.5 shrink-0"
                 />
                 <span className="text-xs text-gray-500 leading-relaxed">
                   <span className="text-gray-700 font-medium">[필수]</span>{" "}
@@ -221,72 +221,13 @@ export default function QuickQuoteForm() {
               <button
                 type="submit"
                 disabled={isSubmitting || !formData.consent}
-                className="w-full h-[52px] rounded-xl bg-[#ff6b35] text-white text-base font-bold hover:bg-[#e85a28] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-[#ff6b35]/20"
+                className="w-full h-[52px] rounded-xl bg-[#469BD9] text-white text-base font-bold hover:bg-[#3a8dc7] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-[#469BD9]/20"
               >
                 {isSubmitting ? "전송 중..." : "견적 확인하기"}
               </button>
             </div>
           </form>
 
-          {/* 우측: 상담 채널 + 신뢰 배지 (40%) — 데스크톱만 */}
-          <div className="lg:col-span-2 space-y-5">
-            {/* 상담 채널 */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <h3 className="text-base font-bold text-gray-900 mb-4">지금 바로 상담하기</h3>
-              <div className="space-y-3">
-                <a
-                  href="http://pf.kakao.com/_XXXXX/chat"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#FEE500] text-[#3C1E1E] text-sm font-semibold hover:bg-[#F5DC00] transition-colors"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  카카오톡 상담
-                </a>
-                <a
-                  href="tel:1577-0000"
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#0a2540] text-white text-sm font-semibold hover:bg-[#143a66] transition-colors"
-                >
-                  <Phone className="w-5 h-5" />
-                  1577-0000 전화 상담
-                </a>
-              </div>
-            </div>
-
-            {/* 신뢰 배지 */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <h3 className="text-base font-bold text-gray-900 mb-4">왜 하이카즈인가요?</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-800">금융감독원 정식 등록</p>
-                    <p className="text-xs text-gray-500">검증된 금융 파트너와 안전한 거래</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center shrink-0">
-                    <Clock className="w-5 h-5 text-orange-600" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-800">평균 30분 내 응답</p>
-                    <p className="text-xs text-gray-500">빠른 상담으로 시간 절약</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center shrink-0">
-                    <Users className="w-5 h-5 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-800">누적 계약 50,000건+</p>
-                    <p className="text-xs text-gray-500">검증된 실적의 전문 플랫폼</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

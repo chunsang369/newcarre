@@ -28,7 +28,7 @@ export default function FloatingCTA() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="flex-1 flex flex-col items-center justify-center gap-0.5 bg-[#e74c3c] text-white active:bg-[#c0392b] transition-colors"
+                className="flex-1 flex flex-col items-center justify-center gap-0.5 bg-[#469BD9] text-white active:bg-[#3a8dc7] transition-colors"
               >
                 <Icon className="w-5 h-5" />
                 <span className="text-[10px] font-semibold">{item.label}</span>
@@ -43,7 +43,7 @@ export default function FloatingCTA() {
               target={item.external ? "_blank" : undefined}
               className={cn(
                 "flex-1 flex flex-col items-center justify-center gap-0.5 transition-colors",
-                isActive ? "text-[#0a2540]" : "text-gray-500 active:text-gray-700"
+                isActive ? "text-[#469BD9]" : "text-gray-500 active:text-gray-700"
               )}
             >
               <Icon className="w-5 h-5" />

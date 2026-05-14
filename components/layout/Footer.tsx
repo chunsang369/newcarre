@@ -16,7 +16,6 @@ const MENU_LINKS = [
   { label: "즉시출고", href: "/cars/instant" },
   { label: "계약후기", href: "/reviews" },
   { label: "FAQ", href: "/faq" },
-  { label: "회사소개", href: "/company" },
 ];
 
 const LEGAL_LINKS = [
@@ -33,19 +32,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* 1. 회사 정보 */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">H</span>
-              </div>
-              <span className="text-lg font-bold text-white tracking-tight">
-                하이카즈
-              </span>
+            <Link href="/" className="inline-flex items-center mb-5">
+              <img src="/logo.png" alt="하이카즈 로고" className="w-16 h-12 object-contain transform scale-[2.25]" />
             </Link>
-            <p className="text-sm leading-relaxed text-gray-400">
-              신차 장기렌트 · 리스 최저가 견적 비교 플랫폼.
-              <br />
-              전 차종 무보증, 한 번에 비교하세요.
-            </p>
           </div>
 
           {/* 2. 메뉴 */}
@@ -123,7 +112,7 @@ export default function Footer() {
         </div>
 
         {/* 구분선 + 카피라이트 */}
-        <div className="mt-12 pt-8 border-t border-white/10">
+        <div className="mt-12 pt-8">
           <p className="text-xs text-gray-500 text-center">
             © {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved.
           </p>
