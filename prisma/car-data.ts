@@ -11523,8 +11523,8 @@ export const popularCars = [
         "lease": 220033
       },
       "36_PREPAY_30_10000": {
-        "rent": 125682,
-        "lease": 0
+        "rent": 218666,
+        "lease": 92798
       },
       "36_NO_DEPOSIT_20000": {
         "rent": 385780,
@@ -11535,8 +11535,8 @@ export const popularCars = [
         "lease": 229201
       },
       "36_PREPAY_30_20000": {
-        "rent": 141113,
-        "lease": 10001
+        "rent": 234097,
+        "lease": 102985
       },
       "48_NO_DEPOSIT_10000": {
         "rent": 329610,
@@ -11547,8 +11547,8 @@ export const popularCars = [
         "lease": 198030
       },
       "48_PREPAY_30_10000": {
-        "rent": 146110,
-        "lease": 36533
+        "rent": 215847,
+        "lease": 106270
       },
       "48_NO_DEPOSIT_20000": {
         "rent": 343344,
@@ -11559,8 +11559,8 @@ export const popularCars = [
         "lease": 206281
       },
       "48_PREPAY_30_20000": {
-        "rent": 159844,
-        "lease": 45701
+        "rent": 229581,
+        "lease": 115438
       },
       "60_NO_DEPOSIT_10000": {
         "rent": 331462,
@@ -11571,8 +11571,8 @@ export const popularCars = [
         "lease": 193630
       },
       "60_PREPAY_30_10000": {
-        "rent": 184662,
-        "lease": 68344
+        "rent": 240452,
+        "lease": 124134
       },
       "60_NO_DEPOSIT_20000": {
         "rent": 345273,
@@ -11583,8 +11583,8 @@ export const popularCars = [
         "lease": 201697
       },
       "60_PREPAY_30_20000": {
-        "rent": 198473,
-        "lease": 77308
+        "rent": 254263,
+        "lease": 133098
       }
     }
   },

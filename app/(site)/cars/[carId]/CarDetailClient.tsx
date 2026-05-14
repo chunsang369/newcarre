@@ -89,27 +89,44 @@ export default function CarDetailClient({ car }: { car: any }) {
     let baseMonthly = buyMethod === "RENT" ? baseEntry.rent : baseEntry.lease;
     let isFallback = false;
     
-    if (!baseMonthly) {
+    // 데이터가 0이거나 비정상적으로 낮은 경우(예: 크롤링 오류 10001) Fallback 적용
+    const isCasper = car.slug?.includes('casper');
+    const isCasperElectric = car.slug?.includes('casper-electric');
+    if (!baseMonthly || baseMonthly <= 20000 || isCasper) {
       isFallback = true;
-      // Fallback
-      baseMonthly = buyMethod === "RENT" ? Math.floor(basePrice * 0.015) : Math.floor(basePrice * 0.01);
+      // 기본 Fallback: 차량 가액의 일정 비율 (36개월 0/0 기준)
+      const baseRatio = buyMethod === "RENT" ? 0.0165 : 0.0135;
+      const subsidyFactor = isCasperElectric ? 0.298 : 1.0; // 캐스퍼 일렉트릭 보조금(차살때 기준 70,200원) 정밀하게 맞춤
+      
+      const fallbackBase = Math.floor(basePrice * baseRatio * subsidyFactor);
+      
+      baseMonthly = fallbackBase;
+      if (deposit === "PREPAY_30") baseMonthly = Math.floor(fallbackBase * 0.66);
+      if (deposit === "DEPOSIT_30") baseMonthly = Math.floor(fallbackBase * 0.88);
     }
     
-    // Add option monthly logic
-    const ratio = deposit === "PREPAY_30" ? 0.012 : deposit === "DEPOSIT_30" ? 0.015 : 0.018;
+    // Add option monthly logic (선수금/보증금에 따른 옵션가 요율 조정)
+    // 36개월 기준: 무보증 약 1.8%, 보증금30% 약 1.5%, 선수금30% 약 0.9% (잔존가치 고려)
+    let ratio = 0.018; 
+    if (deposit === "DEPOSIT_30") ratio = 0.015;
+    if (deposit === "PREPAY_30") ratio = 0.009; // 선수금 시 옵션가도 크게 감액됨
+    
     const added = Math.floor((totalOptionPrice + totalColorPrice) * ratio);
     
     let multiplier = 1.0;
-    if (period === "48") multiplier = 0.9;
-    if (period === "60") multiplier = 0.8;
+    if (period === "48") multiplier = 0.90; 
+    if (period === "60") multiplier = 0.82;
     
+    let finalMonthly = 0;
     if (isFallback) {
-      return Math.floor((baseMonthly + added) * multiplier);
+      finalMonthly = Math.floor((baseMonthly + added) * multiplier);
+    } else {
+      // DB의 baseMonthly에는 이미 기간/선수금/주행거리 배수가 적용되어 있으므로 옵션 가격(added)에만 기간 배수 적용
+      finalMonthly = Math.floor(baseMonthly + (added * multiplier));
     }
-    
-    // DB의 baseMonthly에는 이미 기간/선수금/주행거리 배수가 적용되어 있으므로 옵션 가격(added)에만 기간 배수 적용
-    return Math.floor(baseMonthly + (added * multiplier));
-  }, [period, deposit, mileage, buyMethod, car.priceMatrix, totalOptionPrice, totalColorPrice, basePrice]);
+
+    return finalMonthly;
+  }, [period, deposit, mileage, buyMethod, car.priceMatrix, totalOptionPrice, totalColorPrice, basePrice, car.fuelType]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -197,7 +214,7 @@ export default function CarDetailClient({ car }: { car: any }) {
     }
   };
 
-  const primaryColor = "#0068B7"; // 차살때 브랜드 컬러
+  const primaryColor = "#469BD9"; // 하이카즈 브랜드 컬러
 
   return (
     <div className="min-h-screen bg-[#f5f5f5] pb-24 lg:pb-12 text-[#333]">
@@ -225,7 +242,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                     className="h-6 object-contain shrink-0" 
                   />
                 )}
-                <h2 className="text-[17px] min-[375px]:text-[19px] sm:text-2xl font-bold tracking-tight whitespace-nowrap">{car.modelName}</h2>
+                <h2 className="text-[17px] min-[375px]:text-[19px] sm:text-2xl font-bold tracking-tight">{car.modelName}</h2>
               </div>
               {/* ── 데스크톱: 로고 위 + 모델명 아래 (기존) ── */}
               <div className="hidden md:block">
@@ -246,7 +263,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                     );
                   })()
                 )}
-                {!car.brand && <p className="text-sm font-bold text-gray-400 mb-1">{car.brand?.name || '차량 정보 없음'}</p>}
+                {!car.brand && <p className="text-sm font-bold text-gray-400 mb-1">차량 정보 없음</p>}
                 <h2 className="text-2xl lg:text-3xl font-bold mb-4">{car.modelName}</h2>
               </div>
             </div>
@@ -262,10 +279,10 @@ export default function CarDetailClient({ car }: { car: any }) {
         <div className="w-full lg:w-[60%] space-y-4">
           
           {/* STEP 01 차량선택 */}
-          <div className="bg-white border border-[#e5e5e5] lg:rounded-md">
-            <div className="px-5 py-4 border-b border-[#e5e5e5]">
+          <div className="bg-white">
+            <div className="px-5 py-4">
               <h2 className="text-xl font-bold flex items-center gap-2">
-                <span className="text-[#0068B7]">01</span> 차량선택
+                <span className="text-[#469BD9]">01</span> 차량선택
               </h2>
             </div>
             
@@ -280,7 +297,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                       onClick={() => setSelectedGradeIdx(g.idx)}
                       className={`text-left px-4 py-3 border rounded-sm text-[13px] font-medium transition-colors ${
                         selectedGradeIdx === g.idx 
-                        ? "border-[#0068B7] bg-[#f0f7ff] text-[#0068B7]" 
+                        ? "border-[#469BD9] bg-[#f0f7ff] text-[#469BD9]" 
                         : "border-[#e5e5e5] text-[#555] hover:bg-gray-50"
                       }`}
                     >
@@ -306,15 +323,15 @@ export default function CarDetailClient({ car }: { car: any }) {
                         >
                           <div className="flex items-center gap-3">
                             <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${
-                              isSelected ? "border-[#0068B7]" : "border-[#ccc]"
+                              isSelected ? "border-[#469BD9]" : "border-[#ccc]"
                             }`}>
-                              {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#0068B7]" />}
+                              {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#469BD9]" />}
                             </div>
-                            <span className={`text-[14px] ${isSelected ? "font-bold text-[#0068B7]" : "font-medium text-[#333]"}`}>
+                            <span className={`text-[14px] ${isSelected ? "font-bold text-[#469BD9]" : "font-medium text-[#333]"}`}>
                               {t.name}
                             </span>
                           </div>
-                          <span className={`text-[14px] font-bold ${isSelected ? "text-[#0068B7]" : "text-[#333]"}`}>
+                          <span className={`text-[14px] font-bold ${isSelected ? "text-[#469BD9]" : "text-[#333]"}`}>
                             {formatPriceWon(Number(t.price))}
                           </span>
                         </label>
@@ -329,7 +346,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                 <div className="mb-6">
                   <h3 className="text-sm font-bold mb-3 flex items-center justify-between">
                     <span>외장 색상</span>
-                    <span className="text-[#1a73e8] font-bold text-[12px]">
+                    <span className="text-[#469BD9] font-bold text-[12px]">
                       {selectedExtColorData ? `(${formatPriceWon(Number(selectedExtColorData.price) || 0)})` : "(0원)"}
                     </span>
                   </h3>
@@ -354,7 +371,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                           onClick={() => setSelectedExtColor(color.idx)}
                           className={`w-[44px] h-[44px] rounded-full relative transition-all shadow-sm overflow-hidden ${
                             isSelected 
-                              ? "border-[2px] border-[#1a73e8] scale-110 z-10" 
+                              ? "border-[2px] border-[#469BD9] scale-110 z-10" 
                               : "border border-[#e0e0e0] hover:border-gray-400"
                           }`}
                           style={{ 
@@ -380,7 +397,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                 <div>
                   <h3 className="text-sm font-bold mb-3 flex items-center justify-between">
                     <span>내장 색상</span>
-                    <span className="text-[#1a73e8] font-bold text-[12px]">
+                    <span className="text-[#469BD9] font-bold text-[12px]">
                       {selectedIntColorData ? `(${formatPriceWon(Number(selectedIntColorData.price) || 0)})` : "(0원)"}
                     </span>
                   </h3>
@@ -406,7 +423,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                           onClick={() => setSelectedIntColor(color.idx)}
                           className={`w-[44px] h-[44px] rounded-full relative transition-all shadow-sm overflow-hidden ${
                             isSelected 
-                              ? "border-[2px] border-[#1a73e8] scale-110 z-10" 
+                              ? "border-[2px] border-[#469BD9] scale-110 z-10" 
                               : "border border-[#e0e0e0] hover:border-gray-400"
                           }`}
                           style={{ 
@@ -430,10 +447,10 @@ export default function CarDetailClient({ car }: { car: any }) {
           </div>
 
           {/* STEP 02 옵션 */}
-          <div className="bg-white border border-[#e5e5e5] lg:rounded-md">
-            <div className="px-5 py-4 border-b border-[#e5e5e5]">
+          <div className="bg-white">
+            <div className="px-5 py-4">
               <h2 className="text-xl font-bold flex items-center gap-2">
-                <span className="text-[#0068B7]">02</span> 옵션 <span className="text-[13px] font-normal text-gray-500 ml-1">(중복 선택 가능)</span>
+                <span className="text-[#469BD9]">02</span> 옵션 <span className="text-[13px] font-normal text-gray-500 ml-1">(중복 선택 가능)</span>
               </h2>
             </div>
             <div className="p-0">
@@ -450,7 +467,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                       >
                         <div className="flex items-center gap-3">
                           <div className={`w-5 h-5 rounded flex items-center justify-center border ${
-                            isSelected ? "bg-[#0068B7] border-[#0068B7]" : "bg-white border-[#ccc]"
+                            isSelected ? "bg-[#469BD9] border-[#469BD9]" : "bg-white border-[#ccc]"
                           }`}>
                             {isSelected && (
                               <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -481,15 +498,14 @@ export default function CarDetailClient({ car }: { car: any }) {
             </div>
           </div>
 
-          {/* STEP 03 계약조건 */}
-          <div className="bg-white border border-[#e5e5e5] lg:rounded-md">
-            <div className="px-5 py-4 border-b border-[#e5e5e5]">
+          <div className="bg-white">
+            <div className="px-5 py-4">
               <h2 className="text-xl font-bold flex items-center gap-2">
-                <span className="text-[#0068B7]">03</span> 계약조건
+                <span className="text-[#469BD9]">03</span> 계약조건
               </h2>
             </div>
             <div className="px-5 pt-3 pb-1">
-              <p className="text-[13px] text-[#0068B7]">많이 진행되는 계약 조건이 설정되어 있어요!</p>
+              <p className="text-[13px] text-[#469BD9]">많이 진행되는 계약 조건이 설정되어 있어요!</p>
             </div>
             <div className="p-5 space-y-6">
               {/* 구입방법 */}
@@ -498,7 +514,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                 <div className="grid grid-cols-2 border border-[#e5e5e5] rounded-sm overflow-hidden">
                   {(["RENT","LEASE"] as BuyMethod[]).map(m => (
                     <button key={m} onClick={() => setBuyMethod(m)}
-                      className={`py-3 text-[14px] font-bold transition-colors ${buyMethod === m ? "bg-[#0068B7] text-white" : "bg-[#f9f9f9] text-gray-500 hover:bg-gray-100"}`}
+                      className={`py-3 text-[14px] font-bold transition-colors ${buyMethod === m ? "bg-[#469BD9] text-white" : "bg-[#f9f9f9] text-gray-500 hover:bg-gray-100"}`}
                     >{m === "RENT" ? "렌트" : "리스"}</button>
                   ))}
                 </div>
@@ -509,7 +525,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                 <div className="grid grid-cols-3 border border-[#e5e5e5] rounded-sm overflow-hidden">
                   {(["36","48","60"] as Period[]).map(p => (
                     <button key={p} onClick={() => setPeriod(p)}
-                      className={`py-3 text-[14px] font-bold transition-colors ${period === p ? "bg-[#0068B7] text-white" : "bg-[#f9f9f9] text-gray-500 hover:bg-gray-100"}`}
+                      className={`py-3 text-[14px] font-bold transition-colors ${period === p ? "bg-[#469BD9] text-white" : "bg-[#f9f9f9] text-gray-500 hover:bg-gray-100"}`}
                     >{p}개월</button>
                   ))}
                 </div>
@@ -520,7 +536,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                 <div className="grid grid-cols-2 border border-[#e5e5e5] rounded-sm overflow-hidden">
                   {(["10000","20000"] as Mileage[]).map(m => (
                     <button key={m} onClick={() => setMileage(m)}
-                      className={`py-3 text-[13px] font-bold transition-colors ${mileage === m ? "bg-[#0068B7] text-white" : "bg-[#f9f9f9] text-gray-500 hover:bg-gray-100"}`}
+                      className={`py-3 text-[13px] font-bold transition-colors ${mileage === m ? "bg-[#469BD9] text-white" : "bg-[#f9f9f9] text-gray-500 hover:bg-gray-100"}`}
                     >{Number(m)/10000}만</button>
                   ))}
                 </div>
@@ -530,8 +546,16 @@ export default function CarDetailClient({ car }: { car: any }) {
                 <h3 className="text-[14px] font-bold mb-3">선수금 ⓘ</h3>
                 <div className="grid grid-cols-2 border border-[#e5e5e5] rounded-sm overflow-hidden">
                   {(["0","30"] as Prepay[]).map(p => (
-                    <button key={p} onClick={() => { setPrepay(p); if(p !== "0") setDeposit("PREPAY_30"); else setDeposit("NO_DEPOSIT"); }}
-                      className={`py-3 text-[13px] font-bold transition-colors ${prepay === p ? "bg-[#0068B7] text-white" : "bg-[#f9f9f9] text-gray-500 hover:bg-gray-100"}`}
+                    <button key={p} onClick={() => {
+                        setPrepay(p);
+                        if (p !== "0") {
+                          setGuarantee("0");
+                          setDeposit("PREPAY_30");
+                        } else {
+                          setDeposit(guarantee !== "0" ? "DEPOSIT_30" : "NO_DEPOSIT");
+                        }
+                      }}
+                      className={`py-3 text-[13px] font-bold transition-colors ${prepay === p ? "bg-[#469BD9] text-white" : "bg-[#f9f9f9] text-gray-500 hover:bg-gray-100"}`}
                     >{p}%</button>
                   ))}
                 </div>
@@ -541,8 +565,16 @@ export default function CarDetailClient({ car }: { car: any }) {
                 <h3 className="text-[14px] font-bold mb-3">보증금 ⓘ</h3>
                 <div className="grid grid-cols-2 border border-[#e5e5e5] rounded-sm overflow-hidden">
                   {(["0","30"] as Guarantee[]).map(g => (
-                    <button key={g} onClick={() => { setGuarantee(g); if(g !== "0") setDeposit("DEPOSIT_30"); }}
-                      className={`py-3 text-[13px] font-bold transition-colors ${guarantee === g ? "bg-[#0068B7] text-white" : "bg-[#f9f9f9] text-gray-500 hover:bg-gray-100"}`}
+                    <button key={g} onClick={() => {
+                        setGuarantee(g);
+                        if (g !== "0") {
+                          setPrepay("0");
+                          setDeposit("DEPOSIT_30");
+                        } else {
+                          setDeposit(prepay !== "0" ? "PREPAY_30" : "NO_DEPOSIT");
+                        }
+                      }}
+                      className={`py-3 text-[13px] font-bold transition-colors ${guarantee === g ? "bg-[#469BD9] text-white" : "bg-[#f9f9f9] text-gray-500 hover:bg-gray-100"}`}
                     >{g}%</button>
                   ))}
                 </div>
@@ -557,82 +589,112 @@ export default function CarDetailClient({ car }: { car: any }) {
         <div className="w-full lg:w-[40%] relative">
           <div className="lg:sticky lg:top-20 space-y-4">
             
+            {/* 스텝 인디케이터 */}
+            <div className="bg-white lg:rounded-md overflow-hidden border-b border-[#e5e5e5]">
+              <div className="flex">
+                <div className="flex-1 py-3 text-center text-[12px] font-bold text-gray-400">01 차량 선택</div>
+                <div className="flex-1 py-3 text-center text-[12px] font-bold text-gray-400">02 옵션</div>
+                <div className="flex-1 py-3 text-center text-[12px] font-bold text-[#469BD9]">03 계약조건</div>
+              </div>
+            </div>
+
             {/* 요약 박스 */}
-            <div className="bg-white border border-[#e5e5e5] lg:rounded-md shadow-sm">
+            <div className="bg-white">
               <div className="p-5">
-                <div className="flex gap-4 mb-4">
-                  {car.thumbnailUrl ? (
-                    <img src={car.thumbnailUrl} alt={car.modelName} className="w-24 h-auto object-contain mix-blend-multiply" />
+                {/* 모델 정보 */}
+                <div className="mb-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <span className="text-[13px] text-[#888]">모델</span>
+                  </div>
+                  <p className="text-[14px] font-bold text-[#333] leading-snug">
+                    {car.brand?.name} {car.modelName} {selectedGrade?.name} {selectedTrim?.name}
+                  </p>
+                </div>
+
+                {/* 색상 */}
+                <div className="p-0 space-y-3 mb-4 pt-4">
+                  <div className="flex justify-between items-start">
+                    <span className="text-[13px] text-[#888]">색상</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[13px] text-[#555]">외장</span>
+                    <span className="text-[13px] text-[#469BD9] font-bold">(+{(Number(selectedExtColorData?.price) || 0).toLocaleString()})</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[13px] text-[#555]">내장</span>
+                    <span className="text-[13px] text-[#469BD9] font-bold">(+{(Number(selectedIntColorData?.price) || 0).toLocaleString()})</span>
+                  </div>
+                </div>
+
+                {/* 선택된 옵션 */}
+                <div className="mb-4">
+                  {Object.values(selectedOptions).filter(Boolean).length > 0 ? (
+                    <div className="space-y-1">
+                      {selectedTrim?.options?.filter((opt: any) => selectedOptions[opt.idx]).map((opt: any, i: number) => (
+                        <div key={i} className="flex justify-between text-[13px]">
+                          <span className="text-[#555]">{opt.title}</span>
+                          <span className="font-medium">{formatPriceWon(Number(opt.price))}</span>
+                        </div>
+                      ))}
+                    </div>
                   ) : (
-                    <div className="w-24 h-16 bg-gray-100 rounded" />
+                    <p className="text-[13px] text-gray-400">선택된 옵션이 없습니다.</p>
                   )}
-                  <div className="flex-1">
-                    <p className="text-[12px] font-bold text-gray-400 mb-1">{car.brand.name}</p>
-                    <h3 className="text-[15px] font-bold leading-tight">{car.modelName} {selectedGrade?.name}</h3>
-                    <p className="text-[13px] text-gray-600 mt-1">{selectedTrim?.name || "트림 정보 없음"}</p>
-                  </div>
                 </div>
 
-                <div className="bg-[#f9f9f9] p-4 rounded-sm space-y-3 mb-6">
-                  <div className="flex justify-between items-start gap-4">
-                    <span className="text-[13px] text-[#888] shrink-0">외장 색상</span>
-                    <span className="text-[13px] text-[#333] font-bold text-right leading-tight break-keep">
-                      {selectedExtColorData?.title || "선택 안됨"}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-start gap-4">
-                    <span className="text-[13px] text-[#888] shrink-0">내장 색상</span>
-                    <span className="text-[13px] text-[#333] font-bold text-right leading-tight break-keep">
-                      {selectedIntColorData?.title || "선택 안됨"}
-                    </span>
-                  </div>
-                  <div className="flex justify-between text-[13px] pt-3 border-t border-[#e5e5e5]">
-                    <span className="text-gray-500">선택된 옵션</span>
-                    <span className="font-medium">{Object.values(selectedOptions).filter(Boolean).length}개</span>
-                  </div>
+                <div className="my-4" />
+
+                {/* 구입방법 */}
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-[13px] text-[#888]">구입방법</span>
+                  <span className="text-[14px] font-bold text-[#333]">{buyMethod === "RENT" ? "렌트" : "리스"}</span>
                 </div>
 
-                {/* 프로모션 */}
-                <div className="border border-[#e5e5e5] rounded-sm p-4 mb-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-[13px] font-medium text-gray-500">프로모션</span>
-                  </div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-[13px] font-bold">하이카즈 혜택</span>
-                    <span className="bg-[#ffe8e8] text-[#e74c3c] px-2 py-0.5 rounded text-[11px] font-bold">최대 혜택가</span>
-                    <span className="text-[#e74c3c] text-[13px] font-bold">-2.5%</span>
-                  </div>
-                  <div className="flex justify-between items-center text-[14px] mb-3">
-                    <span className="text-gray-600">차량 기본가</span>
-                    <span className="font-medium">{finalCarPrice.toLocaleString()} 원</span>
-                  </div>
-                  <div className="flex justify-between items-end border-t border-[#e5e5e5] pt-3">
-                    <span className="text-[14px] text-[#e74c3c] font-bold">혜택 적용 월 {buyMethod === "RENT" ? "렌트" : "리스"}</span>
+                {/* 하이카즈 혜택 */}
+                <div className="mb-4">
+                  <div className="flex justify-between items-baseline mb-2">
+                    <span className="text-[15px] font-bold text-[#333]">월 {buyMethod === "RENT" ? "렌트료" : "리스료"}</span>
                     <div className="text-right">
-                      <span className="text-[28px] font-black text-[#333]">{monthlyPrice.toLocaleString()}</span>
-                      <span className="text-[14px] font-medium text-gray-600 ml-1">원</span>
+                      <span className="text-[26px] font-extrabold text-[#469BD9]">
+                        {monthlyPrice.toLocaleString()} <span className="text-[18px]">원</span>
+                      </span>
                     </div>
                   </div>
+                  <div className="flex justify-between items-center text-[14px] mb-2">
+                    <span className="text-gray-500">차량 기본가</span>
+                    <span className="font-medium">{finalCarPrice.toLocaleString()}원</span>
+                  </div>
+                  <div className="flex justify-between items-center text-[14px] mb-4">
+                    <span className="text-gray-500">혜택 적용가</span>
+                    <span className="font-medium text-[#e74c3c]">{discountPrice.toLocaleString()}원 (-2.5%)</span>
+                  </div>
+                  {car.fuelType === "EV" && (
+                    <div className="text-right mb-2">
+                      <p className="text-[10px] text-gray-400 font-medium">* 국가 및 지자체 전기차 보조금이 반영된 월 대여료입니다.</p>
+                    </div>
+                  )}
                 </div>
 
-                <div className="border-t border-[#000] border-dashed my-6" />
-
-                <div className="text-center mb-6">
-                  <p className="text-[13px] text-[#0068B7] font-bold mb-1">
+                {/* 안내 메시지 */}
+                <div className="text-center mb-4 py-3 bg-[#f9f9f9] rounded-sm">
+                  <p className="text-[13px] text-[#e74c3c] font-bold leading-relaxed">
                     고객님! 견적 상담을 통해<br/>정확한 차량 견적을 받아보세요!
                   </p>
                 </div>
 
-                {/* 견적 상담 폼 */}
+
+
+                {/* 쉽고 빠른 견적 문의 */}
                 <form onSubmit={handleSubmit} className="space-y-3">
-                  <h4 className="text-[14px] font-bold border-b pb-2 mb-3">간편 견적 문의</h4>
+                  <h4 className="text-[14px] font-bold pb-2 mb-3">쉽고 빠른 견적 문의</h4>
+                  <h5 className="text-[13px] font-bold text-[#555] mb-2">간편 견적 문의</h5>
                   <div className="flex gap-2">
                     <input
                       type="text"
                       placeholder="이름"
                       value={form.name}
                       onChange={e => setForm({...form, name: e.target.value})}
-                      className="w-1/3 px-3 py-2.5 border border-[#ccc] rounded-sm text-[13px] focus:outline-none focus:border-[#0068B7]"
+                      className="w-1/3 px-3 py-2.5 border border-[#ccc] rounded-sm text-[13px] focus:outline-none focus:border-[#469BD9]"
                       required
                     />
                     <input
@@ -640,7 +702,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                       placeholder="휴대폰 번호 (- 없이 입력)"
                       value={form.phone}
                       onChange={e => setForm({...form, phone: e.target.value})}
-                      className="w-2/3 px-3 py-2.5 border border-[#ccc] rounded-sm text-[13px] focus:outline-none focus:border-[#0068B7]"
+                      className="w-2/3 px-3 py-2.5 border border-[#ccc] rounded-sm text-[13px] focus:outline-none focus:border-[#469BD9]"
                       required
                     />
                   </div>
@@ -651,20 +713,20 @@ export default function CarDetailClient({ car }: { car: any }) {
                         type="checkbox" 
                         checked={form.consent1 && form.consent2 && form.consent3}
                         onChange={e => setForm({ ...form, consent1: e.target.checked, consent2: e.target.checked, consent3: e.target.checked })}
-                        className="w-4 h-4 accent-[#0068B7]" 
+                        className="w-4 h-4 accent-[#469BD9]" 
                       />
                       전체 동의
                     </label>
                     <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
-                      <input type="checkbox" checked={form.consent1} onChange={e => setForm({...form, consent1: e.target.checked})} className="w-3.5 h-3.5 accent-[#0068B7]" />
+                      <input type="checkbox" checked={form.consent1} onChange={e => setForm({...form, consent1: e.target.checked})} className="w-3.5 h-3.5 accent-[#469BD9]" />
                       (필수) 개인정보 수집 및 활용동의 [보기]
                     </label>
                     <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
-                      <input type="checkbox" checked={form.consent2} onChange={e => setForm({...form, consent2: e.target.checked})} className="w-3.5 h-3.5 accent-[#0068B7]" />
+                      <input type="checkbox" checked={form.consent2} onChange={e => setForm({...form, consent2: e.target.checked})} className="w-3.5 h-3.5 accent-[#469BD9]" />
                       (필수) 개인정보 제3자 제공 동의 [보기]
                     </label>
                     <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
-                      <input type="checkbox" checked={form.consent3} onChange={e => setForm({...form, consent3: e.target.checked})} className="w-3.5 h-3.5 accent-[#0068B7]" />
+                      <input type="checkbox" checked={form.consent3} onChange={e => setForm({...form, consent3: e.target.checked})} className="w-3.5 h-3.5 accent-[#469BD9]" />
                       (선택) 마케팅 활용동의 [보기]
                     </label>
                   </div>
@@ -672,7 +734,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full py-4 bg-[#0068B7] hover:bg-[#005291] text-white font-bold text-[16px] rounded-sm transition-colors mt-2"
+                    className="w-full py-4 bg-[#469BD9] hover:bg-[#3a8dc7] text-white font-bold text-[16px] rounded-sm transition-colors mt-2"
                   >
                     {submitting ? "전송 중..." : "견적 문의하기"}
                   </button>
@@ -689,14 +751,18 @@ export default function CarDetailClient({ car }: { car: any }) {
           ───────────────────────────────────────── */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#e5e5e5] p-3 flex items-center justify-between z-50 lg:hidden shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
         <div>
-          <p className="text-[10px] text-gray-500 mb-0.5">혜택 적용 월 {buyMethod === "RENT" ? "렌트" : "리스"}</p>
-          <p className="text-[18px] font-black">{monthlyPrice.toLocaleString()}<span className="text-[12px] font-medium text-gray-500 ml-0.5">원</span></p>
+          <p className="text-[10px] text-gray-500 mb-0.5">월 {buyMethod === "RENT" ? "렌트" : "리스"}료</p>
+          {(car.slug === 'kia-carnival-heritage' || car.modelName?.includes('카니발 헤리티지')) ? (
+            <p className="text-[18px] font-black">상담신청필요</p>
+          ) : (
+            <p className="text-[18px] font-black">{monthlyPrice.toLocaleString()}<span className="text-[12px] font-medium text-gray-500 ml-0.5">원</span></p>
+          )}
         </div>
         <button
           onClick={() => {
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
           }}
-          className="bg-[#0068B7] text-white px-6 py-2.5 rounded-sm font-bold text-[13px]"
+          className="bg-[#469BD9] text-white px-6 py-2.5 rounded-sm font-bold text-[13px]"
         >
           간편 견적 문의
         </button>
