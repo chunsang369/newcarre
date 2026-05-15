@@ -275,9 +275,11 @@ export default function BrandGrid() {
       <div className="mx-auto max-w-[1200px] px-4 lg:px-8">
         {/* 제목 & 탭 */}
         <div className="flex items-end justify-between mb-4 lg:mb-6">
-          <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
-            관심차종 선택하기
-          </h2>
+          <div>
+            <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+              이차 간편 견적은?
+            </h2>
+          </div>
           <div className="flex items-center text-sm lg:text-base font-medium text-gray-400 gap-3 mb-0.5">
             <button
               onClick={() => handleTabChange("domestic")}
@@ -420,14 +422,19 @@ export default function BrandGrid() {
               ) : (
                 /* 브랜드 선택: 가로 스크롤 캐러셀 */
                 <>
-                  <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={carsEmblaRef}>
-                    <div className="flex gap-3 px-1 pb-4">
-                      {brandCars.map((car) => (
-                        <div key={car.id} className="flex-[0_0_calc(50%-6px)] md:flex-[0_0_260px] min-w-0 flex">
-                          <CarCard car={car} />
-                        </div>
-                      ))}
+                  <div className="relative">
+                    <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={carsEmblaRef}>
+                      <div className="flex gap-3 px-1 pb-4">
+                        {brandCars.map((car) => (
+                          <div key={car.id} className="flex-[0_0_calc(60%-6px)] md:flex-[0_0_260px] min-w-0 flex">
+                            <CarCard car={car} />
+                          </div>
+                        ))}
+                      </div>
                     </div>
+                    
+                    {/* Peek-a-boo Gradient Overlay (Hidden on Mobile) */}
+                    <div className="hidden md:block pointer-events-none absolute top-0 right-0 bottom-4 w-24 bg-gradient-to-l from-white to-transparent z-10" />
                   </div>
                   
                   {isBackgroundLoading && (
