@@ -66,13 +66,13 @@ export default function CarCard({ car }: { car: CarData }) {
 
       {/* 정보 영역 */}
       <div className="p-3 lg:p-4 flex flex-col flex-1">
-        <div className="flex justify-between items-start mb-3">
-          <Link href={`/cars/${car.slug}`} className="flex-1">
-            <h4 className="font-bold text-[16px] lg:text-[17px] text-gray-900 line-clamp-2 group-hover:text-[#469BD9] transition-colors">
+        <div className="flex justify-between items-start mb-3 gap-1">
+          <Link href={`/cars/${car.slug}`} className="flex-1 min-w-0">
+            <h4 className="font-bold text-[13px] lg:text-[17px] text-gray-900 break-keep group-hover:text-[#469BD9] transition-colors leading-snug">
               {car.modelName}
             </h4>
           </Link>
-          <span className="text-[13px] font-bold text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded ml-2 shrink-0">
+          <span className="text-[11px] lg:text-[13px] font-bold text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded shrink-0 whitespace-nowrap">
             {formatBasePrice(car.monthlyRent > 0 ? (car as any).basePrice : 0) === "가격 정보 없음" ? "" : formatBasePrice((car as any).basePrice)}
           </span>
         </div>

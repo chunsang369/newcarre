@@ -3,9 +3,9 @@
 import { useCallback, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from "lucide-react";
+import { Search, X } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
-import { getCarsByBrand, getCarsByTab } from "@/app/actions";
+import { getCarsByBrand, getCarsByTab, searchCars } from "@/app/actions";
 import CarCard, { type CarData } from "./CarCard";
 
 interface BrandItem {
@@ -48,13 +48,6 @@ const BRANDS: BrandItem[] = [
   { slug: "byd", name: "BYD", nameEn: "BYD", isDomestic: false },
 ];
 
-const BRAND_COLORS: Record<string, string> = {
-  hyundai: "#002C5F", kia: "#05141F", genesis: "#1C1C1C",
-  "renault-korea": "#FFCC00", chevrolet: "#D4AF37", kgm: "#333333",
-  bmw: "#0066B1", "mercedes-benz": "#333333", audi: "#BB0A30",
-  volvo: "#003057", tesla: "#CC0000", byd: "#1A1A1A",
-};
-
 export default function BrandGrid() {
   const [tab, setTab] = useState<"domestic" | "import">("domestic");
   const [selectedBrand, setSelectedBrand] = useState<string | null>("all");
@@ -62,6 +55,13 @@ export default function BrandGrid() {
   const [isLoadingCars, setIsLoadingCars] = useState(false);
   const [isBackgroundLoading, setIsBackgroundLoading] = useState(false);
   const INITIAL_LIMIT = 5;
+
+  // Search state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchMode, setIsSearchMode] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -119,7 +119,7 @@ export default function BrandGrid() {
     return () => { isMounted = false; };
   }, [isBackgroundLoading, selectedBrand, tab]);
   
-  const [emblaRef, emblaApi] = useEmblaCarousel({
+  const [emblaRef] = useEmblaCarousel({
     align: "start",
     dragFree: true,
     containScroll: "trimSnaps",
@@ -136,21 +136,18 @@ export default function BrandGrid() {
     ...BRANDS.filter((b) => (tab === "domestic" ? b.isDomestic : !b.isDomestic)),
   ];
 
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
   const handleBrandClick = async (slug: string) => {
     if (selectedBrand === slug) {
       return;
     }
+    // Clear search mode when clicking a brand
+    if (isSearchMode) {
+      setIsSearchMode(false);
+      setSearchQuery("");
+    }
     setSelectedBrand(slug);
     setIsLoadingCars(true);
-    setIsBackgroundLoading(false); // Reset background loading
+    setIsBackgroundLoading(false);
     try {
       if (slug === "all") {
         const cars = await getCarsByTab(tab === "domestic", INITIAL_LIMIT);
@@ -171,6 +168,11 @@ export default function BrandGrid() {
   // 탭 변경 시 전체 브랜드 자동 선택
   const handleTabChange = async (newTab: "domestic" | "import") => {
     if (tab === newTab) return;
+    // Clear search mode when changing tab
+    if (isSearchMode) {
+      setIsSearchMode(false);
+      setSearchQuery("");
+    }
     setTab(newTab);
     setSelectedBrand("all");
     setIsLoadingCars(true);
@@ -186,11 +188,93 @@ export default function BrandGrid() {
     }
   };
 
+  // Search handler with debounce
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
+
+    if (value.trim().length === 0) {
+      // Reset to brand mode
+      setIsSearchMode(false);
+      handleBrandClick(selectedBrand || "all");
+      return;
+    }
+
+    setIsSearchMode(true);
+    setSelectedBrand(null);
+
+    searchTimeoutRef.current = setTimeout(async () => {
+      setIsSearching(true);
+      try {
+        const results = await searchCars(value.trim());
+        setBrandCars(results);
+      } catch (error) {
+        console.error("Search failed:", error);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 350);
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    setIsSearchMode(false);
+    setSelectedBrand("all");
+    searchInputRef.current?.blur();
+    // Re-fetch default cars
+    const refetch = async () => {
+      setIsLoadingCars(true);
+      try {
+        const cars = await getCarsByTab(tab === "domestic", INITIAL_LIMIT);
+        setBrandCars(cars);
+        if (cars.length === INITIAL_LIMIT) setIsBackgroundLoading(true);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setIsLoadingCars(false);
+      }
+    };
+    refetch();
+  };
+
+  const getBrandIconDetails = (slug: string) => {
+    switch (slug) {
+      case 'hyundai': return { bg: 'bg-[#F0F2F6]', textCol: 'text-[#0B3058]' };
+      case 'kia': return { bg: 'bg-[#EBEBEB]', textCol: 'text-[#000000]' };
+      case 'genesis': return { bg: 'bg-[#EBEBEB]', textCol: 'text-[#000000]' };
+      case 'renault-korea': return { bg: 'bg-[#FFFBEA]', textCol: 'text-[#FFC107]' };
+      case 'chevrolet': return { bg: 'bg-[#FDF7F0]', textCol: 'text-[#D09A44]' };
+      case 'kgm': return { bg: 'bg-[#EBEBEB]', textCol: 'text-[#333333]' };
+      case 'bmw': return { bg: 'bg-[#E6F0FA]', textCol: 'text-[#0066B1]' };
+      case 'mercedes-benz': return { bg: 'bg-[#EBEBEB]', textCol: 'text-[#333333]' };
+      case 'audi': return { bg: 'bg-[#FCE6E6]', textCol: 'text-[#CC0000]' };
+      case 'volvo': return { bg: 'bg-[#E6EEF5]', textCol: 'text-[#003057]' };
+      case 'all': return { bg: 'bg-[#FFFFFF]', textCol: 'text-[#555555]' };
+      default: return { bg: 'bg-[#F4F5F7]', textCol: 'text-[#333333]' };
+    }
+  };
+
+  const getLogoSize = (slug: string) => {
+    if (slug === 'renault-korea') return 'w-7 h-7';
+    if (['audi', 'honda'].includes(slug)) return 'w-12 h-12';
+    if (['lexus', 'ford', 'cadillac', 'mercedes-benz'].includes(slug)) return 'w-11 h-11';
+    return 'w-9 h-9';
+  };
+
+  const getLogoExtension = (slug: string) => {
+    if (['polestar', 'jaguar', 'lincoln'].includes(slug)) return 'webp';
+    if (['audi', 'cadillac', 'ford', 'honda', 'mercedes-benz', 'porsche'].includes(slug)) return 'png';
+    return 'svg';
+  };
+
   return (
     <section className="py-8 bg-white" aria-label="관심 차종 선택">
       <div className="mx-auto max-w-[1200px] px-4 lg:px-8">
         {/* 제목 & 탭 */}
-        <div className="flex items-end justify-between mb-6 pb-3">
+        <div className="flex items-end justify-between mb-4 lg:mb-6">
           <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
             관심차종 선택하기
           </h2>
@@ -211,106 +295,166 @@ export default function BrandGrid() {
           </div>
         </div>
 
-        {/* 드래그 가능한 가로 스크롤 컨테이너 (Embla Carousel) */}
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-2 px-1">
-            {filteredBrands.map((brand) => {
-              const isSelected = selectedBrand === brand.slug;
-              
-              const getBrandIconDetails = (slug: string) => {
-                switch (slug) {
-                  case 'hyundai': return { text: 'HY', bg: 'bg-[#F0F2F6]', textCol: 'text-[#0B3058]' };
-                  case 'kia': return { text: 'KI', bg: 'bg-[#EBEBEB]', textCol: 'text-[#000000]' };
-                  case 'genesis': return { text: 'GE', bg: 'bg-[#EBEBEB]', textCol: 'text-[#000000]' };
-                  case 'renault-korea': return { text: 'RE', bg: 'bg-[#FFFBEA]', textCol: 'text-[#FFC107]' };
-                  case 'chevrolet': return { text: 'CH', bg: 'bg-[#FDF7F0]', textCol: 'text-[#D09A44]' };
-                  case 'kgm': return { text: 'KG', bg: 'bg-[#EBEBEB]', textCol: 'text-[#333333]' };
-                  case 'bmw': return { text: 'BM', bg: 'bg-[#E6F0FA]', textCol: 'text-[#0066B1]' };
-                  case 'mercedes-benz': return { text: 'MB', bg: 'bg-[#EBEBEB]', textCol: 'text-[#333333]' };
-                  case 'audi': return { text: 'AU', bg: 'bg-[#FCE6E6]', textCol: 'text-[#CC0000]' };
-                  case 'volvo': return { text: 'VO', bg: 'bg-[#E6EEF5]', textCol: 'text-[#003057]' };
-                  case 'all': return { text: 'All', bg: 'bg-[#FFFFFF]', textCol: 'text-[#555555]' };
-                  default: return { text: slug.substring(0, 2).toUpperCase(), bg: 'bg-[#F4F5F7]', textCol: 'text-[#333333]' };
-                }
-              };
-              
-              const details = getBrandIconDetails(brand.slug);
-
-              return (
-                <div
-                  key={brand.slug}
-                  className="flex-[0_0_auto] min-w-0"
-                >
-                  <button
-                    onClick={() => handleBrandClick(brand.slug)}
-                    className={`flex flex-col items-center justify-center gap-1.5 shrink-0 w-[64px] h-[84px] rounded-2xl transition-all ${
-                      isSelected ? 'bg-[#F4F6F8]' : 'bg-transparent hover:bg-slate-50'
-                    }`}
-                  >
-                    <div
-                      className={`w-12 h-12 rounded-[16px] flex items-center justify-center font-extrabold text-[14px] ${details.bg} ${details.textCol} ${
-                        isSelected ? 'border-[2px] border-[#469BD9]' : 'border border-transparent'
-                      }`}
-                    >
-                      {brand.slug === 'all' ? (
-                        'All'
-                      ) : (
-                        (() => {
-                          const getLogoSize = (slug: string) => {
-                            if (slug === 'renault-korea') return 'w-7 h-7';
-                            if (['audi', 'honda'].includes(slug)) return 'w-12 h-12';
-                            if (['lexus', 'ford', 'cadillac', 'mercedes-benz'].includes(slug)) return 'w-11 h-11';
-                            return 'w-9 h-9';
-                          };
-                          return (
-                            <img src={`/images/brands/${brand.slug}.${['polestar', 'jaguar', 'lincoln'].includes(brand.slug) ? 'webp' : ['audi', 'cadillac', 'ford', 'honda', 'mercedes-benz', 'porsche'].includes(brand.slug) ? 'png' : 'svg'}`} alt={brand.name} className={`${getLogoSize(brand.slug)} object-contain`} />
-                          );
-                        })()
-                      )}
-                    </div>
-                  </button>
-                </div>
-              );
-            })}
+        {/* 검색 바 */}
+        <div className="mb-5">
+          <div className={cn(
+            "relative flex items-center rounded-xl border transition-all duration-200",
+            isSearchMode
+              ? "border-[#469BD9] bg-white shadow-[0_0_0_3px_rgba(70,155,217,0.1)]"
+              : "border-gray-200 bg-[#f8f9fa] hover:border-gray-300"
+          )}>
+            <Search className={cn(
+              "absolute left-3.5 w-4 h-4 transition-colors pointer-events-none",
+              isSearchMode ? "text-[#469BD9]" : "text-gray-400"
+            )} />
+            <input
+              ref={searchInputRef}
+              type="text"
+              value={searchQuery}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              onFocus={() => {
+                if (searchQuery.trim().length > 0) setIsSearchMode(true);
+              }}
+              placeholder="차량명, 브랜드로 검색 (예: 스포티지, BMW)"
+              className={cn(
+                "w-full py-3 pl-10 pr-10 text-[14px] lg:text-[15px] bg-transparent outline-none rounded-xl placeholder:text-gray-400",
+                isSearchMode ? "text-gray-900" : "text-gray-700"
+              )}
+            />
+            {searchQuery && (
+              <button
+                onClick={clearSearch}
+                className="absolute right-3 w-6 h-6 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+                aria-label="검색 초기화"
+              >
+                <X className="w-3.5 h-3.5 text-gray-500" />
+              </button>
+            )}
           </div>
         </div>
 
-        {/* 선택된 브랜드 차량 목록 (1열) */}
-        {selectedBrand && (
-          <div className="mt-8 pt-6 animate-in slide-in-from-top-4 fade-in duration-300">
+        {/* 브랜드 선택 (검색 모드가 아닐 때만 표시) */}
+        {!isSearchMode && (
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-2 px-1">
+              {filteredBrands.map((brand) => {
+                const isSelected = selectedBrand === brand.slug;
+                const details = getBrandIconDetails(brand.slug);
 
-            {isLoadingCars ? (
-              <div className="flex justify-center items-center py-12">
-                <div className="w-8 h-8 border-4 border-[#469BD9] border-t-transparent rounded-full animate-spin"></div>
-              </div>
-            ) : brandCars.length > 0 ? (
-              <div className="space-y-6">
-                <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={carsEmblaRef}>
-                  <div className="flex gap-3 px-1 pb-4">
-                    {brandCars.map((car) => (
-                      <div key={car.id} className="flex-[0_0_calc(50%-6px)] md:flex-[0_0_260px] min-w-0 flex">
-                        <CarCard car={car} />
+                return (
+                  <div
+                    key={brand.slug}
+                    className="flex-[0_0_auto] min-w-0"
+                  >
+                    <button
+                      onClick={() => handleBrandClick(brand.slug)}
+                      className={`flex flex-col items-center justify-center gap-1.5 shrink-0 w-[64px] h-[84px] rounded-2xl transition-all ${
+                        isSelected ? 'bg-[#F4F6F8]' : 'bg-transparent hover:bg-slate-50'
+                      }`}
+                    >
+                      <div
+                        className={`w-12 h-12 rounded-[16px] flex items-center justify-center font-extrabold text-[14px] ${details.bg} ${details.textCol} ${
+                          isSelected ? 'border-[2px] border-[#469BD9]' : 'border border-transparent'
+                        }`}
+                      >
+                        {brand.slug === 'all' ? (
+                          'All'
+                        ) : (
+                          <img
+                            src={`/images/brands/${brand.slug}.${getLogoExtension(brand.slug)}`}
+                            alt={brand.name}
+                            className={`${getLogoSize(brand.slug)} object-contain`}
+                          />
+                        )}
                       </div>
-                    ))}
+                    </button>
                   </div>
-                </div>
-                
-                {isBackgroundLoading && (
-                  <div className="flex justify-center mt-4">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-500 shadow-sm animate-pulse">
-                      <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
-                      차량 목록을 불러오는 중...
-                    </div>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="text-center py-12 text-gray-500 bg-gray-50 rounded-xl border border-gray-100">
-                해당 브랜드에 등록된 차량이 없습니다.
-              </div>
-            )}
+                );
+              })}
+            </div>
           </div>
         )}
+
+        {/* 검색 모드 결과 표시 */}
+        {isSearchMode && (
+          <div className="mb-2">
+            <div className="flex items-center justify-between">
+              <p className="text-sm text-gray-500">
+                {isSearching ? (
+                  <span className="flex items-center gap-1.5">
+                    <span className="inline-block w-3.5 h-3.5 border-2 border-[#469BD9] border-t-transparent rounded-full animate-spin" />
+                    검색 중...
+                  </span>
+                ) : (
+                  <>
+                    <span className="font-semibold text-[#469BD9]">&ldquo;{searchQuery}&rdquo;</span>
+                    {" "}검색 결과 <span className="font-bold text-gray-900">{brandCars.length}</span>건
+                  </>
+                )}
+              </p>
+              <button
+                onClick={clearSearch}
+                className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                검색 초기화
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* 차량 목록 */}
+        <div className="mt-6 animate-in fade-in duration-300">
+          {isLoadingCars || isSearching ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="w-8 h-8 border-4 border-[#469BD9] border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          ) : brandCars.length > 0 ? (
+            <div className="space-y-6">
+              {isSearchMode ? (
+                /* 검색 결과: 그리드 레이아웃 */
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                  {brandCars.map((car) => (
+                    <CarCard key={car.id} car={car} />
+                  ))}
+                </div>
+              ) : (
+                /* 브랜드 선택: 가로 스크롤 캐러셀 */
+                <>
+                  <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={carsEmblaRef}>
+                    <div className="flex gap-3 px-1 pb-4">
+                      {brandCars.map((car) => (
+                        <div key={car.id} className="flex-[0_0_calc(50%-6px)] md:flex-[0_0_260px] min-w-0 flex">
+                          <CarCard car={car} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {isBackgroundLoading && (
+                    <div className="flex justify-center mt-4">
+                      <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-500 shadow-sm animate-pulse">
+                        <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
+                        차량 목록을 불러오는 중...
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          ) : (
+            <div className="text-center py-12 text-gray-500 bg-gray-50 rounded-xl border border-gray-100">
+              {isSearchMode ? (
+                <div className="space-y-2">
+                  <p className="text-3xl">🔍</p>
+                  <p className="font-medium">검색 결과가 없습니다</p>
+                  <p className="text-sm text-gray-400">다른 키워드로 다시 검색해 보세요</p>
+                </div>
+              ) : (
+                "해당 브랜드에 등록된 차량이 없습니다."
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

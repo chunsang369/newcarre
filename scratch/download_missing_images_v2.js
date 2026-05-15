@@ -37,7 +37,12 @@ async function downloadImage(url, filename) {
 
 async function extractImageFromDetail(trimId) {
     try {
-        const res = await axios.get(`https://chasalddae.com/leaserent/leaserent_detail?trim_id=${trimId}`);
+        console.log(`Fetching https://chasalddae.com/leaserent/leaserent_detail?trim_id=${trimId}`);
+        const res = await axios.get(`https://chasalddae.com/leaserent/leaserent_detail?trim_id=${trimId}`, {
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            }
+        });
         let fullRscString = '';
         for (const line of res.data.split('\n')) {
             if (line.includes('self.__next_f.push(')) {
@@ -49,15 +54,19 @@ async function extractImageFromDetail(trimId) {
         
         const match = decoded.match(/https:\/\/img\.chasalddae\.com\/model\/car_images\/[^"]+\.(?:png|jpg|jpeg)/);
         if (match) return match[0];
+        
+        // Fallback: search for any image in the decoded string
+        const imgMatch = decoded.match(/https:\/\/img\.chasalddae\.com\/[^"]+\.(?:png|jpg|jpeg)/);
+        if (imgMatch) return imgMatch[0];
+
     } catch(e) {
-        console.error(`Failed to fetch detail for ${trimId}`);
+        console.error(`Failed to fetch detail for ${trimId}: ${e.message}`);
     }
     return null;
 }
 
 async function run() {
     const items = [
-        { trimId: 10390, slug: 'audi-a6' },
         { trimId: 5439, slug: 'renault-korea-5439' }
     ];
 
