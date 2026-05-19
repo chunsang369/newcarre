@@ -1,7 +1,7 @@
 [build]
   command = "npm ci && npm run build"
   publish = ".next"
-  environment = { NODE_VERSION = "20" }
+  environment = { NODE_VERSION = "20", NPM_CONFIG_LEGACY_PEER_DEPS = "true" }
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
