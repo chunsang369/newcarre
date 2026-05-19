@@ -5,9 +5,8 @@ export async function POST(req: Request) {
   try {
     const { username, password } = await req.json();
 
-    // 환경변수 읽기 (공백 제거)
-    const ADMIN_USER = (process.env.ADMIN_USERNAME || "admin").trim();
-    const ADMIN_PASS = (process.env.ADMIN_PASSWORD || "hicarz1234!").trim();
+    const ADMIN_USER = (process.env.ADMIN_USERNAME || "umjc").trim();
+    const ADMIN_PASS = (process.env.ADMIN_PASSWORD || "kl33550!").trim();
 
     if (username === ADMIN_USER && password === ADMIN_PASS) {
       // 쿠키 설정
