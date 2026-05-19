@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronRight } from "lucide-react";
 
@@ -42,7 +43,7 @@ export default function ReviewCarouselClient({ reviews }: { reviews: Review[] })
         {/* 캐러셀 */}
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-3">
-            {reviews.map((review) => (
+            {reviews.map((review, index) => (
               <div
                 key={review.id}
                 className="flex-[0_0_75%] md:flex-[0_0_45%] lg:flex-[0_0_30%] min-w-0"
@@ -51,12 +52,15 @@ export default function ReviewCarouselClient({ reviews }: { reviews: Review[] })
                   {/* 상단: 썸네일 이미지 */}
                   <div className="relative">
                     {review.thumbnailUrl ? (
-                      <div className="aspect-[16/10] overflow-hidden">
-                        <img
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <Image
                           src={review.thumbnailUrl}
                           alt={review.title}
+                          fill
                           className="w-full h-full object-cover"
-                          loading="lazy"
+                          unoptimized
+                          priority={index === 0}
+                          {...(index === 0 ? { fetchPriority: "high" } : {})}
                         />
                       </div>
                     ) : (

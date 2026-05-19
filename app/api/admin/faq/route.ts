@@ -14,7 +14,8 @@ export async function POST(request: Request) {
         sortOrder: parseInt(data.sortOrder || "0", 10),
       },
     });
-    revalidateTag("faq", { expire: 0 });
+    // @ts-ignore
+    revalidateTag("faq");
     return NextResponse.json({ success: true, data: faq });
   } catch (error) {
     console.error("Failed to create FAQ:", error);

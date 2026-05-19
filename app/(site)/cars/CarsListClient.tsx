@@ -314,7 +314,7 @@ export default function CarsListClient({
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {filtered.map((car) => {
+            {filtered.map((car, index) => {
               const rent = getBaseRent(car);
               return (
                 <Link
@@ -330,6 +330,7 @@ export default function CarsListClient({
                       fill
                       className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
                       unoptimized
+                      priority={index < 3}
                     />
                     <span className="absolute top-3 left-3 bg-[var(--color-primary)] text-white text-[10px] font-bold px-2 py-1 rounded-full">
                       {car.year}년형

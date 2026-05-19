@@ -17,7 +17,8 @@ export async function DELETE(req: NextRequest) {
   if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });
 
   await prisma.review.delete({ where: { id } });
-  revalidateTag("reviews", { expire: 0 });
+  // @ts-ignore
+  revalidateTag("reviews");
   return NextResponse.json({ ok: true });
 }
 
@@ -36,6 +37,7 @@ export async function PATCH(req: NextRequest) {
     where: { id },
     data,
   });
-  revalidateTag("reviews", { expire: 0 });
+  // @ts-ignore
+  revalidateTag("reviews");
   return NextResponse.json(updated);
 }

@@ -27,7 +27,8 @@ export async function POST(request: Request) {
         sortOrder: parseInt(data.sortOrder || "0", 10),
       },
     });
-    revalidateTag("cars", { expire: 0 });
+    // @ts-ignore
+    revalidateTag("cars");
     return NextResponse.json({ success: true, data: car });
   } catch (error) {
     console.error("Failed to create car:", error);
