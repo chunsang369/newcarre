@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Phone, MessageCircle, ShieldCheck, Clock, Users } from "lucide-react";
 
 export default function QuickQuoteForm() {
@@ -10,7 +11,10 @@ export default function QuickQuoteForm() {
     contactMethod: "phone",
     availableTime: "",
     carOfInterest: "",
-    consent: false,
+    consent1: false,
+    consent2: false,
+    consent3: false,
+    consent4: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -27,16 +31,39 @@ export default function QuickQuoteForm() {
     setFormData((prev) => ({ ...prev, phone: formatPhone(e.target.value) }));
   }
 
+  const handleContactMethodToggle = (value: string) => {
+    setFormData((prev) => {
+      const currentMethods = prev.contactMethod ? prev.contactMethod.split(",") : [];
+      let newMethods: string[];
+      if (currentMethods.includes(value)) {
+        if (currentMethods.length > 1) {
+          newMethods = currentMethods.filter((m) => m !== value);
+        } else {
+          newMethods = currentMethods;
+        }
+      } else {
+        newMethods = [...currentMethods, value];
+      }
+      return {
+        ...prev,
+        contactMethod: newMethods.join(","),
+      };
+    });
+  };
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!formData.consent) return;
+    if (!formData.consent1 || !formData.consent2 || !formData.consent3) return;
     setIsSubmitting(true);
 
     try {
       const res = await fetch("/api/quotes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          consent: true,
+        }),
       });
       if (res.ok) {
         setIsSubmitted(true);
@@ -63,7 +90,7 @@ export default function QuickQuoteForm() {
             <button
               onClick={() => {
                 setIsSubmitted(false);
-                setFormData({ name: "", phone: "", contactMethod: "phone", availableTime: "", carOfInterest: "", consent: false });
+                setFormData({ name: "", phone: "", contactMethod: "phone", availableTime: "", carOfInterest: "", consent1: false, consent2: false, consent3: false, consent4: false });
               }}
               className="px-6 py-2.5 rounded-xl bg-[#0a2540] text-white text-sm font-semibold hover:bg-[#143a66] transition-colors"
             >
@@ -127,33 +154,37 @@ export default function QuickQuoteForm() {
               {/* 안내방법 */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  안내방법 <span className="text-red-500">*</span>
+                  안내방법 (중복 선택 가능) <span className="text-red-500">*</span>
                 </label>
                 <div className="flex gap-3">
                   {[
                     { value: "phone", label: "전화" },
                     { value: "sms", label: "문자" },
                     { value: "kakao", label: "카톡" },
-                  ].map((m) => (
-                    <label
-                      key={m.value}
-                      className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl border cursor-pointer text-sm font-medium transition-all ${
-                        formData.contactMethod === m.value
-                          ? "border-[#469BD9] bg-[#469BD9]/5 text-[#469BD9]"
-                          : "border-gray-200 text-gray-500 hover:border-gray-300"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="contactMethod"
-                        value={m.value}
-                        checked={formData.contactMethod === m.value}
-                        onChange={(e) => setFormData((p) => ({ ...p, contactMethod: e.target.value }))}
-                        className="sr-only"
-                      />
-                      {m.label}
-                    </label>
-                  ))}
+                  ].map((m) => {
+                    const isSelected = formData.contactMethod.split(",").includes(m.value);
+                    return (
+                      <label
+                        key={m.value}
+                        onClick={() => handleContactMethodToggle(m.value)}
+                        className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl border cursor-pointer text-sm font-medium transition-all ${
+                          isSelected
+                            ? "border-[#469BD9] bg-[#469BD9]/5 text-[#469BD9]"
+                            : "border-gray-200 text-gray-500 hover:border-gray-300"
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          name="contactMethod"
+                          value={m.value}
+                          checked={isSelected}
+                          readOnly
+                          className="sr-only"
+                        />
+                        {m.label}
+                      </label>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -199,28 +230,82 @@ export default function QuickQuoteForm() {
                 />
               </div>
 
-              {/* 개인정보 동의 */}
-              <label className="flex items-start gap-2.5 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={formData.consent}
-                  onChange={(e) => setFormData((p) => ({ ...p, consent: e.target.checked }))}
-                  required
-                  className="w-5 h-5 rounded border-gray-300 text-[#469BD9] focus:ring-[#469BD9] mt-0.5 shrink-0"
-                />
-                <span className="text-xs text-gray-500 leading-relaxed">
-                  <span className="text-gray-700 font-medium">[필수]</span>{" "}
-                  개인정보 수집 및 이용에 동의합니다.{" "}
-                  <a href="/privacy" className="underline text-gray-600 hover:text-gray-800">
-                    자세히 보기
-                  </a>
-                </span>
-              </label>
+              {/* 개인정보 및 서비스 동의 */}
+              <div className="space-y-2 mt-4 border border-gray-100 p-4 rounded-xl bg-gray-50/50">
+                <label className="flex items-center gap-2 text-xs font-bold cursor-pointer pb-2 border-b border-gray-100 mb-2 text-gray-800">
+                  <input 
+                    type="checkbox" 
+                    checked={formData.consent1 && formData.consent2 && formData.consent3 && formData.consent4}
+                    onChange={e => setFormData({ 
+                      ...formData, 
+                      consent1: e.target.checked, 
+                      consent2: e.target.checked, 
+                      consent3: e.target.checked,
+                      consent4: e.target.checked 
+                    })}
+                    className="w-4 h-4 rounded border-gray-300 text-[#469BD9] focus:ring-[#469BD9]" 
+                  />
+                  전체 동의
+                </label>
+                <div className="flex items-center justify-between">
+                  <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
+                    <input 
+                      type="checkbox" 
+                      checked={formData.consent1} 
+                      onChange={e => setFormData({...formData, consent1: e.target.checked})} 
+                      className="w-3.5 h-3.5 rounded border-gray-300 text-[#469BD9] focus:ring-[#469BD9]" 
+                    />
+                    [필수] 서비스 이용약관에 동의
+                  </label>
+                  <Link href="/terms" target="_blank" className="text-[11px] text-gray-400 hover:text-gray-600 underline">
+                    [자세히 보기]
+                  </Link>
+                </div>
+                <div className="flex items-center justify-between">
+                  <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
+                    <input 
+                      type="checkbox" 
+                      checked={formData.consent2} 
+                      onChange={e => setFormData({...formData, consent2: e.target.checked})} 
+                      className="w-3.5 h-3.5 rounded border-gray-300 text-[#469BD9] focus:ring-[#469BD9]" 
+                    />
+                    [필수] 개인정보 수집·이용에 동의
+                  </label>
+                  <Link href="/privacy" target="_blank" className="text-[11px] text-gray-400 hover:text-gray-600 underline">
+                    [자세히 보기]
+                  </Link>
+                </div>
+                <div className="flex items-center justify-between">
+                  <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
+                    <input 
+                      type="checkbox" 
+                      checked={formData.consent3} 
+                      onChange={e => setFormData({...formData, consent3: e.target.checked})} 
+                      className="w-3.5 h-3.5 rounded border-gray-300 text-[#469BD9] focus:ring-[#469BD9]" 
+                    />
+                    [필수] 개인정보 제3자 제공에 동의
+                  </label>
+                  <Link href="/privacy" target="_blank" className="text-[11px] text-gray-400 hover:text-gray-600 underline">
+                    [자세히 보기]
+                  </Link>
+                </div>
+                <div className="flex items-center justify-between">
+                  <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
+                    <input 
+                      type="checkbox" 
+                      checked={formData.consent4} 
+                      onChange={e => setFormData({...formData, consent4: e.target.checked})} 
+                      className="w-3.5 h-3.5 rounded border-gray-300 text-[#469BD9] focus:ring-[#469BD9]" 
+                    />
+                    [선택] 마케팅 정보 수신에 동의
+                  </label>
+                </div>
+              </div>
 
               {/* 제출 버튼 */}
               <button
                 type="submit"
-                disabled={isSubmitting || !formData.consent}
+                disabled={isSubmitting || !formData.consent1 || !formData.consent2 || !formData.consent3}
                 className="w-full h-[52px] rounded-xl bg-[#469BD9] text-white text-base font-bold hover:bg-[#3a8dc7] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-[#469BD9]/20"
               >
                 {isSubmitting ? "전송 중..." : "견적 확인하기"}

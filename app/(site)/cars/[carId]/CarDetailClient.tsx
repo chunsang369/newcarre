@@ -35,7 +35,7 @@ export default function CarDetailClient({ car }: { car: any }) {
   const [prepay, setPrepay] = useState<Prepay>("30");
   const [guarantee, setGuarantee] = useState<Guarantee>("0");
 
-  const [form, setForm] = useState({ name: "", phone: "", consent1: false, consent2: false, consent3: false });
+  const [form, setForm] = useState({ name: "", phone: "", consent1: false, consent2: false, consent3: false, consent4: false });
   const [submitting, setSubmitting] = useState(false);
 
   // Derived Selection
@@ -130,7 +130,7 @@ export default function CarDetailClient({ car }: { car: any }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.phone || !form.consent1 || !form.consent2) {
+    if (!form.name || !form.phone || !form.consent1 || !form.consent2 || !form.consent3) {
       alert("필수 항목과 필수 동의를 확인해주세요.");
       return;
     }
@@ -205,7 +205,7 @@ export default function CarDetailClient({ car }: { car: any }) {
       }
 
       alert("견적 상담이 성공적으로 신청되었습니다. 담당자가 곧 연락드리겠습니다.");
-      setForm({ name: "", phone: "", consent1: false, consent2: false, consent3: false });
+      setForm({ name: "", phone: "", consent1: false, consent2: false, consent3: false, consent4: false });
     } catch (error) {
       console.error("Quote submit error:", error);
       alert("상담 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
@@ -711,24 +711,51 @@ export default function CarDetailClient({ car }: { car: any }) {
                     <label className="flex items-center gap-2 text-[12px] font-bold cursor-pointer pb-2 border-b border-[#e5e5e5] mb-2">
                       <input 
                         type="checkbox" 
-                        checked={form.consent1 && form.consent2 && form.consent3}
-                        onChange={e => setForm({ ...form, consent1: e.target.checked, consent2: e.target.checked, consent3: e.target.checked })}
+                        checked={form.consent1 && form.consent2 && form.consent3 && form.consent4}
+                        onChange={e => setForm({ 
+                          ...form, 
+                          consent1: e.target.checked, 
+                          consent2: e.target.checked, 
+                          consent3: e.target.checked,
+                          consent4: e.target.checked 
+                        })}
                         className="w-4 h-4 accent-[#469BD9]" 
                       />
                       전체 동의
                     </label>
-                    <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
-                      <input type="checkbox" checked={form.consent1} onChange={e => setForm({...form, consent1: e.target.checked})} className="w-3.5 h-3.5 accent-[#469BD9]" />
-                      (필수) 개인정보 수집 및 활용동의 [보기]
-                    </label>
-                    <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
-                      <input type="checkbox" checked={form.consent2} onChange={e => setForm({...form, consent2: e.target.checked})} className="w-3.5 h-3.5 accent-[#469BD9]" />
-                      (필수) 개인정보 제3자 제공 동의 [보기]
-                    </label>
-                    <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
-                      <input type="checkbox" checked={form.consent3} onChange={e => setForm({...form, consent3: e.target.checked})} className="w-3.5 h-3.5 accent-[#469BD9]" />
-                      (선택) 마케팅 활용동의 [보기]
-                    </label>
+                    <div className="flex items-center justify-between">
+                      <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
+                        <input type="checkbox" checked={form.consent1} onChange={e => setForm({...form, consent1: e.target.checked})} className="w-3.5 h-3.5 accent-[#469BD9]" />
+                        [필수] 서비스 이용약관에 동의
+                      </label>
+                      <Link href="/terms" target="_blank" className="text-[11px] text-gray-400 hover:text-gray-600 underline">
+                        [자세히 보기]
+                      </Link>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
+                        <input type="checkbox" checked={form.consent2} onChange={e => setForm({...form, consent2: e.target.checked})} className="w-3.5 h-3.5 accent-[#469BD9]" />
+                        [필수] 개인정보 수집·이용에 동의
+                      </label>
+                      <Link href="/privacy" target="_blank" className="text-[11px] text-gray-400 hover:text-gray-600 underline">
+                        [자세히 보기]
+                      </Link>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
+                        <input type="checkbox" checked={form.consent3} onChange={e => setForm({...form, consent3: e.target.checked})} className="w-3.5 h-3.5 accent-[#469BD9]" />
+                        [필수] 개인정보 제3자 제공에 동의
+                      </label>
+                      <Link href="/privacy" target="_blank" className="text-[11px] text-gray-400 hover:text-gray-600 underline">
+                        [자세히 보기]
+                      </Link>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <label className="flex items-center gap-2 text-[11px] text-gray-600 cursor-pointer">
+                        <input type="checkbox" checked={form.consent4} onChange={e => setForm({...form, consent4: e.target.checked})} className="w-3.5 h-3.5 accent-[#469BD9]" />
+                        [선택] 마케팅 정보 수신에 동의
+                      </label>
+                    </div>
                   </div>
 
                   <button

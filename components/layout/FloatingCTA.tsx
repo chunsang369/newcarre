@@ -1,15 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { Home, Phone, MessageCircle, Car, FileText } from "lucide-react";
+import { Home, Phone, MessageCircle, FileText } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { label: "홈", href: "/", icon: Home },
-  { label: "전화걸기", href: "tel:1577-2617", icon: Phone },
+  { label: "전화걸기", href: "tel:010-5813-8090", icon: Phone },
   { label: "카톡문의", href: "http://pf.kakao.com/_LUDxcn/chat", icon: MessageCircle, external: true },
-  { label: "즉시출고", href: "/cars/instant", icon: Car },
   { label: "상담신청", href: "/cars/quick-quote", icon: FileText, highlight: true },
 ];
 

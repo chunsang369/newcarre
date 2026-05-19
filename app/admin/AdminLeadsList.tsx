@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { Trash2, CheckSquare, Square } from "lucide-react";
 import DeleteQuoteButton from "./DeleteQuoteButton";
+import { formatContactMethod } from "@/lib/utils";
 
 interface Lead {
   id: string;
@@ -149,7 +150,7 @@ export default function AdminLeadsList({ initialLeads }: { initialLeads: any[] }
                   <td className="px-5 py-3.5 text-slate-600 max-w-[150px] truncate">
                     {lead.carConfig?.carName || lead.carOfInterest || "미지정"}
                   </td>
-                  <td className="px-5 py-3.5 text-slate-500 text-xs">{lead.contactMethod || "-"}</td>
+                  <td className="px-5 py-3.5 text-slate-500 text-xs">{formatContactMethod(lead.contactMethod)}</td>
                   <td className="px-5 py-3.5">
                     <span className={`inline-flex px-2.5 py-1 rounded-full text-xs font-bold ${
                       lead.status === "PENDING"

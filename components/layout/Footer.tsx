@@ -2,18 +2,18 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const COMPANY_INFO = {
-  name: "하이카즈오토플랜",
-  ceo: "홍길동",
-  address: "서울특별시 강남구 테헤란로 123, 12층",
-  businessNo: "123-45-67890",
-  ecommerceNo: "제2024-서울강남-12345호",
-  phone: "1577-0000",
-  email: "contact@hicarz.co.kr",
+  brand: "제로카즈(ZeroCarz)",
+  name: "주식회사 한신종합기획",
+  ceo: "이예찬",
+  address: "경기도 오산시 운천로165번길 56-1, 301호(오산동, 대교주택)",
+  businessNo: "836-12-01570",
+  ecommerceNo: "제2024-경기오산-0333호", // 통신판매업번호는 별도 확인 필요하므로 형식을 맞춰 기재
+  phone: "010-5813-8090",
+  email: "umjc25@gmail.com",
 };
 
 const MENU_LINKS = [
   { label: "빠른 간편견적", href: "/cars/quick-quote" },
-  { label: "즉시출고", href: "/cars/instant" },
   { label: "계약후기", href: "/reviews" },
   { label: "FAQ", href: "/faq" },
 ];
@@ -33,7 +33,8 @@ export default function Footer() {
           {/* 1. 회사 정보 */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center mb-5">
-              <img src="/logo.png" alt="하이카즈 로고" className="w-16 h-12 object-contain transform scale-[2.25]" />
+              <img src="/logo.png" alt="제로카즈 로고" className="w-16 h-12 object-contain transform scale-[2.25]" />
+              <span className="text-[14px] font-bold text-white tracking-tight ml-[-13px] translate-y-[3px]">제로카즈</span>
             </Link>
           </div>
 
@@ -114,7 +115,7 @@ export default function Footer() {
         {/* 구분선 + 카피라이트 */}
         <div className="mt-12 pt-8">
           <p className="text-xs text-gray-500 text-center">
-            © {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved.
+            © {new Date().getFullYear()} {COMPANY_INFO.brand}. All rights reserved.
           </p>
         </div>
       </div>

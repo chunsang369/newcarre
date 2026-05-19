@@ -6,6 +6,7 @@ import { ko } from "date-fns/locale";
 import { revalidatePath } from "next/cache";
 import DetailDeleteButton from "./DetailDeleteButton";
 import { Edit2, ChevronLeft, Save, Trash2 } from "lucide-react";
+import { formatContactMethod, formatAvailableTime } from "@/lib/utils";
 
 export default async function AdminQuoteDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -115,6 +116,30 @@ export default async function AdminQuoteDetailPage({ params }: { params: Promise
                       className="w-full bg-transparent text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/20 rounded px-2 py-1 -ml-2"
                     />
                     <Edit2 size={14} className="absolute right-6 text-slate-300 group-hover:text-blue-500 transition-colors pointer-events-none" />
+                  </div>
+                </div>
+
+                {/* 연락 방법 행 */}
+                <div className="flex flex-col md:flex-row min-h-[64px]">
+                  <div className="md:w-48 bg-slate-50/30 px-8 py-5 flex items-center">
+                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">연락 방법</span>
+                  </div>
+                  <div className="flex-1 px-8 py-5 flex items-center">
+                    <span className="text-sm font-bold text-slate-900">
+                      {formatContactMethod(quote.contactMethod)}
+                    </span>
+                  </div>
+                </div>
+
+                {/* 상담 가능 시간 행 */}
+                <div className="flex flex-col md:flex-row min-h-[64px]">
+                  <div className="md:w-48 bg-slate-50/30 px-8 py-5 flex items-center">
+                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">상담 가능 시간</span>
+                  </div>
+                  <div className="flex-1 px-8 py-5 flex items-center">
+                    <span className="text-sm font-bold text-slate-900">
+                      {formatAvailableTime(quote.availableTime)}
+                    </span>
                   </div>
                 </div>
 

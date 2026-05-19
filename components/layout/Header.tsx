@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Headset } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -27,6 +28,19 @@ const openChannelTalk = () => {
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      if (window.scrollY > 0) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        window.location.href = "/";
+      }
+      setIsOpen(false);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -61,10 +75,12 @@ export default function Header() {
             {/* 로고 */}
             <Link
               href="/"
-              className="flex items-center shrink-0"
-              aria-label="하이카즈 홈"
+              onClick={handleLogoClick}
+              className="flex items-center shrink-0 h-full min-w-[130px] lg:min-w-[160px] relative z-10 cursor-pointer"
+              aria-label="제로카즈 홈"
             >
-              <img src="/logo.png" alt="하이카즈 로고" className="w-16 h-12 lg:w-20 lg:h-14 object-contain transform scale-[2.25]" />
+              <img src="/logo.png" alt="제로카즈 로고" className="w-16 h-12 lg:w-20 lg:h-14 object-contain transform scale-[2.25]" />
+              <span className="text-[13px] lg:text-[15px] font-bold text-gray-900 tracking-tight ml-[-13px] lg:ml-[-18px] translate-y-[3px]">제로카즈</span>
             </Link>
 
             {/* 데스크톱 GNB (lg+) */}
