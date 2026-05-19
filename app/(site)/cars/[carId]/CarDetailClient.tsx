@@ -134,6 +134,12 @@ export default function CarDetailClient({ car }: { car: any }) {
       alert("필수 항목과 필수 동의를 확인해주세요.");
       return;
     }
+
+    const cleanPhone = form.phone.replace(/\D/g, "");
+    if (cleanPhone.length < 10 || cleanPhone.length > 11) {
+      alert("휴대폰 번호를 정확하게 입력해주세요. (숫자 10~11자리)");
+      return;
+    }
     
     setSubmitting(true);
     
@@ -206,9 +212,9 @@ export default function CarDetailClient({ car }: { car: any }) {
 
       alert("견적 상담이 성공적으로 신청되었습니다. 담당자가 곧 연락드리겠습니다.");
       setForm({ name: "", phone: "", consent1: false, consent2: false, consent3: false, consent4: false });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Quote submit error:", error);
-      alert("상담 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+      alert(error.message || "상담 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
     } finally {
       setSubmitting(false);
     }

@@ -54,6 +54,13 @@ export default function QuickQuoteForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!formData.consent1 || !formData.consent2 || !formData.consent3) return;
+
+    const cleanPhone = formData.phone.replace(/\D/g, "");
+    if (cleanPhone.length < 10 || cleanPhone.length > 11) {
+      alert("휴대폰 번호를 정확하게 입력해주세요. (숫자 10~11자리)");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -67,9 +74,12 @@ export default function QuickQuoteForm() {
       });
       if (res.ok) {
         setIsSubmitted(true);
+      } else {
+        const errorData = await res.json();
+        alert(errorData.error || "전송에 실패했습니다. 다시 시도해주세요.");
       }
-    } catch {
-      alert("전송에 실패했습니다. 다시 시도해주세요.");
+    } catch (err: any) {
+      alert(err.message || "전송에 실패했습니다. 다시 시도해주세요.");
     } finally {
       setIsSubmitting(false);
     }
