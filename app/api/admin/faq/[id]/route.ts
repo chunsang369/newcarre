@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { revalidateTag } from "next/cache";
 
 export async function PATCH(
   request: Request,
@@ -16,6 +17,7 @@ export async function PATCH(
       where: { id },
       data: updateData,
     });
+    revalidateTag("faq", { expire: 0 });
     return NextResponse.json({ success: true, data: faq });
   } catch (error) {
     console.error("Failed to update FAQ:", error);
@@ -32,9 +34,11 @@ export async function DELETE(
     await prisma.faq.delete({
       where: { id },
     });
+    revalidateTag("faq", { expire: 0 });
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Failed to delete FAQ:", error);
     return NextResponse.json({ error: "Failed to delete FAQ" }, { status: 500 });
   }
 }
+

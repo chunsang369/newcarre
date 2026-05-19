@@ -1,7 +1,16 @@
-import { prisma } from "@/lib/prisma";
+export const revalidate = 1800;
+export const dynamicParams = true;
+
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import CarDetailClient from "./CarDetailClient";
+import { getCachedCarBySlug, getCachedCarSlugs } from "@/lib/cache";
+
+// ---------- Static Params (250대 전체 사전 빌드) ----------
+export async function generateStaticParams() {
+  const cars = await getCachedCarSlugs();
+  return cars.map((car: { slug: string }) => ({ carId: car.slug }));
+}
 
 // ---------- Dynamic Metadata (SEO) ----------
 export async function generateMetadata({
@@ -11,10 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { carId } = await params;
   const decodedCarId = decodeURIComponent(carId);
-  const car = await prisma.car.findUnique({
-    where: { slug: decodedCarId },
-    include: { brand: true },
-  });
+  const car = await getCachedCarBySlug(decodedCarId);
   if (!car) return { title: "차량 상세 — 하이카즈" };
 
   const title = `${car.brand.name} ${car.modelName} ${car.trimName} | 하이카즈 장기렌트·리스`;
@@ -41,11 +47,7 @@ export default async function Page({
   const { carId } = await params;
   const decodedCarId = decodeURIComponent(carId);
 
-  const car = await prisma.car.findUnique({
-    where: { slug: decodedCarId },
-    include: { brand: true },
-  });
-
+  const car = await getCachedCarBySlug(decodedCarId);
   if (!car) notFound();
 
   // JSON serialization/deserialization to ensure a clean plain object for the Client Component

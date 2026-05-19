@@ -1,8 +1,8 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 1800;
 
-import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getCachedReviews } from "@/lib/cache";
 
 export const metadata: Metadata = {
   title: "계약 후기 — 하이카즈",
@@ -10,11 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ReviewsPage() {
-  const reviews = await prisma.review.findMany({
-    where: { isPublished: true },
-    orderBy: { contractDate: "desc" },
-    take: 50,
-  });
+  const reviews = await getCachedReviews(50);
 
   return (
     <div className="min-h-screen bg-[var(--color-bg-subtle)]">
@@ -34,7 +30,7 @@ export default async function ReviewsPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {reviews.map((review) => (
+            {reviews.map((review: any) => (
               <Link
                 key={review.id}
                 href={`/reviews/${review.id}`}

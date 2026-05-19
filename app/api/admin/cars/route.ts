@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { revalidateTag } from "next/cache";
 
 export async function POST(request: Request) {
   try {
@@ -26,6 +27,7 @@ export async function POST(request: Request) {
         sortOrder: parseInt(data.sortOrder || "0", 10),
       },
     });
+    revalidateTag("cars", { expire: 0 });
     return NextResponse.json({ success: true, data: car });
   } catch (error) {
     console.error("Failed to create car:", error);

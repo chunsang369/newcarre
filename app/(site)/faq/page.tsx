@@ -1,8 +1,8 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
-import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 import FaqAccordionClient from "./FaqAccordionClient";
+import { getCachedFaqs } from "@/lib/cache";
 
 export const metadata: Metadata = {
   title: "자주 묻는 질문 (FAQ) — 하이카즈",
@@ -10,12 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default async function FaqPage() {
-  const faqs = await prisma.faq.findMany({
-    where: { isPublished: true },
-    orderBy: { sortOrder: "asc" },
-  });
+  const faqs = await getCachedFaqs();
 
-  const serialized = faqs.map((f) => ({
+  const serialized = faqs.map((f: any) => ({
     id: f.id,
     category: f.category,
     question: f.question,

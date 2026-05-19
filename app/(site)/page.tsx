@@ -1,12 +1,14 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 1800;
 
+import { Suspense } from "react";
 import HeroMain from "@/components/layout/HeroMain";
 import BrandGrid from "@/components/cars/BrandGrid";
 import TrustFeatureCards from "@/components/layout/TrustFeatureCards";
-
 import QuickQuoteForm from "@/components/form/QuickQuoteForm";
 import ReviewCarousel from "@/components/reviews/ReviewCarousel";
 import FaqAccordion from "@/components/faq/FaqAccordion";
+import ReviewCarouselSkeleton from "@/components/reviews/ReviewCarouselSkeleton";
+import FaqSkeleton from "@/components/faq/FaqSkeleton";
 
 export default function HomePage() {
   return (
@@ -24,10 +26,14 @@ export default function HomePage() {
       <TrustFeatureCards />
 
       {/* 8. 하이카즈 이용후기 */}
-      <ReviewCarousel />
+      <Suspense fallback={<ReviewCarouselSkeleton />}>
+        <ReviewCarousel />
+      </Suspense>
 
       {/* 9. 자주 묻는 질문 (FAQ) */}
-      <FaqAccordion />
+      <Suspense fallback={<FaqSkeleton />}>
+        <FaqAccordion />
+      </Suspense>
 
       {/* 10. 하단 간편 상담신청 */}
       <QuickQuoteForm />

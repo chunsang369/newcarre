@@ -1,8 +1,8 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 1800;
 
-import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 import CarsListClient from "./CarsListClient";
+import { getCachedCars, getCachedBrands } from "@/lib/cache";
 
 export const metadata: Metadata = {
   title: "전체 차량 목록 — 하이카즈 장기렌트·리스",
@@ -11,17 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default async function CarsPage() {
-  const cars = await prisma.car.findMany({
-    where: { isActive: true },
-    include: { brand: true },
-    orderBy: { sortOrder: "asc" },
-  });
+  const cars = await getCachedCars();
+  const brands = await getCachedBrands();
 
-  const brands = await prisma.brand.findMany({
-    orderBy: { sortOrder: "asc" },
-  });
-
-  const serializedCars = cars.map((c) => ({
+  const serializedCars = cars.map((c: any) => ({
     id: c.id,
     slug: c.slug,
     modelName: c.modelName,
@@ -41,7 +34,7 @@ export default async function CarsPage() {
     },
   }));
 
-  const serializedBrands = brands.map((b) => ({
+  const serializedBrands = brands.map((b: any) => ({
     slug: b.slug,
     name: b.name,
     isDomestic: b.isDomestic,

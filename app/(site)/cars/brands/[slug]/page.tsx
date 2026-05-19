@@ -1,6 +1,15 @@
+export const revalidate = 3600;
+export const dynamicParams = true;
+
 import { notFound } from "next/navigation";
-import { prisma } from "@/lib/prisma";
 import CarCard from "@/components/cars/CarCard";
+import { getCachedBrandWithCars, getCachedBrandSlugs } from "@/lib/cache";
+
+// 전체 브랜드 사전 빌드
+export async function generateStaticParams() {
+  const brands = await getCachedBrandSlugs();
+  return brands.map((b: { slug: string }) => ({ slug: b.slug }));
+}
 
 export default async function BrandCarsPage({
   params,
@@ -9,23 +18,10 @@ export default async function BrandCarsPage({
 }) {
   const { slug } = await params;
 
-  // 1. 브랜드 및 해당 브랜드의 활성 차량 가져오기
-  const brand = await prisma.brand.findUnique({
-    where: { slug },
-    include: {
-      cars: {
-        where: { isActive: true },
-        orderBy: { sortOrder: "asc" },
-      },
-    },
-  });
+  const brand = await getCachedBrandWithCars(slug);
+  if (!brand) notFound();
 
-  if (!brand) {
-    notFound();
-  }
-
-  // 2. 차량 데이터 포맷팅 (priceMatrix 추출)
-  const cars = brand.cars.map((car) => {
+  const cars = brand.cars.map((car: any) => {
     const matrix = car.priceMatrix as Record<string, { rent: number; lease: number }>;
     const baseKey = "36_PREPAY_30_20000";
     const price = matrix?.[baseKey] || { rent: 0, lease: 0 };
@@ -62,7 +58,7 @@ export default async function BrandCarsPage({
       <div className="mx-auto max-w-[1200px] px-4 lg:px-8">
         {cars.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
-            {cars.map((car) => (
+            {cars.map((car: any) => (
               <div key={car.id} className="h-full">
                 <CarCard car={car} />
               </div>

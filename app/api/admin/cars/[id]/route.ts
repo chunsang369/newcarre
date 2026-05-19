@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { revalidateTag } from "next/cache";
 
 export async function PATCH(
   request: Request,
@@ -19,6 +20,7 @@ export async function PATCH(
       where: { id },
       data: updateData,
     });
+    revalidateTag("cars", { expire: 0 });
     return NextResponse.json({ success: true, data: car });
   } catch (error) {
     console.error("Failed to update car:", error);
@@ -35,6 +37,7 @@ export async function DELETE(
     await prisma.car.delete({
       where: { id },
     });
+    revalidateTag("cars", { expire: 0 });
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Failed to delete car:", error);

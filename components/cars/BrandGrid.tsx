@@ -7,6 +7,7 @@ import { Search, X } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { getCarsByBrand, getCarsByTab, searchCars } from "@/app/actions";
 import CarCard, { type CarData } from "./CarCard";
+import CarCardSkeleton from "./CarCardSkeleton";
 
 interface BrandItem {
   slug: string;
@@ -407,8 +408,12 @@ export default function BrandGrid() {
         {/* 차량 목록 */}
         <div className="mt-6 animate-in fade-in duration-300">
           {isLoadingCars || isSearching ? (
-            <div className="flex justify-center items-center py-12">
-              <div className="w-8 h-8 border-4 border-[#469BD9] border-t-transparent rounded-full animate-spin"></div>
+            <div className="flex gap-3 px-1 pb-4 overflow-hidden">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div key={i} className="flex-[0_0_calc(60%-6px)] md:flex-[0_0_260px] min-w-0 flex">
+                  <CarCardSkeleton />
+                </div>
+              ))}
             </div>
           ) : brandCars.length > 0 ? (
             <div className="space-y-6">

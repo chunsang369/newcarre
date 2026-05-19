@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 import BrandGrid from "@/components/cars/BrandGrid";
 import QuickQuoteForm from "@/components/form/QuickQuoteForm";

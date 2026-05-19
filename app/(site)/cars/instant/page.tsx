@@ -1,9 +1,9 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 1800;
 
-import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { getCachedInstantCars } from "@/lib/cache";
 
 export const metadata: Metadata = {
   title: "즉시출고 차량 — 하이카즈",
@@ -19,11 +19,7 @@ const FUEL_LABEL: Record<string, string> = {
 };
 
 export default async function InstantCarsPage() {
-  const cars = await prisma.car.findMany({
-    where: { isActive: true, isInstant: true },
-    include: { brand: true },
-    orderBy: { sortOrder: "asc" },
-  });
+  const cars = await getCachedInstantCars();
 
   return (
     <div className="min-h-screen bg-[var(--color-bg-subtle)]">
@@ -46,7 +42,7 @@ export default async function InstantCarsPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {cars.map((car) => {
+            {cars.map((car: any) => {
               const pm = car.priceMatrix as Record<string, { rent: number; lease: number }>;
               const baseEntry = pm["36_PREPAY_30_20000"];
               const rent = baseEntry?.rent || 0;

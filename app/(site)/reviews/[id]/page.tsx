@@ -1,6 +1,8 @@
-import { prisma } from "@/lib/prisma";
+export const revalidate = 3600;
+
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { getCachedReviewById } from "@/lib/cache";
 
 export default async function ReviewDetailPage({
   params,
@@ -9,7 +11,7 @@ export default async function ReviewDetailPage({
 }) {
   const { id } = await params;
 
-  const review = await prisma.review.findUnique({ where: { id } });
+  const review = await getCachedReviewById(id);
   if (!review || !review.isPublished) notFound();
 
   return (

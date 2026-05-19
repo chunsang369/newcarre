@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 export interface CarData {
@@ -36,7 +38,7 @@ function formatBasePrice(num: number): string {
   return `${million.toLocaleString()}만원~`;
 }
 
-export default function CarCard({ car }: { car: CarData }) {
+export default function CarCard({ car, priority = false }: { car: CarData; priority?: boolean }) {
   return (
     <div className="w-full border border-gray-200 rounded-xl overflow-hidden bg-white hover:border-gray-300 hover:shadow-sm transition-all group flex flex-col h-full">
       {/* 이미지 영역 */}
@@ -50,6 +52,8 @@ export default function CarCard({ car }: { car: CarData }) {
             alt={car.modelName} 
             className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
             draggable={false}
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : undefined}
           />
         ) : (
           <div className="w-[70%] h-auto text-gray-300 flex items-center justify-center">

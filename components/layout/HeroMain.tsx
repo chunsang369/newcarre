@@ -32,6 +32,8 @@ export default function HeroMain({
             muted
             playsInline
             poster={backgroundImage}
+            // @ts-expect-error fetchPriority is not natively supported on video types
+            fetchPriority="high"
             className="w-full h-full object-cover transition-transform duration-1000"
             style={{ transform: "scale(1.15)" }}
           >

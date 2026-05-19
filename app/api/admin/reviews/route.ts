@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse, NextRequest } from "next/server";
+import { revalidateTag } from "next/cache";
 
 // GET: 모든 후기 조회
 export async function GET() {
@@ -16,6 +17,7 @@ export async function DELETE(req: NextRequest) {
   if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });
 
   await prisma.review.delete({ where: { id } });
+  revalidateTag("reviews", { expire: 0 });
   return NextResponse.json({ ok: true });
 }
 
@@ -34,5 +36,6 @@ export async function PATCH(req: NextRequest) {
     where: { id },
     data,
   });
+  revalidateTag("reviews", { expire: 0 });
   return NextResponse.json(updated);
 }
