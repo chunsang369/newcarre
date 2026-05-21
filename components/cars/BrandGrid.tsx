@@ -131,7 +131,7 @@ export default function BrandGrid() {
 
   const [carsEmblaRef, carsEmblaApi] = useEmblaCarousel({
     align: "start",
-    dragFree: false, // 차량 카드가 반쯤 잘린 상태로 애매하게 멈추지 않도록 스냅 스크롤 강제
+    dragFree: true, // 사용자가 드래그하는 속도에 맞춰 여러 대의 차량이 시원하고 부드럽게 관성 스크롤되도록 설정
     containScroll: "trimSnaps",
     duration: 40, // 묵직하고 프리미엄한 스무스 스크롤 전환 애니메이션 적용
   });

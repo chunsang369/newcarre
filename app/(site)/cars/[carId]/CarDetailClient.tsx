@@ -37,6 +37,7 @@ export default function CarDetailClient({ car }: { car: any }) {
 
   const [form, setForm] = useState({ name: "", phone: "", consent1: false, consent2: false, consent3: false, consent4: false });
   const [submitting, setSubmitting] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // Derived Selection
   const selectedGrade = grades.find((g: any) => g.idx === selectedGradeIdx) || grades[0];
@@ -210,7 +211,7 @@ export default function CarDetailClient({ car }: { car: any }) {
         throw new Error(errorData.error || "전송 실패");
       }
 
-      alert("견적 상담이 성공적으로 신청되었습니다. 담당자가 곧 연락드리겠습니다.");
+      setShowSuccessModal(true);
       setForm({ name: "", phone: "", consent1: false, consent2: false, consent3: false, consent4: false });
     } catch (error: any) {
       console.error("Quote submit error:", error);
@@ -800,6 +801,50 @@ export default function CarDetailClient({ car }: { car: any }) {
           간편 견적 문의
         </button>
       </div>
+
+      {/* ─── 제로카즈 커스텀 성공 모달창 (브라우저 기본 alert 대체) ─── */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm transition-all duration-300">
+          <div className="bg-white rounded-2xl p-6 max-w-[340px] w-full mx-4 shadow-2xl border border-gray-100 animate-in fade-in zoom-in-95 duration-200">
+            {/* 상단 브랜딩 & 체크 아이콘 */}
+            <div className="flex flex-col items-center text-center mb-5">
+              <div className="w-12 h-12 rounded-full bg-[#f0f7ff] flex items-center justify-center mb-3">
+                <svg className="w-6 h-6 text-[#469BD9]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 tracking-tight">제로카즈</h3>
+            </div>
+
+            {/* 본문 안내 내용 (줄바꿈 대응) */}
+            <div className="text-center text-[14px] text-gray-600 leading-relaxed space-y-2 mb-6">
+              <p className="font-semibold text-gray-800 text-[15px]">최신속으로 연락 드리겠습니다!</p>
+              <div className="text-gray-500 text-[13px] bg-gray-50 py-2.5 px-3 rounded-lg border border-gray-100">
+                <p>혹시 질문이 있다면</p>
+                <p className="mt-1">
+                  간편상담사:{" "}
+                  <a 
+                    href="tel:010-5813-8090" 
+                    className="font-bold text-[#469BD9] underline underline-offset-2 hover:text-[#3a8dc7] transition-colors"
+                  >
+                    010-5813-8090
+                  </a>
+                  으로
+                </p>
+                <p className="mt-0.5">연락 주세요.</p>
+              </div>
+            </div>
+
+            {/* 확인 버튼 */}
+            <button
+              onClick={() => setShowSuccessModal(false)}
+              className="w-full h-12 rounded-xl bg-[#469BD9] text-white text-sm font-bold hover:bg-[#3a8dc7] active:scale-[0.98] transition-all shadow-md shadow-[#469BD9]/20"
+            >
+              확인
+            </button>
+          </div>
+        </div>
+      )}
 
     </div>
   );

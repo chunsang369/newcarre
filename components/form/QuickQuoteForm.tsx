@@ -17,7 +17,7 @@ export default function QuickQuoteForm() {
     consent4: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // 전화번호 자동 하이픈
   function formatPhone(value: string): string {
@@ -73,7 +73,18 @@ export default function QuickQuoteForm() {
         }),
       });
       if (res.ok) {
-        setIsSubmitted(true);
+        setShowSuccessModal(true);
+        setFormData({
+          name: "",
+          phone: "",
+          contactMethod: "phone",
+          availableTime: "",
+          carOfInterest: "",
+          consent1: false,
+          consent2: false,
+          consent3: false,
+          consent4: false,
+        });
       } else {
         const errorData = await res.json();
         alert(errorData.error || "전송에 실패했습니다. 다시 시도해주세요.");
@@ -83,33 +94,6 @@ export default function QuickQuoteForm() {
     } finally {
       setIsSubmitting(false);
     }
-  }
-
-  if (isSubmitted) {
-    return (
-      <section id="quote-form" className="py-12 lg:py-24 bg-[#f7f8fa]" aria-label="상담 신청 완료">
-        <div className="mx-auto max-w-[600px] px-4 text-center">
-          <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm border border-gray-100">
-            <div className="w-16 h-16 mx-auto rounded-full bg-emerald-100 flex items-center justify-center mb-4">
-              <ShieldCheck className="w-8 h-8 text-emerald-600" />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">상담 신청이 완료되었습니다</h3>
-            <p className="text-sm text-gray-500 mb-6">
-              전문 매니저가 영업일 기준 24시간 이내 연락드립니다.
-            </p>
-            <button
-              onClick={() => {
-                setIsSubmitted(false);
-                setFormData({ name: "", phone: "", contactMethod: "phone", availableTime: "", carOfInterest: "", consent1: false, consent2: false, consent3: false, consent4: false });
-              }}
-              className="px-6 py-2.5 rounded-xl bg-[#0a2540] text-white text-sm font-semibold hover:bg-[#143a66] transition-colors"
-            >
-              추가 상담 신청
-            </button>
-          </div>
-        </div>
-      </section>
-    );
   }
 
   return (
@@ -176,7 +160,6 @@ export default function QuickQuoteForm() {
                     return (
                       <label
                         key={m.value}
-                        onClick={() => handleContactMethodToggle(m.value)}
                         className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl border cursor-pointer text-sm font-medium transition-all ${
                           isSelected
                             ? "border-[#469BD9] bg-[#469BD9]/5 text-[#469BD9]"
@@ -188,7 +171,7 @@ export default function QuickQuoteForm() {
                           name="contactMethod"
                           value={m.value}
                           checked={isSelected}
-                          readOnly
+                          onChange={() => handleContactMethodToggle(m.value)}
                           className="sr-only"
                         />
                         {m.label}
@@ -325,6 +308,49 @@ export default function QuickQuoteForm() {
 
         </div>
       </div>
+      {/* ─── 제로카즈 커스텀 성공 모달창 (브라우저 기본 alert 대체) ─── */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm transition-all duration-300">
+          <div className="bg-white rounded-2xl p-6 max-w-[340px] w-full mx-4 shadow-2xl border border-gray-100 animate-in fade-in zoom-in-95 duration-200">
+            {/* 상단 브랜딩 & 체크 아이콘 */}
+            <div className="flex flex-col items-center text-center mb-5">
+              <div className="w-12 h-12 rounded-full bg-[#f0f7ff] flex items-center justify-center mb-3">
+                <svg className="w-6 h-6 text-[#469BD9]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 tracking-tight">제로카즈</h3>
+            </div>
+
+            {/* 본문 안내 내용 (줄바꿈 대응) */}
+            <div className="text-center text-[14px] text-gray-600 leading-relaxed space-y-2 mb-6">
+              <p className="font-semibold text-gray-800 text-[15px]">최신속으로 연락 드리겠습니다!</p>
+              <div className="text-gray-500 text-[13px] bg-gray-50 py-2.5 px-3 rounded-lg border border-gray-100">
+                <p>혹시 질문이 있다면</p>
+                <p className="mt-1">
+                  간편상담사:{" "}
+                  <a 
+                    href="tel:010-5813-8090" 
+                    className="font-bold text-[#469BD9] underline underline-offset-2 hover:text-[#3a8dc7] transition-colors"
+                  >
+                    010-5813-8090
+                  </a>
+                  으로
+                </p>
+                <p className="mt-0.5">연락 주세요.</p>
+              </div>
+            </div>
+
+            {/* 확인 버튼 */}
+            <button
+              onClick={() => setShowSuccessModal(false)}
+              className="w-full h-12 rounded-xl bg-[#469BD9] text-white text-sm font-bold hover:bg-[#3a8dc7] active:scale-[0.98] transition-all shadow-md shadow-[#469BD9]/20"
+            >
+              확인
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
