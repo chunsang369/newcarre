@@ -219,7 +219,7 @@ export default function AdminReviewsClient({ reviews: initialReviews }: { review
                   </>
                 )}
                 <span>·</span>
-                <span>{new Date(review.contractDate).toLocaleDateString("ko-KR")}</span>
+                <span suppressHydrationWarning>{new Date(review.contractDate).toLocaleDateString("ko-KR")}</span>
               </div>
 
               {/* Actions */}

@@ -50,6 +50,7 @@ model Car {
   isInstant    Boolean  @default(false)
   isActive     Boolean  @default(true)
   sortOrder    Int      @default(0)
+  popularCar   PopularCar?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
@@ -124,3 +125,17 @@ model AdminUser {
   role         String   @default("ADMIN")
   createdAt    DateTime @default(now())
 }
+
+model PopularCar {
+  id         String   @id @default(cuid())
+  carId      String   @unique
+  car        Car      @relation(fields: [carId], references: [id], onDelete: Cascade)
+  rank       Int      // 순위 (1 ~ 10)
+  salesCount Int      // 판매량 (예: 12078)
+  change     String   // 변동 (예: "1208▲")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([rank])
+}
+

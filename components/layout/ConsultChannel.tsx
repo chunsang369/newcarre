@@ -8,7 +8,7 @@ export default function ConsultChannel() {
     <section className="py-8 bg-white" aria-label="상담 채널">
       <div className="mx-auto max-w-[1200px] px-4 lg:px-8">
         <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-1">
-          하이카즈 고객센터
+          제로카즈 고객센터
         </h2>
         <p className="text-sm text-gray-500 mb-5">
           편리한 상담 채널을 이용하세요

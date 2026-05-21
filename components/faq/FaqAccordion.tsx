@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -24,12 +24,21 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     question: "Q. 신용등급이 낮아도 이용 가능한가요?",
-    answer: "네, 가능합니다. 하이카즈에서는 다양한 금융사와 제휴를 맺고 있어 신용등급이 낮더라도 조건에 맞는 상품을 안내해 드립니다. 보증금이나 선납금 조건을 활용하면 더 유리한 조건으로 진행 가능합니다.",
+    answer: "네, 가능합니다. 제로카즈에서는 다양한 금융사와 제휴를 맺고 있어 신용등급이 낮더라도 조건에 맞는 상품을 안내해 드립니다. 보증금이나 선납금 조건을 활용하면 더 유리한 조건으로 진행 가능합니다.",
   },
 ];
 
 export default function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <section className="py-8 bg-white" aria-label="자주 묻는 질문">

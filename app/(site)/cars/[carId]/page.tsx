@@ -21,9 +21,9 @@ export async function generateMetadata({
   const { carId } = await params;
   const decodedCarId = decodeURIComponent(carId);
   const car = await getCachedCarBySlug(decodedCarId);
-  if (!car) return { title: "차량 상세 — 하이카즈" };
+  if (!car) return { title: "차량 상세 — 제로카즈" };
 
-  const title = `${car.brand.name} ${car.modelName} ${car.trimName} | 하이카즈 장기렌트·리스`;
+  const title = `${car.brand.name} ${car.modelName} ${car.trimName} | 제로카즈 장기렌트·리스`;
   const description = `${car.year}년형 ${car.brand.name} ${car.modelName} ${car.trimName} 장기렌트·리스 견적을 비교하세요. 월 납입료 확인 및 무료 상담.`;
   return {
     title,

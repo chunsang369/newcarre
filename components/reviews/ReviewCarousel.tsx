@@ -16,3 +16,5 @@ export default async function ReviewCarousel() {
 
   return <ReviewCarouselClient reviews={serialized} />;
 }
+
+

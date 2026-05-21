@@ -99,3 +99,32 @@ export async function searchCars(keyword: string) {
 
   return cars.map((car) => resolvePrice(car, car.brand.name));
 }
+
+export async function getPopularCars(limit?: number) {
+  const popularCars = await prisma.popularCar.findMany({
+    include: {
+      car: {
+        include: {
+          brand: true,
+        },
+      },
+    },
+    orderBy: {
+      rank: "asc",
+    },
+    take: limit,
+  });
+
+  return popularCars
+    .filter((pc) => pc.car && pc.car.isActive)
+    .map((pc) => {
+      const resolved = resolvePrice(pc.car, pc.car.brand.name);
+      return {
+        ...resolved,
+        rank: pc.rank,
+        salesCount: pc.salesCount,
+        change: pc.change,
+      };
+    });
+}
+

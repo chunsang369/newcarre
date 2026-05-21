@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Search, X } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
-import { getCarsByBrand, getCarsByTab, searchCars } from "@/app/actions";
+import { getCarsByBrand, getCarsByTab, getPopularCars, searchCars } from "@/app/actions";
 import CarCard, { type CarData } from "./CarCard";
 import CarCardSkeleton from "./CarCardSkeleton";
 
@@ -51,7 +51,7 @@ const BRANDS: BrandItem[] = [
 
 export default function BrandGrid() {
   const [tab, setTab] = useState<"domestic" | "import">("domestic");
-  const [selectedBrand, setSelectedBrand] = useState<string | null>("all");
+  const [selectedBrand, setSelectedBrand] = useState<string | null>("popular");
   const [brandCars, setBrandCars] = useState<CarData[]>([]);
   const [isLoadingCars, setIsLoadingCars] = useState(false);
   const [isBackgroundLoading, setIsBackgroundLoading] = useState(false);
@@ -69,7 +69,7 @@ export default function BrandGrid() {
     const fetchInitial = async () => {
       setIsLoadingCars(true);
       try {
-        const cars = await getCarsByTab(true, INITIAL_LIMIT);
+        const cars = await getPopularCars(INITIAL_LIMIT);
         if (isMounted) {
           setBrandCars(cars);
           if (cars.length === INITIAL_LIMIT) setIsBackgroundLoading(true);
@@ -92,7 +92,9 @@ export default function BrandGrid() {
       
       try {
         let remainingCars: CarData[] = [];
-        if (selectedBrand === "all") {
+        if (selectedBrand === "popular") {
+          remainingCars = await getPopularCars(undefined);
+        } else if (selectedBrand === "all") {
           remainingCars = await getCarsByTab(tab === "domestic", undefined, INITIAL_LIMIT);
         } else if (selectedBrand) {
           remainingCars = await getCarsByBrand(selectedBrand, undefined, INITIAL_LIMIT);
@@ -120,20 +122,69 @@ export default function BrandGrid() {
     return () => { isMounted = false; };
   }, [isBackgroundLoading, selectedBrand, tab]);
   
-  const [emblaRef] = useEmblaCarousel({
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
-    dragFree: true,
+    dragFree: false, // 브랜드 슬라이드가 한 개씩 정확히 마그네틱처럼 걸리도록 스냅 적용
     containScroll: "trimSnaps",
+    duration: 35, // 유려하고 고급스러운 반동 속도 적용
   });
 
-  const [carsEmblaRef] = useEmblaCarousel({
+  const [carsEmblaRef, carsEmblaApi] = useEmblaCarousel({
     align: "start",
-    dragFree: true,
+    dragFree: false, // 차량 카드가 반쯤 잘린 상태로 애매하게 멈추지 않도록 스냅 스크롤 강제
     containScroll: "trimSnaps",
+    duration: 40, // 묵직하고 프리미엄한 스무스 스크롤 전환 애니메이션 적용
   });
+
+  // 트랙패드 및 가로 휠 마우스 사용자들을 위한 가로 휠 스크롤 감속 연동 엔진
+  useEffect(() => {
+    if (!carsEmblaApi) return;
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        e.preventDefault();
+        if (e.deltaX > 0) {
+          carsEmblaApi.scrollNext();
+        } else {
+          carsEmblaApi.scrollPrev();
+        }
+      }
+    };
+    const emblaNode = carsEmblaApi.rootNode();
+    if (emblaNode) {
+      emblaNode.addEventListener("wheel", onWheel, { passive: false });
+    }
+    return () => {
+      if (emblaNode) {
+        emblaNode.removeEventListener("wheel", onWheel);
+      }
+    };
+  }, [carsEmblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        e.preventDefault();
+        if (e.deltaX > 0) {
+          emblaApi.scrollNext();
+        } else {
+          emblaApi.scrollPrev();
+        }
+      }
+    };
+    const emblaNode = emblaApi.rootNode();
+    if (emblaNode) {
+      emblaNode.addEventListener("wheel", onWheel, { passive: false });
+    }
+    return () => {
+      if (emblaNode) {
+        emblaNode.removeEventListener("wheel", onWheel);
+      }
+    };
+  }, [emblaApi]);
 
   const filteredBrands = [
-    { slug: "all", name: "전체", nameEn: "ALL", isDomestic: tab === "domestic" },
+    { slug: "popular", name: "인기차", nameEn: "POPULAR", isDomestic: tab === "domestic" },
     ...BRANDS.filter((b) => (tab === "domestic" ? b.isDomestic : !b.isDomestic)),
   ];
 
@@ -150,7 +201,11 @@ export default function BrandGrid() {
     setIsLoadingCars(true);
     setIsBackgroundLoading(false);
     try {
-      if (slug === "all") {
+      if (slug === "popular") {
+        const cars = await getPopularCars(INITIAL_LIMIT);
+        setBrandCars(cars);
+        if (cars.length === INITIAL_LIMIT) setIsBackgroundLoading(true);
+      } else if (slug === "all") {
         const cars = await getCarsByTab(tab === "domestic", INITIAL_LIMIT);
         setBrandCars(cars);
         if (cars.length === INITIAL_LIMIT) setIsBackgroundLoading(true);
@@ -175,11 +230,11 @@ export default function BrandGrid() {
       setSearchQuery("");
     }
     setTab(newTab);
-    setSelectedBrand("all");
+    setSelectedBrand("popular");
     setIsLoadingCars(true);
     setIsBackgroundLoading(false);
     try {
-      const cars = await getCarsByTab(newTab === "domestic", INITIAL_LIMIT);
+      const cars = await getPopularCars(INITIAL_LIMIT);
       setBrandCars(cars);
       if (cars.length === INITIAL_LIMIT) setIsBackgroundLoading(true);
     } catch (error) {
@@ -200,7 +255,7 @@ export default function BrandGrid() {
     if (value.trim().length === 0) {
       // Reset to brand mode
       setIsSearchMode(false);
-      handleBrandClick(selectedBrand || "all");
+      handleBrandClick(selectedBrand || "popular");
       return;
     }
 
@@ -223,13 +278,13 @@ export default function BrandGrid() {
   const clearSearch = () => {
     setSearchQuery("");
     setIsSearchMode(false);
-    setSelectedBrand("all");
+    setSelectedBrand("popular");
     searchInputRef.current?.blur();
     // Re-fetch default cars
     const refetch = async () => {
       setIsLoadingCars(true);
       try {
-        const cars = await getCarsByTab(tab === "domestic", INITIAL_LIMIT);
+        const cars = await getPopularCars(INITIAL_LIMIT);
         setBrandCars(cars);
         if (cars.length === INITIAL_LIMIT) setIsBackgroundLoading(true);
       } catch (err) {
@@ -253,7 +308,7 @@ export default function BrandGrid() {
       case 'mercedes-benz': return { bg: 'bg-[#EBEBEB]', textCol: 'text-[#333333]' };
       case 'audi': return { bg: 'bg-[#FCE6E6]', textCol: 'text-[#CC0000]' };
       case 'volvo': return { bg: 'bg-[#E6EEF5]', textCol: 'text-[#003057]' };
-      case 'all': return { bg: 'bg-[#FFFFFF]', textCol: 'text-[#555555]' };
+      case 'popular': return { bg: 'bg-gradient-to-tr from-[#FF5E62] to-[#FF9966]', textCol: 'text-white' };
       default: return { bg: 'bg-[#F4F5F7]', textCol: 'text-[#333333]' };
     }
   };
@@ -338,7 +393,11 @@ export default function BrandGrid() {
 
         {/* 브랜드 선택 (검색 모드가 아닐 때만 표시) */}
         {!isSearchMode && (
-          <div className="overflow-hidden" ref={emblaRef}>
+          <div 
+            className="overflow-hidden select-none touch-pan-y" 
+            ref={emblaRef}
+            onDragStart={(e) => e.preventDefault()}
+          >
             <div className="flex gap-2 px-1">
               {filteredBrands.map((brand) => {
                 const isSelected = selectedBrand === brand.slug;
@@ -360,7 +419,12 @@ export default function BrandGrid() {
                           isSelected ? 'border-[2px] border-[#469BD9]' : 'border border-transparent'
                         }`}
                       >
-                        {brand.slug === 'all' ? (
+                        {brand.slug === 'popular' ? (
+                          <div className="flex flex-col items-center justify-center text-center">
+                            <span className="text-[16px] leading-none mb-0.5">🔥</span>
+                            <span className="text-[10px] font-extrabold uppercase tracking-tight">인기</span>
+                          </div>
+                        ) : brand.slug === 'all' ? (
                           'All'
                         ) : (
                           <img
@@ -428,10 +492,17 @@ export default function BrandGrid() {
                 /* 브랜드 선택: 가로 스크롤 캐러셀 */
                 <>
                   <div className="relative">
-                    <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={carsEmblaRef}>
+                    <div 
+                      className="overflow-hidden cursor-grab active:cursor-grabbing select-none touch-pan-y" 
+                      ref={carsEmblaRef}
+                      onDragStart={(e) => e.preventDefault()}
+                    >
                       <div className="flex gap-3 px-1 pb-4">
                         {brandCars.map((car) => (
-                          <div key={car.id} className="flex-[0_0_calc(60%-6px)] md:flex-[0_0_260px] min-w-0 flex">
+                          <div 
+                            key={car.id} 
+                            className="flex-[0_0_calc(60%-6px)] md:flex-[0_0_260px] min-w-0 flex will-change-transform"
+                          >
                             <CarCard car={car} />
                           </div>
                         ))}

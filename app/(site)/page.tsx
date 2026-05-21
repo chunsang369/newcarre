@@ -25,7 +25,7 @@ export default function HomePage() {
       {/* 3. 토스 스타일 핵심 특징 카드 */}
       <TrustFeatureCards />
 
-      {/* 8. 하이카즈 이용후기 */}
+      {/* 8. 제로카즈 이용후기 */}
       <Suspense fallback={<ReviewCarouselSkeleton />}>
         <ReviewCarousel />
       </Suspense>

@@ -4,7 +4,7 @@ import BrandGrid from "@/components/cars/BrandGrid";
 import QuickQuoteForm from "@/components/form/QuickQuoteForm";
 
 export const metadata = {
-  title: "빠른 간편견적 — 하이카즈",
+  title: "빠른 간편견적 — 제로카즈",
   description:
     "원하는 차량의 견적을 확실하고 빠르게 확인하실 수 있습니다. 브랜드별 차량 선택 후 간편하게 견적을 신청하세요.",
 };

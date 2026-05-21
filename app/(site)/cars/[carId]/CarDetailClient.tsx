@@ -220,7 +220,7 @@ export default function CarDetailClient({ car }: { car: any }) {
     }
   };
 
-  const primaryColor = "#469BD9"; // 하이카즈 브랜드 컬러
+  const primaryColor = "#469BD9"; // 제로카즈 브랜드 컬러
 
   return (
     <div className="min-h-screen bg-[#f5f5f5] pb-24 lg:pb-12 text-[#333]">
@@ -656,7 +656,7 @@ export default function CarDetailClient({ car }: { car: any }) {
                   <span className="text-[14px] font-bold text-[#333]">{buyMethod === "RENT" ? "렌트" : "리스"}</span>
                 </div>
 
-                {/* 하이카즈 혜택 */}
+                {/* 제로카즈 혜택 */}
                 <div className="mb-4">
                   <div className="flex justify-between items-baseline mb-2">
                     <span className="text-[15px] font-bold text-[#333]">월 {buyMethod === "RENT" ? "렌트료" : "리스료"}</span>

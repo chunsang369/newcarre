@@ -6,7 +6,7 @@ import Image from "next/image";
 import { getCachedInstantCars } from "@/lib/cache";
 
 export const metadata: Metadata = {
-  title: "즉시출고 차량 — 하이카즈",
+  title: "즉시출고 차량 — 제로카즈",
   description: "계약 후 7일 이내 인도 가능한 즉시출고 차량을 확인하세요.",
 };
 

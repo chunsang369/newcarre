@@ -15,6 +15,7 @@ export interface CarData {
   monthlyLease: number;
   thumbnailUrl: string;
   basePrice: number;
+  rank?: number;
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -40,12 +41,21 @@ function formatBasePrice(num: number): string {
 
 export default function CarCard({ car, priority = false }: { car: CarData; priority?: boolean }) {
   return (
-    <div className="w-full border border-gray-200 rounded-xl overflow-hidden bg-white hover:border-gray-300 hover:shadow-sm transition-all group flex flex-col h-full">
+    <div 
+      className="w-full border border-gray-200 rounded-xl overflow-hidden bg-white hover:border-gray-300 hover:shadow-sm transition-all group flex flex-col h-full"
+      onDragStart={(e) => e.preventDefault()}
+    >
       {/* 이미지 영역 */}
       <Link 
         href={`/cars/${car.slug}`}
         className="aspect-[4/3] bg-[#f8f9fa] flex items-center justify-center p-3 shrink-0 relative overflow-hidden block"
+        draggable={false}
       >
+        {car.rank && (
+          <div className="absolute top-2.5 left-2.5 z-10 bg-gradient-to-tr from-[#FF5E62] to-[#FF9966] text-white font-extrabold text-[12px] px-2.5 py-0.5 rounded-lg shadow-sm flex items-center gap-1 select-none">
+            🔥 {car.rank}위
+          </div>
+        )}
         {car.thumbnailUrl ? (
           <img 
             src={car.thumbnailUrl} 
@@ -65,13 +75,12 @@ export default function CarCard({ car, priority = false }: { car: CarData; prior
             </svg>
           </div>
         )}
-        {/* 배지 영역 (필요 시 추가 가능) */}
       </Link>
 
       {/* 정보 영역 */}
       <div className="p-3 lg:p-4 flex flex-col flex-1">
         <div className="flex justify-between items-start mb-3 gap-1">
-          <Link href={`/cars/${car.slug}`} className="flex-1 min-w-0">
+          <Link href={`/cars/${car.slug}`} className="flex-1 min-w-0" draggable={false}>
             <h4 className="font-bold text-[13px] lg:text-[17px] text-gray-900 break-keep group-hover:text-[#469BD9] transition-colors leading-snug">
               {car.modelName}
             </h4>
@@ -110,6 +119,7 @@ export default function CarCard({ car, priority = false }: { car: CarData; prior
             <Link 
               href={`/cars/${car.slug}`}
               className="flex-1 flex items-center justify-center bg-[#469BD9] text-white py-2.5 rounded-md text-[13px] font-bold hover:bg-[#3a8dc7] transition-colors"
+              draggable={false}
             >
               상세보기
             </Link>

@@ -5,8 +5,8 @@ import Link from "next/link";
 import { getCachedReviews } from "@/lib/cache";
 
 export const metadata: Metadata = {
-  title: "계약 후기 — 하이카즈",
-  description: "하이카즈에서 장기렌트·리스를 이용하신 고객님들의 생생한 후기를 확인하세요.",
+  title: "계약 후기 — 제로카즈",
+  description: "제로카즈에서 장기렌트·리스를 이용하신 고객님들의 생생한 후기를 확인하세요.",
 };
 
 export default async function ReviewsPage() {
@@ -56,7 +56,7 @@ export default async function ReviewsPage() {
                   <p className="text-sm text-[var(--color-text-muted)] line-clamp-3 mb-3">{review.content}</p>
                   <div className="flex items-center justify-between text-xs text-[var(--color-text-muted)]">
                     <span>{review.customerName}</span>
-                    <span>{new Date(review.contractDate).toLocaleDateString("ko-KR")}</span>
+                    <span suppressHydrationWarning>{new Date(review.contractDate).toLocaleDateString("ko-KR")}</span>
                   </div>
                 </div>
               </Link>

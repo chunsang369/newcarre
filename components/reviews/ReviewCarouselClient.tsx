@@ -1,9 +1,11 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronRight } from "lucide-react";
+import ReviewCarouselSkeleton from "./ReviewCarouselSkeleton";
 
 interface Review {
   id: string;
@@ -21,6 +23,16 @@ export default function ReviewCarouselClient({ reviews }: { reviews: Review[] })
     containScroll: "trimSnaps",
   });
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   if (reviews.length === 0) return null;
 
   return (
@@ -29,7 +41,7 @@ export default function ReviewCarouselClient({ reviews }: { reviews: Review[] })
         {/* 헤더 */}
         <div className="flex items-center justify-between mb-5">
           <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
-            하이카즈 이용후기
+            제로카즈 이용후기
           </h2>
           <Link
             href="/reviews"

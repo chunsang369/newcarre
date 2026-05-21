@@ -5,7 +5,7 @@ import FaqAccordionClient from "./FaqAccordionClient";
 import { getCachedFaqs } from "@/lib/cache";
 
 export const metadata: Metadata = {
-  title: "자주 묻는 질문 (FAQ) — 하이카즈",
+  title: "자주 묻는 질문 (FAQ) — 제로카즈",
   description: "장기렌트, 리스에 대해 자주 묻는 질문과 답변을 확인하세요.",
 };
 

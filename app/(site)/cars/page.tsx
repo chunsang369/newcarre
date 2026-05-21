@@ -5,7 +5,7 @@ import CarsListClient from "./CarsListClient";
 import { getCachedCars, getCachedBrands } from "@/lib/cache";
 
 export const metadata: Metadata = {
-  title: "전체 차량 목록 — 하이카즈 장기렌트·리스",
+  title: "전체 차량 목록 — 제로카즈 장기렌트·리스",
   description:
     "국산·수입차 전 모델 장기렌트·리스 최저가 견적을 비교하세요. 브랜드, 차종, 연료, 가격대별 필터 지원.",
 };

@@ -73,7 +73,7 @@ export default function ReviewForm({ initialData }: { initialData?: any }) {
         </div>
         <div>
           <label className="block text-sm font-medium text-slate-700 mb-1">담당 플래너</label>
-          <input name="plannerName" value={formData.plannerName} onChange={handleChange} placeholder="ex) 하이카즈 매니저" className="w-full border rounded-lg px-3 py-2 text-sm" />
+          <input name="plannerName" value={formData.plannerName} onChange={handleChange} placeholder="ex) 제로카즈 매니저" className="w-full border rounded-lg px-3 py-2 text-sm" />
         </div>
         <div>
           <label className="block text-sm font-medium text-slate-700 mb-1">계약(출고)일</label>
