@@ -12,7 +12,8 @@ import {
   Award,
   RefreshCw,
   FileCheck,
-  Calendar
+  Calendar,
+  ExternalLink
 } from "lucide-react";
 
 interface StatsData {
@@ -24,6 +25,7 @@ interface StatsData {
     conversionRate: string;
   };
   topReferrers: { domain: string; count: number }[];
+  topReferrerUrls: { url: string; count: number }[];
   topPages: { path: string; count: number }[];
   topUtmSources: { source: string; count: number }[];
   topClicks: { text: string; path: string; count: number }[];
@@ -33,6 +35,9 @@ interface StatsData {
 export default function AdminAnalyticsPage() {
   const [viewMode, setViewMode] = useState<"period" | "single">("period");
   const [range, setRange] = useState<number>(7);
+  
+  // 외부 유입 랭킹 탭 상태 ("domain" | "url")
+  const [referrerTab, setReferrerTab] = useState<"domain" | "url">("domain");
   
   // 기본 설정일: 2026-05-26
   const [selectedDate, setSelectedDate] = useState<string>("2026-05-26");
@@ -374,41 +379,117 @@ export default function AdminAnalyticsPage() {
                 </div>
               </div>
 
-              {/* 외부 도메인 유입 랭킹 */}
+              {/* 외부 유입 경로 랭킹 (도메인 & 상세 URL 링크 지원) */}
               <div className="bg-white border border-zinc-200/80 p-6 rounded-2xl shadow-sm flex flex-col justify-between">
                 <div>
-                  <h3 className="font-extrabold text-base text-zinc-800 flex items-center gap-2 mb-2">
-                    <Globe className="w-4 h-4 text-indigo-600" />
-                    외부 유입 경로 랭킹
-                  </h3>
-                  <p className="text-xs text-zinc-450 mb-5 font-medium">조회 기간 동안 유입이 유발된 플랫폼 사이트 순위입니다.</p>
+                  <div className="flex items-center justify-between mb-2 gap-2">
+                    <h3 className="font-extrabold text-base text-zinc-800 flex items-center gap-2">
+                      <Globe className="w-4 h-4 text-indigo-600" />
+                      외부 유입 경로 랭킹
+                    </h3>
+                    
+                    {/* 도메인 vs 상세링크 전환 스위치 */}
+                    <div className="flex bg-zinc-100 p-0.5 rounded-lg shrink-0 scale-90">
+                      <button
+                        onClick={() => setReferrerTab("domain")}
+                        className={`px-2 py-1 text-[10px] font-extrabold rounded-md transition-all ${
+                          referrerTab === "domain" ? "bg-white text-zinc-950 shadow-sm" : "text-zinc-550"
+                        }`}
+                      >
+                        도메인
+                      </button>
+                      <button
+                        onClick={() => setReferrerTab("url")}
+                        className={`px-2 py-1 text-[10px] font-extrabold rounded-md transition-all ${
+                          referrerTab === "url" ? "bg-white text-zinc-950 shadow-sm" : "text-zinc-550"
+                        }`}
+                      >
+                        상세 링크
+                      </button>
+                    </div>
+                  </div>
+                  <p className="text-xs text-zinc-455 mb-5 font-medium">
+                    {referrerTab === "domain" 
+                      ? "유입이 유발된 외부 플랫폼 도메인 순위입니다." 
+                      : "댓글, 카페 글 등 유입된 구체적인 상세 URL 주소 리스트입니다."}
+                  </p>
                 </div>
                 <div className="space-y-4 max-h-[190px] overflow-y-auto pr-1">
-                  {data.topReferrers.length === 0 ? (
-                    <div className="text-zinc-400 text-xs text-center py-10 font-medium">로그가 기록되지 않았습니다.</div>
-                  ) : (
-                    data.topReferrers.map((r, i) => {
-                      const total = data.summary.totalVisits || 1;
-                      const pct = Math.round((r.count / total) * 100);
-                      
-                      let domainLabel = r.domain;
-                      if (domainLabel === "direct") domainLabel = "직접 접속 / 즐겨찾기";
-                      
-                      return (
-                        <div key={i} className="space-y-1.5">
-                          <div className="flex justify-between text-xs font-bold">
-                            <span className="text-zinc-700 truncate max-w-[190px]">{i + 1}. {domainLabel}</span>
-                            <span className="text-zinc-500 font-semibold">{r.count.toLocaleString()}회 ({pct}%)</span>
+                  
+                  {/* 1. 도메인 탭 활성화 시 */}
+                  {referrerTab === "domain" && (
+                    data.topReferrers.length === 0 ? (
+                      <div className="text-zinc-400 text-xs text-center py-10 font-medium">로그가 기록되지 않았습니다.</div>
+                    ) : (
+                      data.topReferrers.map((r, i) => {
+                        const total = data.summary.totalVisits || 1;
+                        const pct = Math.round((r.count / total) * 100);
+                        
+                        let domainLabel = r.domain;
+                        if (domainLabel === "direct") domainLabel = "직접 접속 / 즐겨찾기";
+                        
+                        return (
+                          <div key={i} className="space-y-1.5">
+                            <div className="flex justify-between text-xs font-bold">
+                              <span className="text-zinc-700 truncate max-w-[190px]">{i + 1}. {domainLabel}</span>
+                              <span className="text-zinc-500 font-semibold">{r.count.toLocaleString()}회 ({pct}%)</span>
+                            </div>
+                            <div className="w-full h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+                              <div 
+                                className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000"
+                                style={{ width: `${Math.max(pct, 2)}%` }}
+                              />
+                            </div>
                           </div>
-                          <div className="w-full h-1.5 bg-zinc-100 rounded-full overflow-hidden">
-                            <div 
-                              className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000"
-                              style={{ width: `${Math.max(pct, 2)}%` }}
-                            />
+                        );
+                      })
+                    )
+                  )}
+
+                  {/* 2. 상세 URL 링크 탭 활성화 시 */}
+                  {referrerTab === "url" && (
+                    data.topReferrerUrls.length === 0 ? (
+                      <div className="text-zinc-400 text-xs text-center py-10 font-medium">참조(Referrer) 주소가 존재하는 외부 유입이 없습니다.</div>
+                    ) : (
+                      data.topReferrerUrls.map((r, i) => {
+                        const total = data.summary.totalVisits || 1;
+                        const pct = Math.round((r.count / total) * 100);
+                        
+                        const isDirect = r.url === "direct";
+                        const labelText = isDirect ? "직접 유입 / 네이티브 앱" : r.url;
+
+                        return (
+                          <div key={i} className="space-y-1.5">
+                            <div className="flex justify-between items-start text-xs font-bold gap-2">
+                              <div className="flex items-center gap-1.5 min-w-0">
+                                <span className="text-zinc-500 font-bold shrink-0">{i + 1}.</span>
+                                {isDirect ? (
+                                  <span className="text-zinc-450 truncate">{labelText}</span>
+                                ) : (
+                                  <a 
+                                    href={r.url} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1 min-w-0"
+                                    title="새 창으로 원본 글 링크 열기"
+                                  >
+                                    <span className="truncate max-w-[170px]">{labelText}</span>
+                                    <ExternalLink className="w-2.5 h-2.5 shrink-0" />
+                                  </a>
+                                )}
+                              </div>
+                              <span className="text-zinc-500 shrink-0 font-semibold">{r.count.toLocaleString()}회 ({pct}%)</span>
+                            </div>
+                            <div className="w-full h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+                              <div 
+                                className="h-full bg-gradient-to-r from-indigo-500 to-rose-500 rounded-full transition-all"
+                                style={{ width: `${Math.max(pct, 2)}%` }}
+                              />
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })
+                        );
+                      })
+                    )
                   )}
                 </div>
               </div>
@@ -456,7 +537,7 @@ export default function AdminAnalyticsPage() {
                     <Layers className="w-4 h-4 text-purple-600" />
                     캠페인 광고 유입 (UTM Source)
                   </h3>
-                  <p className="text-xs text-zinc-450 mb-5 font-medium">유료 배너나 게시글 링크 등을 통해 직접 수집된 마케팅 성과입니다.</p>
+                  <p className="text-xs text-zinc-455 mb-5 font-medium">유료 배너나 게시글 링크 등을 통해 직접 수집된 마케팅 성과입니다.</p>
                 </div>
                 <div className="space-y-3.5 max-h-[250px] overflow-y-auto pr-1">
                   {data.topUtmSources.length === 0 ? (
@@ -489,7 +570,7 @@ export default function AdminAnalyticsPage() {
                     <MousePointerClick className="w-4 h-4 text-rose-600" />
                     주요 클릭 요소 랭킹
                   </h3>
-                  <p className="text-xs text-zinc-450 mb-5 font-medium">페이지 안에서 가장 상호작용 빈도가 높았던 버튼/링크 랭킹입니다.</p>
+                  <p className="text-xs text-zinc-455 mb-5 font-medium">페이지 안에서 가장 상호작용 빈도가 높았던 버튼/링크 랭킹입니다.</p>
                 </div>
                 <div className="space-y-3.5 max-h-[250px] overflow-y-auto pr-1">
                   {data.topClicks.length === 0 ? (

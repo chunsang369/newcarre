@@ -69,6 +69,25 @@ export async function GET(request: NextRequest) {
       take: 10
     });
 
+    // 4.1. 외부 유입 상세 URL 링크 탑 10 집계
+    const topReferrerUrlsRaw = await prisma.visitLog.groupBy({
+      by: ["referrer"],
+      where: { 
+        createdAt: { gte: startDate, lte: endDate },
+        referrer: { not: null },
+        NOT: { referrer: "" }
+      },
+      _count: {
+        id: true
+      },
+      orderBy: {
+        _count: {
+          id: "desc"
+        }
+      },
+      take: 10
+    });
+
     // 5. 페이지 뷰 인기 페이지 탑 10
     const topPagesRaw = await prisma.visitLog.groupBy({
       by: ["path"],
@@ -174,6 +193,10 @@ export async function GET(request: NextRequest) {
       },
       topReferrers: topReferrersRaw.map(r => ({
         domain: r.referringDomain || "direct",
+        count: r._count.id
+      })),
+      topReferrerUrls: topReferrerUrlsRaw.map(r => ({
+        url: r.referrer || "direct",
         count: r._count.id
       })),
       topPages: topPagesRaw.map(p => ({
