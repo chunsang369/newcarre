@@ -139,3 +139,36 @@ model PopularCar {
   @@index([rank])
 }
 
+model VisitLog {
+  id             String   @id @default(cuid())
+  sessionId      String   // 방문 세션 ID
+  visitorId      String   // 브라우저 로컬 저장 고유 기기/방문자 ID
+  path           String   // 접속한 페이지 경로
+  referrer       String?  // 이전 페이지 주소 (Referrer 전체)
+  referringDomain String? // 추출된 이전 페이지 도메인 (naver.com, google.com 등)
+  utmSource      String?  // 유입 소스
+  utmMedium      String?  // 유입 매체
+  utmCampaign    String?  // 유입 캠페인
+  userAgent      String?  // 브라우저 유저 에이전트
+  ipAddress      String?  // 접속 IP 주소 (비식별화)
+  createdAt      DateTime @default(now())
+
+  clickEvents    ClickEvent[]
+
+  @@index([referringDomain, createdAt])
+  @@index([utmSource, createdAt])
+  @@index([visitorId])
+}
+
+model ClickEvent {
+  id          String   @id @default(cuid())
+  visitLogId  String
+  visitLog    VisitLog @relation(fields: [visitLogId], references: [id], onDelete: Cascade)
+  pagePath    String   // 클릭 발생 페이지
+  elementId   String?  // 클릭된 엘리먼트 ID
+  elementText String?  // 클릭된 엘리먼트 내부 텍스트
+  createdAt   DateTime @default(now())
+
+  @@index([visitLogId])
+}
+

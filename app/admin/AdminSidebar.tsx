@@ -9,6 +9,7 @@ const NAV = [
   { href: "/admin/reviews", label: "⭐ 후기 관리" },
   { href: "/admin/faq", label: "❓ FAQ 관리" },
   { href: "/admin/planners", label: "👤 플래너 관리" },
+  { href: "/admin/analytics", label: "📊 유입 및 클릭 분석" },
 ];
 
 export default function AdminSidebar() {
