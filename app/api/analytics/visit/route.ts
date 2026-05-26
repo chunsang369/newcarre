@@ -16,9 +16,20 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    const userAgent = request.headers.get("user-agent") || "";
+    const uaUpper = userAgent.toUpperCase();
+
     // 2. Referrer 파싱하여 referringDomain 도메인 추출
     let referringDomain: string | null = null;
-    if (referrer) {
+
+    // 모바일 인앱 브라우저 시그니처 정밀 탐지 (referrer 헤더 유실 대응)
+    if (uaUpper.includes("KAKAOTALK")) {
+      referringDomain = "kakaotalk (App)";
+    } else if (uaUpper.includes("INSTAGRAM")) {
+      referringDomain = "instagram (App)";
+    } else if (uaUpper.includes("FBAV") || uaUpper.includes("FBAN")) {
+      referringDomain = "facebook (App)";
+    } else if (referrer) {
       try {
         const url = new URL(referrer);
         const host = url.hostname.toLowerCase();
@@ -45,8 +56,6 @@ export async function POST(request: NextRequest) {
     } else {
       referringDomain = "direct";
     }
-
-    const userAgent = request.headers.get("user-agent") || null;
     
     // 3. IP 주소 추출 및 마스킹 (개인정보 보호 준수)
     let ipAddress = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || null;
