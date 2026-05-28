@@ -47,6 +47,31 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    // 텔레그램 알림
+    try {
+      const telegramToken = '8734012174:AAE8PYV7W8dzrauAzetXC3CUJmEnOKR_dkg';
+      const chatId = '-1003951663293';
+      const message =
+        `🚗 *신차 구매 신규 접수*\n` +
+        `─────────────────\n` +
+        `🆔 접수번호: ${quote.id}\n` +
+        `👤 고객명: ${name}\n` +
+        `📞 연락처: ${cleanPhone}\n` +
+        `📱 연락방법: ${contactMethod || '-'}\n` +
+        `⏰ 연락가능시간: ${availableTime || '-'}\n` +
+        `🚘 관심차량: ${carOfInterest || '-'}\n` +
+        `⚙️ 차량옵션: ${carConfig || '-'}\n` +
+        `🕐 접수시간: ${new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'})}`;
+
+      await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' })
+      });
+    } catch (tgErr) {
+      console.error('Telegram notify error:', tgErr);
+    }
+
     return NextResponse.json(
       { success: true, id: quote.id },
       { status: 201 }

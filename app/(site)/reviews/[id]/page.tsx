@@ -38,10 +38,12 @@ export default async function ReviewDetailPage({
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl lg:text-3xl font-bold text-[var(--color-text)] mb-6">{review.title}</h1>
+        <h1 className="text-2xl lg:text-3xl font-bold text-[var(--color-text)] mb-6 leading-snug">{review.title}</h1>
+
+        <hr className="border-[var(--color-border)] my-6" />
 
         {/* Content */}
-        <div className="prose max-w-none text-[var(--color-text)] leading-relaxed whitespace-pre-wrap">
+        <div className="prose max-w-none text-base lg:text-[17px] text-gray-800 leading-[1.8] whitespace-pre-wrap tracking-wide font-normal">
           {review.content}
         </div>
 
