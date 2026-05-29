@@ -17,24 +17,27 @@ export async function GET(request: NextRequest) {
     let startDate: Date;
     let endDate: Date;
     let isSingleDay = false;
-    let targetDate = new Date();
+    let targetDateStr = "";
 
-    // 2. 단일 특정 일자 필터링 vs 범위 필터링 결정
-    if (dateParam) {
-      targetDate = new Date(dateParam);
-      if (!isNaN(targetDate.getTime())) {
-        startDate = startOfDay(targetDate);
-        endDate = endOfDay(targetDate);
-        isSingleDay = true;
-      } else {
-        const range = parseInt(rangeParam || "7");
-        startDate = startOfDay(subDays(new Date(), range - 1));
-        endDate = endOfDay(new Date());
-      }
+    // KST 오늘 구하기 (YYYY-MM-DD)
+    const kstTodayStr = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Seoul" });
+
+    // 2. 단일 특정 일자 필터링 vs 범위 필터링 결정 (한국시간 KST 기준)
+    if (dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam)) {
+      targetDateStr = dateParam;
+      startDate = new Date(`${targetDateStr}T00:00:00.000+09:00`);
+      endDate = new Date(`${targetDateStr}T23:59:59.999+09:00`);
+      isSingleDay = true;
     } else {
       const range = parseInt(rangeParam || "7");
-      startDate = startOfDay(subDays(new Date(), range - 1));
-      endDate = endOfDay(new Date());
+      const endDateStr = kstTodayStr;
+      
+      const startBase = new Date();
+      startBase.setDate(startBase.getDate() - (range - 1));
+      const startDateStr = startBase.toLocaleDateString("sv-SE", { timeZone: "Asia/Seoul" });
+
+      startDate = new Date(`${startDateStr}T00:00:00.000+09:00`);
+      endDate = new Date(`${endDateStr}T23:59:59.999+09:00`);
     }
 
     // 3. 핵심 성과 지표 병렬 집계
@@ -140,15 +143,16 @@ export async function GET(request: NextRequest) {
       take: 10
     });
 
-    // 8. 최근 트렌드 시계열 분석 (단일 일자의 경우 2시간 단위 시간대별, 범위의 경우 일별)
+    // 8. 최근 트렌드 시계열 분석 (한국시간 KST 기준)
     const dailyTrend = [];
     if (isSingleDay) {
       // 0시부터 22시까지 2시간 단위 파싱
       for (let h = 0; h < 24; h += 2) {
-        const start = new Date(targetDate);
-        start.setHours(h, 0, 0, 0);
-        const end = new Date(targetDate);
-        end.setHours(h + 1, 59, 59, 999);
+        const padH1 = String(h).padStart(2, "0");
+        const padH2 = String(h + 1).padStart(2, "0");
+
+        const start = new Date(`${targetDateStr}T${padH1}:00:00.000+09:00`);
+        const end = new Date(`${targetDateStr}T${padH2}:59:59.999+09:00`);
         const timeStr = `${h}시`;
 
         const [vCount, cCount] = await Promise.all([
@@ -165,10 +169,15 @@ export async function GET(request: NextRequest) {
     } else {
       const range = parseInt(rangeParam || "7");
       for (let i = range - 1; i >= 0; i--) {
-        const targetDay = subDays(new Date(), i);
-        const start = startOfDay(targetDay);
-        const end = endOfDay(targetDay);
-        const dateStr = `${targetDay.getMonth() + 1}/${targetDay.getDate()}`;
+        const targetDay = new Date();
+        targetDay.setDate(targetDay.getDate() - i);
+        const dayStr = targetDay.toLocaleDateString("sv-SE", { timeZone: "Asia/Seoul" });
+        
+        const start = new Date(`${dayStr}T00:00:00.000+09:00`);
+        const end = new Date(`${dayStr}T23:59:59.999+09:00`);
+        
+        const [, month, day] = dayStr.split("-").map(Number);
+        const dateStr = `${month}/${day}`;
 
         const [vCount, cCount] = await Promise.all([
           prisma.visitLog.count({ where: { createdAt: { gte: start, lte: end } } }),

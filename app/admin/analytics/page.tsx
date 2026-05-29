@@ -39,8 +39,10 @@ export default function AdminAnalyticsPage() {
   // 외부 유입 랭킹 탭 상태 ("domain" | "url")
   const [referrerTab, setReferrerTab] = useState<"domain" | "url">("domain");
   
-  // 기본 설정일: 2026-05-26
-  const [selectedDate, setSelectedDate] = useState<string>("2026-05-26");
+  // 기본 설정일: 한국 시간 기준 오늘 날짜 자동 지정
+  const [selectedDate, setSelectedDate] = useState<string>(() => {
+    return new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Seoul" });
+  });
   
   const [data, setData] = useState<StatsData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);

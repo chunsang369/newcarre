@@ -8,7 +8,7 @@ export default async function ReviewCarousel() {
     id: r.id,
     title: r.title,
     content: r.content,
-    thumbnailUrl: r.thumbnailUrl,
+    thumbnailUrl: r.thumbnailUrl || r.imageUrl || null,
     customerName: r.customerName,
     plannerName: r.plannerName,
     contractDate: new Date(r.contractDate).toISOString(),
