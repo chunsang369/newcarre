@@ -12,6 +12,7 @@ interface Review {
   title: string;
   content: string;
   thumbnailUrl: string | null;
+  imageUrl?: string | null;
   customerName: string;
   plannerName: string | null;
   contractDate: string;
@@ -63,10 +64,10 @@ export default function ReviewCarouselClient({ reviews }: { reviews: Review[] })
                 <div className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col">
                   {/* 상단: 썸네일 이미지 */}
                   <div className="relative">
-                    {review.thumbnailUrl ? (
+                    {review.thumbnailUrl || review.imageUrl ? (
                       <div className="relative aspect-[16/10] overflow-hidden">
                         <Image
-                          src={review.thumbnailUrl}
+                          src={review.thumbnailUrl || review.imageUrl || ""}
                           alt={review.title}
                           fill
                           className="w-full h-full object-cover"
