@@ -17,6 +17,7 @@ interface Lead {
   contactMethod: string | null;
   status: string;
   createdAt: Date;
+  carConfig?: any;
 }
 
 export default function AdminLeadsList({ initialLeads }: { initialLeads: any[] }) {
@@ -147,8 +148,15 @@ export default function AdminLeadsList({ initialLeads }: { initialLeads: any[] }
                   </td>
                   <td className="px-5 py-3.5 font-semibold text-slate-800">{lead.name}</td>
                   <td className="px-5 py-3.5 text-slate-600">{lead.phone}</td>
-                  <td className="px-5 py-3.5 text-slate-600 max-w-[150px] truncate">
-                    {lead.carConfig?.carName || lead.carOfInterest || "미지정"}
+                  <td className="px-5 py-3.5 text-slate-600 max-w-[160px] truncate">
+                    <div className="font-semibold text-slate-800 truncate">
+                      {lead.carConfig?.carName || lead.carOfInterest || "미지정"}
+                    </div>
+                    {lead.carConfig?.contract?.monthlyPrice && (
+                      <div className="text-[10px] text-rose-600 font-bold mt-0.5">
+                        월 {lead.carConfig.contract.monthlyPrice.toLocaleString()}원
+                      </div>
+                    )}
                   </td>
                   <td className="px-5 py-3.5 text-slate-500 text-xs">{formatContactMethod(lead.contactMethod)}</td>
                   <td className="px-5 py-3.5">

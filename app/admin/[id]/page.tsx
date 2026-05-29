@@ -195,6 +195,13 @@ export default async function AdminQuoteDetailPage({ params }: { params: Promise
                     { label: "계약 형태", value: config.contract?.type === 'RENT' ? '장기렌트' : '리스' },
                     { label: "기간/주행거리", value: `${config.contract?.months}개월 / 연 ${config.contract?.mileage?.toLocaleString()}km` },
                     { label: "선수금/보증금", value: `${config.contract?.deposit}%` },
+                    { 
+                      label: "월납입금", 
+                      value: config.contract?.monthlyPrice 
+                        ? `${config.contract.monthlyPrice.toLocaleString()}원` 
+                        : "-",
+                      isHighlighted: true
+                    },
                   ].map((item) => (
                     <div key={item.label} className="flex flex-col md:flex-row min-h-[60px]">
                       <div className="md:w-48 bg-slate-50/30 px-8 py-4 flex items-center">
@@ -202,7 +209,7 @@ export default async function AdminQuoteDetailPage({ params }: { params: Promise
                       </div>
                       <div className="flex-1 px-8 py-4 flex items-center gap-3">
                         {item.hex && <span className="w-3.5 h-3.5 rounded-full border border-slate-200 shadow-inner" style={{ backgroundColor: item.hex }} />}
-                        <span className="text-sm font-bold text-slate-900">{item.value || "-"}</span>
+                        <span className={`text-sm font-bold ${item.isHighlighted ? "text-rose-600 text-base font-extrabold" : "text-slate-900"}`}>{item.value || "-"}</span>
                       </div>
                     </div>
                   ))}
