@@ -434,6 +434,13 @@ export default function BrandGrid() {
                           />
                         )}
                       </div>
+                      <span
+                        className={`text-[12px] tracking-tight ${
+                          isSelected ? 'text-[#469BD9] font-bold' : 'text-gray-500 font-medium'
+                        }`}
+                      >
+                        {brand.name}
+                      </span>
                     </button>
                   </div>
                 );

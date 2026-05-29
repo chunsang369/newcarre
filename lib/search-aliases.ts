@@ -49,7 +49,7 @@ export const SEARCH_ALIASES: Record<string, string[]> = {
   "벤쯔": ["mercedes-benz"],
 
   // 차급 — 다양한 표기 대응
-  "e클래스": ["E-Class"], "이클래스": ["E-Class"],
+  "e클래스": ["E-Class", "e-class", "e class"], "이클래스": ["E-Class", "e-class", "e class"], "e-class": ["E-Class", "e-class", "e class"],
   "s클래스": ["S-Class"], "에스클래스": ["S-Class"],
   "c클래스": ["C-Class"], "씨클래스": ["C-Class"],
   "a클래스": ["A-Class"], "에이클래스": ["A-Class"],
@@ -228,16 +228,23 @@ export function expandSearchKeyword(input: string): string[] {
   const normalized = input.trim().toLowerCase();
   const results = new Set<string>();
   
-  // 원본 키워드는 항상 포함
+  // 원본 키워드 및 대시/공백 치환 버전 포함
   results.add(input.trim());
+  results.add(normalized.replace(/[-\s]/g, "")); // e-class -> eclass
+  results.add(normalized.replace(/-/g, " "));    // e-class -> e class
+  results.add(normalized.replace(/\s/g, "-"));    // e class -> e-class
   
   // 입력된 키워드가 매핑 딕셔너리의 키에 포함되어 있으면,
   // 매핑된 영문/정확한 모델명/브랜드명을 결과에 추가
   for (const [alias, targets] of Object.entries(SEARCH_ALIASES)) {
-    if (normalized.includes(alias.toLowerCase())) {
-      targets.forEach((t) => results.add(t));
+    const aliasLower = alias.toLowerCase();
+    if (normalized.includes(aliasLower) || aliasLower.includes(normalized)) {
+      targets.forEach((t) => {
+        results.add(t);
+        results.add(t.toLowerCase());
+      });
     }
   }
   
-  return Array.from(results);
+  return Array.from(results).filter(Boolean);
 }
