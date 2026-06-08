@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 const NAV = [
   { href: "/admin", label: "📋 상담 신청", exact: true },
   { href: "/admin/cars", label: "🚗 차량 관리" },
+  { href: "/admin/pricing", label: "💰 요금 관리" },
   { href: "/admin/reviews", label: "⭐ 후기 관리" },
   { href: "/admin/faq", label: "❓ FAQ 관리" },
   { href: "/admin/planners", label: "👤 플래너 관리" },
