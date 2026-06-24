@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import { getSubsidyFactor } from "@/lib/pricing";
 
 // ─────────────────────────────────────────
 // Types & Formatters
@@ -88,17 +89,28 @@ export default function CarDetailClient({ car }: { car: any }) {
     const key = `${period}_${deposit}_${mileage}`;
     const baseEntry = car.priceMatrix?.[key] || { rent: 0, lease: 0 };
     let baseMonthly = buyMethod === "RENT" ? baseEntry.rent : baseEntry.lease;
-    let isFallback = false;
     
-    // 데이터가 0이거나 비정상적으로 낮은 경우(예: 크롤링 오류 10001) Fallback 적용
+    // 트림 변경에 따른 가격 상승폭 계산
+    const baseTrimPrice = car.basePrice || 0;
+    const currentTrimPrice = Number(selectedTrim?.price) || baseTrimPrice || 0;
+    const trimPriceDiff = Math.max(0, currentTrimPrice - baseTrimPrice);
+
+    // 차량 가액 대비 월 납입금의 비율 검사 (오류 데이터 필터링용)
+    const minThresholdRatio = deposit === "PREPAY_30" ? 0.0045 : 0.0075;
+    const minAllowedMonthly = Math.floor((car.basePrice || basePrice) * minThresholdRatio);
+
+    let isFallback = false;
     const isCasper = car.slug?.includes('casper');
-    const isCasperElectric = car.slug?.includes('casper-electric');
-    if (!baseMonthly || baseMonthly <= 20000 || isCasper) {
+    
+    // DB의 baseMonthly 가격이 너무 낮거나(크롤링 오류) 데이터가 없으면 Fallback 표준 공식 적용
+    if (!baseMonthly || baseMonthly < minAllowedMonthly || baseMonthly <= 20000 || isCasper) {
       isFallback = true;
+      
       // 기본 Fallback: 차량 가액의 일정 비율 (36개월 0/0 기준)
       const baseRatio = buyMethod === "RENT" ? 0.0165 : 0.0135;
-      const subsidyFactor = isCasperElectric ? 0.298 : 1.0; // 캐스퍼 일렉트릭 보조금(차살때 기준 70,200원) 정밀하게 맞춤
       
+      // 전기차 보조금 감액 적용
+      const subsidyFactor = getSubsidyFactor(car.fuelType, car.slug);
       const fallbackBase = Math.floor(basePrice * baseRatio * subsidyFactor);
       
       baseMonthly = fallbackBase;
@@ -106,13 +118,15 @@ export default function CarDetailClient({ car }: { car: any }) {
       if (deposit === "DEPOSIT_30") baseMonthly = Math.floor(fallbackBase * 0.88);
     }
     
-    // Add option monthly logic (선수금/보증금에 따른 옵션가 요율 조정)
-    // 36개월 기준: 무보증 약 1.8%, 보증금30% 약 1.5%, 선수금30% 약 0.9% (잔존가치 고려)
+    // 차량 가액의 상승분(트림 차액 + 옵션가 + 색상비) 계산
+    const totalPriceDiff = trimPriceDiff + totalOptionPrice + totalColorPrice;
+    
+    // Add option monthly logic (선수금/보증금에 따른 가액 상승분 요율 조정)
     let ratio = 0.018; 
     if (deposit === "DEPOSIT_30") ratio = 0.015;
-    if (deposit === "PREPAY_30") ratio = 0.009; // 선수금 시 옵션가도 크게 감액됨
+    if (deposit === "PREPAY_30") ratio = 0.009; // 선수금 시 크게 감액됨
     
-    const added = Math.floor((totalOptionPrice + totalColorPrice) * ratio);
+    const added = Math.floor(totalPriceDiff * ratio);
     
     let multiplier = 1.0;
     if (period === "48") multiplier = 0.90; 
@@ -122,12 +136,12 @@ export default function CarDetailClient({ car }: { car: any }) {
     if (isFallback) {
       finalMonthly = Math.floor((baseMonthly + added) * multiplier);
     } else {
-      // DB의 baseMonthly에는 이미 기간/선수금/주행거리 배수가 적용되어 있으므로 옵션 가격(added)에만 기간 배수 적용
+      // DB의 baseMonthly에는 이미 기간/선수금/주행거리 배수가 적용되어 있으므로 가액 상승분(added)에만 기간 배수 적용
       finalMonthly = Math.floor(baseMonthly + (added * multiplier));
     }
 
     return finalMonthly;
-  }, [period, deposit, mileage, buyMethod, car.priceMatrix, totalOptionPrice, totalColorPrice, basePrice, car.fuelType]);
+  }, [period, deposit, mileage, buyMethod, car.priceMatrix, totalOptionPrice, totalColorPrice, basePrice, car.fuelType, selectedTrim, car.basePrice, car.slug]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

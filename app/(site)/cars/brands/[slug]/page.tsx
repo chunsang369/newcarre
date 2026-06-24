@@ -4,6 +4,7 @@ export const dynamicParams = true;
 import { notFound } from "next/navigation";
 import CarCard from "@/components/cars/CarCard";
 import { getCachedBrandWithCars, getCachedBrandSlugs } from "@/lib/cache";
+import { resolveListPrices } from "@/lib/pricing";
 
 // 전체 브랜드 사전 빌드
 export async function generateStaticParams() {
@@ -22,9 +23,7 @@ export default async function BrandCarsPage({
   if (!brand) notFound();
 
   const cars = brand.cars.map((car: any) => {
-    const matrix = car.priceMatrix as Record<string, { rent: number; lease: number }>;
-    const baseKey = "36_PREPAY_30_20000";
-    const price = matrix?.[baseKey] || { rent: 0, lease: 0 };
+    const { rent, lease } = resolveListPrices(car);
 
     return {
       id: car.id,
@@ -35,8 +34,8 @@ export default async function BrandCarsPage({
       year: car.year,
       category: car.category,
       fuelType: car.fuelType,
-      monthlyRent: price.rent,
-      monthlyLease: price.lease,
+      monthlyRent: rent,
+      monthlyLease: lease,
       basePrice: car.basePrice,
       thumbnailUrl: car.thumbnailUrl,
     };

@@ -2,22 +2,10 @@
 
 import { prisma } from "@/lib/prisma";
 import { expandSearchKeyword } from "@/lib/search-aliases";
+import { resolveListPrices } from "@/lib/pricing";
 
 function resolvePrice(car: any, brandName: string) {
-  const matrix = car.priceMatrix as Record<string, { rent: number; lease: number }>;
-  const baseKey = "36_PREPAY_30_20000";
-  let rent = matrix?.[baseKey]?.rent || 0;
-  let lease = matrix?.[baseKey]?.lease || 0;
-
-  const isCasperElectric = car.slug === "hyundai-casper-electric";
-  const subsidyFactor = isCasperElectric ? 0.298 : 1.0;
-
-  if (!rent || rent === 0 || rent < 50000) {
-    rent = matrix?.["0_36_20000"]?.rent || matrix?.["30_36_20000"]?.rent || Math.round(car.basePrice * 0.0165 * subsidyFactor);
-  }
-  if (!lease || lease === 0 || lease < 50000) {
-    lease = matrix?.["0_36_20000"]?.lease || matrix?.["30_36_20000"]?.lease || Math.round(car.basePrice * 0.0135 * subsidyFactor);
-  }
+  const { rent, lease } = resolveListPrices(car);
 
   return {
     id: car.id,

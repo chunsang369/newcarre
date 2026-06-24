@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { resolveListPrices } from "@/lib/pricing";
 
 // ─── Types ───
 interface CarBrand {
@@ -106,12 +107,8 @@ export default function CarsListClient({
   }, [cars, brandFilter, categoryFilter, fuelFilter, sortBy, searchQuery]);
 
   const getBaseRent = (car: CarItem) => {
-    const entry = car.priceMatrix["36_PREPAY_30_20000"];
-    if (entry?.rent && entry.rent > 0) return entry.rent;
-    
-    // Fallback: Estimate based on 1.3% of basePrice for 36 months prepay 30%
-    // 0.013 * 0.7 (prepay factor) = ~0.009
-    return Math.round(car.basePrice * 0.0091);
+    const { rent } = resolveListPrices(car);
+    return rent;
   };
 
   return (
