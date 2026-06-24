@@ -89,8 +89,14 @@ export default function PricingDetailModal({
         onSave();
         onClose();
       } else {
-        const err = await res.json();
-        alert(`저장 실패: ${err.error || "알 수 없는 오류"}`);
+        let errorMsg = "알 수 없는 오류";
+        try {
+          const err = await res.json();
+          errorMsg = err.error || errorMsg;
+        } catch {
+          errorMsg = `서버 오류 (상태 코드: ${res.status})`;
+        }
+        alert(`저장 실패: ${errorMsg}`);
       }
     } catch (e) {
       console.error(e);

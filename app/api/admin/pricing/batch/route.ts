@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { revalidateTag } from "next/cache";
@@ -44,7 +46,10 @@ function generatePriceMatrixHelper(scrapedMatrix: any) {
 }
 
 export async function POST(request: Request) {
+  console.log("=== API Route /api/admin/pricing/batch HIT ===");
   try {
+    const bodyText = await request.clone().text();
+    console.log("=== API Route Request Body ===", bodyText);
     const { action, type, amount, filters } = await request.json();
 
     if (action === "adjust") {
@@ -63,7 +68,9 @@ export async function POST(request: Request) {
           if (filters.modelName && car.modelName !== filters.modelName) continue;
         }
 
-        const matrix = car.priceMatrix as Record<string, { rent: number; lease: number }>;
+        const matrix = typeof car.priceMatrix === "string" 
+          ? JSON.parse(car.priceMatrix) as Record<string, { rent: number; lease: number }>
+          : car.priceMatrix as Record<string, { rent: number; lease: number }>;
         if (!matrix) continue;
 
         // 원본 가격 매트릭스 바인딩 (개별 항목 원가 판단용)

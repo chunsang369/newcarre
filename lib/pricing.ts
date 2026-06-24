@@ -22,7 +22,7 @@ export interface MinimalCarForPricing {
 }
 
 export function resolveListPrices(car: MinimalCarForPricing) {
-  const matrix = car.priceMatrix as Record<string, { rent: number; lease: number }>;
+  const matrix = typeof car.priceMatrix === "string" ? JSON.parse(car.priceMatrix) : car.priceMatrix;
   
   // 목록 노출 기본 조건: 36개월, 선수금 30%, 연 2만km (36_PREPAY_30_20000)
   const baseKey = "36_PREPAY_30_20000";

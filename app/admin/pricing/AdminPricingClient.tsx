@@ -192,8 +192,14 @@ export default function AdminPricingClient({
         setBatchTier("");
         router.refresh();
       } else {
-        const data = await res.json();
-        alert(`실패: ${data.error || "알 수 없는 오류"}`);
+        let errorMsg = "알 수 없는 오류가 발생했습니다.";
+        try {
+          const data = await res.json();
+          errorMsg = data.error || errorMsg;
+        } catch (err) {
+          errorMsg = `서버 오류가 발생했습니다. (상태 코드: ${res.status})`;
+        }
+        alert(`실패: ${errorMsg}`);
       }
     } catch (e) {
       console.error(e);
@@ -222,8 +228,14 @@ export default function AdminPricingClient({
         alert("모든 요금 정보가 성공적으로 초기 요금제로 복원되었습니다.");
         router.refresh();
       } else {
-        const data = await res.json();
-        alert(`실패: ${data.error || "알 수 없는 오류"}`);
+        let errorMsg = "알 수 없는 오류가 발생했습니다.";
+        try {
+          const data = await res.json();
+          errorMsg = data.error || errorMsg;
+        } catch (err) {
+          errorMsg = `서버 오류가 발생했습니다. (상태 코드: ${res.status})`;
+        }
+        alert(`실패: ${errorMsg}`);
       }
     } catch (e) {
       console.error(e);

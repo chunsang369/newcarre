@@ -87,7 +87,8 @@ export default function CarDetailClient({ car }: { car: any }) {
   // Monthly Price Calculation (from priceMatrix)
   const monthlyPrice = useMemo(() => {
     const key = `${period}_${deposit}_${mileage}`;
-    const baseEntry = car.priceMatrix?.[key] || { rent: 0, lease: 0 };
+    const matrix = typeof car.priceMatrix === "string" ? JSON.parse(car.priceMatrix) : car.priceMatrix;
+    const baseEntry = matrix?.[key] || { rent: 0, lease: 0 };
     let baseMonthly = buyMethod === "RENT" ? baseEntry.rent : baseEntry.lease;
     
     // 트림 변경에 따른 가격 상승폭 계산
