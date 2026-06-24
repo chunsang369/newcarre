@@ -70,6 +70,11 @@ export default function AdminPricingClient({
   const [selectedBrand, setSelectedBrand] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
+  // Right side list view options (Sync with CarDetailClient formulas)
+  const [viewPeriod, setViewPeriod] = useState<"36" | "48" | "60">("60"); // 디폴트를 60개월로 설정
+  const [viewDeposit, setViewDeposit] = useState<"PREPAY_30" | "DEPOSIT_30" | "NO_DEPOSIT">("NO_DEPOSIT"); // 디폴트를 무보증으로 설정
+  const [viewMileage, setViewMileage] = useState<"10000" | "20000" | "30000">("20000");
+
   // State for Individual Edit Modal
   const [selectedCar, setSelectedCar] = useState<any | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -109,7 +114,7 @@ export default function AdminPricingClient({
     return items;
   }, [initialCars]);
 
-  // Helper: 대표 월 납입료 구하기 (36개월 / 선수금30% / 2만km) - 현재 설정 요금용 (오프셋 적용됨)
+  // Helper: 대표 월 납입료 구하기 - 현재 설정 요금용 (오프셋 적용됨)
   const getRepresentativePrice = (item: TrimPricingItem, type: "rent" | "lease") => {
     return resolveTrimRepresentativePrice(
       {
@@ -123,11 +128,14 @@ export default function AdminPricingClient({
         rentOffset: item.rentOffset,
         leaseOffset: item.leaseOffset
       },
-      type
+      type,
+      viewPeriod,
+      viewDeposit,
+      viewMileage
     );
   };
 
-  // Helper: 최초 원가(Original) 대표 요금 구하기 (36개월 / 선수금30% / 2만km) - 대역 분류용 (오프셋 미적용)
+  // Helper: 최초 원가(Original) 대표 요금 구하기 - 대역 분류용 (오프셋 미적용)
   const getOriginalRepresentativePrice = (item: TrimPricingItem, type: "rent" | "lease") => {
     return resolveTrimRepresentativePrice(
       {
@@ -141,7 +149,10 @@ export default function AdminPricingClient({
         rentOffset: 0,
         leaseOffset: 0
       },
-      type
+      type,
+      viewPeriod,
+      viewDeposit,
+      viewMileage
     );
   };
 
@@ -156,7 +167,7 @@ export default function AdminPricingClient({
       }
     });
     return Array.from(tiersSet).sort((a, b) => a - b);
-  }, [trimItems, productFilter]);
+  }, [trimItems, productFilter, viewPeriod, viewDeposit, viewMileage]);
 
   // 일괄수정 패널에 사용될 동적 모델명 리스트 (선택된 브랜드 기준)
   const batchModels = useMemo(() => {
@@ -193,7 +204,7 @@ export default function AdminPricingClient({
 
       return true;
     });
-  }, [trimItems, productFilter, selectedTier, selectedBrand, searchQuery]);
+  }, [trimItems, productFilter, selectedTier, selectedBrand, searchQuery, viewPeriod, viewDeposit, viewMileage]);
 
   // Batch Adjust Action
   const handleBatchAdjust = async () => {
@@ -307,7 +318,6 @@ export default function AdminPricingClient({
   };
 
   const handleEditClick = (item: TrimPricingItem) => {
-    // PricingDetailModal에 차량 형태로 맞춰서 전달
     setSelectedCar({
       id: item.id,
       modelName: item.modelName,
@@ -315,7 +325,7 @@ export default function AdminPricingClient({
       basePrice: item.originalBasePrice,
       options: item.options
     });
-    isModalOpen ? setIsModalOpen(false) : setIsModalOpen(true);
+    setIsModalOpen(true);
   };
 
   return (
@@ -453,6 +463,48 @@ export default function AdminPricingClient({
         <div className="xl:col-span-2 space-y-6">
           <div className="bg-white border border-slate-100 rounded-3xl shadow-sm p-6 space-y-6">
             
+            {/* 1. 요금 조회 세부 조건 설정 필터 */}
+            <div className="bg-slate-50/50 rounded-2xl p-4 border border-slate-100 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label className="block text-[10px] font-bold text-slate-400 mb-1">견적 기준: 이용 기간</label>
+                <select
+                  value={viewPeriod}
+                  onChange={(e) => setViewPeriod(e.target.value as any)}
+                  className="w-full border border-slate-200 bg-white rounded-xl px-2.5 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                >
+                  <option value="36">36개월</option>
+                  <option value="48">48개월</option>
+                  <option value="60">60개월</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-[10px] font-bold text-slate-400 mb-1">견적 기준: 보증 조건</label>
+                <select
+                  value={viewDeposit}
+                  onChange={(e) => setViewDeposit(e.target.value as any)}
+                  className="w-full border border-slate-200 bg-white rounded-xl px-2.5 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                >
+                  <option value="NO_DEPOSIT">무보증 (선수금 0%)</option>
+                  <option value="DEPOSIT_30">보증금 30%</option>
+                  <option value="PREPAY_30">선수금 30%</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-bold text-slate-400 mb-1">견적 기준: 연간 주행거리</label>
+                <select
+                  value={viewMileage}
+                  onChange={(e) => setViewMileage(e.target.value as any)}
+                  className="w-full border border-slate-200 bg-white rounded-xl px-2.5 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                >
+                  <option value="10000">10,000 km</option>
+                  <option value="20000">20,000 km</option>
+                  <option value="30000">30,000 km</option>
+                </select>
+              </div>
+            </div>
+
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
                 <label className="block text-[10px] font-bold text-slate-400 mb-1">브랜드 필터</label>
@@ -591,7 +643,9 @@ export default function AdminPricingClient({
                             <span className={productFilter === "rent" ? "text-emerald-600" : "text-violet-600"}>
                               {currPrice > 0 ? `${currPrice.toLocaleString()}원` : "견적요청"}
                             </span>
-                            <div className="text-[9px] text-slate-400 font-medium mt-0.5">36m | 선납30% | 2만km</div>
+                            <div className="text-[9px] text-slate-400 font-medium mt-0.5">
+                              {viewPeriod}m | {viewDeposit === "NO_DEPOSIT" ? "무보증" : viewDeposit === "DEPOSIT_30" ? "보증30%" : "선납30%"} | {(Number(viewMileage)/10000)}만km
+                            </div>
                           </td>
                           <td className="px-6 py-4 text-center">
                             <button

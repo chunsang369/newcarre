@@ -69,10 +69,13 @@ export function resolveListPrices(car: MinimalCarForPricing) {
 export function resolveTrimRepresentativePrice(
   car: MinimalCarForPricing,
   trim: { price: number; rentOffset?: number; leaseOffset?: number },
-  type: "rent" | "lease"
+  type: "rent" | "lease",
+  period: "36" | "48" | "60" = "36",
+  deposit: "PREPAY_30" | "DEPOSIT_30" | "NO_DEPOSIT" = "NO_DEPOSIT",
+  mileage: "10000" | "20000" | "30000" = "20000"
 ): number {
   const matrix = typeof car.priceMatrix === "string" ? JSON.parse(car.priceMatrix) : car.priceMatrix;
-  const key = "36_PREPAY_30_20000";
+  const key = `${period}_${deposit}_${mileage}`;
   const baseEntry = matrix?.[key] || { rent: 0, lease: 0 };
   let baseMonthly = baseEntry?.[type] || 0;
 
@@ -80,20 +83,38 @@ export function resolveTrimRepresentativePrice(
   const currentTrimPrice = Number(trim.price) || basePrice || 0;
   const trimPriceDiff = Math.max(0, currentTrimPrice - basePrice);
 
-  const minThresholdRatio = type === "rent" ? 0.0045 : 0.0035;
+  const minThresholdRatio = deposit === "PREPAY_30" ? 0.0045 : 0.0075;
   const minAllowedMonthly = Math.floor(basePrice * minThresholdRatio);
 
   const subsidyFactor = getSubsidyFactor(car.fuelType, car.slug);
 
+  let isFallback = false;
   if (!baseMonthly || baseMonthly < minAllowedMonthly || baseMonthly <= 20000 || car.slug?.includes("casper")) {
+    isFallback = true;
     const baseRatio = type === "rent" ? 0.0165 : 0.0135;
     const fallbackBase = Math.floor(currentTrimPrice * baseRatio * subsidyFactor);
-    baseMonthly = Math.floor(fallbackBase * 0.66); // PREPAY_30 감액
+    baseMonthly = fallbackBase;
+    if (deposit === "PREPAY_30") baseMonthly = Math.floor(fallbackBase * 0.66);
+    if (deposit === "DEPOSIT_30") baseMonthly = Math.floor(fallbackBase * 0.88);
+  }
+
+  let ratio = 0.018; 
+  if (deposit === "DEPOSIT_30") ratio = 0.015;
+  if (deposit === "PREPAY_30") ratio = 0.009;
+  
+  const added = Math.floor(trimPriceDiff * ratio);
+  
+  let multiplier = 1.0;
+  if (period === "48") multiplier = 0.90; 
+  if (period === "60") multiplier = 0.82;
+
+  let finalMonthly = 0;
+  if (isFallback) {
+    finalMonthly = Math.floor((baseMonthly + added) * multiplier);
   } else {
-    const added = Math.floor(trimPriceDiff * 0.009); // PREPAY_30 감액 비율 요율 0.009
-    baseMonthly = baseMonthly + added;
+    finalMonthly = Math.floor(baseMonthly + (added * multiplier));
   }
 
   const offset = type === "rent" ? (trim.rentOffset || 0) : (trim.leaseOffset || 0);
-  return baseMonthly + offset;
+  return finalMonthly + offset;
 }
