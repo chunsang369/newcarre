@@ -79,6 +79,8 @@ export default async function AdminPricingPage() {
           basePrice: car.basePrice,
           thumbnailUrl: car.thumbnailUrl,
           priceMatrix: car.priceMatrix,
+          options: car.options,
+          fuelType: car.fuelType,
           originalPriceMatrix: originalPriceMatrix, // 원본 가격 정보 추가 전달
         };
       })}

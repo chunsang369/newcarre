@@ -141,7 +141,11 @@ export default function CarDetailClient({ car }: { car: any }) {
       finalMonthly = Math.floor(baseMonthly + (added * multiplier));
     }
 
-    return finalMonthly;
+    const offset = buyMethod === "RENT" 
+      ? (Number(selectedTrim?.rentOffset) || 0)
+      : (Number(selectedTrim?.leaseOffset) || 0);
+
+    return finalMonthly + offset;
   }, [period, deposit, mileage, buyMethod, car.priceMatrix, totalOptionPrice, totalColorPrice, basePrice, car.fuelType, selectedTrim, car.basePrice, car.slug]);
 
   const handleSubmit = async (e: React.FormEvent) => {

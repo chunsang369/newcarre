@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import PricingDetailModal from "./PricingDetailModal";
+import { resolveTrimRepresentativePrice } from "@/lib/pricing";
 
 interface Brand {
   id: string;
@@ -19,7 +20,27 @@ interface Car {
   basePrice: number;
   thumbnailUrl: string;
   priceMatrix: any;
+  fuelType: string;
+  options: any;
   originalPriceMatrix: any; // 최초 원본 가격 매트릭스
+}
+
+interface TrimPricingItem {
+  id: string; // car.id
+  slug: string;
+  fuelType: string;
+  brand: Brand;
+  modelName: string;
+  trimIdx: string;
+  trimName: string;
+  fullTrimName: string;
+  basePrice: number; // trim.price
+  originalBasePrice: number; // car.basePrice
+  rentOffset: number;
+  leaseOffset: number;
+  priceMatrix: any;
+  originalPriceMatrix: any;
+  options: any; // car.options 전체 (모달 저장용)
 }
 
 export default function AdminPricingClient({
@@ -50,52 +71,92 @@ export default function AdminPricingClient({
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   // State for Individual Edit Modal
-  const [selectedCar, setSelectedCar] = useState<Car | null>(null);
+  const [selectedCar, setSelectedCar] = useState<any | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Helper: 대표 월 납입료 구하기 (36개월 / 선수금30% / 2만km) - 현재 설정 요금용
-  const getRepresentativePrice = (car: Car, type: "rent" | "lease") => {
-    const matrix = typeof car.priceMatrix === "string" 
-      ? JSON.parse(car.priceMatrix) 
-      : car.priceMatrix;
-    
-    const entry = matrix?.["36_PREPAY_30_20000"];
-    if (entry?.[type] && entry[type] > 0) return entry[type];
-    
-    // Fallback: estimate based on basePrice if matrix is missing
-    return type === "rent" 
-      ? Math.round(car.basePrice * 0.0091) 
-      : Math.round(car.basePrice * 0.0078);
+  // initialCars -> TrimPricingItem[] 가상화 전개
+  const trimItems = useMemo(() => {
+    const items: TrimPricingItem[] = [];
+    initialCars.forEach((car) => {
+      const options = typeof car.options === "string" 
+        ? JSON.parse(car.options) 
+        : car.options;
+      const grades = options?.grades || [];
+      
+      grades.forEach((grade: any) => {
+        const gradeName = grade.name || "";
+        grade.trims?.forEach((trim: any) => {
+          items.push({
+            id: car.id,
+            slug: car.slug,
+            fuelType: car.fuelType || "",
+            brand: car.brand,
+            modelName: car.modelName,
+            trimIdx: trim.idx,
+            trimName: trim.name,
+            fullTrimName: gradeName ? `${gradeName} ${trim.name}` : trim.name,
+            basePrice: Number(trim.price) || car.basePrice || 0,
+            originalBasePrice: car.basePrice || 0,
+            rentOffset: Number(trim.rentOffset) || 0,
+            leaseOffset: Number(trim.leaseOffset) || 0,
+            priceMatrix: car.priceMatrix,
+            originalPriceMatrix: car.originalPriceMatrix,
+            options: car.options
+          });
+        });
+      });
+    });
+    return items;
+  }, [initialCars]);
+
+  // Helper: 대표 월 납입료 구하기 (36개월 / 선수금30% / 2만km) - 현재 설정 요금용 (오프셋 적용됨)
+  const getRepresentativePrice = (item: TrimPricingItem, type: "rent" | "lease") => {
+    return resolveTrimRepresentativePrice(
+      {
+        slug: item.slug,
+        fuelType: item.fuelType,
+        basePrice: item.originalBasePrice,
+        priceMatrix: item.priceMatrix
+      },
+      {
+        price: item.basePrice,
+        rentOffset: item.rentOffset,
+        leaseOffset: item.leaseOffset
+      },
+      type
+    );
   };
 
-  // Helper: 최초 원가(Original) 대표 요금 구하기 (36개월 / 선수금30% / 2만km) - 대역 분류 정렬용
-  const getOriginalRepresentativePrice = (car: Car, type: "rent" | "lease") => {
-    const matrix = typeof car.originalPriceMatrix === "string"
-      ? JSON.parse(car.originalPriceMatrix)
-      : car.originalPriceMatrix;
-
-    const entry = matrix?.["36_PREPAY_30_20000"];
-    if (entry?.[type] && entry[type] > 0) return entry[type];
-
-    // Fallback: estimate based on basePrice if matrix is missing
-    return type === "rent" 
-      ? Math.round(car.basePrice * 0.0091) 
-      : Math.round(car.basePrice * 0.0078);
+  // Helper: 최초 원가(Original) 대표 요금 구하기 (36개월 / 선수금30% / 2만km) - 대역 분류용 (오프셋 미적용)
+  const getOriginalRepresentativePrice = (item: TrimPricingItem, type: "rent" | "lease") => {
+    return resolveTrimRepresentativePrice(
+      {
+        slug: item.slug,
+        fuelType: item.fuelType,
+        basePrice: item.originalBasePrice,
+        priceMatrix: item.originalPriceMatrix
+      },
+      {
+        price: item.basePrice,
+        rentOffset: 0,
+        leaseOffset: 0
+      },
+      type
+    );
   };
 
-  // 10만원 단위 동적 요금 대역(Tiers) 산출 (원가 기준 대표 요금으로 연산)
+  // 10만원 단위 동적 요금 대역(Tiers) 산출 (트림별 최초 원가 기준)
   const dynamicTiers = useMemo(() => {
     const tiersSet = new Set<number>();
-    initialCars.forEach((car) => {
-      const origPrice = getOriginalRepresentativePrice(car, productFilter);
+    trimItems.forEach((item) => {
+      const origPrice = getOriginalRepresentativePrice(item, productFilter);
       if (origPrice > 0) {
-        const tier = Math.floor(origPrice / 100000); // 예: 215,000 -> 2 (20만원대)
+        const tier = Math.floor(origPrice / 100000);
         tiersSet.add(tier);
       }
     });
-    // 오름차순 정렬
     return Array.from(tiersSet).sort((a, b) => a - b);
-  }, [initialCars, productFilter]);
+  }, [trimItems, productFilter]);
 
   // 일괄수정 패널에 사용될 동적 모델명 리스트 (선택된 브랜드 기준)
   const batchModels = useMemo(() => {
@@ -109,30 +170,30 @@ export default function AdminPricingClient({
     return Array.from(modelsSet).sort();
   }, [initialCars, batchBrand]);
 
-  // Filtered Cars based on Tiers, Brand and Search (대역 분류는 원가 기준)
-  const processedCars = useMemo(() => {
-    return initialCars.filter((car) => {
+  // Filtered Items based on Tiers, Brand and Search
+  const processedItems = useMemo(() => {
+    return trimItems.filter((item) => {
       // 1. 브랜드 필터
-      if (selectedBrand && car.brand.id !== selectedBrand) return false;
+      if (selectedBrand && item.brand.id !== selectedBrand) return false;
 
       // 2. 검색어 필터
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
-        const modelMatch = car.modelName.toLowerCase().includes(query);
-        const trimMatch = car.trimName.toLowerCase().includes(query);
+        const modelMatch = item.modelName.toLowerCase().includes(query);
+        const trimMatch = item.fullTrimName.toLowerCase().includes(query);
         if (!modelMatch && !trimMatch) return false;
       }
 
-      // 3. 요금 대역 필터 (원본 가격 기준으로 분류 필터링)
+      // 3. 요금 대역 필터
       if (selectedTier !== "all") {
-        const origPrice = getOriginalRepresentativePrice(car, productFilter);
-        const carTier = Math.floor(origPrice / 100000);
-        if (carTier !== selectedTier) return false;
+        const origPrice = getOriginalRepresentativePrice(item, productFilter);
+        const itemTier = Math.floor(origPrice / 100000);
+        if (itemTier !== selectedTier) return false;
       }
 
       return true;
     });
-  }, [initialCars, productFilter, selectedTier, selectedBrand, searchQuery]);
+  }, [trimItems, productFilter, selectedTier, selectedBrand, searchQuery]);
 
   // Batch Adjust Action
   const handleBatchAdjust = async () => {
@@ -211,7 +272,7 @@ export default function AdminPricingClient({
 
   // Batch Reset Action
   const handleBatchReset = async () => {
-    const confirmMsg = "정말로 모든 차량의 요금을 원래 초기 요금제 정보로 복원(초기화)하시겠습니까?\n이 작업은 되돌릴 수 없습니다.";
+    const confirmMsg = "정말로 모든 차량의 트림별 세부조정 가격을 원래 초기 요금으로 복원(초기화)하시겠습니까?\n이 작업은 되돌릴 수 없습니다.";
     if (!confirm(confirmMsg)) return;
 
     setIsSubmitting(true);
@@ -245,61 +306,65 @@ export default function AdminPricingClient({
     }
   };
 
-  const handleEditClick = (car: Car) => {
-    setSelectedCar(car);
-    setIsModalOpen(true);
+  const handleEditClick = (item: TrimPricingItem) => {
+    // PricingDetailModal에 차량 형태로 맞춰서 전달
+    setSelectedCar({
+      id: item.id,
+      modelName: item.modelName,
+      trimName: item.fullTrimName,
+      basePrice: item.originalBasePrice,
+      options: item.options
+    });
+    isModalOpen ? setIsModalOpen(false) : setIsModalOpen(true);
   };
 
   return (
-    <div className="space-y-8 pb-12">
-      {/* Title */}
-      <div>
-        <h1 className="text-2xl font-bold text-slate-900">요금 관리 센터</h1>
-        <p className="text-slate-500 text-sm mt-1">
-          모든 차량의 요금을 일괄 조정하거나 원가를 기준으로 10만원 단위 대역별 차량 분류를 진행하여 세부 요금을 관리합니다.
-        </p>
+    <div className="space-y-6">
+      {/* Top Breadcrumb & Title */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+        <div>
+          <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">차량 관리 시스템</div>
+          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight mt-1">실시간 가격조정 및 매트릭스 설정</h1>
+        </div>
       </div>
 
-      {/* Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 items-start">
         
-        {/* Left: Global Batch Control Panel */}
-        <div className="lg:col-span-1 bg-white border border-slate-100 rounded-3xl p-6 shadow-sm space-y-6 self-start">
+        {/* Left Side: Batch Control Panel */}
+        <div className="xl:col-span-1 bg-white border border-slate-100 rounded-3xl shadow-sm p-6 space-y-6">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span className="p-1.5 rounded-lg bg-blue-50 text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </span>
+            <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
               요금 일괄수정
             </h2>
-            <p className="text-slate-400 text-xs mt-1">특정 필터 조건(모델별 / 원가 금액대별)을 설정하여 일괄 요금을 가감합니다.</p>
+            <p className="text-xs text-slate-500 mt-1">특정 필터 조건(모델별 / 원가 금액대별)을 설정하여 일괄 요금을 가감합니다.</p>
           </div>
 
           <div className="space-y-4">
-            {/* 1. Target Select */}
+            {/* Target Type */}
             <div>
-              <label className="block text-xs font-bold text-slate-500 mb-1.5">적용 대상</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1.5">적용 대상</label>
               <select
                 value={targetType}
                 onChange={(e) => setTargetType(e.target.value as any)}
-                className="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
+                className="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
               >
                 <option value="all">렌트 + 리스 전체</option>
-                <option value="rent">렌트 요금제만</option>
-                <option value="lease">리스 요금제만</option>
+                <option value="rent">장기렌트만 적용</option>
+                <option value="lease">자동차리스만 적용</option>
               </select>
             </div>
 
-            {/* 2. Brand Target Filter */}
+            {/* Filter: Brand (for Batch) */}
             <div>
-              <label className="block text-xs font-bold text-slate-500 mb-1.5">대상 브랜드 필터</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1.5">대상 브랜드 필터</label>
               <select
                 value={batchBrand}
                 onChange={(e) => {
                   setBatchBrand(e.target.value);
                   setBatchModel(""); // 브랜드 변경 시 모델 리셋
                 }}
-                className="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
+                className="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
               >
                 <option value="">전체 브랜드 대상</option>
                 {brands.map((b) => (
@@ -308,95 +373,86 @@ export default function AdminPricingClient({
               </select>
             </div>
 
-            {/* 3. Model Target Filter */}
+            {/* Filter: Model (for Batch) */}
             <div>
-              <label className="block text-xs font-bold text-slate-500 mb-1.5">대상 차량 모델 선택</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1.5">대상 차량 모델 선택</label>
               <select
                 value={batchModel}
                 onChange={(e) => setBatchModel(e.target.value)}
                 disabled={!batchBrand}
-                className="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none disabled:opacity-50 disabled:bg-slate-50"
+                className="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:bg-slate-50 disabled:text-slate-400"
               >
                 <option value="">전체 모델 대상</option>
-                {batchModels.map((model) => (
-                  <option key={model} value={model}>{model}</option>
+                {batchModels.map((m) => (
+                  <option key={m} value={m}>{m}</option>
                 ))}
               </select>
-              {!batchBrand && (
-                <p className="text-[10px] text-slate-400 mt-1">브랜드를 먼저 선택해야 모델 지정이 가능합니다.</p>
-              )}
+              <p className="text-[10px] text-slate-400 mt-1">브랜드를 먼저 선택해야 모델 지정이 가능합니다.</p>
             </div>
 
-            {/* 4. Price Tier Target Filter */}
+            {/* Filter: Original Pricing Tier (for Batch) */}
             <div>
-              <label className="block text-xs font-bold text-slate-500 mb-1.5">대상 요금제 원가 금액대 필터</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1.5">대상 요금제 원가 금액대 필터</label>
               <select
                 value={batchTier}
                 onChange={(e) => setBatchTier(e.target.value)}
-                className="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
+                className="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
               >
                 <option value="">전체 금액대 대상</option>
-                {dynamicTiers.map((tier) => {
-                  const label = tier === 0 ? "10만원 미만" : `${tier * 10}만원대`;
-                  return (
-                    <option key={tier} value={tier}>{label}</option>
-                  );
-                })}
+                <option value="0">10만원 미만</option>
+                {Array.from({ length: 33 }, (_, i) => i + 1).map((val) => (
+                  <option key={val} value={val}>{val * 10}만원대</option>
+                ))}
               </select>
-              <p className="text-[10px] text-slate-400 mt-1.5 leading-relaxed">
-                * **미시적 요금 조정**: 선택 시 차량 내 요금제 조합 중 **최초 원가가 해당 대역에 속하는 개별 가격 항목만 가감**됩니다. (예: 10만원대 지정 시, 원가 18만 요금은 할인되나 원가 32만 요금은 그대로 보존)
+              <p className="text-[10px] text-slate-400 mt-1">
+                **예시적 요금 조정**: 선택 시 차량 내 요금제 조회 중 **최초 원가가 해당 대역에 속하는 개별 항목만 가감**됩니다. (예: 10만원대 지정 시, 원가 18만 요금은 할인되나 원가 32만 요금은 그대로 보존)
               </p>
             </div>
 
-            {/* 5. Adjust Amount */}
+            {/* Amount input */}
             <div>
-              <label className="block text-xs font-bold text-slate-500 mb-1.5">조정 금액 (원 단위)</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1.5">조정 금액 (원 단위)</label>
               <div className="relative">
                 <input
                   type="text"
+                  placeholder="예: -50000 또는 30000"
                   value={adjustAmount}
                   onChange={(e) => setAdjustAmount(e.target.value)}
-                  placeholder="예: -50000 또는 30000"
-                  className="w-full border border-slate-200 rounded-xl px-3 py-2.5 pr-10 text-sm font-bold focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
+                  className="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 pr-8"
                 />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-bold">원</span>
+                <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-bold">원</span>
               </div>
               <p className="text-[10px] text-slate-400 mt-1">할인 시 마이너스(-), 인상 시 플러스(+) 기호를 포함해 입력하세요.</p>
             </div>
 
-            {/* Submit Button */}
             <button
               onClick={handleBatchAdjust}
               disabled={isSubmitting}
-              className="w-full bg-[#0a2540] hover:bg-[#143a66] text-white font-bold text-sm py-3 rounded-xl transition-all shadow-sm disabled:opacity-50"
+              className="w-full py-3 rounded-2xl bg-slate-900 text-white font-bold hover:bg-slate-800 transition-colors text-sm shadow-sm disabled:opacity-50"
             >
-              {isSubmitting ? "처리 중..." : "일괄수정 적용"}
+              {isSubmitting ? "일괄조정 적용 중..." : "일괄수정 적용"}
             </button>
           </div>
 
-          {/* Danger Zone: Reset to default */}
-          <div className="border-t border-slate-100 pt-6 space-y-3">
+          <div className="pt-6 border-t border-slate-100 space-y-4">
             <div>
-              <h3 className="text-xs font-bold text-red-600">초기화 위험구역</h3>
-              <p className="text-slate-400 text-[10px] mt-0.5">요금 수정 상태를 지우고 크롤링/시드 최초 정보로 원복합니다.</p>
+              <h3 className="text-sm font-extrabold text-red-600">초기화 위험구역</h3>
+              <p className="text-xs text-slate-500 mt-0.5">요금 수정 상태를 지우고 크롭링/시드 최초 정보로 복원합니다.</p>
             </div>
             <button
               onClick={handleBatchReset}
               disabled={isSubmitting}
-              className="w-full border border-red-200 text-red-600 bg-red-50/30 hover:bg-red-50 text-xs font-bold py-2.5 rounded-xl transition-all disabled:opacity-50"
+              className="w-full py-2.5 rounded-2xl border border-red-200 text-red-600 hover:bg-red-50 transition-colors font-bold text-xs"
             >
               요금제 전체 초기화 (기본 복원)
             </button>
           </div>
-
         </div>
 
-        {/* Right: Price Tier List */}
-        <div className="lg:col-span-2 space-y-6">
-          
-          {/* Filters Bar */}
-          <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm space-y-5">
-            {/* Top row: Brand & Search */}
+        {/* Right Side: Interactive Table List & Category Filters */}
+        <div className="xl:col-span-2 space-y-6">
+          <div className="bg-white border border-slate-100 rounded-3xl shadow-sm p-6 space-y-6">
+            
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
                 <label className="block text-[10px] font-bold text-slate-400 mb-1">브랜드 필터</label>
@@ -510,21 +566,21 @@ export default function AdminPricingClient({
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50">
-                  {processedCars.length > 0 ? (
-                    processedCars.map((car) => {
-                      const origPrice = getOriginalRepresentativePrice(car, productFilter);
-                      const currPrice = getRepresentativePrice(car, productFilter);
+                  {processedItems.length > 0 ? (
+                    processedItems.map((item) => {
+                      const origPrice = getOriginalRepresentativePrice(item, productFilter);
+                      const currPrice = getRepresentativePrice(item, productFilter);
                       return (
-                        <tr key={car.id} className="hover:bg-slate-50/50 transition-colors text-sm">
-                          <td className="px-6 py-4 text-slate-600 font-medium">{car.brand.name}</td>
+                        <tr key={`${item.id}_${item.trimIdx}`} className="hover:bg-slate-50/50 transition-colors text-sm">
+                          <td className="px-6 py-4 text-slate-600 font-medium">{item.brand.name}</td>
                           <td className="px-6 py-4">
-                            <div className="font-bold text-slate-800">{car.modelName}</div>
-                            <div className="text-[11px] text-slate-400 mt-0.5 line-clamp-1 max-w-[150px]" title={car.trimName}>
-                              {car.trimName} ({car.year}년형)
+                            <div className="font-bold text-slate-800">{item.modelName}</div>
+                            <div className="text-[11px] text-slate-400 mt-0.5 line-clamp-1 max-w-[250px]" title={item.fullTrimName}>
+                              {item.fullTrimName}
                             </div>
                           </td>
                           <td className="px-6 py-4 text-right text-slate-500 font-medium">
-                            {(car.basePrice / 10000).toLocaleString("ko-KR")}만원
+                            {(item.basePrice / 10000).toLocaleString("ko-KR")}만원
                           </td>
                           {/* 최초 원가 */}
                           <td className="px-6 py-4 text-right text-slate-400 font-bold text-xs">
@@ -539,7 +595,7 @@ export default function AdminPricingClient({
                           </td>
                           <td className="px-6 py-4 text-center">
                             <button
-                              onClick={() => handleEditClick(car)}
+                              onClick={() => handleEditClick(item)}
                               className="px-4 py-2 rounded-xl text-xs font-bold border border-slate-200 hover:border-slate-300 text-slate-600 bg-white hover:bg-slate-50 transition-all shadow-sm"
                             >
                               세부 요금 수정
@@ -561,8 +617,8 @@ export default function AdminPricingClient({
             
             {/* Table Footer Summary */}
             <div className="px-6 py-4 bg-slate-50/50 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-500">
-              <span>총 필터 차량수</span>
-              <span>{processedCars.length}대</span>
+              <span>총 필터 트림수</span>
+              <span>{processedItems.length}개</span>
             </div>
 
           </div>

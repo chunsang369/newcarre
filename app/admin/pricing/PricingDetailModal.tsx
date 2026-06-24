@@ -2,11 +2,26 @@
 
 import { useState, useEffect } from "react";
 
+interface Trim {
+  idx: string;
+  name: string;
+  price: number;
+  rentOffset?: number;
+  leaseOffset?: number;
+}
+
+interface Grade {
+  idx: string;
+  name: string;
+  trims: Trim[];
+}
+
 interface Car {
   id: string;
   modelName: string;
   trimName: string;
-  priceMatrix: any;
+  basePrice: number;
+  options: any; // grades 등이 포함된 JSON 객체
 }
 
 interface PricingDetailModalProps {
@@ -16,76 +31,95 @@ interface PricingDetailModalProps {
   onSave: () => void;
 }
 
-const PERIODS = [36, 48, 60] as const;
-const MILEAGES = [10000, 20000, 30000] as const;
-const PREPAYMENTS = [
-  { key: "NO_DEPOSIT", label: "무보증" },
-  { key: "DEPOSIT_30", label: "보증금 30%" },
-  { key: "PREPAY_30", label: "선수금 30%" },
-] as const;
-
 export default function PricingDetailModal({
   car,
   isOpen,
   onClose,
   onSave,
 }: PricingDetailModalProps) {
-  const [localMatrix, setLocalMatrix] = useState<Record<string, { rent: number; lease: number }>>({});
-  const [activePeriod, setActivePeriod] = useState<typeof PERIODS[number]>(36);
+  const [localGrades, setLocalGrades] = useState<Grade[]>([]);
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
-    if (isOpen && car.priceMatrix) {
-      // 얕은 복사를 통해 로컬 매트릭스 상태 초기화
-      const matrix = typeof car.priceMatrix === "string" 
-        ? JSON.parse(car.priceMatrix) 
-        : { ...car.priceMatrix };
+    if (isOpen && car.options) {
+      const options = typeof car.options === "string" 
+        ? JSON.parse(car.options) 
+        : car.options;
       
-      // 혹시라도 매트릭스가 비어있거나 누락된 키가 있으면 채워넣음
-      const normalized: typeof localMatrix = {};
-      PERIODS.forEach(p => {
-        PREPAYMENTS.forEach(pre => {
-          MILEAGES.forEach(m => {
-            const key = `${p}_${pre.key}_${m}`;
-            normalized[key] = {
-              rent: matrix[key]?.rent ?? 0,
-              lease: matrix[key]?.lease ?? 0,
-            };
+      const grades = options?.grades || [];
+      // grades 딥카피하여 상태로 관리
+      const clonedGrades = JSON.parse(JSON.stringify(grades)) as Grade[];
+      
+      // 혹시라도 각 trim에 rentOffset, leaseOffset이 없으면 0으로 초기화
+      clonedGrades.forEach(g => {
+        if (g.trims) {
+          g.trims.forEach(t => {
+            if (t.rentOffset === undefined) t.rentOffset = 0;
+            if (t.leaseOffset === undefined) t.leaseOffset = 0;
           });
-        });
+        }
       });
-      setLocalMatrix(normalized);
+      setLocalGrades(clonedGrades);
     }
   }, [isOpen, car]);
 
   if (!isOpen) return null;
 
-  const handlePriceChange = (key: string, type: "rent" | "lease", value: string) => {
-    const numericValue = parseInt(value.replace(/[^0-9]/g, ""), 10) || 0;
-    setLocalMatrix((prev) => ({
-      ...prev,
-      [key]: {
-        ...prev[key],
-        [type]: numericValue,
-      },
-    }));
+  const handleOffsetChange = (
+    gradeIdx: string,
+    trimIdx: string,
+    type: "rentOffset" | "leaseOffset",
+    value: string
+  ) => {
+    // 음수 부호(-)와 숫자만 허용
+    const isNegative = value.startsWith("-");
+    const cleaned = value.replace(/[^0-9]/g, "");
+    let numericValue = parseInt(cleaned, 10) || 0;
+    if (isNegative) numericValue = -numericValue;
+
+    setLocalGrades((prev) =>
+      prev.map((g) => {
+        if (g.idx !== gradeIdx) return g;
+        return {
+          ...g,
+          trims: g.trims.map((t) => {
+            if (t.idx !== trimIdx) return t;
+            return {
+              ...t,
+              [type]: numericValue,
+            };
+          }),
+        };
+      })
+    );
   };
 
   const handleSave = async () => {
     setIsSaving(true);
     try {
+      // car.options 파싱
+      const currentOptions = typeof car.options === "string"
+        ? JSON.parse(car.options)
+        : car.options;
+      
+      // 로컬 변경사항 덮어쓰기
+      const newOptions = {
+        ...currentOptions,
+        grades: localGrades,
+      };
+
       const res = await fetch(`/api/admin/cars/${car.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          priceMatrix: localMatrix,
+          options: newOptions,
         }),
       });
 
       if (res.ok) {
-        alert("요금 설정이 성공적으로 저장되었습니다.");
+        alert("트림별 가격 세부 조정 오프셋이 성공적으로 저장되었습니다.");
         onSave();
         onClose();
       } else {
@@ -108,13 +142,13 @@ export default function PricingDetailModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-all duration-300">
-      <div className="bg-white w-full max-w-5xl rounded-3xl shadow-2xl border border-slate-100 flex flex-col max-h-[90vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="bg-white w-full max-w-4xl rounded-3xl shadow-2xl border border-slate-100 flex flex-col max-h-[90vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header */}
         <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
           <div>
-            <h2 className="text-xl font-bold text-slate-900">{car.modelName} 세부 요금 설정</h2>
-            <p className="text-xs text-slate-500 mt-1">{car.trimName}</p>
+            <h2 className="text-xl font-bold text-slate-900">{car.modelName} 트림별 세부 가격 오프셋 설정</h2>
+            <p className="text-xs text-slate-500 mt-1">기준 가격: {car.basePrice?.toLocaleString()}원 (원가에 가감할 월 요금을 입력하세요. 예: -20000, 15000)</p>
           </div>
           <button
             onClick={onClose}
@@ -124,69 +158,49 @@ export default function PricingDetailModal({
           </button>
         </div>
 
-        {/* Period Tabs */}
-        <div className="flex border-b border-slate-100 px-6 bg-white shrink-0 gap-6">
-          {PERIODS.map((period) => (
-            <button
-              key={period}
-              onClick={() => setActivePeriod(period)}
-              className={`py-4 text-sm font-bold border-b-2 transition-all relative ${
-                activePeriod === period
-                  ? "border-blue-600 text-blue-600"
-                  : "border-transparent text-slate-400 hover:text-slate-600"
-              }`}
-            >
-              {period}개월 조건
-            </button>
-          ))}
-        </div>
-
-        {/* Content (Scrollable Grid) */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-8 bg-slate-50/30">
-          {PREPAYMENTS.map((prepayment) => (
-            <div key={prepayment.key} className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm space-y-4">
-              <h3 className="text-sm font-extrabold text-slate-800 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-blue-600" />
-                {prepayment.label}
-              </h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {MILEAGES.map((mileage) => {
-                  const key = `${activePeriod}_${prepayment.key}_${mileage}`;
-                  const values = localMatrix[key] || { rent: 0, lease: 0 };
-
-                  return (
-                    <div key={mileage} className="bg-slate-50/60 rounded-xl p-4 border border-slate-100 hover:border-slate-200 transition-colors">
-                      <div className="text-xs font-bold text-slate-500 mb-3 flex justify-between items-center">
-                        <span>연 {mileage.toLocaleString()}km</span>
-                        <span className="text-[10px] bg-slate-200/80 px-2 py-0.5 rounded text-slate-600">
-                          {activePeriod}개월 | {prepayment.label}
-                        </span>
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50/30">
+          {localGrades.length === 0 ? (
+            <div className="text-center py-10 text-slate-400 text-sm">트림 정보가 존재하지 않습니다.</div>
+          ) : (
+            localGrades.map((grade) => (
+              <div key={grade.idx} className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm space-y-4">
+                <h3 className="text-sm font-extrabold text-slate-800 flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-600" />
+                  {grade.name}
+                </h3>
+                
+                <div className="space-y-4 divide-y divide-slate-100">
+                  {grade.trims?.map((trim) => (
+                    <div key={trim.idx} className="pt-4 first:pt-0 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                      <div>
+                        <div className="font-bold text-slate-800 text-sm">{trim.name}</div>
+                        <div className="text-xs text-slate-400 mt-0.5">차량 가격: {Number(trim.price)?.toLocaleString()}원</div>
                       </div>
                       
-                      <div className="space-y-3">
-                        {/* Rent Input */}
+                      <div className="flex flex-wrap items-center gap-4">
+                        {/* Rent Offset */}
                         <div className="flex items-center gap-2">
-                          <label className="text-xs font-bold text-emerald-600 w-10 shrink-0">렌트</label>
-                          <div className="relative flex-1">
+                          <label className="text-xs font-bold text-emerald-600 w-16 shrink-0">렌트 조정액</label>
+                          <div className="relative w-36">
                             <input
                               type="text"
-                              value={values.rent.toLocaleString()}
-                              onChange={(e) => handlePriceChange(key, "rent", e.target.value)}
+                              value={trim.rentOffset !== undefined ? trim.rentOffset.toString() : "0"}
+                              onChange={(e) => handleOffsetChange(grade.idx, trim.idx, "rentOffset", e.target.value)}
                               className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-right pr-6 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                             />
                             <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-medium">원</span>
                           </div>
                         </div>
 
-                        {/* Lease Input */}
+                        {/* Lease Offset */}
                         <div className="flex items-center gap-2">
-                          <label className="text-xs font-bold text-violet-600 w-10 shrink-0">리스</label>
-                          <div className="relative flex-1">
+                          <label className="text-xs font-bold text-violet-600 w-16 shrink-0">리스 조정액</label>
+                          <div className="relative w-36">
                             <input
                               type="text"
-                              value={values.lease.toLocaleString()}
-                              onChange={(e) => handlePriceChange(key, "lease", e.target.value)}
+                              value={trim.leaseOffset !== undefined ? trim.leaseOffset.toString() : "0"}
+                              onChange={(e) => handleOffsetChange(grade.idx, trim.idx, "leaseOffset", e.target.value)}
                               className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-right pr-6 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                             />
                             <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-medium">원</span>
@@ -194,11 +208,11 @@ export default function PricingDetailModal({
                         </div>
                       </div>
                     </div>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
         {/* Footer */}

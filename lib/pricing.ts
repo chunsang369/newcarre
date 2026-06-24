@@ -47,5 +47,53 @@ export function resolveListPrices(car: MinimalCarForPricing) {
     lease = Math.round(car.basePrice * 0.0135 * 0.66 * subsidyFactor);
   }
 
-  return { rent, lease };
+  // 최저가 기본 트림의 오프셋 반영
+  let rentOffset = 0;
+  let leaseOffset = 0;
+  try {
+    const options = typeof (car as any).options === "string"
+      ? JSON.parse((car as any).options)
+      : (car as any).options;
+    const firstTrim = options?.grades?.[0]?.trims?.[0];
+    if (firstTrim) {
+      rentOffset = Number(firstTrim.rentOffset) || 0;
+      leaseOffset = Number(firstTrim.leaseOffset) || 0;
+    }
+  } catch (e) {
+    // options 파싱 실패 시 패스
+  }
+
+  return { rent: rent + rentOffset, lease: lease + leaseOffset };
+}
+
+export function resolveTrimRepresentativePrice(
+  car: MinimalCarForPricing,
+  trim: { price: number; rentOffset?: number; leaseOffset?: number },
+  type: "rent" | "lease"
+): number {
+  const matrix = typeof car.priceMatrix === "string" ? JSON.parse(car.priceMatrix) : car.priceMatrix;
+  const key = "36_PREPAY_30_20000";
+  const baseEntry = matrix?.[key] || { rent: 0, lease: 0 };
+  let baseMonthly = baseEntry?.[type] || 0;
+
+  const basePrice = car.basePrice || 0;
+  const currentTrimPrice = Number(trim.price) || basePrice || 0;
+  const trimPriceDiff = Math.max(0, currentTrimPrice - basePrice);
+
+  const minThresholdRatio = type === "rent" ? 0.0045 : 0.0035;
+  const minAllowedMonthly = Math.floor(basePrice * minThresholdRatio);
+
+  const subsidyFactor = getSubsidyFactor(car.fuelType, car.slug);
+
+  if (!baseMonthly || baseMonthly < minAllowedMonthly || baseMonthly <= 20000 || car.slug?.includes("casper")) {
+    const baseRatio = type === "rent" ? 0.0165 : 0.0135;
+    const fallbackBase = Math.floor(currentTrimPrice * baseRatio * subsidyFactor);
+    baseMonthly = Math.floor(fallbackBase * 0.66); // PREPAY_30 감액
+  } else {
+    const added = Math.floor(trimPriceDiff * 0.009); // PREPAY_30 감액 비율 요율 0.009
+    baseMonthly = baseMonthly + added;
+  }
+
+  const offset = type === "rent" ? (trim.rentOffset || 0) : (trim.leaseOffset || 0);
+  return baseMonthly + offset;
 }
