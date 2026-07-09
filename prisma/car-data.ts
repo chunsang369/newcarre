@@ -1,4 +1,4 @@
-// Auto-generated Perfect 1:1 Mapping (2026-05-05T12:39:47.970Z)
+// Auto-generated from Chasalddae v2 crawling (patched both)
 export const popularCars = [
   {
     "slug": "kia-ev5-gt",
@@ -865,10 +865,10 @@ export const popularCars = [
     "slug": "tesla-model-y-juniper",
     "brandSlug": "tesla",
     "modelName": "Model Y Juniper",
-    "trimName": "2025년형",
-    "year": 2025,
-    "category": "SEDAN",
-    "fuelType": "EV",
+    "trimName": "2026년형",
+    "year": 2026,
+    "category": "SUV",
+    "fuelType": "ELECTRIC",
     "basePrice": 49990000,
     "imageUrl": "/images/cars/tesla-model-y-juniper.png",
     "isPopular": true,
@@ -1268,77 +1268,113 @@ export const popularCars = [
       ]
     },
     "priceMatrix": {
-      "36_NO_DEPOSIT_10000": {
-        "rent": 843767,
-        "lease": 671866
+      "36_PREPAY_30_10000": {
+        "rent": 489699,
+        "lease": 230199
       },
       "36_DEPOSIT_30_10000": {
-        "rent": 759390,
-        "lease": 604679
+        "rent": 784739,
+        "lease": 613199
       },
-      "36_PREPAY_30_10000": {
-        "rent": 427184,
-        "lease": 255283
-      },
-      "36_NO_DEPOSIT_20000": {
-        "rent": 878924,
-        "lease": 699860
-      },
-      "36_DEPOSIT_30_20000": {
-        "rent": 791032,
-        "lease": 629874
+      "36_NO_DEPOSIT_10000": {
+        "rent": 871859,
+        "lease": 684399
       },
       "36_PREPAY_30_20000": {
-        "rent": 462341,
-        "lease": 283277
+        "rent": 515099,
+        "lease": 230199
       },
-      "48_NO_DEPOSIT_10000": {
-        "rent": 750953,
-        "lease": 604679
+      "36_DEPOSIT_30_20000": {
+        "rent": 834349,
+        "lease": 613199
       },
-      "48_DEPOSIT_30_10000": {
-        "rent": 675858,
-        "lease": 544211
+      "36_NO_DEPOSIT_20000": {
+        "rent": 903651,
+        "lease": 684399
+      },
+      "36_PREPAY_30_30000": {
+        "rent": 498204,
+        "lease": 268499
+      },
+      "36_DEPOSIT_30_30000": {
+        "rent": 869879,
+        "lease": 651499
+      },
+      "36_NO_DEPOSIT_30000": {
+        "rent": 966240,
+        "lease": 722699
       },
       "48_PREPAY_30_10000": {
-        "rent": 438515,
-        "lease": 292241
+        "rent": 467619,
+        "lease": 273001
       },
-      "48_NO_DEPOSIT_20000": {
-        "rent": 782242,
-        "lease": 629874
+      "48_DEPOSIT_30_10000": {
+        "rent": 734691,
+        "lease": 551901
       },
-      "48_DEPOSIT_30_20000": {
-        "rent": 704018,
-        "lease": 566887
+      "48_NO_DEPOSIT_10000": {
+        "rent": 822250,
+        "lease": 623201
       },
       "48_PREPAY_30_20000": {
-        "rent": 469804,
-        "lease": 317436
+        "rent": 467619,
+        "lease": 291601
       },
-      "60_NO_DEPOSIT_10000": {
-        "rent": 755172,
-        "lease": 591242
+      "48_DEPOSIT_30_20000": {
+        "rent": 735240,
+        "lease": 570401
       },
-      "60_DEPOSIT_30_10000": {
-        "rent": 679655,
-        "lease": 532118
+      "48_NO_DEPOSIT_20000": {
+        "rent": 831380,
+        "lease": 641801
+      },
+      "48_PREPAY_30_30000": {
+        "rent": 512721,
+        "lease": 328801
+      },
+      "48_DEPOSIT_30_30000": {
+        "rent": 780339,
+        "lease": 607601
+      },
+      "48_NO_DEPOSIT_30000": {
+        "rent": 876700,
+        "lease": 679001
       },
       "60_PREPAY_30_10000": {
-        "rent": 505222,
-        "lease": 341292
+        "rent": 483810,
+        "lease": 294400
       },
-      "60_NO_DEPOSIT_20000": {
-        "rent": 786637,
-        "lease": 615877
+      "60_DEPOSIT_30_10000": {
+        "rent": 687501,
+        "lease": 510900
       },
-      "60_DEPOSIT_30_20000": {
-        "rent": 707973,
-        "lease": 554289
+      "60_NO_DEPOSIT_10000": {
+        "rent": 787930,
+        "lease": 582300
       },
       "60_PREPAY_30_20000": {
-        "rent": 536687,
-        "lease": 365927
+        "rent": 483810,
+        "lease": 308899
+      },
+      "60_DEPOSIT_30_20000": {
+        "rent": 687501,
+        "lease": 525499
+      },
+      "60_NO_DEPOSIT_20000": {
+        "rent": 787930,
+        "lease": 596799
+      },
+      "60_PREPAY_30_30000": {
+        "rent": 518351,
+        "lease": 337799
+      },
+      "60_DEPOSIT_30_30000": {
+        "rent": 722151,
+        "lease": 554399
+      },
+      "60_NO_DEPOSIT_30000": {
+        "rent": 822471,
+        "lease": 625699
       }
     }
   },
@@ -184785,154 +184821,22 @@ export const popularCars = [
     "slug": "tesla-model-y-juniper-6342",
     "brandSlug": "tesla",
     "modelName": "Model Y Juniper",
-    "trimName": "2025년형",
-    "year": 2025,
-    "category": "SEDAN",
-    "fuelType": "EV",
-    "basePrice": 49990000,
-    "imageUrl": "/images/cars/tesla-model-y-juniper-6342.png",
+    "trimName": "2026년형",
+    "year": 2026,
+    "category": "SUV",
+    "fuelType": "ELECTRIC",
+    "basePrice": 59990000,
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20250117175613930.png",
     "isPopular": true,
     "sortOrder": 171,
     "options": {
       "grades": [
         {
           "idx": "1",
-          "name": "2026년형 전기 2WD",
-          "trims": [
-            {
-              "idx": "1_1",
-              "name": "Premium RWD (자동)",
-              "price": 49990000,
-              "colorsExt": [
-                {
-                  "idx": "3048",
-                  "title": "Stealth Grey",
-                  "price": 0,
-                  "detail": [
-                    "#3e3c45",
-                    "#3e3c45"
-                  ],
-                  "thumb": "#3e3c45"
-                },
-                {
-                  "idx": "3703",
-                  "title": "Pearl White Multi-Coat",
-                  "price": 1286000,
-                  "detail": [
-                    "#FFFFFF",
-                    "#FFFFFF"
-                  ],
-                  "thumb": "#FFFFFF"
-                },
-                {
-                  "idx": "3767",
-                  "title": "Diamond Black",
-                  "price": 1929000,
-                  "detail": [
-                    "#0B0B0D",
-                    "#0B0B0D"
-                  ],
-                  "thumb": "#0B0B0D"
-                },
-                {
-                  "idx": "3710",
-                  "title": "Glacier Blue",
-                  "price": 1929000,
-                  "detail": [
-                    "#86afe0",
-                    "#86afe0"
-                  ],
-                  "thumb": "#86afe0"
-                },
-                {
-                  "idx": "3225",
-                  "title": "Ultra Red",
-                  "price": 2759000,
-                  "detail": [
-                    "#ad0108",
-                    "#ad0108"
-                  ],
-                  "thumb": "#ad0108"
-                },
-                {
-                  "idx": "3344",
-                  "title": "Quicksilver",
-                  "price": 2759000,
-                  "detail": [
-                    "#adadad",
-                    "#adadad"
-                  ],
-                  "thumb": "#adadad"
-                }
-              ],
-              "colorsInt": [
-                {
-                  "idx": "520",
-                  "title": "All Black",
-                  "price": 0,
-                  "detail": [
-                    "#07080c",
-                    "#07080c"
-                  ],
-                  "thumb": "#07080c"
-                },
-                {
-                  "idx": "520",
-                  "title": "All Black",
-                  "price": 0,
-                  "detail": [
-                    "#07080c",
-                    "#07080c"
-                  ],
-                  "thumb": "#07080c"
-                },
-                {
-                  "idx": "521",
-                  "title": "Black & White",
-                  "price": 1286000,
-                  "detail": [
-                    "#0a0a0f",
-                    "#f8f8f8"
-                  ],
-                  "thumb": "#0a0a0f"
-                },
-                {
-                  "idx": "3951",
-                  "title": "jen gray",
-                  "price": 1929000,
-                  "detail": [
-                    "#d5d5d5",
-                    "#d5d5d5"
-                  ],
-                  "thumb": "#d5d5d5"
-                }
-              ],
-              "options": [
-                {
-                  "idx": "opt_1",
-                  "title": "풀 셀프-드라이빙 구현 기능",
-                  "price": 9043000
-                },
-                {
-                  "idx": "opt_2",
-                  "title": "향상된 오토파일럿",
-                  "price": 4522000
-                },
-                {
-                  "idx": "opt_3",
-                  "title": "19인치 크로스플로우 휠",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "idx": "2",
           "name": "2026년형 전기 AWD",
           "trims": [
             {
-              "idx": "2_1",
+              "idx": "1_1",
               "name": "Premium Long Range (자동)",
               "price": 59990000,
               "colorsExt": [
@@ -185009,26 +184913,6 @@ export const popularCars = [
                   "thumb": "#07080c"
                 },
                 {
-                  "idx": "520",
-                  "title": "All Black",
-                  "price": 0,
-                  "detail": [
-                    "#07080c",
-                    "#07080c"
-                  ],
-                  "thumb": "#07080c"
-                },
-                {
-                  "idx": "521",
-                  "title": "Black & White",
-                  "price": 1286000,
-                  "detail": [
-                    "#0a0a0f",
-                    "#f8f8f8"
-                  ],
-                  "thumb": "#0a0a0f"
-                },
-                {
                   "idx": "3951",
                   "title": "jen gray",
                   "price": 1929000,
@@ -185041,234 +184925,141 @@ export const popularCars = [
               ],
               "options": [
                 {
-                  "idx": "opt_1",
+                  "idx": "opt_1466",
                   "title": "풀 셀프-드라이빙 구현 기능",
                   "price": 9043000
                 },
                 {
-                  "idx": "opt_2",
+                  "idx": "opt_4175",
                   "title": "향상된 오토파일럿",
                   "price": 4522000
                 },
                 {
-                  "idx": "opt_3",
+                  "idx": "opt_7647",
                   "title": "19인치 크로스플로우 휠",
                   "price": 0
                 },
                 {
-                  "idx": "opt_4",
+                  "idx": "opt_7648",
                   "title": "20인치 헬릭스 2.0 휠",
                   "price": 2571000
                 }
-              ]
-            },
-            {
-              "idx": "2_2",
-              "name": "L (자동)",
-              "price": 64990000,
-              "colorsExt": [
-                {
-                  "idx": "3048",
-                  "title": "Stealth Grey",
-                  "price": 0,
-                  "detail": [
-                    "#3e3c45",
-                    "#3e3c45"
-                  ],
-                  "thumb": "#3e3c45"
-                },
-                {
-                  "idx": "3703",
-                  "title": "Pearl White Multi-Coat",
-                  "price": 1286000,
-                  "detail": [
-                    "#FFFFFF",
-                    "#FFFFFF"
-                  ],
-                  "thumb": "#FFFFFF"
-                },
-                {
-                  "idx": "3767",
-                  "title": "Diamond Black",
-                  "price": 1929000,
-                  "detail": [
-                    "#0B0B0D",
-                    "#0B0B0D"
-                  ],
-                  "thumb": "#0B0B0D"
-                },
-                {
-                  "idx": "3710",
-                  "title": "Glacier Blue",
-                  "price": 1929000,
-                  "detail": [
-                    "#86afe0",
-                    "#86afe0"
-                  ],
-                  "thumb": "#86afe0"
-                },
-                {
-                  "idx": "3225",
-                  "title": "Ultra Red",
-                  "price": 2759000,
-                  "detail": [
-                    "#ad0108",
-                    "#ad0108"
-                  ],
-                  "thumb": "#ad0108"
-                },
-                {
-                  "idx": "3344",
-                  "title": "Quicksilver",
-                  "price": 2759000,
-                  "detail": [
-                    "#adadad",
-                    "#adadad"
-                  ],
-                  "thumb": "#adadad"
-                }
               ],
-              "colorsInt": [
-                {
-                  "idx": "520",
-                  "title": "All Black",
-                  "price": 0,
-                  "detail": [
-                    "#07080c",
-                    "#07080c"
-                  ],
-                  "thumb": "#07080c"
-                },
-                {
-                  "idx": "520",
-                  "title": "All Black",
-                  "price": 0,
-                  "detail": [
-                    "#07080c",
-                    "#07080c"
-                  ],
-                  "thumb": "#07080c"
-                },
-                {
-                  "idx": "521",
-                  "title": "Black & White",
-                  "price": 1286000,
-                  "detail": [
-                    "#0a0a0f",
-                    "#f8f8f8"
-                  ],
-                  "thumb": "#0a0a0f"
-                },
-                {
-                  "idx": "3951",
-                  "title": "jen gray",
-                  "price": 1929000,
-                  "detail": [
-                    "#d5d5d5",
-                    "#d5d5d5"
-                  ],
-                  "thumb": "#d5d5d5"
-                }
-              ],
-              "options": [
-                {
-                  "idx": "opt_1",
-                  "title": "풀 셀프-드라이빙 구현 기능",
-                  "price": 9043000
-                },
-                {
-                  "idx": "opt_2",
-                  "title": "향상된 오토파일럿",
-                  "price": 4522000
-                },
-                {
-                  "idx": "opt_3",
-                  "title": "19인치 크로스플로우 휠",
-                  "price": 0
-                },
-                {
-                  "idx": "opt_4",
-                  "title": "20인치 헬릭스 2.0 휠",
-                  "price": 2571000
-                }
-              ]
+              "rentOffset": 0,
+              "leaseOffset": 0
             }
           ]
         }
       ]
     },
     "priceMatrix": {
-      "36_NO_DEPOSIT_10000": {
-        "rent": 791842,
-        "lease": 671866
+      "36_PREPAY_30_10000": {
+        "rent": 610861,
+        "lease": 329501
       },
       "36_DEPOSIT_30_10000": {
-        "rent": 712658,
-        "lease": 604679
+        "rent": 975260,
+        "lease": 842701
       },
-      "36_PREPAY_30_10000": {
-        "rent": 375259,
-        "lease": 255283
-      },
-      "36_NO_DEPOSIT_20000": {
-        "rent": 824835,
-        "lease": 699860
-      },
-      "36_DEPOSIT_30_20000": {
-        "rent": 742352,
-        "lease": 629874
+      "36_NO_DEPOSIT_10000": {
+        "rent": 1090651,
+        "lease": 938101
       },
       "36_PREPAY_30_20000": {
-        "rent": 408252,
-        "lease": 283277
+        "rent": 643531,
+        "lease": 329501
       },
-      "48_NO_DEPOSIT_10000": {
-        "rent": 704739,
-        "lease": 604679
+      "36_DEPOSIT_30_20000": {
+        "rent": 1034109,
+        "lease": 842701
       },
-      "48_DEPOSIT_30_10000": {
-        "rent": 634265,
-        "lease": 544211
+      "36_NO_DEPOSIT_20000": {
+        "rent": 1150049,
+        "lease": 938101
+      },
+      "36_PREPAY_30_30000": {
+        "rent": 659811,
+        "lease": 380699
+      },
+      "36_DEPOSIT_30_30000": {
+        "rent": 1141199,
+        "lease": 893899
+      },
+      "36_NO_DEPOSIT_30000": {
+        "rent": 1247299,
+        "lease": 989399
       },
       "48_PREPAY_30_10000": {
-        "rent": 392301,
-        "lease": 292241
+        "rent": 618780,
+        "lease": 382701
       },
-      "48_NO_DEPOSIT_20000": {
-        "rent": 734103,
-        "lease": 629874
+      "48_DEPOSIT_30_10000": {
+        "rent": 900791,
+        "lease": 756401
       },
-      "48_DEPOSIT_30_20000": {
-        "rent": 660693,
-        "lease": 566887
+      "48_NO_DEPOSIT_10000": {
+        "rent": 1016839,
+        "lease": 852001
       },
       "48_PREPAY_30_20000": {
-        "rent": 421665,
-        "lease": 317436
+        "rent": 642540,
+        "lease": 407601
       },
-      "60_NO_DEPOSIT_10000": {
-        "rent": 708698,
-        "lease": 591242
+      "48_DEPOSIT_30_20000": {
+        "rent": 943141,
+        "lease": 781301
       },
-      "60_DEPOSIT_30_10000": {
-        "rent": 637828,
-        "lease": 532118
+      "48_NO_DEPOSIT_20000": {
+        "rent": 1059630,
+        "lease": 876901
+      },
+      "48_PREPAY_30_30000": {
+        "rent": 713600,
+        "lease": 457500
+      },
+      "48_DEPOSIT_30_30000": {
+        "rent": 1016401,
+        "lease": 831200
+      },
+      "48_NO_DEPOSIT_30000": {
+        "rent": 1122499,
+        "lease": 926800
       },
       "60_PREPAY_30_10000": {
-        "rent": 458748,
-        "lease": 341292
+        "rent": 620661,
+        "lease": 408401
       },
-      "60_NO_DEPOSIT_20000": {
-        "rent": 738227,
-        "lease": 615877
+      "60_DEPOSIT_30_10000": {
+        "rent": 851621,
+        "lease": 698601
       },
-      "60_DEPOSIT_30_20000": {
-        "rent": 664404,
-        "lease": 554289
+      "60_NO_DEPOSIT_10000": {
+        "rent": 968441,
+        "lease": 794201
       },
       "60_PREPAY_30_20000": {
-        "rent": 488277,
-        "lease": 365927
+        "rent": 639139,
+        "lease": 427800
+      },
+      "60_DEPOSIT_30_20000": {
+        "rent": 884069,
+        "lease": 718000
+      },
+      "60_NO_DEPOSIT_20000": {
+        "rent": 1001220,
+        "lease": 813600
+      },
+      "60_PREPAY_30_30000": {
+        "rent": 734300,
+        "lease": 466500
+      },
+      "60_DEPOSIT_30_30000": {
+        "rent": 948099,
+        "lease": 756700
+      },
+      "60_NO_DEPOSIT_30000": {
+        "rent": 1054200,
+        "lease": 852300
       }
     }
   },
