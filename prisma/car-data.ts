@@ -1,4 +1,4 @@
-// Auto-generated from Chasalddae v2 crawling (patched both)
+// Auto-generated from Chasalddae v2 crawling (patched both Model Y & Model 3)
 export const popularCars = [
   {
     "slug": "kia-ev5-gt",
@@ -5368,79 +5368,79 @@ export const popularCars = [
       ]
     },
     "priceMatrix": {
-      "36_NO_DEPOSIT_10000": {
-        "rent": 325014,
-        "lease": 195521
-      },
-      "36_DEPOSIT_30_10000": {
-        "rent": 292513,
-        "lease": 175969
-      },
-      "36_PREPAY_30_10000": {
-        "rent": 200597,
-        "lease": 71104
-      },
-      "36_NO_DEPOSIT_20000": {
-        "rent": 338556,
-        "lease": 203668
-      },
-      "36_DEPOSIT_30_20000": {
-        "rent": 304700,
-        "lease": 183301
-      },
-      "36_PREPAY_30_20000": {
-        "rent": 214139,
-        "lease": 79251
-      },
-      "48_NO_DEPOSIT_10000": {
-        "rent": 289262,
-        "lease": 175969
-      },
-      "48_DEPOSIT_30_10000": {
-        "rent": 260336,
-        "lease": 158372
-      },
-      "48_PREPAY_30_10000": {
-        "rent": 195949,
-        "lease": 82656
-      },
-      "48_NO_DEPOSIT_20000": {
-        "rent": 301315,
-        "lease": 183301
-      },
-      "48_DEPOSIT_30_20000": {
-        "rent": 271184,
-        "lease": 164971
-      },
-      "48_PREPAY_30_20000": {
-        "rent": 208002,
-        "lease": 89988
-      },
-      "60_NO_DEPOSIT_10000": {
-        "rent": 290887,
-        "lease": 172059
-      },
-      "60_DEPOSIT_30_10000": {
-        "rent": 261798,
-        "lease": 154853
-      },
-      "60_PREPAY_30_10000": {
-        "rent": 216237,
-        "lease": 97409
-      },
-      "60_NO_DEPOSIT_20000": {
-        "rent": 303008,
-        "lease": 179228
-      },
-      "60_DEPOSIT_30_20000": {
-        "rent": 272707,
-        "lease": 161305
-      },
-      "60_PREPAY_30_20000": {
-        "rent": 228358,
-        "lease": 104578
+        "36_NO_DEPOSIT_10000": {
+          "rent": 289680,
+          "lease": 215600
+        },
+        "36_DEPOSIT_30_10000": {
+          "rent": 232299,
+          "lease": 173700
+        },
+        "36_PREPAY_30_10000": {
+          "rent": 51249,
+          "lease": 53170
+        },
+        "36_NO_DEPOSIT_20000": {
+          "rent": 311529,
+          "lease": 219567
+        },
+        "36_DEPOSIT_30_20000": {
+          "rent": 254029,
+          "lease": 181247
+        },
+        "36_PREPAY_30_20000": {
+          "rent": 72989,
+          "lease": 60139
+        },
+        "48_NO_DEPOSIT_10000": {
+          "rent": 312351,
+          "lease": 220099
+        },
+        "48_DEPOSIT_30_10000": {
+          "rent": 254640,
+          "lease": 178199
+        },
+        "48_PREPAY_30_10000": {
+          "rent": 134321,
+          "lease": 34711
+        },
+        "48_NO_DEPOSIT_20000": {
+          "rent": 328130,
+          "lease": 229524
+        },
+        "48_DEPOSIT_30_20000": {
+          "rent": 270309,
+          "lease": 188899
+        },
+        "48_PREPAY_30_20000": {
+          "rent": 141629,
+          "lease": 25399
+        },
+        "60_NO_DEPOSIT_10000": {
+          "rent": 322929,
+          "lease": 221300
+        },
+        "60_DEPOSIT_30_10000": {
+          "rent": 264909,
+          "lease": 179500
+        },
+        "60_PREPAY_30_10000": {
+          "rent": 168551,
+          "lease": 52500
+        },
+        "60_NO_DEPOSIT_20000": {
+          "rent": 335049,
+          "lease": 229600
+        },
+        "60_DEPOSIT_30_20000": {
+          "rent": 276931,
+          "lease": 187800
+        },
+        "60_PREPAY_30_20000": {
+          "rent": 174265,
+          "lease": 60700
+        }
       }
-    }
   },
   {
     "slug": "kgm-actyon",
@@ -11550,79 +11550,79 @@ export const popularCars = [
       ]
     },
     "priceMatrix": {
-      "36_NO_DEPOSIT_10000": {
-        "rent": 370349,
-        "lease": 244481
-      },
-      "36_DEPOSIT_30_10000": {
-        "rent": 333314,
-        "lease": 220033
-      },
-      "36_PREPAY_30_10000": {
-        "rent": 218666,
-        "lease": 92798
-      },
-      "36_NO_DEPOSIT_20000": {
-        "rent": 385780,
-        "lease": 254668
-      },
-      "36_DEPOSIT_30_20000": {
-        "rent": 347202,
-        "lease": 229201
-      },
-      "36_PREPAY_30_20000": {
-        "rent": 234097,
-        "lease": 102985
-      },
-      "48_NO_DEPOSIT_10000": {
-        "rent": 329610,
-        "lease": 220033
-      },
-      "48_DEPOSIT_30_10000": {
-        "rent": 296649,
-        "lease": 198030
-      },
-      "48_PREPAY_30_10000": {
-        "rent": 215847,
-        "lease": 106270
-      },
-      "48_NO_DEPOSIT_20000": {
-        "rent": 343344,
-        "lease": 229201
-      },
-      "48_DEPOSIT_30_20000": {
-        "rent": 309010,
-        "lease": 206281
-      },
-      "48_PREPAY_30_20000": {
-        "rent": 229581,
-        "lease": 115438
-      },
-      "60_NO_DEPOSIT_10000": {
-        "rent": 331462,
-        "lease": 215144
-      },
-      "60_DEPOSIT_30_10000": {
-        "rent": 298316,
-        "lease": 193630
-      },
-      "60_PREPAY_30_10000": {
-        "rent": 240452,
-        "lease": 124134
-      },
-      "60_NO_DEPOSIT_20000": {
-        "rent": 345273,
-        "lease": 224108
-      },
-      "60_DEPOSIT_30_20000": {
-        "rent": 310746,
-        "lease": 201697
-      },
-      "60_PREPAY_30_20000": {
-        "rent": 254263,
-        "lease": 133098
+        "36_NO_DEPOSIT_10000": {
+          "rent": 418470,
+          "lease": 294599
+        },
+        "36_DEPOSIT_30_10000": {
+          "rent": 376329,
+          "lease": 264599
+        },
+        "36_PREPAY_30_10000": {
+          "rent": 222489,
+          "lease": 103199
+        },
+        "36_NO_DEPOSIT_20000": {
+          "rent": 437560,
+          "lease": 305199
+        },
+        "36_DEPOSIT_30_20000": {
+          "rent": 396530,
+          "lease": 275099
+        },
+        "36_PREPAY_30_20000": {
+          "rent": 242140,
+          "lease": 113699
+        },
+        "48_NO_DEPOSIT_10000": {
+          "rent": 390549,
+          "lease": 265801
+        },
+        "48_DEPOSIT_30_10000": {
+          "rent": 350169,
+          "lease": 235701
+        },
+        "48_PREPAY_30_10000": {
+          "rent": 240760,
+          "lease": 118201
+        },
+        "48_NO_DEPOSIT_20000": {
+          "rent": 401881,
+          "lease": 273501
+        },
+        "48_DEPOSIT_30_20000": {
+          "rent": 361651,
+          "lease": 243401
+        },
+        "48_PREPAY_30_20000": {
+          "rent": 254740,
+          "lease": 125901
+        },
+        "60_NO_DEPOSIT_10000": {
+          "rent": 365717,
+          "lease": 247500
+        },
+        "60_DEPOSIT_30_10000": {
+          "rent": 325438,
+          "lease": 217400
+        },
+        "60_PREPAY_30_10000": {
+          "rent": 251239,
+          "lease": 126200
+        },
+        "60_NO_DEPOSIT_20000": {
+          "rent": 374430,
+          "lease": 253500
+        },
+        "60_DEPOSIT_30_20000": {
+          "rent": 334073,
+          "lease": 223400
+        },
+        "60_PREPAY_30_20000": {
+          "rent": 261840,
+          "lease": 132100
+        }
       }
-    }
   },
   {
     "slug": "mini-countryman",
@@ -13872,12 +13872,12 @@ export const popularCars = [
     "slug": "tesla-new-model-3",
     "brandSlug": "tesla",
     "modelName": "New Model 3",
-    "trimName": "2025년형",
-    "year": 2025,
+    "trimName": "2026년형",
+    "year": 2026,
     "category": "SEDAN",
-    "fuelType": "EV",
+    "fuelType": "ELECTRIC",
     "basePrice": 59990000,
-    "imageUrl": "/images/cars/tesla-new-model-3.png",
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20240404113842827.png",
     "isPopular": true,
     "sortOrder": 26,
     "options": {
@@ -13976,311 +13976,131 @@ export const popularCars = [
               ],
               "options": [
                 {
-                  "idx": "opt_1",
+                  "idx": "opt_4175",
                   "title": "향상된 오토파일럿",
                   "price": 4522000
                 },
                 {
-                  "idx": "opt_2",
+                  "idx": "opt_3943",
                   "title": "풀 셀프 드라이빙 구현 기능",
                   "price": 9043000
                 }
-              ]
-            },
-            {
-              "idx": "1_2",
-              "name": "Premium (자동)",
-              "price": 52990000,
-              "colorsExt": [
-                {
-                  "idx": "3048",
-                  "title": "Stealth Grey",
-                  "price": 0,
-                  "detail": [
-                    "#3e3c45",
-                    "#3e3c45"
-                  ],
-                  "thumb": "#3e3c45"
-                },
-                {
-                  "idx": "3703",
-                  "title": "Pearl White Multi-Coat",
-                  "price": 1286000,
-                  "detail": [
-                    "#FFFFFF",
-                    "#FFFFFF"
-                  ],
-                  "thumb": "#FFFFFF"
-                },
-                {
-                  "idx": "519",
-                  "title": "Deep Blue metallic",
-                  "price": 1286000,
-                  "detail": [
-                    "#003eac",
-                    "#003eac"
-                  ],
-                  "thumb": "#003eac"
-                },
-                {
-                  "idx": "3767",
-                  "title": "Diamond Black",
-                  "price": 1929000,
-                  "detail": [
-                    "#0B0B0D",
-                    "#0B0B0D"
-                  ],
-                  "thumb": "#0B0B0D"
-                },
-                {
-                  "idx": "3344",
-                  "title": "Quicksilver",
-                  "price": 2759000,
-                  "detail": [
-                    "#adadad",
-                    "#adadad"
-                  ],
-                  "thumb": "#adadad"
-                },
-                {
-                  "idx": "3225",
-                  "title": "Ultra Red",
-                  "price": 2759000,
-                  "detail": [
-                    "#ad0108",
-                    "#ad0108"
-                  ],
-                  "thumb": "#ad0108"
-                }
               ],
-              "colorsInt": [
-                {
-                  "idx": "520",
-                  "title": "All Black",
-                  "price": 0,
-                  "detail": [
-                    "#07080c",
-                    "#07080c"
-                  ],
-                  "thumb": "#07080c"
-                },
-                {
-                  "idx": "521",
-                  "title": "Black & White",
-                  "price": 1286000,
-                  "detail": [
-                    "#0a0a0f",
-                    "#f8f8f8"
-                  ],
-                  "thumb": "#0a0a0f"
-                }
-              ],
-              "options": [
-                {
-                  "idx": "opt_1",
-                  "title": "18인치 포톤 휠",
-                  "price": 0
-                },
-                {
-                  "idx": "opt_2",
-                  "title": "19인치 노바 휠",
-                  "price": 1929000
-                },
-                {
-                  "idx": "opt_3",
-                  "title": "향상된 오토파일럿",
-                  "price": 4522000
-                },
-                {
-                  "idx": "opt_4",
-                  "title": "풀 셀프 드라이빙 구현 기능",
-                  "price": 9043000
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "idx": "2",
-          "name": "2026년형 전기 2WD",
-          "trims": [
-            {
-              "idx": "2_1",
-              "name": "Standard (자동)",
-              "price": 41990000,
-              "colorsExt": [
-                {
-                  "idx": "3048",
-                  "title": "Stealth Grey",
-                  "price": 0,
-                  "detail": [
-                    "#3e3c45",
-                    "#3e3c45"
-                  ],
-                  "thumb": "#3e3c45"
-                },
-                {
-                  "idx": "3703",
-                  "title": "Pearl White Multi-Coat",
-                  "price": 1286000,
-                  "detail": [
-                    "#FFFFFF",
-                    "#FFFFFF"
-                  ],
-                  "thumb": "#FFFFFF"
-                },
-                {
-                  "idx": "519",
-                  "title": "Deep Blue metallic",
-                  "price": 1286000,
-                  "detail": [
-                    "#003eac",
-                    "#003eac"
-                  ],
-                  "thumb": "#003eac"
-                },
-                {
-                  "idx": "3767",
-                  "title": "Diamond Black",
-                  "price": 1929000,
-                  "detail": [
-                    "#0B0B0D",
-                    "#0B0B0D"
-                  ],
-                  "thumb": "#0B0B0D"
-                },
-                {
-                  "idx": "3344",
-                  "title": "Quicksilver",
-                  "price": 2759000,
-                  "detail": [
-                    "#adadad",
-                    "#adadad"
-                  ],
-                  "thumb": "#adadad"
-                },
-                {
-                  "idx": "3225",
-                  "title": "Ultra Red",
-                  "price": 2759000,
-                  "detail": [
-                    "#ad0108",
-                    "#ad0108"
-                  ],
-                  "thumb": "#ad0108"
-                }
-              ],
-              "colorsInt": [
-                {
-                  "idx": "520",
-                  "title": "All Black",
-                  "price": 0,
-                  "detail": [
-                    "#07080c",
-                    "#07080c"
-                  ],
-                  "thumb": "#07080c"
-                },
-                {
-                  "idx": "521",
-                  "title": "Black & White",
-                  "price": 1286000,
-                  "detail": [
-                    "#0a0a0f",
-                    "#f8f8f8"
-                  ],
-                  "thumb": "#0a0a0f"
-                }
-              ],
-              "options": [
-                {
-                  "idx": "opt_1",
-                  "title": "향상된 오토파일럿",
-                  "price": 4522000
-                },
-                {
-                  "idx": "opt_2",
-                  "title": "풀 셀프 드라이빙 구현 기능",
-                  "price": 9043000
-                }
-              ]
+              "rentOffset": 0,
+              "leaseOffset": 0
             }
           ]
         }
       ]
     },
     "priceMatrix": {
-      "36_NO_DEPOSIT_10000": {
-        "rent": 960112,
-        "lease": 683247
+      "36_PREPAY_30_10000": {
+        "rent": 624091,
+        "lease": 319799
       },
       "36_DEPOSIT_30_10000": {
-        "rent": 864101,
-        "lease": 614922
+        "rent": 996271,
+        "lease": 817699
       },
-      "36_PREPAY_30_10000": {
-        "rent": 460195,
-        "lease": 183330
-      },
-      "36_NO_DEPOSIT_20000": {
-        "rent": 1000117,
-        "lease": 711716
-      },
-      "36_DEPOSIT_30_20000": {
-        "rent": 900105,
-        "lease": 640544
+      "36_NO_DEPOSIT_10000": {
+        "rent": 1097250,
+        "lease": 910299
       },
       "36_PREPAY_30_20000": {
-        "rent": 500200,
-        "lease": 211799
+        "rent": 673701,
+        "lease": 319799
       },
-      "48_NO_DEPOSIT_10000": {
-        "rent": 854500,
-        "lease": 614923
+      "36_DEPOSIT_30_20000": {
+        "rent": 1056001,
+        "lease": 817699
       },
-      "48_DEPOSIT_30_10000": {
-        "rent": 769050,
-        "lease": 553431
+      "36_NO_DEPOSIT_20000": {
+        "rent": 1157419,
+        "lease": 910299
+      },
+      "36_PREPAY_30_30000": {
+        "rent": 706811,
+        "lease": 369599
+      },
+      "36_DEPOSIT_30_30000": {
+        "rent": 1198451,
+        "lease": 867499
+      },
+      "36_NO_DEPOSIT_30000": {
+        "rent": 1304270,
+        "lease": 960099
       },
       "48_PREPAY_30_10000": {
-        "rent": 479562,
-        "lease": 239985
+        "rent": 638161,
+        "lease": 401600
       },
-      "48_NO_DEPOSIT_20000": {
-        "rent": 890104,
-        "lease": 640544
+      "48_DEPOSIT_30_10000": {
+        "rent": 910579,
+        "lease": 764200
       },
-      "48_DEPOSIT_30_20000": {
-        "rent": 801094,
-        "lease": 576490
+      "48_NO_DEPOSIT_10000": {
+        "rent": 1012221,
+        "lease": 856900
       },
       "48_PREPAY_30_20000": {
-        "rent": 515166,
-        "lease": 265606
+        "rent": 674241,
+        "lease": 416299
       },
-      "60_NO_DEPOSIT_10000": {
-        "rent": 859301,
-        "lease": 601258
+      "48_DEPOSIT_30_20000": {
+        "rent": 953699,
+        "lease": 778899
       },
-      "60_DEPOSIT_30_10000": {
-        "rent": 773371,
-        "lease": 541132
+      "48_NO_DEPOSIT_20000": {
+        "rent": 1055781,
+        "lease": 871499
+      },
+      "48_PREPAY_30_30000": {
+        "rent": 758501,
+        "lease": 452500
+      },
+      "48_DEPOSIT_30_30000": {
+        "rent": 1061499,
+        "lease": 815100
+      },
+      "48_NO_DEPOSIT_30000": {
+        "rent": 1164681,
+        "lease": 907700
       },
       "60_PREPAY_30_10000": {
-        "rent": 559351,
-        "lease": 301308
+        "rent": 633921,
+        "lease": 419800
       },
-      "60_NO_DEPOSIT_20000": {
-        "rent": 895105,
-        "lease": 626310
+      "60_DEPOSIT_30_10000": {
+        "rent": 855140,
+        "lease": 701300
       },
-      "60_DEPOSIT_30_20000": {
-        "rent": 805595,
-        "lease": 563679
+      "60_NO_DEPOSIT_10000": {
+        "rent": 957441,
+        "lease": 794100
       },
       "60_PREPAY_30_20000": {
-        "rent": 595155,
-        "lease": 326360
+        "rent": 661969,
+        "lease": 430900
+      },
+      "60_DEPOSIT_30_20000": {
+        "rent": 888360,
+        "lease": 712500
+      },
+      "60_NO_DEPOSIT_20000": {
+        "rent": 991099,
+        "lease": 805100
+      },
+      "60_PREPAY_30_30000": {
+        "rent": 811241,
+        "lease": 459000
+      },
+      "60_DEPOSIT_30_30000": {
+        "rent": 971300,
+        "lease": 740700
+      },
+      "60_NO_DEPOSIT_30000": {
+        "rent": 1075139,
+        "lease": 833300
       }
     }
   },
@@ -294164,6 +293984,478 @@ export const popularCars = [
       "60_PREPAY_30_20000": {
         "rent": 673469,
         "lease": 504714
+      }
+    }
+  },
+  {
+    "slug": "tesla-new-model-3-8545",
+    "brandSlug": "tesla",
+    "modelName": "New Model 3",
+    "trimName": "2026년형",
+    "year": 2026,
+    "category": "SEDAN",
+    "fuelType": "EV",
+    "basePrice": 41990000,
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20240404113842827.png",
+    "isPopular": false,
+    "sortOrder": 220,
+    "options": {
+      "grades": [
+        {
+          "idx": "1",
+          "name": "2026년형 전기 2WD",
+          "trims": [
+            {
+              "idx": "1_1",
+              "name": "Standard (자동)",
+              "price": 41990000,
+              "colorsExt": [
+                {
+                  "idx": "3048",
+                  "title": "Stealth Grey",
+                  "price": 0,
+                  "detail": [
+                    "#3e3c45",
+                    "#3e3c45"
+                  ],
+                  "thumb": "#3e3c45"
+                },
+                {
+                  "idx": "3703",
+                  "title": "Pearl White Multi-Coat",
+                  "price": 1286000,
+                  "detail": [
+                    "#FFFFFF",
+                    "#FFFFFF"
+                  ],
+                  "thumb": "#FFFFFF"
+                },
+                {
+                  "idx": "519",
+                  "title": "Deep Blue metallic",
+                  "price": 1286000,
+                  "detail": [
+                    "#003eac",
+                    "#003eac"
+                  ],
+                  "thumb": "#003eac"
+                },
+                {
+                  "idx": "3767",
+                  "title": "Diamond Black",
+                  "price": 1929000,
+                  "detail": [
+                    "#0B0B0D",
+                    "#0B0B0D"
+                  ],
+                  "thumb": "#0B0B0D"
+                },
+                {
+                  "idx": "3344",
+                  "title": "Quicksilver",
+                  "price": 2759000,
+                  "detail": [
+                    "#adadad",
+                    "#adadad"
+                  ],
+                  "thumb": "#adadad"
+                },
+                {
+                  "idx": "3225",
+                  "title": "Ultra Red",
+                  "price": 2759000,
+                  "detail": [
+                    "#ad0108",
+                    "#ad0108"
+                  ],
+                  "thumb": "#ad0108"
+                }
+              ],
+              "colorsInt": [
+                {
+                  "idx": "520",
+                  "title": "All Black",
+                  "price": 0,
+                  "detail": [
+                    "#07080c",
+                    "#07080c"
+                  ],
+                  "thumb": "#07080c"
+                },
+                {
+                  "idx": "521",
+                  "title": "Black & White",
+                  "price": 1286000,
+                  "detail": [
+                    "#0a0a0f",
+                    "#f8f8f8"
+                  ],
+                  "thumb": "#0a0a0f"
+                }
+              ],
+              "options": [
+                {
+                  "idx": "opt_4175",
+                  "title": "향상된 오토파일럿",
+                  "price": 4522000
+                },
+                {
+                  "idx": "opt_3943",
+                  "title": "풀 셀프 드라이빙 구현 기능",
+                  "price": 9043000
+                }
+              ],
+              "rentOffset": 0,
+              "leaseOffset": 0
+            }
+          ]
+        }
+      ]
+    },
+    "priceMatrix": {
+      "36_PREPAY_30_10000": {
+        "rent": 439501,
+        "lease": 210500
+      },
+      "36_DEPOSIT_30_10000": {
+        "rent": 719801,
+        "lease": 570500
+      },
+      "36_NO_DEPOSIT_10000": {
+        "rent": 789401,
+        "lease": 637400
+      },
+      "36_PREPAY_30_20000": {
+        "rent": 460901,
+        "lease": 210500
+      },
+      "36_DEPOSIT_30_20000": {
+        "rent": 741099,
+        "lease": 570500
+      },
+      "36_NO_DEPOSIT_20000": {
+        "rent": 810801,
+        "lease": 637400
+      },
+      "36_PREPAY_30_30000": {
+        "rent": 503499,
+        "lease": 246401
+      },
+      "36_DEPOSIT_30_30000": {
+        "rent": 783801,
+        "lease": 606401
+      },
+      "36_NO_DEPOSIT_30000": {
+        "rent": 853399,
+        "lease": 673401
+      },
+      "48_PREPAY_30_10000": {
+        "rent": 460501,
+        "lease": 273699
+      },
+      "48_DEPOSIT_30_10000": {
+        "rent": 653301,
+        "lease": 535899
+      },
+      "48_NO_DEPOSIT_10000": {
+        "rent": 722901,
+        "lease": 602899
+      },
+      "48_PREPAY_30_20000": {
+        "rent": 475999,
+        "lease": 284899
+      },
+      "48_DEPOSIT_30_20000": {
+        "rent": 668801,
+        "lease": 546999
+      },
+      "48_NO_DEPOSIT_20000": {
+        "rent": 738399,
+        "lease": 613999
+      },
+      "48_PREPAY_30_30000": {
+        "rent": 507101,
+        "lease": 311201
+      },
+      "48_DEPOSIT_30_30000": {
+        "rent": 699799,
+        "lease": 573401
+      },
+      "48_NO_DEPOSIT_30000": {
+        "rent": 769501,
+        "lease": 640301
+      },
+      "60_PREPAY_30_10000": {
+        "rent": 477701,
+        "lease": 289800
+      },
+      "60_DEPOSIT_30_10000": {
+        "rent": 617899,
+        "lease": 493400
+      },
+      "60_NO_DEPOSIT_10000": {
+        "rent": 687601,
+        "lease": 560500
+      },
+      "60_PREPAY_30_20000": {
+        "rent": 489699,
+        "lease": 298300
+      },
+      "60_DEPOSIT_30_20000": {
+        "rent": 630001,
+        "lease": 501900
+      },
+      "60_NO_DEPOSIT_20000": {
+        "rent": 699599,
+        "lease": 568900
+      },
+      "60_PREPAY_30_30000": {
+        "rent": 513699,
+        "lease": 318799
+      },
+      "60_DEPOSIT_30_30000": {
+        "rent": 653999,
+        "lease": 522399
+      },
+      "60_NO_DEPOSIT_30000": {
+        "rent": 723599,
+        "lease": 589299
+      }
+    }
+  },
+  {
+    "slug": "tesla-new-model-3-8546",
+    "brandSlug": "tesla",
+    "modelName": "New Model 3",
+    "trimName": "2026년형",
+    "year": 2026,
+    "category": "SEDAN",
+    "fuelType": "EV",
+    "basePrice": 52990000,
+    "imageUrl": "https://img.chasalddae.com/model/car_images/20240404113842827.png",
+    "isPopular": false,
+    "sortOrder": 221,
+    "options": {
+      "grades": [
+        {
+          "idx": "1",
+          "name": "2026년형 전기 2WD",
+          "trims": [
+            {
+              "idx": "1_1",
+              "name": "Premium (자동)",
+              "price": 52990000,
+              "colorsExt": [
+                {
+                  "idx": "3048",
+                  "title": "Stealth Grey",
+                  "price": 0,
+                  "detail": [
+                    "#3e3c45",
+                    "#3e3c45"
+                  ],
+                  "thumb": "#3e3c45"
+                },
+                {
+                  "idx": "3703",
+                  "title": "Pearl White Multi-Coat",
+                  "price": 1286000,
+                  "detail": [
+                    "#FFFFFF",
+                    "#FFFFFF"
+                  ],
+                  "thumb": "#FFFFFF"
+                },
+                {
+                  "idx": "519",
+                  "title": "Deep Blue metallic",
+                  "price": 1286000,
+                  "detail": [
+                    "#003eac",
+                    "#003eac"
+                  ],
+                  "thumb": "#003eac"
+                },
+                {
+                  "idx": "3767",
+                  "title": "Diamond Black",
+                  "price": 1929000,
+                  "detail": [
+                    "#0B0B0D",
+                    "#0B0B0D"
+                  ],
+                  "thumb": "#0B0B0D"
+                },
+                {
+                  "idx": "3344",
+                  "title": "Quicksilver",
+                  "price": 2759000,
+                  "detail": [
+                    "#adadad",
+                    "#adadad"
+                  ],
+                  "thumb": "#adadad"
+                },
+                {
+                  "idx": "3225",
+                  "title": "Ultra Red",
+                  "price": 2759000,
+                  "detail": [
+                    "#ad0108",
+                    "#ad0108"
+                  ],
+                  "thumb": "#ad0108"
+                }
+              ],
+              "colorsInt": [
+                {
+                  "idx": "520",
+                  "title": "All Black",
+                  "price": 0,
+                  "detail": [
+                    "#07080c",
+                    "#07080c"
+                  ],
+                  "thumb": "#07080c"
+                },
+                {
+                  "idx": "521",
+                  "title": "Black & White",
+                  "price": 1286000,
+                  "detail": [
+                    "#0a0a0f",
+                    "#f8f8f8"
+                  ],
+                  "thumb": "#0a0a0f"
+                }
+              ],
+              "options": [
+                {
+                  "idx": "opt_4175",
+                  "title": "향상된 오토파일럿",
+                  "price": 4522000
+                },
+                {
+                  "idx": "opt_3943",
+                  "title": "풀 셀프 드라이빙 구현 기능",
+                  "price": 9043000
+                }
+              ],
+              "rentOffset": 0,
+              "leaseOffset": 0
+            }
+          ]
+        }
+      ]
+    },
+    "priceMatrix": {
+      "36_PREPAY_30_10000": {
+        "rent": 533020,
+        "lease": 195899
+      },
+      "36_DEPOSIT_30_10000": {
+        "rent": 897299,
+        "lease": 655499
+      },
+      "36_NO_DEPOSIT_10000": {
+        "rent": 985199,
+        "lease": 740999
+      },
+      "36_PREPAY_30_20000": {
+        "rent": 570599,
+        "lease": 195899
+      },
+      "36_DEPOSIT_30_20000": {
+        "rent": 924301,
+        "lease": 655499
+      },
+      "36_NO_DEPOSIT_20000": {
+        "rent": 1012099,
+        "lease": 740999
+      },
+      "36_PREPAY_30_30000": {
+        "rent": 600449,
+        "lease": 242001
+      },
+      "36_DEPOSIT_30_30000": {
+        "rent": 978099,
+        "lease": 701501
+      },
+      "36_NO_DEPOSIT_30000": {
+        "rent": 1066001,
+        "lease": 787001
+      },
+      "48_PREPAY_30_10000": {
+        "rent": 546840,
+        "lease": 294100
+      },
+      "48_DEPOSIT_30_10000": {
+        "rent": 810500,
+        "lease": 628700
+      },
+      "48_NO_DEPOSIT_10000": {
+        "rent": 898400,
+        "lease": 714300
+      },
+      "48_PREPAY_30_20000": {
+        "rent": 576321,
+        "lease": 307700
+      },
+      "48_DEPOSIT_30_20000": {
+        "rent": 830100,
+        "lease": 642400
+      },
+      "48_NO_DEPOSIT_20000": {
+        "rent": 918000,
+        "lease": 727900
+      },
+      "48_PREPAY_30_30000": {
+        "rent": 626001,
+        "lease": 341299
+      },
+      "48_DEPOSIT_30_30000": {
+        "rent": 869300,
+        "lease": 675999
+      },
+      "48_NO_DEPOSIT_30000": {
+        "rent": 957101,
+        "lease": 761399
+      },
+      "60_PREPAY_30_10000": {
+        "rent": 544760,
+        "lease": 324400
+      },
+      "60_DEPOSIT_30_10000": {
+        "rent": 764001,
+        "lease": 584200
+      },
+      "60_NO_DEPOSIT_10000": {
+        "rent": 851901,
+        "lease": 669900
+      },
+      "60_PREPAY_30_20000": {
+        "rent": 567640,
+        "lease": 334899
+      },
+      "60_DEPOSIT_30_20000": {
+        "rent": 779201,
+        "lease": 594799
+      },
+      "60_NO_DEPOSIT_20000": {
+        "rent": 867101,
+        "lease": 680299
+      },
+      "60_PREPAY_30_30000": {
+        "rent": 632501,
+        "lease": 360799
+      },
+      "60_DEPOSIT_30_30000": {
+        "rent": 809600,
+        "lease": 620799
+      },
+      "60_NO_DEPOSIT_30000": {
+        "rent": 897401,
+        "lease": 706299
       }
     }
   }
