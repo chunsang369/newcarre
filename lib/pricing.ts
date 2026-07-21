@@ -89,7 +89,7 @@ export function resolveTrimRepresentativePrice(
   const subsidyFactor = getSubsidyFactor(car.fuelType, car.slug);
 
   let isFallback = false;
-  if (!baseMonthly || baseMonthly < minAllowedMonthly || baseMonthly <= 20000 || car.slug?.includes("casper")) {
+  if (!baseMonthly || baseMonthly < minAllowedMonthly || baseMonthly <= 20000) {
     isFallback = true;
     const baseRatio = type === "rent" ? 0.0165 : 0.0135;
     const fallbackBase = Math.floor(currentTrimPrice * baseRatio * subsidyFactor);
