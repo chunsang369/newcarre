@@ -101,10 +101,9 @@ export default function CarDetailClient({ car }: { car: any }) {
     const minAllowedMonthly = Math.floor((car.basePrice || basePrice) * minThresholdRatio);
 
     let isFallback = false;
-    const isCasper = car.slug?.includes('casper');
     
     // DB의 baseMonthly 가격이 너무 낮거나(크롤링 오류) 데이터가 없으면 Fallback 표준 공식 적용
-    if (!baseMonthly || baseMonthly < minAllowedMonthly || baseMonthly <= 20000 || isCasper) {
+    if (!baseMonthly || baseMonthly < minAllowedMonthly || baseMonthly <= 20000) {
       isFallback = true;
       
       // 기본 Fallback: 차량 가액의 일정 비율 (36개월 0/0 기준)

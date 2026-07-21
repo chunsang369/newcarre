@@ -10912,11 +10912,11 @@ export const popularCars = [
     "slug": "hyundai-casper-electric",
     "brandSlug": "hyundai",
     "modelName": "캐스퍼 일렉트릭",
-    "trimName": "2025년형",
-    "year": 2025,
+    "trimName": "2027년형",
+    "year": 2027,
     "category": "SEDAN",
     "fuelType": "EV",
-    "basePrice": 29360000,
+    "basePrice": 29950000,
     "imageUrl": "/images/cars/hyundai-casper-electric.png",
     "isPopular": true,
     "sortOrder": 19,
@@ -10924,12 +10924,12 @@ export const popularCars = [
       "grades": [
         {
           "idx": "1",
-          "name": "2026년형 전기 2WD (개별소비세 5%)",
+          "name": "2027년형 전기 2WD (개별소비세 5%)",
           "trims": [
             {
               "idx": "1_1",
               "name": "프리미엄 (자동)",
-              "price": 29360000,
+              "price": 29950000,
               "colorsExt": [
                 {
                   "idx": "37",
@@ -11055,7 +11055,7 @@ export const popularCars = [
             {
               "idx": "1_2",
               "name": "인스퍼레이션(자동)",
-              "price": 33040000,
+              "price": 33790000,
               "colorsExt": [
                 {
                   "idx": "3348",
@@ -11281,7 +11281,7 @@ export const popularCars = [
             {
               "idx": "1_3",
               "name": "크로스 (자동)",
-              "price": 35150000,
+              "price": 35900000,
               "colorsExt": [
                 {
                   "idx": "1756",
@@ -11447,7 +11447,7 @@ export const popularCars = [
             {
               "idx": "1_4",
               "name": "라운지 (자동)",
-              "price": 36410000,
+              "price": 36370000,
               "colorsExt": [
                 {
                   "idx": "1688",
@@ -11551,76 +11551,76 @@ export const popularCars = [
     },
     "priceMatrix": {
         "36_NO_DEPOSIT_10000": {
-          "rent": 836940,
-          "lease": 589198
+          "rent": 299613,
+          "lease": 0
         },
         "36_DEPOSIT_30_10000": {
-          "rent": 752658,
-          "lease": 529198
+          "rent": 240999,
+          "lease": 0
         },
         "36_PREPAY_30_10000": {
-          "rent": 444978,
-          "lease": 206398
+          "rent": 56057,
+          "lease": 0
         },
         "36_NO_DEPOSIT_20000": {
-          "rent": 875120,
-          "lease": 610398
+          "rent": 321933,
+          "lease": 0
         },
         "36_DEPOSIT_30_20000": {
-          "rent": 793060,
-          "lease": 550198
+          "rent": 263197,
+          "lease": 0
         },
         "36_PREPAY_30_20000": {
-          "rent": 484280,
-          "lease": 227398
+          "rent": 78266,
+          "lease": 0
         },
         "48_NO_DEPOSIT_10000": {
-          "rent": 781098,
-          "lease": 531602
+          "rent": 321753,
+          "lease": 0
         },
         "48_DEPOSIT_30_10000": {
-          "rent": 700338,
-          "lease": 471402
+          "rent": 262804,
+          "lease": 0
         },
         "48_PREPAY_30_10000": {
-          "rent": 481520,
-          "lease": 236402
+          "rent": 138730,
+          "lease": 0
         },
         "48_NO_DEPOSIT_20000": {
-          "rent": 803762,
-          "lease": 547002
+          "rent": 337874,
+          "lease": 0
         },
         "48_DEPOSIT_30_20000": {
-          "rent": 723302,
-          "lease": 486802
+          "rent": 278810,
+          "lease": 0
         },
         "48_PREPAY_30_20000": {
-          "rent": 509480,
-          "lease": 251802
+          "rent": 146399,
+          "lease": 0
         },
         "60_NO_DEPOSIT_10000": {
-          "rent": 731434,
-          "lease": 495000
+          "rent": 0,
+          "lease": 0
         },
         "60_DEPOSIT_30_10000": {
-          "rent": 650876,
-          "lease": 434800
+          "rent": 0,
+          "lease": 0
         },
         "60_PREPAY_30_10000": {
-          "rent": 502478,
-          "lease": 252400
+          "rent": 0,
+          "lease": 0
         },
         "60_NO_DEPOSIT_20000": {
-          "rent": 748860,
-          "lease": 507000
+          "rent": 0,
+          "lease": 0
         },
         "60_DEPOSIT_30_20000": {
-          "rent": 668146,
-          "lease": 446800
+          "rent": 0,
+          "lease": 0
         },
         "60_PREPAY_30_20000": {
-          "rent": 523680,
-          "lease": 264200
+          "rent": 0,
+          "lease": 0
         }
       }
   },
