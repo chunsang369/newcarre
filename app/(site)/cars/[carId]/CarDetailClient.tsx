@@ -91,6 +91,10 @@ export default function CarDetailClient({ car }: { car: any }) {
     const baseEntry = matrix?.[key] || { rent: 0, lease: 0 };
     let baseMonthly = buyMethod === "RENT" ? baseEntry.rent : baseEntry.lease;
     
+    if (baseMonthly === 0) {
+      return 0;
+    }
+    
     // 트림 변경에 따른 가격 상승폭 계산
     const baseTrimPrice = car.basePrice || 0;
     const currentTrimPrice = Number(selectedTrim?.price) || baseTrimPrice || 0;
@@ -680,9 +684,15 @@ export default function CarDetailClient({ car }: { car: any }) {
                   <div className="flex justify-between items-baseline mb-2">
                     <span className="text-[15px] font-bold text-[#333]">월 {buyMethod === "RENT" ? "렌트료" : "리스료"}</span>
                     <div className="text-right">
-                      <span className="text-[26px] font-extrabold text-[#469BD9]">
-                        {monthlyPrice.toLocaleString()} <span className="text-[18px]">원</span>
-                      </span>
+                      {monthlyPrice > 0 ? (
+                        <span className="text-[26px] font-extrabold text-[#469BD9]">
+                          {monthlyPrice.toLocaleString()} <span className="text-[18px]">원</span>
+                        </span>
+                      ) : (
+                        <span className="text-[26px] font-extrabold text-[#469BD9]">
+                          상담 신청 필요
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="flex justify-between items-center text-[14px] mb-2">
@@ -804,7 +814,7 @@ export default function CarDetailClient({ car }: { car: any }) {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#e5e5e5] p-3 flex items-center justify-between z-50 lg:hidden shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
         <div>
           <p className="text-[10px] text-gray-500 mb-0.5">월 {buyMethod === "RENT" ? "렌트" : "리스"}료</p>
-          {(car.slug === 'kia-carnival-heritage' || car.modelName?.includes('카니발 헤리티지')) ? (
+          {(car.slug === 'kia-carnival-heritage' || car.modelName?.includes('카니발 헤리티지') || monthlyPrice === 0) ? (
             <p className="text-[18px] font-black">상담신청필요</p>
           ) : (
             <p className="text-[18px] font-black">{monthlyPrice.toLocaleString()}<span className="text-[12px] font-medium text-gray-500 ml-0.5">원</span></p>
