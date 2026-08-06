@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import { Suspense } from "react";
 import HeroMain from "@/components/layout/HeroMain";
 import BrandGrid from "@/components/cars/BrandGrid";
