@@ -1,18 +1,74 @@
-const axios = require('axios');
-const fs = require('fs');
-async function test() {
-  const res = await axios.get('https://chasalddae.com/leaserent/leaserent_detail?trim_id=5703&purchase_type=2&period=60&distance=2m&ad_payment=30&deposit=0&insurance_age=26');
-  const html = res.data;
-  let fullRscString = '';
-  for (const line of html.split('\n')) {
-      if (line.includes('self.__next_f.push(')) {
-          const match = line.match(/self\.__next_f\.push\(\[1,"(.*)"\]\)</);
-          if (match) fullRscString += match[1];
-      }
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+// lib/pricing.ts와 동일한 getSubsidyFactor 및 resolveTrimRepresentativePrice 로직
+function getSubsidyFactor(fuelType, slug) {
+  const fType = fuelType?.toUpperCase() || "";
+  if (fType === "ELECTRIC" || fType === "EV") {
+    const s = slug?.toLowerCase() || "";
+    if (s.includes("casper")) {
+      return 0.298;
+    } else if (s.includes("tesla") || s.includes("model-3") || s.includes("model-y")) {
+      return 0.85;
+    }
+    return 0.88;
   }
-  let decoded = fullRscString.replace(/\\\\/g, '\\').replace(/\\"/g, '"');
-  
-  // just save the decoded string to a file to inspect it
-  fs.writeFileSync('scratch/chasalddae_dump.json', decoded);
+  return 1.0;
 }
-test();
+
+function resolveTrimRepresentativePrice(car, trim, type) {
+  const matrix = typeof car.priceMatrix === "string" ? JSON.parse(car.priceMatrix) : car.priceMatrix;
+  const key = "36_NO_DEPOSIT_20000";
+  const baseEntry = matrix?.[key] || { rent: 0, lease: 0 };
+  let baseMonthly = baseEntry?.[type] || 0;
+
+  const basePrice = car.basePrice || 0;
+  const currentTrimPrice = Number(trim.price) || basePrice || 0;
+  const trimPriceDiff = Math.max(0, currentTrimPrice - basePrice);
+
+  const minThresholdRatio = type === "rent" ? 0.0075 : 0.0065; // 무보증 임계율
+  const minAllowedMonthly = Math.floor(basePrice * minThresholdRatio);
+
+  const subsidyFactor = getSubsidyFactor(car.fuelType, car.slug);
+
+  let isFallback = false;
+  if (!baseMonthly || baseMonthly < minAllowedMonthly || baseMonthly <= 20000 || car.slug?.includes("casper")) {
+    isFallback = true;
+    const baseRatio = type === "rent" ? 0.0165 : 0.0135;
+    const fallbackBase = Math.floor(currentTrimPrice * baseRatio * subsidyFactor);
+    baseMonthly = fallbackBase; // NO_DEPOSIT 은 감액비율 없음
+  } else {
+    const added = Math.floor(trimPriceDiff * 0.018); // NO_DEPOSIT 기준 요율 0.018
+    baseMonthly = baseMonthly + added;
+  }
+
+  const offset = type === "rent" ? (trim.rentOffset || 0) : (trim.leaseOffset || 0);
+  return baseMonthly + offset;
+}
+
+async function main() {
+  const palisade = await prisma.car.findUnique({
+    where: { slug: 'hyundai-the-all-new-palisade' }
+  });
+
+  if (!palisade) {
+    console.log("Palisade not found!");
+    return;
+  }
+
+  console.log("Palisade Base Price:", palisade.basePrice);
+  const options = typeof palisade.options === 'string' ? JSON.parse(palisade.options) : palisade.options;
+  
+  options.grades.forEach(grade => {
+    console.log(`Grade: ${grade.name}`);
+    grade.trims.forEach(trim => {
+      const rentPrice = resolveTrimRepresentativePrice(palisade, trim, 'rent');
+      const leasePrice = resolveTrimRepresentativePrice(palisade, trim, 'lease');
+      console.log(`  Trim: ${trim.name} (Price: ${trim.price}) -> Rent: ${rentPrice}, Lease: ${leasePrice}`);
+    });
+  });
+
+  await prisma.$disconnect();
+}
+
+main();

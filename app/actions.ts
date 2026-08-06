@@ -89,30 +89,54 @@ export async function searchCars(keyword: string) {
 }
 
 export async function getPopularCars(limit?: number) {
-  const popularCars = await prisma.popularCar.findMany({
-    include: {
-      car: {
-        include: {
-          brand: true,
+  try {
+    const popularCars = await prisma.popularCar.findMany({
+      include: {
+        car: {
+          include: {
+            brand: true,
+          },
         },
       },
+      orderBy: {
+        rank: "asc",
+      },
+      take: limit,
+    });
+
+    if (popularCars && popularCars.length > 0) {
+      return popularCars
+        .filter((pc) => pc.car && pc.car.isActive)
+        .map((pc) => {
+          const resolved = resolvePrice(pc.car, pc.car.brand.name);
+          return {
+            ...resolved,
+            rank: pc.rank,
+            salesCount: pc.salesCount,
+            change: pc.change,
+          };
+        });
+    }
+  } catch (e) {}
+
+  // Fallback: Car 테이블의 isPopular: true 및 상위 활성 차량 직접 조회
+  const fallbackCars = await prisma.car.findMany({
+    where: {
+      isActive: true,
+      isPopular: true,
     },
-    orderBy: {
-      rank: "asc",
+    include: {
+      brand: true,
     },
-    take: limit,
+    orderBy: [
+      { sortOrder: "asc" },
+    ],
+    take: limit || 30,
   });
 
-  return popularCars
-    .filter((pc) => pc.car && pc.car.isActive)
-    .map((pc) => {
-      const resolved = resolvePrice(pc.car, pc.car.brand.name);
-      return {
-        ...resolved,
-        rank: pc.rank,
-        salesCount: pc.salesCount,
-        change: pc.change,
-      };
-    });
+  return fallbackCars.map((car, idx) => ({
+    ...resolvePrice(car, car.brand.name),
+    rank: idx + 1,
+  }));
 }
 

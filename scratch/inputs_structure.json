@@ -1,0 +1,818 @@
+[
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "brand",
+    "value": "on",
+    "labelText": "01 차량선택",
+    "sectionText": "01 차량선택"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "lineup-group",
+    "value": "on",
+    "labelText": "2026년형 가솔린 1.6 2WD (개별소비세 5%)",
+    "sectionText": "2026년형 가솔린 1.6 2WD (개별소비세 5%)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5063",
+    "labelText": "스마트 (자동)\n\n20,650,000원",
+    "sectionText": "스마트 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5064",
+    "labelText": "모던 (자동)\n\n23,910,000원",
+    "sectionText": "모던 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5065",
+    "labelText": "인스퍼레이션 (자동)\n\n27,590,000원",
+    "sectionText": "인스퍼레이션 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "lineup-group",
+    "value": "on",
+    "labelText": "2026년형 가솔린 1.6 2WD N라인 (개별소비세 5%)",
+    "sectionText": "2026년형 가솔린 1.6 2WD N라인 (개별소비세 5%)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5066",
+    "labelText": "인스퍼레이션 (자동)28,490,000원",
+    "sectionText": "인스퍼레이션 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "lineup-group",
+    "value": "on",
+    "labelText": "2026년형 LPI 1.6 2WD 일반용 (개별소비세 5%)",
+    "sectionText": "2026년형 LPI 1.6 2WD 일반용 (개별소비세 5%)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5067",
+    "labelText": "스마트 (자동)22,050,000원",
+    "sectionText": "스마트 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5068",
+    "labelText": "모던 (자동)25,300,000원",
+    "sectionText": "모던 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5069",
+    "labelText": "인스퍼레이션 (자동)28,860,000원",
+    "sectionText": "인스퍼레이션 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "lineup-group",
+    "value": "on",
+    "labelText": "2026년형 LPI 1.6 2WD 렌터카",
+    "sectionText": "2026년형 LPI 1.6 2WD 렌터카"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5070",
+    "labelText": "스마트 (자동)20,930,000원",
+    "sectionText": "스마트 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5071",
+    "labelText": "모던 (자동)24,020,000원",
+    "sectionText": "모던 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "lineup-group",
+    "value": "on",
+    "labelText": "2026년형 LPI 1.6 2WD 장애인용",
+    "sectionText": "2026년형 LPI 1.6 2WD 장애인용"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5072",
+    "labelText": "모던 왼발장애 (자동)24,020,000원",
+    "sectionText": "모던 왼발장애 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5073",
+    "labelText": "모던 왼손 왼발 장애 (자동)23,950,000원",
+    "sectionText": "모던 왼손 왼발 장애 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5074",
+    "labelText": "모던 왼손 오른발 장애 (자동)24,040,000원",
+    "sectionText": "모던 왼손 오른발 장애 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5075",
+    "labelText": "모던 오른손 오른발 장애 (자동)24,040,000원",
+    "sectionText": "모던 오른손 오른발 장애 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5076",
+    "labelText": "모던 오른발 장애 (자동)24,110,000원",
+    "sectionText": "모던 오른발 장애 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5077",
+    "labelText": "모던 양발 장애 (자동)24,200,000원",
+    "sectionText": "모던 양발 장애 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "",
+    "value": "5078",
+    "labelText": "모던 오른손 장애 (자동)23,950,000원",
+    "sectionText": "모던 오른손 장애 (자동)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "outerColorId",
+    "value": "2485",
+    "labelText": "",
+    "sectionText": "외장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "outerColorId",
+    "value": "2798",
+    "labelText": "",
+    "sectionText": "외장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "outerColorId",
+    "value": "2663",
+    "labelText": "",
+    "sectionText": "외장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "outerColorId",
+    "value": "8",
+    "labelText": "",
+    "sectionText": "외장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "outerColorId",
+    "value": "1688",
+    "labelText": "",
+    "sectionText": "외장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "outerColorId",
+    "value": "2",
+    "labelText": "",
+    "sectionText": "외장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "outerColorId",
+    "value": "3",
+    "labelText": "",
+    "sectionText": "외장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "outerColorId",
+    "value": "2487",
+    "labelText": "",
+    "sectionText": "외장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "outerColorId",
+    "value": "37",
+    "labelText": "",
+    "sectionText": "외장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "innerColorId",
+    "value": "10",
+    "labelText": "",
+    "sectionText": "내장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "innerColorId",
+    "value": "2799",
+    "labelText": "",
+    "sectionText": "내장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "innerColorId",
+    "value": "2800",
+    "labelText": "",
+    "sectionText": "내장 색상"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "options",
+    "value": "on",
+    "labelText": "02 옵션 (중복 선택 가능)",
+    "sectionText": "02 옵션 (중복 선택 가능)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "1505",
+    "labelText": "선루프\n\n450,000원",
+    "sectionText": "선루프"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "4732",
+    "labelText": "빌트인 캠(보조배터리 포함)\n\n690,000원",
+    "sectionText": "빌트인 캠(보조배터리 포함)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "contract",
+    "value": "on",
+    "labelText": "03\n계약조건\n많이 진행되는 계약 조건이 설정되어 있어요!",
+    "sectionText": "03\n계약조건\n많이 진행되는 계약 조건이 설정되어 있어요!"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "purchaseType",
+    "value": "2",
+    "labelText": "렌트",
+    "sectionText": "구입방법"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "purchaseType",
+    "value": "1",
+    "labelText": "리스",
+    "sectionText": "구입방법"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "period",
+    "value": "36",
+    "labelText": "36개월",
+    "sectionText": "이용기간"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "period",
+    "value": "48",
+    "labelText": "48개월",
+    "sectionText": "이용기간"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "period",
+    "value": "60",
+    "labelText": "60개월",
+    "sectionText": "이용기간"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "distance",
+    "value": "1m",
+    "labelText": "1만",
+    "sectionText": "주행거리(연간 km)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "distance",
+    "value": "2m",
+    "labelText": "2만",
+    "sectionText": "주행거리(연간 km)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "distance",
+    "value": "3m",
+    "labelText": "3만",
+    "sectionText": "주행거리(연간 km)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "distance",
+    "value": "4m",
+    "labelText": "4만",
+    "sectionText": "주행거리(연간 km)"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "adPayment",
+    "value": "0",
+    "labelText": "0%",
+    "sectionText": "선수금"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "adPayment",
+    "value": "10",
+    "labelText": "10%",
+    "sectionText": "선수금"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "adPayment",
+    "value": "20",
+    "labelText": "20%",
+    "sectionText": "선수금"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "adPayment",
+    "value": "30",
+    "labelText": "30%",
+    "sectionText": "선수금"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "deposit",
+    "value": "0",
+    "labelText": "0%",
+    "sectionText": "보증금"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "deposit",
+    "value": "10",
+    "labelText": "10%",
+    "sectionText": "보증금"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "deposit",
+    "value": "20",
+    "labelText": "20%",
+    "sectionText": "보증금"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "radio",
+    "name": "deposit",
+    "value": "30",
+    "labelText": "30%",
+    "sectionText": "보증금"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "option-list",
+    "value": "on",
+    "labelText": "옵션",
+    "sectionText": "모델"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "option-list",
+    "value": "on",
+    "labelText": "계약조건",
+    "sectionText": "모델"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "option-list",
+    "value": "on",
+    "labelText": "프로모션",
+    "sectionText": "차살때 혜택"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "",
+    "sectionText": "외장/내장색"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "text",
+    "name": "name",
+    "value": "",
+    "labelText": "",
+    "sectionText": "전체 동의"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "number",
+    "name": "phone",
+    "value": "",
+    "labelText": "",
+    "sectionText": "전체 동의"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "전체 동의",
+    "sectionText": "전체 동의"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "(필수) 개인정보 수집 및 활용동의 [보기]",
+    "sectionText": "(필수) 개인정보 수집 및 활용동의 [보기]"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "(필수) 개인정보 제3자 제공 동의 [보기]",
+    "sectionText": "(필수) 개인정보 제3자 제공 동의 [보기]"
+  },
+  {
+    "tagName": "INPUT",
+    "type": "checkbox",
+    "name": "",
+    "value": "on",
+    "labelText": "(선택) 마케팅 활용동의 [보기]",
+    "sectionText": "(선택) 마케팅 활용동의 [보기]"
+  }
+]

@@ -1,0 +1,254 @@
+[
+  {
+    "purchaseType": "LEASE",
+    "period": 36,
+    "distance": "10000",
+    "condition": "무보증_선수0",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 36,
+    "distance": "10000",
+    "condition": "선수금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 36,
+    "distance": "10000",
+    "condition": "보증금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 36,
+    "distance": "20000",
+    "condition": "무보증_선수0",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 36,
+    "distance": "20000",
+    "condition": "선수금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 36,
+    "distance": "20000",
+    "condition": "보증금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 48,
+    "distance": "10000",
+    "condition": "무보증_선수0",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 48,
+    "distance": "10000",
+    "condition": "선수금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 48,
+    "distance": "10000",
+    "condition": "보증금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 48,
+    "distance": "20000",
+    "condition": "무보증_선수0",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 48,
+    "distance": "20000",
+    "condition": "선수금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 48,
+    "distance": "20000",
+    "condition": "보증금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 60,
+    "distance": "10000",
+    "condition": "무보증_선수0",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 60,
+    "distance": "10000",
+    "condition": "선수금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 60,
+    "distance": "10000",
+    "condition": "보증금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 60,
+    "distance": "20000",
+    "condition": "무보증_선수0",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 60,
+    "distance": "20000",
+    "condition": "선수금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "LEASE",
+    "period": 60,
+    "distance": "20000",
+    "condition": "보증금30",
+    "price": 178601
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 36,
+    "distance": "10000",
+    "condition": "무보증_선수0",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 36,
+    "distance": "10000",
+    "condition": "선수금30",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 36,
+    "distance": "10000",
+    "condition": "보증금30",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 36,
+    "distance": "20000",
+    "condition": "무보증_선수0",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 36,
+    "distance": "20000",
+    "condition": "선수금30",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 36,
+    "distance": "20000",
+    "condition": "보증금30",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 48,
+    "distance": "10000",
+    "condition": "무보증_선수0",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 48,
+    "distance": "10000",
+    "condition": "선수금30",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 48,
+    "distance": "10000",
+    "condition": "보증금30",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 48,
+    "distance": "20000",
+    "condition": "무보증_선수0",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 48,
+    "distance": "20000",
+    "condition": "선수금30",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 48,
+    "distance": "20000",
+    "condition": "보증금30",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 60,
+    "distance": "10000",
+    "condition": "무보증_선수0",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 60,
+    "distance": "10000",
+    "condition": "선수금30",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 60,
+    "distance": "10000",
+    "condition": "보증금30",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 60,
+    "distance": "20000",
+    "condition": "무보증_선수0",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 60,
+    "distance": "20000",
+    "condition": "선수금30",
+    "price": 251390
+  },
+  {
+    "purchaseType": "RENT",
+    "period": 60,
+    "distance": "20000",
+    "condition": "보증금30",
+    "price": 251390
+  }
+]

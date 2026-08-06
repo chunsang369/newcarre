@@ -1,0 +1,74 @@
+{
+  "36_NO_DEPOSIT_10000": {
+    "rent": 299613,
+    "lease": 0
+  },
+  "36_DEPOSIT_30_10000": {
+    "rent": 240999,
+    "lease": 0
+  },
+  "36_PREPAY_30_10000": {
+    "rent": 56057,
+    "lease": 0
+  },
+  "36_NO_DEPOSIT_20000": {
+    "rent": 321933,
+    "lease": 0
+  },
+  "36_DEPOSIT_30_20000": {
+    "rent": 263197,
+    "lease": 0
+  },
+  "36_PREPAY_30_20000": {
+    "rent": 78266,
+    "lease": 0
+  },
+  "48_NO_DEPOSIT_10000": {
+    "rent": 321753,
+    "lease": 0
+  },
+  "48_DEPOSIT_30_10000": {
+    "rent": 262804,
+    "lease": 0
+  },
+  "48_PREPAY_30_10000": {
+    "rent": 138730,
+    "lease": 0
+  },
+  "48_NO_DEPOSIT_20000": {
+    "rent": 337874,
+    "lease": 0
+  },
+  "48_DEPOSIT_30_20000": {
+    "rent": 278810,
+    "lease": 0
+  },
+  "48_PREPAY_30_20000": {
+    "rent": 146399,
+    "lease": 0
+  },
+  "60_NO_DEPOSIT_10000": {
+    "rent": 0,
+    "lease": 0
+  },
+  "60_DEPOSIT_30_10000": {
+    "rent": 0,
+    "lease": 0
+  },
+  "60_PREPAY_30_10000": {
+    "rent": 0,
+    "lease": 0
+  },
+  "60_NO_DEPOSIT_20000": {
+    "rent": 0,
+    "lease": 0
+  },
+  "60_DEPOSIT_30_20000": {
+    "rent": 0,
+    "lease": 0
+  },
+  "60_PREPAY_30_20000": {
+    "rent": 0,
+    "lease": 0
+  }
+}

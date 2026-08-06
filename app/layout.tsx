@@ -8,20 +8,32 @@ import ChannelTalk from "@/components/ChannelTalk";
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
-  title: "제로카즈 — 신차 장기렌트·리스 견적 비교",
+  metadataBase: new URL("https://zerocars.netlify.app"),
+  title: "제로카즈 | 안심정찰제 신차 장기렌트·리스 견적 비교",
   description:
-    "신차 장기렌트, 리스 최저가 견적을 비교하고 전문 매니저 상담을 무료로 받으세요. 국산·수입차 전 모델 대응.",
-  keywords: ["장기렌트", "리스", "신차", "견적", "비교", "제로카즈"],
+    "제로카즈, 안심정찰제, 신차 장기렌트, 리스 최저가 견적을 비교하고 전문 매니저 상담을 무료로 받으세요. 국산·수입차 전 모델 대응.",
+  keywords: ["제로카즈", "안심정찰제", "장기렌트", "리스", "신차", "견적", "비교", "제로카즈"],
   openGraph: {
-    title: "제로카즈 — 신차 장기렌트·리스 견적 비교",
-    description: "신차 장기렌트, 리스 최저가 견적 비교 플랫폼",
+    title: "제로카즈 | 안심정찰제 신차 장기렌트·리스 견적 비교",
+    description: "제로카즈, 안심정찰제, 신차 장기렌트, 리스 최저가 견적을 비교하고 전문 매니저 상담을 무료로 받으세요. 국산·수입차 전 모델 대응.",
     type: "website",
     locale: "ko_KR",
+  },
+  twitter: {
+    card: "summary",
+    title: "제로카즈 — 신차 장기렌트·리스 견적 비교",
+    description: "신차 장기렌트, 리스 최저가 견적 비교 플랫폼",
   },
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
     apple: "/icon.png",
+  },
+  verification: {
+    google: "EB-w_TSyKaAyvESBFKuCPe9ep1gR05l9RcP7Dy1ktHE",
+    other: {
+      "naver-site-verification": "503c147efa4a1024a5eaaaf58e5679674e6a340c",
+    },
   },
 };
 
@@ -33,6 +45,20 @@ export default function RootLayout({
   return (
     <html lang="ko" className={cn("h-full", "font-sans", geist.variable)} suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="EB-w_TSyKaAyvESBFKuCPe9ep1gR05l9RcP7Dy1ktHE" />
+        <meta name="naver-site-verification" content="503c147efa4a1024a5eaaaf58e5679674e6a340c" />
+        <link rel="preload" href="/logo.png" as="image" />
+        <link rel="preload" as="image" href="/images/brands/hyundai.svg" />
+        <link rel="preload" as="image" href="/images/brands/kia.svg" />
+        <link rel="preload" as="image" href="/images/brands/genesis.svg" />
+        <link rel="preload" as="image" href="/images/brands/renault-korea.svg" />
+        <link rel="preload" as="image" href="/images/brands/chevrolet.svg" />
+        <link rel="preload" as="image" href="/images/brands/kgm.svg" />
+        <link rel="preload" href="/images/trust-consult-bg.png" as="image" />
+        <link rel="preload" href="/images/finance-card-bg.png" as="image" />
+        <link rel="preload" href="/images/cars-card-bg.png" as="image" />
+        <link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" as="style" crossOrigin="anonymous" />
+        <link rel="preload" href="/images/trust-shield-bg.png" as="image" />
         {/* 1차 차단막: Next.js 개발 에러 오버레이 화면 원천 은폐용 극초기 CSS (nextjs-portal은 지능형 필터에 의해 제어되므로 제외) */}
         <style
           dangerouslySetInnerHTML={{

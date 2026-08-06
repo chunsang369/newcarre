@@ -1,0 +1,190 @@
+{
+  "state": {
+    "mutations": [],
+    "queries": [
+      {
+        "state": {
+          "data": {
+            "car_info": {
+              "id": 6343,
+              "model_id": 272,
+              "car_image1": "https://img.chasalddae.com/model/car_images/20240404113842827.png",
+              "brand_logo": "https://img.chasalddae.com/logo/%ED%85%8C%EC%8A%AC%EB%9D%BC%EB%A1%9C%EA%B3%A0.png",
+              "brand_name": "테슬라",
+              "model_name": "New Model 3",
+              "lineup_name": "2026년형 전기 4WD",
+              "trim_name": "Performance (자동)",
+              "car_price": 59990000,
+              "catalog": ""
+            },
+            "lineup_trim_list": [
+              {
+                "id": 4763,
+                "lineup_name": "2026년형 전기 4WD",
+                "trim_list": [
+                  {
+                    "id": 6343,
+                    "trim_name": "Performance (자동)",
+                    "price": 59990000
+                  }
+                ]
+              },
+              {
+                "id": 5029,
+                "lineup_name": "2026년형 전기 2WD",
+                "trim_list": [
+                  {
+                    "id": 8545,
+                    "trim_name": "Standard (자동)",
+                    "price": 41990000
+                  },
+                  {
+                    "id": 8546,
+                    "trim_name": "Premium (자동)",
+                    "price": 52990000
+                  }
+                ]
+              }
+            ],
+            "trim_outer_color_list": [
+              {
+                "id": 3048,
+                "name": "Stealth Grey",
+                "price": 0,
+                "sort_no": 2,
+                "detail": [
+                  "#3e3c45",
+                  "#3e3c45"
+                ]
+              },
+              {
+                "id": 3703,
+                "name": "Pearl White Multi-Coat",
+                "price": 1286000,
+                "sort_no": 3,
+                "detail": [
+                  "#FFFFFF",
+                  "#FFFFFF"
+                ]
+              },
+              {
+                "id": 519,
+                "name": "Deep Blue metallic",
+                "price": 1286000,
+                "sort_no": 5,
+                "detail": [
+                  "#003eac",
+                  "#003eac"
+                ]
+              },
+              {
+                "id": 3767,
+                "name": "Diamond Black",
+                "price": 1929000,
+                "sort_no": 1,
+                "detail": [
+                  "#0B0B0D",
+                  "#0B0B0D"
+                ]
+              },
+              {
+                "id": 3344,
+                "name": "Quicksilver",
+                "price": 2759000,
+                "sort_no": 4,
+                "detail": [
+                  "#adadad",
+                  "#adadad"
+                ]
+              },
+              {
+                "id": 3225,
+                "name": "Ultra Red",
+                "price": 2759000,
+                "sort_no": 6,
+                "detail": [
+                  "#ad0108",
+                  "#ad0108"
+                ]
+              }
+            ],
+            "trim_inner_color_list": [
+              {
+                "id": 520,
+                "name": "All Black",
+                "price": 0,
+                "sort_no": 8,
+                "detail": [
+                  "#07080c",
+                  "#07080c"
+                ]
+              },
+              {
+                "id": 521,
+                "name": "Black & White",
+                "price": 1286000,
+                "sort_no": 7,
+                "detail": [
+                  "#0a0a0f",
+                  "#f8f8f8"
+                ]
+              }
+            ],
+            "trim_opt_list": [
+              {
+                "id": 4175,
+                "name": "향상된 오토파일럿",
+                "price": 4522000,
+                "memo": "내비게이트 온 오토파일럿, 자동 차선 변경, 자동 주차, 차량 호출, 스마트 차량 호출",
+                "group_id": "3",
+                "partner_group_id": null,
+                "not_group_id": null,
+                "sort_no": 1
+              },
+              {
+                "id": 3943,
+                "name": "풀 셀프 드라이빙 구현 기능",
+                "price": 9043000,
+                "memo": "내비게이트 온 오토파일럿 자동 차선 변경 자동 주차 차량 호출",
+                "group_id": "4",
+                "partner_group_id": null,
+                "not_group_id": "3",
+                "sort_no": 2
+              }
+            ],
+            "lineup_promotion": null,
+            "cartner_promotion_list": []
+          },
+          "dataUpdateCount": 1,
+          "dataUpdatedAt": 1783573719100,
+          "error": null,
+          "errorUpdateCount": 0,
+          "errorUpdatedAt": 0,
+          "fetchFailureCount": 0,
+          "fetchFailureReason": null,
+          "fetchMeta": null,
+          "isInvalidated": false,
+          "status": "success",
+          "fetchStatus": "idle"
+        },
+        "queryKey": [
+          "leaserent_detail",
+          "details",
+          "6343"
+        ],
+        "queryHash": "[\"leaserent_detail\",\"details\",\"6343\"]"
+      }
+    ]
+  },
+  "children": [
+    "$",
+    "$L16",
+    null,
+    {
+      "trimId": "6343",
+      "referer": null,
+      "userInfo": "$undefined",
+      "isKB": false
+    }
+  ]
+}
