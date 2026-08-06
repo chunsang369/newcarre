@@ -45,8 +45,21 @@ export default function RootLayout({
   return (
     <html lang="ko" className={cn("h-full", "font-sans", geist.variable)} suppressHydrationWarning>
       <head>
+        <title>제로카즈 | 안심정찰제 신차 장기렌트·리스 견적 비교</title>
+        <meta name="description" content="제로카즈, 안심정찰제, 신차 장기렌트, 리스 최저가 견적을 비교하고 전문 매니저 상담을 무료로 받으세요. 국산·수입차 전 모델 대응." />
+        <meta name="keywords" content="제로카즈, 안심정찰제, 장기렌트,리스,신차,견적,비교,제로카즈" />
         <meta name="google-site-verification" content="EB-w_TSyKaAyvESBFKuCPe9ep1gR05l9RcP7Dy1ktHE" />
         <meta name="naver-site-verification" content="503c147efa4a1024a5eaaaf58e5679674e6a340c" />
+        <meta property="og:title" content="제로카즈 | 안심정찰제 신차 장기렌트·리스 견적 비교" />
+        <meta property="og:description" content="제로카즈, 안심정찰제, 신차 장기렌트, 리스 최저가 견적을 비교하고 전문 매니저 상담을 무료로 받으세요. 국산·수입차 전 모델 대응." />
+        <meta property="og:locale" content="ko_KR" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="제로카즈 — 신차 장기렌트·리스 견적 비교" />
+        <meta name="twitter:description" content="신차 장기렌트, 리스 최저가 견적 비교 플랫폼" />
+        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/icon.png" />
         <link rel="preload" href="/logo.png" as="image" />
         <link rel="preload" as="image" href="/images/brands/hyundai.svg" />
         <link rel="preload" as="image" href="/images/brands/kia.svg" />
