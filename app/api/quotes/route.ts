@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
     // 텔레그램 알림
     try {
       const telegramToken = '8734012174:AAE8PYV7W8dzrauAzetXC3CUJmEnOKR_dkg';
-      const chatId = '-1003951663293';
+      const chatId = '-5407279848';
       const message =
         `🚗 *신차 구매 신규 접수*\n` +
         `─────────────────\n` +

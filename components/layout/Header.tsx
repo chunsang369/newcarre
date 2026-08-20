@@ -76,11 +76,14 @@ export default function Header() {
             <Link
               href="/"
               onClick={handleLogoClick}
-              className="flex items-center shrink-0 h-full min-w-[130px] lg:min-w-[160px] relative z-10 cursor-pointer"
+              className="flex items-center shrink-0 h-full relative z-10 cursor-pointer py-2"
               aria-label="제로카즈 홈"
             >
-              <img src="/logo.png" alt="제로카즈 로고" className="w-16 h-12 lg:w-20 lg:h-14 object-contain transform scale-[2.25]" />
-              <span className="text-[13px] lg:text-[15px] font-bold text-gray-900 tracking-tight ml-[-13px] lg:ml-[-18px] translate-y-[3px]">제로카즈</span>
+              <img
+                src="/logo.png"
+                alt="zerocars"
+                className="h-8 lg:h-9 w-auto object-contain"
+              />
             </Link>
 
             {/* 데스크톱 GNB (lg+) */}

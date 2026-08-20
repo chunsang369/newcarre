@@ -33,8 +33,11 @@ export default function Footer() {
           {/* 1. 회사 정보 */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center mb-5">
-              <img src="/logo.png" alt="제로카즈 로고" className="w-16 h-12 object-contain transform scale-[2.25]" />
-              <span className="text-[14px] font-bold text-white tracking-tight ml-[-13px] translate-y-[3px]">제로카즈</span>
+              <img
+                src="/logo.png"
+                alt="zerocars"
+                className="h-9 lg:h-10 w-auto object-contain brightness-0 invert"
+              />
             </Link>
           </div>
 
