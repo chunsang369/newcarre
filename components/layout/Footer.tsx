@@ -34,9 +34,9 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center mb-5">
               <img
-                src="/logo.png"
+                src="/logo_footer.png"
                 alt="zerocars"
-                className="h-9 lg:h-10 w-auto object-contain brightness-0 invert"
+                className="h-9 lg:h-10 w-auto object-contain"
               />
             </Link>
           </div>
