@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/prisma";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
-import AdminLeadsList from "./AdminLeadsList";
+import AdminLeadsList from "../AdminLeadsList";
 
 export default async function AdminDashboardPage() {
   const now = new Date();

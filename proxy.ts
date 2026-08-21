@@ -1,30 +1,29 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+const PUBLIC_API = ["/api/admin/login", "/api/admin/logout"];
+
 export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // 1. 어드민 경로인지 확인
-  if (pathname.startsWith("/admin")) {
-    // 2. 로그인 페이지는 제외 (무한 루프 방지)
-    if (pathname === "/admin/login") {
-      return NextResponse.next();
-    }
+  const isAdminPage = pathname.startsWith("/admin");
+  const isProtectedApi =
+    pathname.startsWith("/api/admin") ||
+    /^\/api\/quotes\/[^/]+$/.test(pathname);
 
-    // 3. 세션 쿠키 확인
-    const session = request.cookies.get("admin_session");
+  if (!isAdminPage && !isProtectedApi) return NextResponse.next();
+  if (pathname === "/admin/login") return NextResponse.next();
+  if (PUBLIC_API.includes(pathname)) return NextResponse.next();
 
-    if (!session || session.value !== "true") {
-      // 로그인이 안 되어 있으면 로그인 페이지로 리다이렉트
-      const loginUrl = new URL("/admin/login", request.url);
-      return NextResponse.redirect(loginUrl);
-    }
+  const session = request.cookies.get("admin_session");
+  if (session?.value === "true") return NextResponse.next();
+
+  if (isProtectedApi) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-
-  return NextResponse.next();
+  return NextResponse.redirect(new URL("/admin/login", request.url));
 }
 
-// 미들웨어가 실행될 경로 지정
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/api/admin/:path*", "/api/quotes/:path*"],
 };

@@ -25,8 +25,8 @@ export default function AdminLoginPage() {
       const data = await res.json();
 
       if (data.success) {
-        router.push("/admin");
         router.refresh();
+        router.push("/admin");
       } else {
         setError(data.message || "로그인에 실패했습니다.");
       }

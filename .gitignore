@@ -44,3 +44,4 @@ next-env.d.ts
 
 # crawling data
 /data/
+scratch/

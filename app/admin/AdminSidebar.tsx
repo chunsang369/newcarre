@@ -27,7 +27,7 @@ export default function AdminSidebar() {
     <aside className="w-56 lg:w-64 bg-[#0a2540] text-white flex flex-col shrink-0 min-h-screen">
       {/* Logo */}
       <div className="px-6 py-6 border-b border-white/10">
-        <Link href="/admin" className="text-xl font-extrabold tracking-tight">HICARZ</Link>
+        <Link href="/admin" prefetch={false} className="text-xl font-extrabold tracking-tight">HICARZ</Link>
         <p className="text-white/40 text-xs mt-0.5">Admin Panel</p>
       </div>
 
@@ -41,6 +41,7 @@ export default function AdminSidebar() {
             <Link
               key={item.href}
               href={item.href}
+              prefetch={false}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
                 isActive
                   ? "bg-white/15 text-white"
@@ -58,6 +59,7 @@ export default function AdminSidebar() {
         <Link
           href="/"
           target="_blank"
+          prefetch={false}
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-white/60 hover:bg-white/10 hover:text-white transition-all mb-1"
         >
           🌐 사이트 보기
