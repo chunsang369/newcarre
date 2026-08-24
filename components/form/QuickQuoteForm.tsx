@@ -1,16 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Phone, MessageCircle, ShieldCheck, Clock, Users } from "lucide-react";
+import { Phone, MessageCircle, ShieldCheck, Clock, Users, CheckCircle2, Car } from "lucide-react";
 
-export default function QuickQuoteForm() {
+interface QuickQuoteFormProps {
+  initialCarOfInterest?: string;
+}
+
+export default function QuickQuoteForm({ initialCarOfInterest = "" }: QuickQuoteFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     contactMethod: "phone",
     availableTime: "",
-    carOfInterest: "",
+    creditScore: "600점 이상",
+    carOfInterest: initialCarOfInterest,
     consent1: false,
     consent2: false,
     consent3: false,
@@ -18,6 +23,35 @@ export default function QuickQuoteForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [selectedCarBanner, setSelectedCarBanner] = useState<string | null>(initialCarOfInterest || null);
+
+  useEffect(() => {
+    if (initialCarOfInterest) {
+      setFormData((prev) => ({ ...prev, carOfInterest: initialCarOfInterest }));
+      setSelectedCarBanner(initialCarOfInterest);
+    } else if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const carParam = params.get("car");
+      if (carParam) {
+        setFormData((prev) => ({ ...prev, carOfInterest: carParam }));
+        setSelectedCarBanner(carParam);
+      }
+    }
+  }, [initialCarOfInterest]);
+
+  useEffect(() => {
+    const handleCarSelect = (e: any) => {
+      if (e.detail?.carName) {
+        setFormData((prev) => ({ ...prev, carOfInterest: e.detail.carName }));
+        setSelectedCarBanner(e.detail.carName);
+      }
+    };
+
+    window.addEventListener("select-car-for-quote", handleCarSelect);
+    return () => {
+      window.removeEventListener("select-car-for-quote", handleCarSelect);
+    };
+  }, []);
 
   // 전화번호 자동 하이픈
   function formatPhone(value: string): string {
@@ -69,6 +103,7 @@ export default function QuickQuoteForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
+          carConfig: `신용점수: ${formData.creditScore}`,
           consent: true,
         }),
       });
@@ -79,6 +114,7 @@ export default function QuickQuoteForm() {
           phone: "",
           contactMethod: "phone",
           availableTime: "",
+          creditScore: "600점 이상",
           carOfInterest: "",
           consent1: false,
           consent2: false,
@@ -97,7 +133,7 @@ export default function QuickQuoteForm() {
   }
 
   return (
-    <section id="quote-form" className="py-12 lg:py-24 bg-[#f7f8fa]" aria-label="간편견적문의">
+    <section id="quote-form" className="scroll-mt-16 lg:scroll-mt-20 py-12 lg:py-24 bg-[#f7f8fa]" aria-label="간편견적문의">
       <div className="mx-auto max-w-[1200px] px-4 lg:px-8">
         <div className="text-center mb-8 lg:mb-12">
           <h2 className="text-2xl lg:text-3xl font-bold text-[#0a2540] mb-2">
@@ -114,6 +150,37 @@ export default function QuickQuoteForm() {
             onSubmit={handleSubmit}
             className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-gray-100"
           >
+            {/* 선택된 차종 알림 배너 */}
+            {formData.carOfInterest && (
+              <div className="mb-6 p-4 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-between gap-3 animate-in fade-in slide-in-from-top-2 duration-300">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-lg bg-blue-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <Car className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-xs font-semibold text-blue-700">선택된 견적 상담 차량</span>
+                      {formData.carOfInterest.includes("무심사") && (
+                        <span className="px-2 py-0.5 rounded-md bg-[#1d7ef3] text-white text-[10px] font-extrabold tracking-tight shadow-xs">
+                          무심사희망
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-sm font-bold text-gray-900 block mt-0.5">
+                      {formData.carOfInterest}
+                    </span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setFormData((prev) => ({ ...prev, carOfInterest: "" }))}
+                  className="text-xs text-gray-400 hover:text-gray-700 underline cursor-pointer shrink-0"
+                >
+                  직접입력
+                </button>
+              </div>
+            )}
+
             <div className="space-y-5">
               {/* 이름 */}
               <div>
@@ -199,13 +266,32 @@ export default function QuickQuoteForm() {
                 </select>
               </div>
 
-              {/* 차량 (읽기 전용 표시) */}
+              {/* 신용점수 선택 */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  차량
+                  신용점수 <span className="text-red-500">*</span>
                 </label>
-                <div className="w-full h-12 px-4 flex items-center rounded-xl border border-gray-100 bg-gray-50 text-sm text-gray-500">
-                  -
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { value: "600점 이하", label: "600점 이하" },
+                    { value: "600점 이상", label: "600점 이상" },
+                  ].map((item) => {
+                    const isSelected = formData.creditScore === item.value;
+                    return (
+                      <button
+                        type="button"
+                        key={item.value}
+                        onClick={() => setFormData((p) => ({ ...p, creditScore: item.value }))}
+                        className={`h-12 flex items-center justify-center rounded-xl border text-sm font-bold transition-all cursor-pointer ${
+                          isSelected
+                            ? "border-[#469BD9] bg-[#469BD9]/10 text-[#469BD9] shadow-sm"
+                            : "border-gray-200 text-gray-600 hover:border-gray-300 bg-white"
+                        }`}
+                      >
+                        {item.label}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 

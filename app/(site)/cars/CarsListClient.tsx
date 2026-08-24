@@ -4,6 +4,8 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { resolveListPrices } from "@/lib/pricing";
+import { triggerCarQuote } from "@/lib/quoteTrigger";
+import QuickQuoteForm from "@/components/form/QuickQuoteForm";
 
 // ─── Types ───
 interface CarBrand {
@@ -314,56 +316,93 @@ export default function CarsListClient({
             {filtered.map((car, index) => {
               const rent = getBaseRent(car);
               return (
-                <Link
+                <div
                   key={car.id}
-                  href={`/cars/${car.slug}`}
-                  className="group bg-white rounded-2xl border border-[var(--color-border)] overflow-hidden hover:shadow-lg transition-all hover:border-[var(--color-accent)]/30"
+                  className="group bg-white rounded-2xl border border-[var(--color-border)] overflow-hidden hover:shadow-lg transition-all hover:border-[var(--color-accent)]/30 flex flex-col justify-between select-none"
                 >
-                  {/* Image */}
-                  <div className="aspect-[4/3] bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden">
-                    <Image
-                      src={car.thumbnailUrl}
-                      alt={`${car.brand.name} ${car.modelName}`}
-                      fill
-                      className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                      unoptimized
-                      priority={index < 3}
-                    />
-                    <span className="absolute top-3 left-3 bg-[var(--color-primary)] text-white text-[10px] font-bold px-2 py-1 rounded-full">
-                      {car.year}년형
-                    </span>
-                    {car.isPopular && (
-                      <span className="absolute top-3 right-3 bg-[var(--color-accent)] text-white text-[10px] font-bold px-2 py-1 rounded-full">
-                        인기
+                  <div>
+                    {/* Image (클릭 시 상세 견적 페이지로 이동) */}
+                    <Link
+                      href={`/cars/${car.slug}`}
+                      className="aspect-[4/3] bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden block cursor-pointer"
+                    >
+                      <Image
+                        src={car.thumbnailUrl}
+                        alt={`${car.brand.name} ${car.modelName}`}
+                        fill
+                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                        unoptimized
+                        priority={index < 3}
+                      />
+                      <span className="absolute top-3 left-3 bg-[var(--color-primary)] text-white text-[10px] font-bold px-2 py-1 rounded-full">
+                        {car.year}년형
                       </span>
-                    )}
+                      {car.isPopular && (
+                        <span className="absolute top-3 right-3 bg-[var(--color-accent)] text-white text-[10px] font-bold px-2 py-1 rounded-full">
+                          인기
+                        </span>
+                      )}
+                    </Link>
+
+                    {/* Info */}
+                    <div className="p-4 pb-2">
+                      <p className="text-xs text-[var(--color-text-muted)] mb-0.5">{car.brand.name}</p>
+                      <Link href={`/cars/${car.slug}`} className="block group/link cursor-pointer">
+                        <h3 className="text-sm font-bold text-[var(--color-text)] mb-0.5 line-clamp-1 group-hover/link:text-[var(--color-accent)] transition-colors">
+                          {car.modelName}
+                        </h3>
+                      </Link>
+                      <p className="text-xs text-[var(--color-text-muted)] line-clamp-1 mb-3">{car.trimName}</p>
+
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <span className="text-[10px] bg-green-50 text-green-700 px-1.5 py-0.5 rounded">{FUEL_LABEL[car.fuelType] || car.fuelType}</span>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Info */}
-                  <div className="p-4">
-                    <p className="text-xs text-[var(--color-text-muted)] mb-0.5">{car.brand.name}</p>
-                    <h3 className="text-sm font-bold text-[var(--color-text)] mb-0.5 line-clamp-1">
-                      {car.modelName}
-                    </h3>
-                    <p className="text-xs text-[var(--color-text-muted)] line-clamp-1 mb-3">{car.trimName}</p>
-
-                    <div className="flex items-center gap-1.5 mb-2">
-                      <span className="text-[10px] bg-green-50 text-green-700 px-1.5 py-0.5 rounded">{FUEL_LABEL[car.fuelType] || car.fuelType}</span>
-                    </div>
-
+                  <div className="p-4 pt-0">
                     <div className="border-t border-[var(--color-border)] pt-3 mt-1">
                       <p className="text-[10px] text-[var(--color-text-muted)]">월 렌트료</p>
                       <p className="text-lg font-extrabold text-[var(--color-accent)]">
                         {rent > 0 ? `${formatPrice(rent)}원` : "견적문의"}
                       </p>
-                      <p className="text-[9px] text-[var(--color-text-muted)] mt-0.5">36개월 | 선납30% | 만26세↑</p>
+                      <p className="text-[9px] text-[var(--color-text-muted)] mt-0.5 mb-3">36개월 | 선납30% | 만26세↑</p>
+
+                      {/* 버튼 영역: [견적보기] 상세 페이지 이동 & [빠른상담] 하단 폼 자동 입력 */}
+                      <div className="flex items-center gap-1.5 w-full">
+                        <Link
+                          href={`/cars/${car.slug}`}
+                          className="flex-1 py-2 rounded-lg bg-[var(--color-accent)] text-white text-xs font-bold shadow-xs hover:bg-[#3a8dc7] transition-all text-center"
+                        >
+                          견적보기
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            triggerCarQuote({
+                              brandName: car.brand.name,
+                              modelName: car.modelName,
+                              monthlyRent: rent,
+                              slug: car.slug,
+                            })
+                          }
+                          className="flex-1 py-2 rounded-lg bg-white border border-[var(--color-accent)] text-[var(--color-accent)] text-xs font-bold hover:bg-sky-50 transition-all cursor-pointer text-center"
+                        >
+                          빠른상담
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>
         )}
+
+        {/* 하단 간편 견적 신청 폼 */}
+        <div className="mt-16 border-t border-gray-200">
+          <QuickQuoteForm />
+        </div>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ export async function POST(request: NextRequest) {
       phone, 
       contactMethod, 
       availableTime, 
+      creditScore,
       carOfInterest, 
       carConfig, 
       consent,
@@ -42,7 +43,7 @@ export async function POST(request: NextRequest) {
         contactMethod: contactMethod || "phone",
         availableTime: availableTime || null,
         carOfInterest: carOfInterest || null,
-        carConfig: carConfig || null,
+        carConfig: carConfig || (creditScore ? `신용점수: ${creditScore}` : null),
         consentPrivacy: consent,
         source: source || "HOMEPAGE_FORM",
         status: "NEW",
@@ -59,10 +60,10 @@ export async function POST(request: NextRequest) {
         `🆔 접수번호: ${quote.id}\n` +
         `👤 고객명: ${name}\n` +
         `📞 연락처: ${cleanPhone}\n` +
+        `💳 신용점수: ${creditScore || (typeof carConfig === 'string' && carConfig.includes('신용점수') ? carConfig : '-')}\n` +
         `📱 연락방법: ${contactMethod || '-'}\n` +
         `⏰ 연락가능시간: ${availableTime || '-'}\n` +
         `🚘 관심차량: ${carOfInterest || '-'}\n` +
-        `⚙️ 차량옵션: ${carConfig || '-'}\n` +
         `🕐 접수시간: ${new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'})}`;
 
       await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {

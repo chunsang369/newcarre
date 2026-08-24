@@ -7,7 +7,8 @@ import { Menu, X, Headset } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { label: "빠른 간편견적", href: "/cars/quick-quote" },
+  { label: "저신용 장기렌트", href: "/low-credit" },
+  { label: "빠른 간편견적", href: "/#quote-form" },
   { label: "계약후기", href: "/reviews" },
   { label: "FAQ", href: "/faq" },
 ];
@@ -29,6 +30,29 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  const scrollToQuoteForm = () => {
+    if (pathname === "/") {
+      const el = document.getElementById("quote-form");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      window.location.href = "/#quote-form";
+    }
+  };
+
+  const handleNavClick = (href: string, e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (href.startsWith("/#") && pathname === "/") {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+      setIsOpen(false);
+    }
+  };
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/") {
@@ -64,7 +88,7 @@ export default function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-black",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-100",
           isScrolled
             ? "bg-white/95 backdrop-blur-md shadow-sm"
             : "bg-white"
@@ -92,6 +116,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={(e) => handleNavClick(item.href, e)}
                   className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#469BD9] hover:bg-gray-50 rounded-lg transition-colors"
                 >
                   {item.label}
@@ -99,26 +124,26 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* 데스크톱 우측 CTA */}
-            <div className="hidden lg:flex items-center">
+            {/* 데스크톱 우측 빠른상담 CTA (1.3배 확대, 5px 하단 이동, 통통 튀는 애니메이션 2s) */}
+            <div className="hidden lg:flex items-center relative top-[5px]">
               <button
-                onClick={openChannelTalk}
-                className="flex items-center gap-1.5 bg-[#469BD9] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#3a8dc7] transition-colors shadow-sm"
+                onClick={scrollToQuoteForm}
+                className="animate-bounce hover:animate-none bg-[#469BD9] hover:bg-[#3a8dc7] text-white px-7 py-2.5 rounded-full text-[17px] font-extrabold transition-all shadow-lg hover:shadow-xl shadow-[#469BD9]/35 hover:scale-105 active:scale-95 cursor-pointer tracking-tight"
+                style={{ animationDuration: "2s" }}
               >
-                <Headset className="w-4 h-4" />
-                실시간 상담
+                빠른상담
               </button>
             </div>
 
-            {/* 모바일 우측 아이콘 */}
+            {/* 모바일 우측 빠른상담 버튼 (1.3배 확대, 5px 하단 이동) */}
             <div className="flex lg:hidden items-center gap-2">
               <button
-                onClick={openChannelTalk}
-                className="flex items-center gap-1 bg-[#469BD9] text-white px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-[#3a8dc7] transition-colors"
-                aria-label="실시간 상담"
+                onClick={scrollToQuoteForm}
+                className="relative top-[5px] animate-bounce hover:animate-none bg-[#469BD9] hover:bg-[#3a8dc7] text-white px-4 py-2 rounded-full text-sm font-extrabold transition-all shadow-md hover:scale-105 active:scale-95 cursor-pointer tracking-tight"
+                style={{ animationDuration: "2s" }}
+                aria-label="빠른상담"
               >
-                <Headset className="w-3.5 h-3.5" />
-                상담
+                빠른상담
               </button>
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -126,7 +151,7 @@ export default function Header() {
                 aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
                 aria-expanded={isOpen}
               >
-                {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
           </div>
@@ -170,7 +195,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleNavClick(item.href, e)}
               className="flex items-center px-3 py-3.5 text-[15px] font-medium text-gray-800 hover:text-[#469BD9] hover:bg-gray-50 rounded-xl transition-colors"
             >
               {item.label}
@@ -181,11 +206,13 @@ export default function Header() {
         {/* 드로어 하단 CTA */}
         <div className="absolute bottom-0 left-0 right-0 p-5 border-t border-gray-100 bg-gray-50/50">
           <button
-            onClick={openChannelTalk}
-            className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#469BD9] text-white text-sm font-semibold hover:bg-[#3a8dc7] transition-colors shadow-sm"
+            onClick={() => {
+              setIsOpen(false);
+              scrollToQuoteForm();
+            }}
+            className="flex items-center justify-center w-full py-3.5 rounded-xl bg-[#469BD9] text-white text-sm font-bold hover:bg-[#3a8dc7] transition-colors shadow-sm cursor-pointer"
           >
-            <Headset className="w-4 h-4" />
-            실시간 상담하기
+            빠른상담 신청하기
           </button>
         </div>
       </nav>

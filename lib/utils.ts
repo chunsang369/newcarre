@@ -32,3 +32,17 @@ export function formatAvailableTime(time: string | null | undefined): string {
   return TIME_LABELS[time] || time;
 }
 
+export function formatPrice(num: number): string {
+  if (!num) return "0";
+  return num.toLocaleString();
+}
+
+export function formatPriceManwon(num: number): string {
+  if (!num || num <= 0) return "상담 문의";
+  const manwon = Math.floor(num / 10000);
+  if (manwon > 0) {
+    return `월 ${manwon.toLocaleString()}만원~`;
+  }
+  return `월 ${num.toLocaleString()}원~`;
+}
+

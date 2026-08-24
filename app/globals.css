@@ -9,6 +9,14 @@
    ────────────────────────────────────────── */
 
 :root {
+  /* Requested Design Tokens */
+  --brand-primary: #4A9FDB;
+  --brand-hover: #3B8AC4;
+  --brand-light: #E8F3FB;
+  --text-strong: #2B3A47;
+  --text-body: #6E7B87;
+  --text-muted: #93A1AD;
+
   /* Brand */
   --color-primary: #0a2540;        /* 딥 네이비 — 신뢰감 */
   --color-primary-hover: #143a66;

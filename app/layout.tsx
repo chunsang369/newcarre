@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
@@ -16,13 +17,24 @@ export const metadata: Metadata = {
   openGraph: {
     title: "제로카즈 | 안심정찰제 신차 장기렌트·리스 견적 비교",
     description: "제로카즈, 안심정찰제, 신차 장기렌트, 리스 최저가 견적을 비교하고 전문 매니저 상담을 무료로 받으세요. 국산·수입차 전 모델 대응.",
+    url: "https://zerocars.netlify.app",
+    siteName: "제로카즈",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "제로카즈 - 신차 장기렌트·리스 견적 비교",
+      },
+    ],
     type: "website",
     locale: "ko_KR",
   },
   twitter: {
-    card: "summary",
-    title: "제로카즈 — 신차 장기렌트·리스 견적 비교",
-    description: "신차 장기렌트, 리스 최저가 견적 비교 플랫폼",
+    card: "summary_large_image",
+    title: "제로카즈 | 안심정찰제 신차 장기렌트·리스 견적 비교",
+    description: "신차 장기렌트, 리스 최저가 견적 비교 플랫폼 제로카즈",
+    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.png",
@@ -45,14 +57,10 @@ export default function RootLayout({
   return (
     <html lang="ko" className={cn("h-full", "font-sans", geist.variable)} suppressHydrationWarning>
       <head>
-        {/* 타이틀·메타·verification 태그는 위 metadata export가 단일 소스로 렌더링 (수동 중복 삽입 금지) */}
+        {/* 네이버 카페/블로그 및 SNS 썸네일 고정 */}
+        <link rel="image_src" href="https://zerocars.netlify.app/og-image.png" />
+        <link rel="preload" href="/og-image.png" as="image" />
         <link rel="preload" href="/logo.png" as="image" />
-        <link rel="preload" as="image" href="/images/brands/hyundai.svg" />
-        <link rel="preload" as="image" href="/images/brands/kia.svg" />
-        <link rel="preload" as="image" href="/images/brands/genesis.svg" />
-        <link rel="preload" as="image" href="/images/brands/renault-korea.svg" />
-        <link rel="preload" as="image" href="/images/brands/chevrolet.svg" />
-        <link rel="preload" as="image" href="/images/brands/kgm.svg" />
         <link rel="preload" href="/images/trust-consult-bg.png" as="image" />
         <link rel="preload" href="/images/finance-card-bg.png" as="image" />
         <link rel="preload" href="/images/cars-card-bg.png" as="image" />
@@ -72,7 +80,9 @@ export default function RootLayout({
           }}
         />
         {/* 2차 및 3차 차단막: 브라우저 확장 프로그램으로 인한 Hydration Mismatch 개발 오버레이 지능형 선택적 차단 */}
-        <script
+        <Script
+          id="client-hydration-protection"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
