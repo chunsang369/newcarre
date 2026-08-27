@@ -30,15 +30,22 @@ export default function Footer() {
       <div className="mx-auto max-w-[1200px] px-4 lg:px-8 py-12 lg:py-16">
         {/* 데스크톱: 4컬럼 / 모바일: 스택 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* 1. 회사 정보 */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center mb-5">
+          {/* 1. 회사 정보 및 공식 인증 배지 */}
+          <div className="lg:col-span-1 flex flex-col items-start gap-4 mb-4">
+            <Link href="/" className="inline-flex items-center">
               <img
                 src="/logo_footer.png"
                 alt="zerocars"
                 className="h-9 lg:h-10 w-auto object-contain"
               />
             </Link>
+            <div className="w-[165px] lg:w-[185px] rounded-2xl overflow-hidden shadow-lg border border-white/10 bg-white">
+              <img
+                src="/images/credit-approval-badge-original.png"
+                alt="신용무관승인제 공식 등록 업체"
+                className="w-full h-auto object-contain block"
+              />
+            </div>
           </div>
 
           {/* 2. 메뉴 */}
