@@ -51,130 +51,23 @@ export async function getAnalyticsStats(options: AnalyticsStatsOptions = {}): Pr
     endDate = new Date(`${endDateStr}T23:59:59.999+09:00`);
   }
 
-  // 3. 핵심 성과 지표 병렬 집계
-  const [totalVisits, uniqueVisitors, totalClicks, totalQuotes] = await Promise.all([
-    prisma.visitLog.count({
-      where: { createdAt: { gte: startDate, lte: endDate } }
-    }),
-    prisma.visitLog.groupBy({
-      by: ["visitorId"],
-      where: { createdAt: { gte: startDate, lte: endDate } },
-    }).then(res => res.length),
-    prisma.clickEvent.count({
-      where: { createdAt: { gte: startDate, lte: endDate } }
-    }),
-    prisma.quoteRequest.count({
-      where: { createdAt: { gte: startDate, lte: endDate } }
-    })
-  ]);
+  // 3. 트렌드 일자별/시간대별 쿼리 정의
+  interface TrendSlot {
+    date: string;
+    start: Date;
+    end: Date;
+  }
+  const trendSlots: TrendSlot[] = [];
 
-  // 4. 외부 유입 경로 탑 10 도메인 집계
-  const topReferrersRaw = await prisma.visitLog.groupBy({
-    by: ["referringDomain"],
-    where: { createdAt: { gte: startDate, lte: endDate } },
-    _count: {
-      id: true
-    },
-    orderBy: {
-      _count: {
-        id: "desc"
-      }
-    },
-    take: 10
-  });
-
-  // 4.1. 외부 유입 상세 URL 링크 탑 10 집계
-  const topReferrerUrlsRaw = await prisma.visitLog.groupBy({
-    by: ["referrer"],
-    where: { 
-      createdAt: { gte: startDate, lte: endDate },
-      referrer: { not: null },
-      NOT: { referrer: "" }
-    },
-    _count: {
-      id: true
-    },
-    orderBy: {
-      _count: {
-        id: "desc"
-      }
-    },
-    take: 10
-  });
-
-  // 5. 페이지 뷰 인기 페이지 탑 10
-  const topPagesRaw = await prisma.visitLog.groupBy({
-    by: ["path"],
-    where: { createdAt: { gte: startDate, lte: endDate } },
-    _count: {
-      id: true
-    },
-    orderBy: {
-      _count: {
-        id: "desc"
-      }
-    },
-    take: 10
-  });
-
-  // 6. 마케팅 캠페인 소스 탑 10
-  const topUtmSourcesRaw = await prisma.visitLog.groupBy({
-    by: ["utmSource"],
-    where: {
-      createdAt: { gte: startDate, lte: endDate },
-      utmSource: { not: null }
-    },
-    _count: {
-      id: true
-    },
-    orderBy: {
-      _count: {
-        id: "desc"
-      }
-    },
-    take: 10
-  });
-
-  // 7. 가장 많이 클릭된 인터랙션 요소 탑 10
-  const topClicksRaw = await prisma.clickEvent.groupBy({
-    by: ["elementText", "pagePath"],
-    where: {
-      createdAt: { gte: startDate, lte: endDate },
-      elementText: { not: null },
-      NOT: { elementText: "" }
-    },
-    _count: {
-      id: true
-    },
-    orderBy: {
-      _count: {
-        id: "desc"
-      }
-    },
-    take: 10
-  });
-
-  // 8. 최근 트렌드 시계열 분석 (한국시간 KST 기준)
-  const dailyTrend = [];
   if (isSingleDay) {
     // 0시부터 22시까지 2시간 단위 파싱
     for (let h = 0; h < 24; h += 2) {
       const padH1 = String(h).padStart(2, "0");
       const padH2 = String(h + 1).padStart(2, "0");
-
-      const start = new Date(`${targetDateStr}T${padH1}:00:00.000+09:00`);
-      const end = new Date(`${targetDateStr}T${padH2}:59:59.999+09:00`);
-      const timeStr = `${h}시`;
-
-      const [vCount, cCount] = await Promise.all([
-        prisma.visitLog.count({ where: { createdAt: { gte: start, lte: end } } }),
-        prisma.clickEvent.count({ where: { createdAt: { gte: start, lte: end } } })
-      ]);
-
-      dailyTrend.push({
-        date: timeStr,
-        visits: vCount,
-        clicks: cCount
+      trendSlots.push({
+        date: `${h}시`,
+        start: new Date(`${targetDateStr}T${padH1}:00:00.000+09:00`),
+        end: new Date(`${targetDateStr}T${padH2}:59:59.999+09:00`),
       });
     }
   } else {
@@ -183,55 +76,145 @@ export async function getAnalyticsStats(options: AnalyticsStatsOptions = {}): Pr
       const targetDay = new Date();
       targetDay.setDate(targetDay.getDate() - i);
       const dayStr = targetDay.toLocaleDateString("sv-SE", { timeZone: "Asia/Seoul" });
-      
-      const start = new Date(`${dayStr}T00:00:00.000+09:00`);
-      const end = new Date(`${dayStr}T23:59:59.999+09:00`);
-      
       const [, month, day] = dayStr.split("-").map(Number);
-      const dateStr = `${month}/${day}`;
-
-      const [vCount, cCount] = await Promise.all([
-        prisma.visitLog.count({ where: { createdAt: { gte: start, lte: end } } }),
-        prisma.clickEvent.count({ where: { createdAt: { gte: start, lte: end } } })
-      ]);
-
-      dailyTrend.push({
-        date: dateStr,
-        visits: vCount,
-        clicks: cCount
+      trendSlots.push({
+        date: `${month}/${day}`,
+        start: new Date(`${dayStr}T00:00:00.000+09:00`),
+        end: new Date(`${dayStr}T23:59:59.999+09:00`),
       });
     }
   }
 
+  // 4. 모든 집계 및 랭킹, 시계열 쿼리를 병렬(Promise.all)로 동시 실행
+  const [
+    totalVisits,
+    uniqueVisitorsRaw,
+    totalClicks,
+    totalQuotes,
+    topReferrersRaw,
+    topReferrerUrlsRaw,
+    topPagesRaw,
+    topUtmSourcesRaw,
+    topClicksRaw,
+    ...trendResults
+  ] = await Promise.all([
+    // [0] 총 PV
+    prisma.visitLog.count({
+      where: { createdAt: { gte: startDate, lte: endDate } },
+    }),
+    // [1] UV (고유 방문자)
+    prisma.visitLog.groupBy({
+      by: ["visitorId"],
+      where: { createdAt: { gte: startDate, lte: endDate } },
+    }),
+    // [2] 총 클릭
+    prisma.clickEvent.count({
+      where: { createdAt: { gte: startDate, lte: endDate } },
+    }),
+    // [3] 총 견적
+    prisma.quoteRequest.count({
+      where: { createdAt: { gte: startDate, lte: endDate } },
+    }),
+    // [4] 도메인 랭킹 Top 10
+    prisma.visitLog.groupBy({
+      by: ["referringDomain"],
+      where: { createdAt: { gte: startDate, lte: endDate } },
+      _count: { id: true },
+      orderBy: { _count: { id: "desc" } },
+      take: 10,
+    }),
+    // [5] 상세 URL 랭킹 Top 10
+    prisma.visitLog.groupBy({
+      by: ["referrer"],
+      where: {
+        createdAt: { gte: startDate, lte: endDate },
+        referrer: { not: null },
+        NOT: { referrer: "" },
+      },
+      _count: { id: true },
+      orderBy: { _count: { id: "desc" } },
+      take: 10,
+    }),
+    // [6] 인기 페이지 Top 10
+    prisma.visitLog.groupBy({
+      by: ["path"],
+      where: { createdAt: { gte: startDate, lte: endDate } },
+      _count: { id: true },
+      orderBy: { _count: { id: "desc" } },
+      take: 10,
+    }),
+    // [7] UTM 소스 Top 10
+    prisma.visitLog.groupBy({
+      by: ["utmSource"],
+      where: {
+        createdAt: { gte: startDate, lte: endDate },
+        utmSource: { not: null },
+      },
+      _count: { id: true },
+      orderBy: { _count: { id: "desc" } },
+      take: 10,
+    }),
+    // [8] 클릭 요소 Top 10
+    prisma.clickEvent.groupBy({
+      by: ["elementText", "pagePath"],
+      where: {
+        createdAt: { gte: startDate, lte: endDate },
+        elementText: { not: null },
+        NOT: { elementText: "" },
+      },
+      _count: { id: true },
+      orderBy: { _count: { id: "desc" } },
+      take: 10,
+    }),
+    // [9...] 각 슬롯별 방문/클릭 수 병렬 쿼리
+    ...trendSlots.map(slot =>
+      Promise.all([
+        prisma.visitLog.count({ where: { createdAt: { gte: slot.start, lte: slot.end } } }),
+        prisma.clickEvent.count({ where: { createdAt: { gte: slot.start, lte: slot.end } } }),
+      ])
+    ),
+  ]);
+
+  const uniqueVisitors = (uniqueVisitorsRaw as any[]).length;
+
+  const dailyTrend = trendSlots.map((slot, index) => {
+    const [visits, clicks] = trendResults[index] as [number, number];
+    return {
+      date: slot.date,
+      visits,
+      clicks,
+    };
+  });
+
   return {
     summary: {
-      totalVisits,
+      totalVisits: totalVisits as number,
       uniqueVisitors,
-      totalClicks,
-      totalQuotes,
-      conversionRate: totalVisits > 0 ? ((totalQuotes / totalVisits) * 100).toFixed(1) : "0.0"
+      totalClicks: totalClicks as number,
+      totalQuotes: totalQuotes as number,
+      conversionRate: (totalVisits as number) > 0 ? (((totalQuotes as number) / (totalVisits as number)) * 100).toFixed(1) : "0.0",
     },
-    topReferrers: topReferrersRaw.map(r => ({
+    topReferrers: (topReferrersRaw as any[]).map(r => ({
       domain: r.referringDomain || "direct",
-      count: r._count.id
+      count: r._count.id,
     })),
-    topReferrerUrls: topReferrerUrlsRaw.map(r => ({
+    topReferrerUrls: (topReferrerUrlsRaw as any[]).map(r => ({
       url: r.referrer || "direct",
-      count: r._count.id
+      count: r._count.id,
     })),
-    topPages: topPagesRaw.map(p => ({
+    topPages: (topPagesRaw as any[]).map(p => ({
       path: p.path,
-      count: p._count.id
+      count: p._count.id,
     })),
-    topUtmSources: topUtmSourcesRaw.map(u => ({
+    topUtmSources: (topUtmSourcesRaw as any[]).map(u => ({
       source: u.utmSource || "Unknown",
-      count: u._count.id
+      count: u._count.id,
     })),
-    topClicks: topClicksRaw.map(c => ({
+    topClicks: (topClicksRaw as any[]).map(c => ({
       text: c.elementText || "",
       path: c.pagePath,
-      count: c._count.id
+      count: c._count.id,
     })),
-    dailyTrend
+    dailyTrend,
   };
 }

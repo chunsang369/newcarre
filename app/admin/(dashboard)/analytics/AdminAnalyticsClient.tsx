@@ -65,11 +65,14 @@ export default function AdminAnalyticsClient({ initialData }: AdminAnalyticsClie
     }
   };
 
-  // 마운트 직후에는 SSR된 initialData를 유지하고, 
-  // 그 후 사용자가 필터(viewMode, range, selectedDate)를 변경할 때만 fetch하도록 제어
+  // 마운트 직후에는 SSR된 initialData를 유지하고(만약 fallback인 경우 클라이언트 fetch), 
+  // 그 후 사용자가 필터(viewMode, range, selectedDate)를 변경할 때 fetch하도록 제어
   useEffect(() => {
     if (!isMounted) {
       setIsMounted(true);
+      if (initialData.summary.totalVisits === 0 && initialData.topReferrers.length === 0) {
+        fetchStats();
+      }
       return;
     }
     fetchStats();
