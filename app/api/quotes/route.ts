@@ -75,6 +75,19 @@ export async function POST(request: NextRequest) {
       console.error('Telegram notify error:', tgErr);
     }
 
+    // 외부 웹훅 전송 (Fire-and-forget)
+    try {
+      fetch("http://5.104.80.117:8417/huginn?key=whk_zerocars_8417", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      }).catch((webhookErr) => {
+        console.error("[Webhook] Failed to send form data:", webhookErr);
+      });
+    } catch (webhookErr) {
+      console.error("[Webhook] Dispatch error:", webhookErr);
+    }
+
     return NextResponse.json(
       { success: true, id: quote.id },
       { status: 201 }
