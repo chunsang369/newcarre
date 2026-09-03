@@ -5,11 +5,11 @@ const COMPANY_INFO = {
   brand: "제로카즈(ZeroCarz)",
   name: "주식회사 한신종합기획",
   ceo: "이예찬",
-  address: "경기도 오산시 운천로165번길 56-1, 301호(오산동, 대교주택)",
+  address: "경기 용인시 기흥구 영통로525번길 24 황곡프라자 3층",
   businessNo: "836-12-01570",
   ecommerceNo: "제2024-경기오산-0333호", // 통신판매업번호는 별도 확인 필요하므로 형식을 맞춰 기재
   phone: "010-5813-8090",
-  email: "umjc25@gmail.com",
+  email: "hanxinplanning@gmail.com",
 };
 
 const MENU_LINKS = [

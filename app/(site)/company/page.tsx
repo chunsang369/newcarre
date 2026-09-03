@@ -67,8 +67,8 @@ export default function CompanyPage() {
               ["사업자등록번호", "836-12-01570"],
               ["통신판매업신고", "제2024-경기오산-0333호"],
               ["대표전화", "010-5813-8090"],
-              ["이메일", "umjc25@gmail.com"],
-              ["주소", "경기도 오산시 운천로165번길 56-1, 301호(오산동, 대교주택)"],
+              ["이메일", "hanxinplanning@gmail.com"],
+              ["주소", "경기 용인시 기흥구 영통로525번길 24 황곡프라자 3층"],
             ].map(([label, value]) => (
               <div key={label} className="flex">
                 <span className="w-32 lg:w-40 text-[var(--color-text-muted)] flex-shrink-0">{label}</span>

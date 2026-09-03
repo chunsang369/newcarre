@@ -289,7 +289,7 @@ export default function TermsPage() {
                   </tr>
                   <tr>
                     <th className="p-3 border border-[var(--color-border)] bg-[var(--color-bg-subtle)] font-bold text-[var(--color-text)]">주소</th>
-                    <td className="p-3 border border-[var(--color-border)] text-[var(--color-text)]">경기도 오산시 운천로165번길 56-1, 301호(오산동, 대교주택)</td>
+                    <td className="p-3 border border-[var(--color-border)] text-[var(--color-text)]">경기 용인시 기흥구 영통로525번길 24 황곡프라자 3층</td>
                   </tr>
                   <tr>
                     <th className="p-3 border border-[var(--color-border)] bg-[var(--color-bg-subtle)] font-bold text-[var(--color-text)]">고객센터</th>
@@ -297,7 +297,7 @@ export default function TermsPage() {
                   </tr>
                   <tr>
                     <th className="p-3 border border-[var(--color-border)] bg-[var(--color-bg-subtle)] font-bold text-[var(--color-text)]">이메일</th>
-                    <td className="p-3 border border-[var(--color-border)] text-[var(--color-text)]">umjc25@gmail.com</td>
+                    <td className="p-3 border border-[var(--color-border)] text-[var(--color-text)]">hanxinplanning@gmail.com</td>
                   </tr>
                 </tbody>
               </table>

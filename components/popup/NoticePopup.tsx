@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { X, Sparkles, ArrowRight, ShieldCheck } from "lucide-react";
@@ -21,6 +21,14 @@ interface NoticePopupProps {
 }
 
 const STORAGE_KEY = "zerocarz_hide_notice_popup_until";
+const SESSION_KEY = "zerocarz_popup_dismissed_session";
+
+// 중복 렌더링 방지용 전역 싱글톤 플래그
+declare global {
+  interface Window {
+    __zerocars_popup_active?: boolean;
+  }
+}
 
 export default function NoticePopup({
   imageSrc = "/images/popup.jpg",
@@ -33,13 +41,25 @@ export default function NoticePopup({
   const [dontShowToday, setDontShowToday] = useState<boolean>(false);
   const [imageError, setImageError] = useState<boolean>(false);
 
+  // 비동기 타이머 및 중복 오픈/재오픈 방지 참조 변수
+  const isClosedRef = useRef<boolean>(false);
+  const isTriggeredRef = useRef<boolean>(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
-    // 1. '오늘 하루 보지 않기' 확인
+    // 0. 전역 싱글톤 체크: 이미 활성화된 팝업이 있다면 중복 실행 방지
+    if (typeof window !== "undefined") {
+      if (window.__zerocars_popup_active) {
+        return;
+      }
+      window.__zerocars_popup_active = true;
+    }
+
+    // 1. '오늘 하루 보지 않기' 확인 (localStorage)
     try {
       const hideUntil = localStorage.getItem(STORAGE_KEY);
       if (hideUntil) {
         const expiryTime = parseInt(hideUntil, 10);
-        // 저장된 만료 시간(오늘 자정)이 지나지 않았으면 팝업을 띄우지 않음
         if (!isNaN(expiryTime) && Date.now() < expiryTime) {
           setIsMounted(true);
           setIsOpen(false);
@@ -50,53 +70,79 @@ export default function NoticePopup({
       console.error("Failed to read localStorage:", e);
     }
 
-    // 2. 팝업 이미지 프리로딩: 이미지가 메모리에 완전히 로드 및 디코딩된 후 팝업을 오픈
+    // 2. 현재 브라우징 세션에서 이미 닫았는지 확인 (sessionStorage - 페이지 이동 시 재노출 방지)
+    try {
+      const sessionDismissed = sessionStorage.getItem(SESSION_KEY);
+      if (sessionDismissed === "true") {
+        setIsMounted(true);
+        setIsOpen(false);
+        return;
+      }
+    } catch {
+      // ignore
+    }
+
+    // 3. 단 1회만 안전하게 팝업을 여는 함수
+    const openPopupOnce = () => {
+      if (isClosedRef.current || isTriggeredRef.current) return;
+      isTriggeredRef.current = true;
+
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+
+      setIsImageReady(true);
+      setIsOpen(true);
+      setIsMounted(true);
+    };
+
+    // 4. 팝업 이미지 프리로딩
     if (imageSrc) {
-      let isCancelled = false;
       const img = new window.Image();
       img.src = imageSrc;
 
-      const handleReady = () => {
-        if (isCancelled) return;
-        setIsImageReady(true);
-        setIsOpen(true);
-        setIsMounted(true);
-      };
-
       if (img.complete) {
         if ("decode" in img) {
-          img.decode().then(handleReady).catch(handleReady);
+          img.decode().then(openPopupOnce).catch(openPopupOnce);
         } else {
-          handleReady();
+          openPopupOnce();
         }
       } else {
         img.onload = () => {
           if ("decode" in img) {
-            img.decode().then(handleReady).catch(handleReady);
+            img.decode().then(openPopupOnce).catch(openPopupOnce);
           } else {
-            handleReady();
+            openPopupOnce();
           }
         };
         img.onerror = () => {
-          if (isCancelled) return;
           setImageError(true);
-          handleReady();
+          openPopupOnce();
         };
       }
 
-      // 네트워크 지연 발생 시에도 팝업이 무한 대기하지 않도록 안전 타임아웃 (최대 2.5초)
-      const timeoutId = setTimeout(() => {
-        handleReady();
-      }, 2500);
+      // 네트워크 지연 시 안전 타임아웃 (1.5초 후 강제 오픈)
+      timerRef.current = setTimeout(() => {
+        openPopupOnce();
+      }, 1500);
 
       return () => {
-        isCancelled = true;
-        clearTimeout(timeoutId);
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+          timerRef.current = null;
+        }
+        if (typeof window !== "undefined") {
+          window.__zerocars_popup_active = false;
+        }
       };
     } else {
-      setIsImageReady(true);
-      setIsOpen(true);
-      setIsMounted(true);
+      openPopupOnce();
+      return () => {
+        if (typeof window !== "undefined") {
+          window.__zerocars_popup_active = false;
+        }
+      };
     }
   }, [imageSrc]);
 
@@ -116,6 +162,14 @@ export default function NoticePopup({
   };
 
   const handleClose = () => {
+    // 닫힘 플래그 설정 (이후 모든 비동기 콜백/타이머 차단)
+    isClosedRef.current = true;
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+
+    // 1) 오늘 하루 보지 않기
     if (dontShowToday) {
       try {
         localStorage.setItem(
@@ -126,10 +180,18 @@ export default function NoticePopup({
         console.error("Failed to save to localStorage:", e);
       }
     }
+
+    // 2) 이번 브라우저 세션 동안은 다시 뜨지 않도록 세션 저장소에 기록
+    try {
+      sessionStorage.setItem(SESSION_KEY, "true");
+    } catch {
+      // ignore
+    }
+
     setIsOpen(false);
   };
 
-  // SSR Hydration 불일치 방지 및 이미지가 준비되기 전이나 닫힘 상태일 때 미노출
+  // SSR 불일치 방지 및 닫힘 상태거나 이미지가 준비되기 전에는 렌더링 안 함
   if (!isMounted || !isOpen || !isImageReady) {
     return null;
   }
@@ -146,19 +208,17 @@ export default function NoticePopup({
             sizes="(max-width: 768px) 90vw, 420px"
             className="object-cover"
             priority
-            unoptimized // 브라우저 프리로드 캐시와 1:1 일치하여 로딩 깜빡임 방지
+            unoptimized
             onError={() => setImageError(true)}
           />
         </div>
       ) : (
         /* 이미지가 아직 준비되지 않았을 때 표시되는 고품질 플레이스홀더 배너 */
         <div className="w-full h-full bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0284C7] p-7 flex flex-col justify-between text-white relative overflow-hidden select-none">
-          {/* 장식용 배경 그래픽 */}
           <div className="absolute -top-12 -right-12 w-44 h-44 bg-blue-500/20 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-sky-400/20 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
-          {/* 상단 뱃지 */}
           <div className="relative z-10 flex items-center justify-between">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-xs font-semibold text-blue-200 tracking-wide">
               <Sparkles className="w-3.5 h-3.5 text-blue-300 animate-pulse" />
@@ -170,7 +230,6 @@ export default function NoticePopup({
             </span>
           </div>
 
-          {/* 중앙 타이틀 & 안내 문구 */}
           <div className="relative z-10 my-auto text-left py-2">
             <p className="text-xs sm:text-sm font-semibold text-sky-300 mb-1">
               신차 장기렌트 · 제로카즈 단독 혜택
@@ -187,7 +246,6 @@ export default function NoticePopup({
             </p>
           </div>
 
-          {/* 하단 바로가기 버튼 안내 */}
           <div className="relative z-10 pt-2">
             <div className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-blue-500/30 transition-all">
               <span>특별 견적 바로 확인하기</span>
@@ -206,7 +264,6 @@ export default function NoticePopup({
       aria-labelledby="notice-popup-title"
       className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/65 backdrop-blur-[2px] animate-in fade-in duration-200"
       onClick={(e) => {
-        // 배경 클릭 시 팝업 닫기
         if (e.target === e.currentTarget) {
           handleClose();
         }
@@ -215,7 +272,7 @@ export default function NoticePopup({
       {/* 팝업 모달 카드 (정사각형 1:1 비율) */}
       <div className="relative w-full max-w-[380px] sm:max-w-[420px] rounded-2xl overflow-hidden shadow-2xl bg-neutral-900 border border-neutral-800 transition-all transform animate-in zoom-in-95 duration-200">
         
-        {/* 상단 닫기 X 버튼 (빠른 닫기) */}
+        {/* 상단 닫기 X 버튼 */}
         <button
           type="button"
           onClick={handleClose}
