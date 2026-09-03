@@ -139,14 +139,6 @@ export default function HeroMain({
                 <span>빠른 간편 견적</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
-
-              <div className="relative flex items-center shrink-0 select-none">
-                <img
-                  src="/images/credit-approval-badge-transparent.png"
-                  alt="신용무관승인제 공식 등록 업체"
-                  className="w-14 h-14 sm:w-16 sm:h-16 lg:w-[72px] lg:h-[72px] object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)] transition-transform duration-200 hover:scale-105"
-                />
-              </div>
             </div>
           </div>
         </div>
@@ -224,14 +216,6 @@ export default function HeroMain({
               >
                 <span>빠른 상담 신청</span>
               </button>
-
-              <div className="relative flex items-center shrink-0 select-none pl-1">
-                <img
-                  src="/images/credit-approval-badge-transparent.png"
-                  alt="신용무관승인제 공식 등록 업체"
-                  className="w-13 h-13 sm:w-15 sm:h-15 lg:w-[68px] lg:h-[68px] object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)] transition-transform duration-200 hover:scale-105"
-                />
-              </div>
             </div>
           </div>
         </div>
